@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { createClient } from "@/lib/supabase/client"
 import { Button } from "@/components/ui/Button"
 import { Input } from "@/components/ui/Input"
 import { cn } from "@/lib/utils"
@@ -11,6 +10,9 @@ import {
   LayoutDashboard, FileText, Image, Star, Mail, 
   Users, Settings, LogOut, Menu, X, MapPin
 } from "lucide-react"
+
+// Dynamic import for Supabase to avoid build-time issues
+import dynamic from 'next/dynamic'
 
 const NAV_ITEMS = [
   { href: "/admin", label: "Dashboard", icon: LayoutDashboard },
@@ -23,6 +25,9 @@ const NAV_ITEMS = [
   { href: "/admin/settings", label: "Indstillinger", icon: Settings },
 ]
 
+// Force dynamic rendering
+export const dynamic_config = 'force-dynamic'
+
 export default function AdminLayout({
   children,
 }: {
@@ -34,20 +39,31 @@ export default function AdminLayout({
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [supabase, setSupabase] = useState<any>(null)
   const pathname = usePathname()
-  const supabase = createClient()
 
   useEffect(() => {
-    checkAuth()
+    // Initialize Supabase client on mount
+    const initSupabase = async () => {
+      const { createBrowserClient } = await import('@supabase/ssr')
+      const client = createBrowserClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL!,
+        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+      )
+      setSupabase(client)
+      
+      // Check auth
+      const { data: { session } } = await client.auth.getSession()
+      setIsAuthenticated(!!session)
+    }
+    
+    initSupabase()
   }, [])
-
-  const checkAuth = async () => {
-    const { data: { session } } = await supabase.auth.getSession()
-    setIsAuthenticated(!!session)
-  }
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (!supabase) return
+    
     setError("")
     setLoading(true)
 
@@ -67,6 +83,7 @@ export default function AdminLayout({
   }
 
   const handleLogout = async () => {
+    if (!supabase) return
     await supabase.auth.signOut()
     setIsAuthenticated(false)
   }
@@ -115,7 +132,7 @@ export default function AdminLayout({
               <p className="text-red-500 text-sm">{error}</p>
             )}
 
-            <Button type="submit" className="w-full" disabled={loading}>
+            <Button type="submit" className="w-full" disabled={loading || !supabase}>
               {loading ? "Logger ind..." : "Log ind"}
             </Button>
           </form>
