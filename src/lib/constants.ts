@@ -36,7 +36,7 @@ export const SERVICES = [
   { name: "Billig maler", slug: "billig-maler", description: "Kvalitetsmaling til fair priser" },
   { name: "Sprøjtespartling", slug: "sprojtespartling", description: "Hurtig og effektiv sprøjtespartling" },
   { name: "Sprøjtemaling", slug: "sproejtmaling", description: "Professionel sprøjtemaling" },
-  { name: "Flisecement", slug: "flisecement", description: "Silkecement og flisecement løsninger" },
+  { name: "Microcement", slug: "microcement", description: "Microcement-løsninger" },
   { name: "PU-gulve", slug: "pu-gulve", description: "Polyuretangulve til alle formål" },
 ]
 

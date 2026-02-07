@@ -186,26 +186,26 @@ export function ProjectGallery({
   )
 }
 
-// Silkecement/Flisecement gallery images
+// Microcement/Microcement gallery images
 export const SILKECEMENT_IMAGES: GalleryImage[] = [
   {
     src: "https://cduloscitjydjelqayhs.supabase.co/storage/v1/object/public/project-attachments/projects/052d2a61-54d3-4854-a006-9f3cf3e07a76/1770500292131-Unknown-2.jpg",
-    alt: "Silkecement projekt - moderne badeværelse",
-    caption: "Silkecement i badeværelse",
+    alt: "Microcement projekt - moderne badeværelse",
+    caption: "Microcement i badeværelse",
   },
   {
     src: "https://cduloscitjydjelqayhs.supabase.co/storage/v1/object/public/project-attachments/projects/052d2a61-54d3-4854-a006-9f3cf3e07a76/1770500309904-Unknown-3.jpg",
-    alt: "Silkecement vægfinish",
+    alt: "Microcement vægfinish",
     caption: "Silkeblød vægfinish",
   },
   {
     src: "https://cduloscitjydjelqayhs.supabase.co/storage/v1/object/public/project-attachments/projects/052d2a61-54d3-4854-a006-9f3cf3e07a76/1770500308916-Unknown-4.jpg",
-    alt: "Flisecement brusekabine",
-    caption: "Vandtæt flisecement",
+    alt: "Microcement brusekabine",
+    caption: "Vandtæt microcement",
   },
   {
     src: "https://cduloscitjydjelqayhs.supabase.co/storage/v1/object/public/project-attachments/projects/052d2a61-54d3-4854-a006-9f3cf3e07a76/1770500308084-Unknown-5.jpg",
-    alt: "Silkecement overfladebehandling",
+    alt: "Microcement overfladebehandling",
     caption: "Elegant overfladebehandling",
   },
   {
@@ -215,57 +215,57 @@ export const SILKECEMENT_IMAGES: GalleryImage[] = [
   },
   {
     src: "https://cduloscitjydjelqayhs.supabase.co/storage/v1/object/public/project-attachments/projects/052d2a61-54d3-4854-a006-9f3cf3e07a76/1770500305834-Unknown-7.jpg",
-    alt: "Silkecement badeværelse detalje",
+    alt: "Microcement badeværelse detalje",
     caption: "Detalje fra badeværelse",
   },
   {
     src: "https://cduloscitjydjelqayhs.supabase.co/storage/v1/object/public/project-attachments/projects/052d2a61-54d3-4854-a006-9f3cf3e07a76/1770500304799-Unknown-8.jpg",
-    alt: "Moderne silkecement væg",
+    alt: "Moderne microcement væg",
     caption: "Moderne vægfinish",
   },
   {
     src: "https://cduloscitjydjelqayhs.supabase.co/storage/v1/object/public/project-attachments/projects/052d2a61-54d3-4854-a006-9f3cf3e07a76/1770500303484-Unknown-9.jpg",
-    alt: "Silkecement håndværk",
+    alt: "Microcement håndværk",
     caption: "Professionelt håndværk",
   },
   {
     src: "https://cduloscitjydjelqayhs.supabase.co/storage/v1/object/public/project-attachments/projects/052d2a61-54d3-4854-a006-9f3cf3e07a76/1770500302029-Unknown-10.jpg",
-    alt: "Flisecement køkken",
-    caption: "Flisecement i køkken",
+    alt: "Microcement køkken",
+    caption: "Microcement i køkken",
   },
   {
     src: "https://cduloscitjydjelqayhs.supabase.co/storage/v1/object/public/project-attachments/projects/052d2a61-54d3-4854-a006-9f3cf3e07a76/1770500300815-Unknown-11.jpg",
-    alt: "Vandtæt silkecement",
+    alt: "Vandtæt microcement",
     caption: "Vandtæt løsning",
   },
   {
     src: "https://cduloscitjydjelqayhs.supabase.co/storage/v1/object/public/project-attachments/projects/052d2a61-54d3-4854-a006-9f3cf3e07a76/1770500299408-Unknown-12.jpg",
-    alt: "Silkecement entré",
-    caption: "Silkecement i entré",
+    alt: "Microcement entré",
+    caption: "Microcement i entré",
   },
   {
     src: "https://cduloscitjydjelqayhs.supabase.co/storage/v1/object/public/project-attachments/projects/052d2a61-54d3-4854-a006-9f3cf3e07a76/1770500298222-Unknown-13.jpg",
-    alt: "Moderne badeværelse med silkecement",
+    alt: "Moderne badeværelse med microcement",
     caption: "Komplet badeværelse",
   },
   {
     src: "https://cduloscitjydjelqayhs.supabase.co/storage/v1/object/public/project-attachments/projects/052d2a61-54d3-4854-a006-9f3cf3e07a76/1770500297118-Unknown-14.jpg",
-    alt: "Silkecement detalje close-up",
+    alt: "Microcement detalje close-up",
     caption: "Tekstur close-up",
   },
   {
     src: "https://cduloscitjydjelqayhs.supabase.co/storage/v1/object/public/project-attachments/projects/052d2a61-54d3-4854-a006-9f3cf3e07a76/1770500295817-Unknown-15.jpg",
-    alt: "Flisecement projekt færdigt",
+    alt: "Microcement projekt færdigt",
     caption: "Færdigt projekt",
   },
   {
     src: "https://cduloscitjydjelqayhs.supabase.co/storage/v1/object/public/project-attachments/projects/052d2a61-54d3-4854-a006-9f3cf3e07a76/1770500294778-Unknown-16.jpg",
-    alt: "Professionel silkecement installation",
+    alt: "Professionel microcement installation",
     caption: "Professionel installation",
   },
   {
     src: "https://cduloscitjydjelqayhs.supabase.co/storage/v1/object/public/project-attachments/projects/052d2a61-54d3-4854-a006-9f3cf3e07a76/1770500293570-Unknown-17.jpg",
-    alt: "Silkecement før og efter",
+    alt: "Microcement før og efter",
     caption: "Flot resultat",
   },
 ]

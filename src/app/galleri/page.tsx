@@ -7,7 +7,7 @@ import { COMPANY } from "@/lib/constants"
 
 export const metadata: Metadata = {
   title: "Galleri",
-  description: `Se eksempler på vores malerarbejde. ${COMPANY.name} har udført hundredvis af projekter - fra silkecement badeværelser til store renoveringer.`,
+  description: `Se eksempler på vores malerarbejde. ${COMPANY.name} har udført hundredvis af projekter - fra microcement badeværelser til store renoveringer.`,
   alternates: {
     canonical: `https://${COMPANY.domain}/galleri/`,
   },
@@ -28,10 +28,10 @@ export default function GalleriPage() {
         <Container>
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Silkecement & Flisecement projekter
+              Microcement & Microcement projekter
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Se vores nyeste silkecement og flisecement projekter. Klik på billederne for at se dem i fuld størrelse.
+              Se vores nyeste microcement projekter. Klik på billederne for at se dem i fuld størrelse.
             </p>
           </div>
 

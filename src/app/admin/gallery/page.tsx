@@ -21,7 +21,7 @@ const CATEGORIES = [
   { id: "all", name: "Alle" },
   { id: "indendors", name: "Indendørs" },
   { id: "udendors", name: "Udendørs" },
-  { id: "silkecement", name: "Silkecement" },
+  { id: "microcement", name: "Microcement" },
   { id: "erhverv", name: "Erhverv" },
 ]
 

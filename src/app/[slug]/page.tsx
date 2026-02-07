@@ -107,7 +107,7 @@ function ServicePage({
   slug: string 
 }) {
   const relatedServices = SERVICES.filter(s => content.relatedServices.includes(s.slug))
-  const showGallery = slug === "flisecement" || slug === "metallisk-pu-gulv"
+  const showGallery = slug === "microcement" || slug === "metallisk-pu-gulv"
 
   return (
     <>
@@ -157,7 +157,7 @@ function ServicePage({
         </Container>
       </section>
 
-      {/* Project Gallery for silkecement/flisecement pages */}
+      {/* Project Gallery for microcement/microcement pages */}
       {showGallery && (
         <ProjectGallery
           images={SILKECEMENT_IMAGES}

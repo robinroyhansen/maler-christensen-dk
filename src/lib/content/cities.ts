@@ -97,7 +97,7 @@ function generateCityContent(city: typeof CITIES[0]): CityContent {
 
 ${SERVICES.slice(0, 8).map(s => `• **${s.name}** – ${s.description}`).join('\n')}
 
-Uanset om du skal have malet din lejlighed, renoveret dit hus eller har brug for specialbehandlinger som sprøjtespartling eller silkecement, står vi klar til at hjælpe dig i ${city.name}.`,
+Uanset om du skal have malet din lejlighed, renoveret dit hus eller har brug for specialbehandlinger som sprøjtespartling eller microcement, står vi klar til at hjælpe dig i ${city.name}.`,
     nearbyAreas: nearbyCities,
   }
 }

@@ -41,9 +41,9 @@ const REFERENCE_PROJECTS = [
     icon: TreePine,
   },
   {
-    title: "Silkecement badeværelse",
+    title: "Microcement badeværelse",
     type: "Privat",
-    description: "Komplet silkecement-løsning i badeværelse. Unik finish med 5 års garanti.",
+    description: "Komplet microcement-løsning i badeværelse. Unik finish med 5 års garanti.",
     icon: Star,
   },
   {

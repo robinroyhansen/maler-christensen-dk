@@ -22,7 +22,7 @@ const iconMap: { [key: string]: React.ComponentType<{ className?: string }> } = 
   "billig-maler": BadgePercent,
   "sprojtespartling": SprayCan,
   "sproejtmaling": SprayCan,
-  "flisecement": Grid2X2Plus,
+  "microcement": Grid2X2Plus,
   "pu-gulve": CircleDot,
 }
 

@@ -451,25 +451,25 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
     relatedServices: ["sprojtespartling", "malerarbejde", "maling-hus"]
   },
 
-  "flisecement": {
-    title: "Flisecement",
-    metaTitle: `Flisecement & Silkecement | Moderne vægbeklædning`,
-    metaDescription: `Silkecement og flisecement til badeværelser og køkkener. Fugesløs og vandtæt finish. Se vores galleri med 16+ projekter. Ring ${COMPANY.phone}`,
-    heroHeading: "Flisecement & Silkecement",
+  "microcement": {
+    title: "Microcement",
+    metaTitle: `Microcement | Moderne vægbeklædning`,
+    metaDescription: `Microcement til badeværelser og køkkener. Fugesløs og vandtæt finish. Se vores galleri med 16+ projekter. Ring ${COMPANY.phone}`,
+    heroHeading: "Microcement",
     heroSubheading: "Moderne, fugesløs vægbeklædning til badeværelser og køkkener",
-    intro: `Flisecement og silkecement er populære alternativer til traditionelle fliser. ${COMPANY.name} har stor erfaring med disse moderne vægbeklædninger, der giver et smukt, fugesløst og vandtæt resultat.`,
+    intro: `Microcement er populære alternativer til traditionelle fliser. ${COMPANY.name} har stor erfaring med disse moderne vægbeklædninger, der giver et smukt, fugesløst og vandtæt resultat.`,
     sections: [
       {
-        title: "Hvad er silkecement?",
-        content: "Silkecement er en håndværksmæssig overfladebehandling, der skaber en unik, silkeblød finish på vægge. Materialet påføres i flere lag og poleres til en glat overflade. Resultatet er en vandtæt, holdbar og æstetisk smuk vægbeklædning."
+        title: "Hvad er microcement?",
+        content: "Microcement er en håndværksmæssig overfladebehandling, der skaber en unik, silkeblød finish på vægge. Materialet påføres i flere lag og poleres til en glat overflade. Resultatet er en vandtæt, holdbar og æstetisk smuk vægbeklædning."
       },
       {
         title: "Perfekt til badeværelser",
-        content: "Silkecement er ideelt til badeværelser, da det er 100% vandtæt og modstandsdygtigt over for fugt. Den fugesløse overflade er nem at rengøre og giver ingen fuger, hvor skimmel kan sætte sig. Det giver et moderne og hygiejnisk badeværelse."
+        content: "Microcement er ideelt til badeværelser, da det er 100% vandtæt og modstandsdygtigt over for fugt. Den fugesløse overflade er nem at rengøre og giver ingen fuger, hvor skimmel kan sætte sig. Det giver et moderne og hygiejnisk badeværelse."
       },
       {
         title: "Unikke designmuligheder",
-        content: "Silkecement fås i utallige farver og kan tilpasses din stil. Vi kan skabe alt fra minimalistiske betonlook til varme, jordnære toner. Se vores galleri med 16+ færdige projekter for inspiration."
+        content: "Microcement fås i utallige farver og kan tilpasses din stil. Vi kan skabe alt fra minimalistiske betonlook til varme, jordnære toner. Se vores galleri med 16+ færdige projekter for inspiration."
       }
     ],
     benefits: [
