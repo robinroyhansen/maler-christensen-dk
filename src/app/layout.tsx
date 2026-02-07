@@ -58,6 +58,14 @@ export default function RootLayout({
   return (
     <html lang="da" className={inter.variable}>
       <head>
+        {/* DNS prefetch for external resources */}
+        <link rel="dns-prefetch" href="https://maler-christensen.dk" />
+        <link rel="dns-prefetch" href="https://cduloscitjydjelqayhs.supabase.co" />
+        <link rel="dns-prefetch" href="https://www.google.com" />
+        
+        {/* Preconnect to critical origins */}
+        <link rel="preconnect" href="https://cduloscitjydjelqayhs.supabase.co" crossOrigin="anonymous" />
+        
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

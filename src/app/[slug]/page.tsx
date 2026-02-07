@@ -3,10 +3,12 @@ import type { Metadata } from "next"
 import { SERVICES, CITIES, COMPANY } from "@/lib/constants"
 import { getServiceContent } from "@/lib/content/services"
 import { getCityContent, getCityBySlug } from "@/lib/content/cities"
+import { getCityFAQs } from "@/lib/content/faqs"
 import { Hero } from "@/components/sections/Hero"
 import { Services } from "@/components/sections/Services"
 import { Reviews } from "@/components/sections/Reviews"
 import { CTA } from "@/components/sections/CTA"
+import { FAQ } from "@/components/sections/FAQ"
 import { ContactForm } from "@/components/sections/ContactForm"
 import { ProjectGallery, SILKECEMENT_IMAGES } from "@/components/sections/ProjectGallery"
 import { Container } from "@/components/ui/Container"
@@ -289,6 +291,21 @@ function CityPage({
       />
 
       <Reviews />
+
+      {/* FAQ Section with Schema.org structured data */}
+      {(() => {
+        const cityFaqs = getCityFAQs(city.slug)
+        if (cityFaqs) {
+          return (
+            <FAQ
+              faqs={cityFaqs.faqs}
+              cityName={city.name}
+              subtitle="Find svar på de mest almindelige spørgsmål om malerarbejde i dit område"
+            />
+          )
+        }
+        return null
+      })()}
 
       <CTA 
         title={`Klar til at få malet i ${city.name}?`}
