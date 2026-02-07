@@ -8,8 +8,8 @@ import { Building2, Home, Factory, TreePine, Star } from "lucide-react"
 import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: "Referencer",
-  description: `Se referencer og læs anmeldelser fra vores kunder. ${COMPANY.name} har hjulpet hundredvis af tilfredse kunder med malerarbejde.`,
+  title: "Referencer | Schou & Christensen — Tilfredse kunder",
+  description: `Læs anmeldelser og se referencer fra 200+ tilfredse kunder. ★ 4.9 på Trustpilot. Schou & Christensen — professionelt malerarbejde i Slagelse.`,
   alternates: {
     canonical: `https://${COMPANY.domain}/referencer/`,
   },

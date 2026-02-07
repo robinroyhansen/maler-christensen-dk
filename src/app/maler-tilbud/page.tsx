@@ -7,8 +7,8 @@ import { COMPANY } from "@/lib/constants"
 import { CheckCircle, Clock, Shield, Banknote } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Få et gratis tilbud",
-  description: `Få et gratis og uforpligtende tilbud på malerarbejde. ${COMPANY.name} tilbyder konkurrencedygtige priser og kvalitetsarbejde. Ring ${COMPANY.phone}`,
+  title: "Få gratis tilbud | Maler Slagelse — Schou & Christensen",
+  description: `Få et gratis og uforpligtende tilbud på malerarbejde i Slagelse og Sjælland. Svar inden 24 timer. Ring ${COMPANY.phone} eller udfyld formularen.`,
   alternates: {
     canonical: `https://${COMPANY.domain}/maler-tilbud/`,
   },

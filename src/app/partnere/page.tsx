@@ -6,8 +6,8 @@ import { COMPANY } from "@/lib/constants"
 import { Handshake, Building, Users, Award } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Partnere",
-  description: `Se vores samarbejdspartnere. ${COMPANY.name} samarbejder med lokale virksomheder og leverandører for at levere det bedste resultat.`,
+  title: "Partnere | Schou & Christensen — Vores samarbejdspartnere",
+  description: `Schou & Christensens samarbejdspartnere — Slagelse Kommune, Herlufmagle Skole og lokale håndværkere. Stærke relationer for bedre resultater.`,
   alternates: {
     canonical: `https://${COMPANY.domain}/partnere/`,
   },

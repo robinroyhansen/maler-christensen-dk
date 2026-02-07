@@ -6,8 +6,8 @@ import { ProjectGallery, SILKECEMENT_IMAGES } from "@/components/sections/Projec
 import { COMPANY } from "@/lib/constants"
 
 export const metadata: Metadata = {
-  title: "Galleri",
-  description: `Se eksempler på vores malerarbejde. ${COMPANY.name} har udført hundredvis af projekter - fra microcement badeværelser til store renoveringer.`,
+  title: "Galleri | Schou & Christensen — Se vores malerarbejde",
+  description: `Se billeder af vores malerarbejde — microcement, sprøjtespartling, indvendig maling og meget mere. Hundredvis af færdige projekter i Slagelse og Sjælland.`,
   alternates: {
     canonical: `https://${COMPANY.domain}/galleri/`,
   },

@@ -6,8 +6,8 @@ import { COMPANY } from "@/lib/constants"
 import { CheckCircle, Award, Users, Clock, Star, Shield } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Om os",
-  description: `Lær ${COMPANY.name} at kende. Vi er et lokalt malerfirma i Slagelse med fokus på kvalitet, pålidelighed og kundetilfredshed. Medlem af Danske Malermestre.`,
+  title: "Om os | Malerfirmaet Schou & Christensen, Slagelse",
+  description: `Mød Malerfirmaet Schou & Christensen — lokalt malerfirma i Slagelse siden 2009. Medlem af Danske Malermestre med ★ 4.9 på Trustpilot fra 200+ kunder.`,
   alternates: {
     canonical: `https://${COMPANY.domain}/om-os/`,
   },
