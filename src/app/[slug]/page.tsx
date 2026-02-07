@@ -8,6 +8,7 @@ import { Services } from "@/components/sections/Services"
 import { Reviews } from "@/components/sections/Reviews"
 import { CTA } from "@/components/sections/CTA"
 import { ContactForm } from "@/components/sections/ContactForm"
+import { ProjectGallery, SILKECEMENT_IMAGES } from "@/components/sections/ProjectGallery"
 import { Container } from "@/components/ui/Container"
 import { Button } from "@/components/ui/Button"
 import Link from "next/link"
@@ -106,6 +107,7 @@ function ServicePage({
   slug: string 
 }) {
   const relatedServices = SERVICES.filter(s => content.relatedServices.includes(s.slug))
+  const showGallery = slug === "flisecement" || slug === "metallisk-pu-gulv"
 
   return (
     <>
@@ -154,6 +156,16 @@ function ServicePage({
           </div>
         </Container>
       </section>
+
+      {/* Project Gallery for silkecement/flisecement pages */}
+      {showGallery && (
+        <ProjectGallery
+          images={SILKECEMENT_IMAGES}
+          title="Se vores projekter"
+          subtitle="Klik på billederne for at se dem i fuld størrelse"
+          columns={4}
+        />
+      )}
 
       {/* Related Services */}
       {relatedServices.length > 0 && (
