@@ -4,42 +4,42 @@ import { Container } from "@/components/ui/Container"
 import { COMPANY } from "@/lib/constants"
 import { Star, Quote } from "lucide-react"
 
-// Initial reviews - will be loaded from Supabase later
+// Real reviews from Trustpilot
 const INITIAL_REVIEWS = [
   {
     id: "1",
-    author_name: "Michael Hansen",
-    review_text: "Fantastisk arbejde! Jess og hans team var utroligt professionelle. De malede hele vores hus på rekordtid, og kvaliteten er i top. Kan varmt anbefales.",
+    author_name: "Anders Olsen",
+    review_text: "Super samarbejde, alle aftaler holdes. Professionel rådgivning og høj kvalitet i arbejdet. Kan varmt anbefales!",
     rating: 5,
   },
   {
     id: "2",
-    author_name: "Anne Larsen",
-    review_text: "Vi fik malet vores lejlighed i forbindelse med fraflytning. Hurtig service, fair pris og et flot resultat. Depositum blev frigivet uden problemer.",
+    author_name: "Familien Lumholtz",
+    review_text: "Fantastisk service, kommunikation og kvalitet. Vi er yderst tilfredse med resultatet og kan kun give vores bedste anbefalinger.",
     rating: 5,
   },
   {
     id: "3",
-    author_name: "Lars Petersen",
-    review_text: "Har brugt Schou & Christensen til flere projekter nu. De leverer altid høj kvalitet og overholder deadlines. Meget tilfreds kunde.",
+    author_name: "Birthe og Finn Andersen",
+    review_text: "Imponerende arbejde indenfor fastlagte tidsrammer. Professionel tilgang og flot resultat. Vi er meget tilfredse.",
     rating: 5,
   },
   {
     id: "4",
-    author_name: "Marianne Sørensen",
-    review_text: "Super flot arbejde med vores sommerhus. Både indvendig og udvendig maling. Professionelle fra start til slut.",
+    author_name: "Kathrine Holm",
+    review_text: "Yderst tilfreds med malerarbejdet. Flot udførsel og god kommunikation hele vejen igennem projektet.",
     rating: 5,
   },
   {
     id: "5",
-    author_name: "Henrik Nielsen",
-    review_text: "Fik lavet sprøjtespartling og maling af hele stueetagen. Imponerende resultat og konkurrencedygtig pris. Anbefales!",
+    author_name: "Tanja Almbjerg",
+    review_text: "Altid sød og venlig dialog med ejer. Godt håndværk og overholdelse af aftaler. Kan kun anbefales!",
     rating: 5,
   },
   {
     id: "6",
-    author_name: "Katrine Møller",
-    review_text: "Fantastisk kundeservice og flot malerarbejde. De ryddede pænt op efter sig og resultatet oversteg vores forventninger.",
+    author_name: "Linda Horsted Raimond",
+    review_text: "Flot maling i nyt hus! Professionelt arbejde fra start til slut. Vi er meget glade for resultatet.",
     rating: 5,
   },
 ]

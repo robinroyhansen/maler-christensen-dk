@@ -5,6 +5,7 @@ import { About } from "@/components/sections/About"
 import { Cities } from "@/components/sections/Cities"
 import { CTA } from "@/components/sections/CTA"
 import { ContactForm } from "@/components/sections/ContactForm"
+import { Partners } from "@/components/sections/Partners"
 import { COMPANY } from "@/lib/constants"
 
 export default function HomePage() {
@@ -20,6 +21,8 @@ export default function HomePage() {
       <About />
       
       <Reviews />
+      
+      <Partners variant="strip" />
       
       <Cities />
       

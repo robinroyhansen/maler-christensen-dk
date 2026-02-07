@@ -194,14 +194,14 @@ export function ContactForm({
             {showMap && (
               <div className="rounded-2xl overflow-hidden shadow-sm h-64">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2246.8!2d11.3569!3d55.4034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTXCsDI0JzEyLjAiTiAxMcKwMjEnMjQuOCJF!5e0!3m2!1sen!2sdk!4v1"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2255.5!2d11.3533!3d55.4019!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4652e9aec6c1a0eb%3A0x1234567890abcdef!2sYdunsvej%209%2C%204200%20Slagelse!5e0!3m2!1sda!2sdk!4v1707350000000!5m2!1sda!2sdk"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Kort over vores lokation"
+                  title="Schou & Christensen - Ydunsvej 9, 4200 Slagelse"
                 />
               </div>
             )}

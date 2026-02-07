@@ -2,10 +2,13 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Container } from "@/components/ui/Container"
 import { Button } from "@/components/ui/Button"
 import { COMPANY, SERVICES, CITIES } from "@/lib/constants"
 import { Menu, X, ChevronDown, Phone } from "lucide-react"
+
+const LOGO_URL = "https://maler-christensen.dk/wp-content/uploads/2025/10/Firmalogo-Schou-Christensen.png"
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -18,12 +21,14 @@ export function Header() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-[#6b9834] rounded-full flex items-center justify-center">
-              <span className="text-white font-bold text-xl">SC</span>
-            </div>
-            <div className="hidden sm:block">
-              <p className="font-bold text-gray-900 text-lg leading-tight">Schou & Christensen</p>
-              <p className="text-sm text-gray-600">Malerfirma · Slagelse</p>
+            <div className="relative h-14 w-40 sm:w-48">
+              <Image
+                src={LOGO_URL}
+                alt="Schou & Christensen - Malerfirma"
+                fill
+                className="object-contain object-left"
+                priority
+              />
             </div>
           </Link>
 

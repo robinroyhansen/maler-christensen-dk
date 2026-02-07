@@ -1,7 +1,11 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Container } from "@/components/ui/Container"
 import { COMPANY, SERVICES, CITIES } from "@/lib/constants"
 import { Phone, Mail, MapPin, Star } from "lucide-react"
+
+const LOGO_URL = "https://maler-christensen.dk/wp-content/uploads/2025/10/Firmalogo-Schou-Christensen.png"
+const DANSKE_MALERMESTRE_URL = "https://maler-christensen.dk/wp-content/uploads/2021/06/danskemalermestre-hvid.png"
 
 export function Footer() {
   return (
@@ -13,12 +17,13 @@ export function Footer() {
             {/* Company Info */}
             <div>
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-[#6b9834] rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold text-xl">SC</span>
-                </div>
-                <div>
-                  <p className="font-bold text-lg">{COMPANY.shortName}</p>
-                  <p className="text-gray-400 text-sm">Malerfirma</p>
+                <div className="relative h-12 w-36">
+                  <Image
+                    src={LOGO_URL}
+                    alt={COMPANY.shortName}
+                    fill
+                    className="object-contain object-left brightness-0 invert"
+                  />
                 </div>
               </div>
               
@@ -119,8 +124,15 @@ export function Footer() {
 
               {/* Danske Malermestre */}
               <div className="mt-8">
-                <p className="text-sm text-gray-400 mb-2">Medlem af</p>
-                <p className="font-semibold text-[#85bd41]">Danske Malermestre</p>
+                <p className="text-sm text-gray-400 mb-3">Medlem af</p>
+                <div className="relative h-12 w-40">
+                  <Image
+                    src={DANSKE_MALERMESTRE_URL}
+                    alt="Danske Malermestre"
+                    fill
+                    className="object-contain object-left"
+                  />
+                </div>
               </div>
             </div>
           </div>

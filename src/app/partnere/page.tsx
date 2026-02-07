@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import Image from "next/image"
 import { Hero } from "@/components/sections/Hero"
 import { Container } from "@/components/ui/Container"
 import { CTA } from "@/components/sections/CTA"
@@ -18,31 +19,37 @@ const PARTNERS = [
     name: "Herlufmagle Skole",
     type: "Offentlig institution",
     description: "Langvarigt samarbejde om vedligeholdelse og renovering af skolens bygninger.",
+    logo: "https://maler-christensen.dk/wp-content/uploads/2021/06/herlufmagle-skole.png",
   },
   {
     name: "Tømrer Skovgaard",
     type: "Håndværkspartner",
     description: "Samarbejde om totalrenoveringsprojekter, hvor vi kombinerer tømrer- og malerarbejde.",
+    logo: "https://maler-christensen.dk/wp-content/uploads/2021/06/Toemrer-skovgaard.png",
   },
   {
     name: "Slagelse Kommune",
     type: "Offentlig institution",
     description: "Udførsel af malerarbejde på kommunale bygninger og institutioner.",
+    logo: "https://maler-christensen.dk/wp-content/uploads/2021/06/Slagelse-kommune.png",
   },
   {
     name: "Lars Printz",
     type: "Erhvervspartner",
     description: "Samarbejde om erhvervsprojekter og industrimaleri.",
+    logo: "https://maler-christensen.dk/wp-content/uploads/2021/06/Lars-Printz.png",
   },
   {
     name: "Lux Tag",
     type: "Samarbejdspartner",
     description: "Partnerskab om boligrenovering og istandsættelse.",
+    logo: "https://maler-christensen.dk/wp-content/uploads/2021/06/lux-tag.png",
   },
   {
     name: "Danske Malermestre",
     type: "Brancheforening",
     description: "Vi er stolte medlemmer af Danske Malermestre, som sikrer fagligt korrekt arbejde.",
+    logo: "https://maler-christensen.dk/wp-content/uploads/2021/06/danskemalermestre-hvid.png",
   },
 ]
 
@@ -73,10 +80,14 @@ export default function PartnerePage() {
                 key={index}
                 className="bg-white rounded-xl p-8 shadow-sm border border-gray-100 hover:shadow-lg transition-shadow"
               >
-                <div className="w-16 h-16 bg-[#6b9834]/10 rounded-xl flex items-center justify-center mb-6">
-                  <span className="text-2xl font-bold text-[#6b9834]">
-                    {partner.name.charAt(0)}
-                  </span>
+                <div className={`relative h-16 w-full mb-6 ${partner.name === "Danske Malermestre" ? "bg-gray-900 rounded-lg p-3" : ""}`}>
+                  <Image
+                    src={partner.logo}
+                    alt={partner.name}
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
                 </div>
                 <span className="text-sm text-[#6b9834] font-medium">{partner.type}</span>
                 <h3 className="font-bold text-xl text-gray-900 mt-1 mb-3">{partner.name}</h3>

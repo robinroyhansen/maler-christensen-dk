@@ -23,6 +23,11 @@ const nextConfig: NextConfig = {
         hostname: "cduloscitjydjelqayhs.supabase.co",
         pathname: "/storage/v1/object/public/**",
       },
+      {
+        protocol: "https",
+        hostname: "maler-christensen.dk",
+        pathname: "/wp-content/uploads/**",
+      },
     ],
   },
 }

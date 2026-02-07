@@ -2,6 +2,7 @@ import { Container } from "@/components/ui/Container"
 import { Button } from "@/components/ui/Button"
 import { COMPANY } from "@/lib/constants"
 import Link from "next/link"
+import Image from "next/image"
 import { Star, Phone, CheckCircle } from "lucide-react"
 
 interface HeroProps {
@@ -13,21 +14,30 @@ interface HeroProps {
   variant?: "home" | "page"
 }
 
+const HERO_IMAGE = "https://maler-christensen.dk/wp-content/uploads/2022/09/0U2A3895-09.22.38.jpg"
+
 export function Hero({
   title = `Maler i ${COMPANY.city} med ${COMPANY.trustpilotRating} på Trustpilot`,
   subtitle = "Professionelt malerarbejde til private og erhverv. Kvalitet, pålidelighed og konkurrencedygtige priser.",
   showTrustpilot = true,
   showCTA = true,
-  backgroundImage,
+  backgroundImage = HERO_IMAGE,
   variant = "home",
 }: HeroProps) {
   return (
-    <section className={`relative ${variant === "home" ? "py-20 md:py-32" : "py-16 md:py-24"} bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white overflow-hidden`}>
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }} />
+    <section className={`relative ${variant === "home" ? "py-20 md:py-32" : "py-16 md:py-24"} text-white overflow-hidden`}>
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <Image
+          src={backgroundImage}
+          alt="Professionelt malerarbejde"
+          fill
+          className="object-cover"
+          priority
+          sizes="100vw"
+        />
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-gray-900/90 via-gray-900/80 to-gray-900/70" />
       </div>
 
       {/* Green Accent */}
