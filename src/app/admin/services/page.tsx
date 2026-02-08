@@ -89,6 +89,8 @@ export default function ServicesPage() {
             is_visible: s.is_visible,
             sort_order: s.sort_order,
             isFromCode: false,
+            metaTitle: s.meta_title || "",
+            metaDescription: s.meta_description || "",
           })
         }
       })
@@ -139,6 +141,8 @@ export default function ServicesPage() {
         is_visible: data.is_visible,
         sort_order: data.sort_order,
         isFromCode: false,
+        metaTitle: "",
+        metaDescription: "",
       }])
       setIsCreating(false)
       setNewService({ name: "", slug: "", description: "", icon: "Wrench" })
