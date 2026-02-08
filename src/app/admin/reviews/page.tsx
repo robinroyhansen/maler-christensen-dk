@@ -6,7 +6,7 @@ import { SERVICES, CITIES } from "@/lib/constants"
 import { Button } from "@/components/ui/Button"
 import { Input } from "@/components/ui/Input"
 import { Textarea } from "@/components/ui/Textarea"
-import { Star, Plus, Save, X, Trash2, Eye, EyeOff, CheckCircle } from "lucide-react"
+import { Star, Plus, Save, X, Trash2, Eye, EyeOff, CheckCircle, RefreshCw, Clock } from "lucide-react"
 
 interface Review {
   id: string
@@ -35,6 +35,10 @@ export default function ReviewsPage() {
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
   const [filterSource, setFilterSource] = useState<string>("all")
+  const [syncing, setSyncing] = useState(false)
+  const [syncInfo, setSyncInfo] = useState<{ time: string; found: number; inserted: number } | null>(null)
+  const [syncStats, setSyncStats] = useState<{ total: number; trustpilot: number } | null>(null)
+  const [syncMessage, setSyncMessage] = useState<string | null>(null)
   
   const [newReview, setNewReview] = useState({
     author_name: "",
@@ -49,7 +53,41 @@ export default function ReviewsPage() {
 
   useEffect(() => {
     fetchReviews()
+    fetchSyncStatus()
   }, [])
+
+  const fetchSyncStatus = async () => {
+    try {
+      const res = await fetch('/api/admin/reviews/sync', { credentials: 'include' })
+      if (res.ok) {
+        const data = await res.json()
+        if (data.lastSync) {
+          const parsed = typeof data.lastSync === 'string' ? JSON.parse(data.lastSync) : data.lastSync
+          setSyncInfo(parsed)
+        }
+        setSyncStats(data.stats)
+      }
+    } catch {}
+  }
+
+  const handleSync = async () => {
+    setSyncing(true)
+    setSyncMessage(null)
+    try {
+      const res = await fetch('/api/admin/reviews/sync', { method: 'POST', credentials: 'include' })
+      const data = await res.json()
+      if (data.success) {
+        setSyncMessage(`✅ Synkroniseret! Fundet: ${data.found}, Nye: ${data.inserted}`)
+        setSyncInfo({ time: data.time, found: data.found, inserted: data.inserted })
+        if (data.inserted > 0) fetchReviews()
+      } else {
+        setSyncMessage(`❌ Fejl: ${data.error}`)
+      }
+    } catch (err: any) {
+      setSyncMessage(`❌ Fejl: ${err.message}`)
+    }
+    setSyncing(false)
+  }
 
   const fetchReviews = async () => {
     const { data } = await supabase
@@ -230,6 +268,47 @@ export default function ReviewsPage() {
           <Plus className="w-4 h-4 mr-2" />
           Tilføj anmeldelse
         </Button>
+      </div>
+
+      {/* Trustpilot Sync Dashboard */}
+      <div className="bg-white rounded-xl shadow-sm p-5 mb-6">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+              <Star className="w-5 h-5 text-green-600 fill-green-600" />
+            </div>
+            <div>
+              <h3 className="font-semibold text-gray-900">Trustpilot Sync</h3>
+              <div className="flex items-center gap-2 text-sm text-gray-500">
+                <Clock className="w-3.5 h-3.5" />
+                {syncInfo?.time ? (
+                  <span>Sidst synkroniseret: {new Date(syncInfo.time).toLocaleString('da-DK', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}</span>
+                ) : (
+                  <span>Aldrig synkroniseret</span>
+                )}
+                {syncInfo && (
+                  <span className="text-gray-400">• {syncInfo.found} fundet, {syncInfo.inserted} nye</span>
+                )}
+              </div>
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            {syncStats && (
+              <span className="text-sm text-gray-500">
+                {syncStats.trustpilot} fra Trustpilot / {syncStats.total} total
+              </span>
+            )}
+            <Button onClick={handleSync} disabled={syncing}>
+              <RefreshCw className={`w-4 h-4 mr-2 ${syncing ? 'animate-spin' : ''}`} />
+              {syncing ? 'Synkroniserer...' : 'Synkroniser nu'}
+            </Button>
+          </div>
+        </div>
+        {syncMessage && (
+          <p className={`mt-3 text-sm ${syncMessage.startsWith('✅') ? 'text-green-600' : 'text-red-600'}`}>
+            {syncMessage}
+          </p>
+        )}
       </div>
 
       {/* Stats */}
