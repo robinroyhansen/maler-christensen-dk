@@ -149,8 +149,8 @@ export function Hero({
             sizes="100vw"
           />
         )}
-        {/* Dark overlay with gradient */}
-        <div className={`absolute inset-0 ${useVideo ? "bg-gradient-to-r from-gray-900/75 via-gray-900/60 to-gray-900/40" : "bg-gradient-to-r from-gray-900/95 via-gray-900/85 to-gray-900/70"}`} />
+        {/* Dark overlay — matches WordPress: black at 60% opacity */}
+        <div className={`absolute inset-0 ${useVideo ? "bg-black/60" : "bg-gradient-to-r from-gray-900/95 via-gray-900/85 to-gray-900/70"}`} />
         {/* Subtle pattern overlay */}
         <div className="absolute inset-0 hero-pattern" />
       </div>
