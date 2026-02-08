@@ -15,10 +15,10 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(`https://${COMPANY.domain}`),
   title: {
-    default: `Maler Slagelse | Schou & Christensen — ★ 4.9 Trustpilot`,
-    template: `%s | Schou & Christensen`,
+    default: `Malerfirma Slagelse — ★ 4.9 på Trustpilot | 250+ anmeldelser`,
+    template: `%s`,
   },
-  description: `Malerfirma i Slagelse med ★ 4.9 på Trustpilot. Indvendig og udvendig maling, sprøjtespartling, tapetsering og microcement. Ring 53 50 77 00`,
+  description: `Professionelt malerfirma i Slagelse. Indvendig og udvendig maling, spartling, tapetsering og microcement. Gratis tilbud — ring 53 50 77 00`,
   keywords: ["maler", "malerfirma", "Slagelse", "malerarbejde", "maling", "tapetsering", "sprøjtespartling"],
   authors: [{ name: COMPANY.name }],
   creator: COMPANY.name,

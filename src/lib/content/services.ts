@@ -18,8 +18,8 @@ interface ServiceContent {
 export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
   "malerarbejde": {
     title: "Malerarbejde",
-    metaTitle: `Malerarbejde | Schou & Christensen — Gratis tilbud`,
-    metaDescription: `Professionelt malerarbejde til private og erhverv. Indvendig og udvendig maling. ★ 4.9 på Trustpilot. Ring ${COMPANY.phone}`,
+    metaTitle: `Malerarbejde — Indvendig & udvendig maling | ★ 4.9 Trustpilot`,
+    metaDescription: `Alt i malerarbejde til private og erhverv. Vægge, lofter, facade og træværk. Gratis tilbud inden 24 timer — ring ${COMPANY.phone}`,
     heroHeading: "Professionelt malerarbejde",
     heroSubheading: "Kvalitetsbevidst malerarbejde til private og erhverv i hele Sjælland",
     intro: `Hos ${COMPANY.name} tilbyder vi professionelt malerarbejde af højeste kvalitet. Vores erfarne malere håndterer alt fra små renoveringsprojekter til store erhvervsopgaver. Vi er stolte af at være medlemmer af Danske Malermestre, hvilket sikrer vores kunder fagligt korrekt arbejde hver gang.`,
@@ -50,8 +50,8 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
 
   "maling-af-carport": {
     title: "Maling af carport",
-    metaTitle: `Maling af carport | Schou & Christensen — Slagelse`,
-    metaDescription: `Professionel maling af carporte og garager. Grundig forbehandling og holdbar finish. ★ 4.9 Trustpilot. Ring ${COMPANY.phone}`,
+    metaTitle: `Maling af carport — Holdbar finish, fair pris | Gratis tilbud`,
+    metaDescription: `Professionel maling af carport og garage. Grundig forbehandling og vejrbestandig maling. Få et gratis tilbud — ring ${COMPANY.phone}`,
     heroHeading: "Maling af carport",
     heroSubheading: "Professionel maling og vedligeholdelse af din carport",
     intro: `En velvedligeholdt carport beskytter din bil og øger din boligs værdi. Hos ${COMPANY.name} har vi stor erfaring med maling og vedligeholdelse af carporte i alle materialer. Vi sikrer, at din carport får en flot og langtidsholdbar finish, der modstår vejr og vind.`,
@@ -81,8 +81,8 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
 
   "maling-af-lejlighed": {
     title: "Maling af lejlighed",
-    metaTitle: `Maling af lejlighed | Schou & Christensen — Fra 69 kr/m²`,
-    metaDescription: `Få din lejlighed malet professionelt. Hurtig opstart, fast pris og flot resultat. Hele Sjælland. Ring ${COMPANY.phone}`,
+    metaTitle: `Maling af lejlighed — Færdig på 1-2 dage, fra 69 kr/m²`,
+    metaDescription: `Få hele lejligheden malet hurtigt og professionelt. Vægge, lofter, døre og vinduer. Fast pris, ingen overraskelser. Ring ${COMPANY.phone}`,
     heroHeading: "Maling af lejlighed",
     heroSubheading: "Professionel og effektiv maling af din lejlighed",
     intro: `Skal din lejlighed have en frisk omgang maling? ${COMPANY.name} tilbyder professionel maling af lejligheder til private og boligforeninger. Vi arbejder effektivt og grundigt, så du hurtigt kan nyde din nymalet lejlighed.`,
@@ -112,8 +112,8 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
 
   "maling-af-sommerhus": {
     title: "Maling af sommerhus",
-    metaTitle: `Maling af sommerhus | Schou & Christensen — Ude og inde`,
-    metaDescription: `Professionel maling af sommerhuse — inde og ude. Vejrbestandig maling. Hele Sjælland. Ring ${COMPANY.phone}`,
+    metaTitle: `Maling af sommerhus — Ude & inde | Klar til sæsonen`,
+    metaDescription: `Udvendig og indvendig maling af sommerhuse. Vejrbestandig maling der holder. Fleksibel planlægning. Gratis tilbud — ring ${COMPANY.phone}`,
     heroHeading: "Maling af sommerhus",
     heroSubheading: "Giv dit sommerhus den kærlighed det fortjener",
     intro: `Et sommerhus kræver særlig opmærksomhed når det kommer til vedligeholdelse. ${COMPANY.name} har stor erfaring med maling og behandling af sommerhuse i alle typer og størrelser. Vi sikrer, at dit sommerhus både ser fantastisk ud og er godt beskyttet mod elementerne.`,
@@ -143,8 +143,8 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
 
   "maling-flyttelejlighed": {
     title: "Maling af flyttelejlighed",
-    metaTitle: `Maling ved fraflytning | Schou & Christensen`,
-    metaDescription: `Fraflytnings­maling der sikrer dit depositum. Hurtig opstart, ofte færdig på 1-2 dage. ★ 4.9 Trustpilot. Ring ${COMPANY.phone}`,
+    metaTitle: `Maling ved fraflytning — Spar dit depositum | ★ 4.9`,
+    metaDescription: `Professionel fraflytningsmalerarbejde der sikrer dit depositum. Ofte færdig på 1-2 dage. Hurtig opstart. Ring ${COMPANY.phone}`,
     heroHeading: "Maling af flyttelejlighed",
     heroSubheading: "Professionel istandsættelse ved fraflytning",
     intro: `Skal du flytte og har brug for at få malet lejligheden? ${COMPANY.name} er eksperter i fraflytningsmalerarbejde. Vi sikrer, at din lejlighed fremstår i perfekt stand, så du får dit depositum tilbage uden problemer.`,
@@ -174,8 +174,8 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
 
   "maling-hus": {
     title: "Maling af hus",
-    metaTitle: `Maling af hus | Schou & Christensen — Inde & udvendig`,
-    metaDescription: `Komplet husmaling — indvendig og udvendig. Erfarne malere og kvalitetsmaling. Gratis tilbud. Ring ${COMPANY.phone}`,
+    metaTitle: `Maling af hus — Indvendig & udvendig | 250+ tilfredse kunder`,
+    metaDescription: `Komplet husmaling ude og inde. Kvalitetsmaling, erfarne malere og garanti på arbejdet. Gratis tilbud — ring ${COMPANY.phone}`,
     heroHeading: "Maling af hus",
     heroSubheading: "Komplet husmaling fra facade til fundament",
     intro: `Dit hus fortjener det bedste. ${COMPANY.name} tilbyder professionel maling af huse – både indvendigt og udvendigt. Vores erfarne malere sørger for et flot og langtidsholdbart resultat, der beskytter dit hus og øger dets værdi.`,
@@ -205,8 +205,8 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
 
   "maling-trappe": {
     title: "Maling af trappe",
-    metaTitle: `Maling af trappe | Schou & Christensen — Alle typer`,
-    metaDescription: `Professionel trappemaling af træ-, metal- og betontrapper. Slidstærk finish. Gratis tilbud — ring ${COMPANY.phone}`,
+    metaTitle: `Maling af trappe — Træ, metal & beton | Slidstærk finish`,
+    metaDescription: `Professionel trappemaling med slidstærk finish. Alle typer trapper. Minimal gene i opgangen. Gratis tilbud — ring ${COMPANY.phone}`,
     heroHeading: "Maling af trappe",
     heroSubheading: "Giv din trappe nyt liv med professionel maling",
     intro: `En trappe bliver udsat for daglig slitage og fortjener derfor særlig opmærksomhed. ${COMPANY.name} specialiserer sig i trappemaling og sikrer et flot og slidstærkt resultat, der holder til hverdagens brug.`,
@@ -236,8 +236,8 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
 
   "tapetsering": {
     title: "Tapetsering",
-    metaTitle: `Tapetsering | Schou & Christensen — Alle typer tapet`,
-    metaDescription: `Professionel tapetsering — vinyl, væv, foto- og designtapet. Perfekt opsætning uden bobler. Ring ${COMPANY.phone}`,
+    metaTitle: `Tapetsering — Vinyl, væv & designtapet | ★ 4.9 Trustpilot`,
+    metaDescription: `Professionel opsætning af alle typer tapet. Perfekt mønstermatch og holdbar finish. Gratis tilbud — ring ${COMPANY.phone}`,
     heroHeading: "Professionel tapetsering",
     heroSubheading: "Skab personlighed med professionelt opsat tapet",
     intro: `Tapet giver dit hjem karakter og personlighed. ${COMPANY.name} tilbyder professionel tapetsering af alle typer vægge. Vores erfarne tapetserere sikrer et perfekt resultat uden bobler, skæve mønstre eller synlige samlinger.`,
@@ -267,8 +267,8 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
 
   "traemaling": {
     title: "Træmaling",
-    metaTitle: `Træmaling | Schou & Christensen — Vinduer, døre & facade`,
-    metaDescription: `Udvendig træmaling af vinduer, døre, facader og hegn. Professionel forbehandling og kvalitetsmaling. Ring ${COMPANY.phone}`,
+    metaTitle: `Træmaling udvendig — Vinduer, døre & facade | Gratis tilbud`,
+    metaDescription: `Beskyt dit træværk med professionel udvendig maling. Vinduer, døre, facader og hegn. Holdbar finish. Ring ${COMPANY.phone}`,
     heroHeading: "Professionel træmaling",
     heroSubheading: "Beskyt og forskøn dit træværk med professionel maling",
     intro: `Træ kræver regelmæssig vedligeholdelse for at holde sig flot og beskytte mod vejr og vind. ${COMPANY.name} specialiserer sig i udvendig træmaling og sikrer, at dit træværk både ser fantastisk ud og er godt beskyttet i mange år frem.`,
@@ -298,8 +298,8 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
 
   "pcbforsegling": {
     title: "PCB-forsegling",
-    metaTitle: `PCB-forsegling | Schou & Christensen — Certificeret`,
-    metaDescription: `Certificeret PCB-forsegling og indkapsling efter gældende regler. Sikker håndtering. Ring ${COMPANY.phone}`,
+    metaTitle: `PCB-forsegling — Certificeret indkapsling | Sikker proces`,
+    metaDescription: `Certificeret PCB-forsegling og indkapsling efter gældende regler. Sikker håndtering af sundhedsskadelige fuger. Ring ${COMPANY.phone}`,
     heroHeading: "PCB-forsegling",
     heroSubheading: "Sikker håndtering og indkapsling af PCB-holdige materialer",
     intro: `PCB-holdige fuger og materialer findes i mange bygninger fra 1950-1977 og udgør en sundhedsrisiko. ${COMPANY.name} tilbyder professionel PCB-forsegling og indkapsling efter alle gældende regler og standarder.`,
@@ -329,8 +329,8 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
 
   "metallisk-pu-gulv": {
     title: "Metallisk PU-gulv",
-    metaTitle: `Metallisk PU-gulv | Schou & Christensen — Designgulve`,
-    metaDescription: `Metalliske PU-gulve med unik, eksklusiv finish. Perfekt til moderne hjem og erhverv. Ring ${COMPANY.phone}`,
+    metaTitle: `Metallisk PU-gulv — Eksklusive designgulve | Se projekter`,
+    metaDescription: `Unikke metalliske polyuretangulve til moderne hjem og erhverv. Eksklusiv finish, holdbart resultat. Gratis tilbud — ring ${COMPANY.phone}`,
     heroHeading: "Metallisk PU-gulv",
     heroSubheading: "Spektakulære designgulve med unik metallisk finish",
     intro: `Metalliske PU-gulve er det ultimative valg for dig, der ønsker et unikt og spektakulært gulv. ${COMPANY.name} specialiserer sig i disse eksklusive gulvløsninger, der kombinerer holdbarhed med fantastisk æstetik.`,
@@ -360,8 +360,8 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
 
   "billig-maler": {
     title: "Billig maler",
-    metaTitle: `Billig maler | Schou & Christensen — Fair kvalitetspriser`,
-    metaDescription: `Professionelt malerarbejde til fair priser. Kvalitet behøver ikke koste en formue. ★ 4.9 Trustpilot. Ring ${COMPANY.phone}`,
+    metaTitle: `Billig maler — Kvalitet til fair priser | ★ 4.9 Trustpilot`,
+    metaDescription: `Professionelt malerarbejde til konkurrencedygtige priser. Kvalitet behøver ikke koste en formue. Gratis tilbud — ring ${COMPANY.phone}`,
     heroHeading: "Kvalitetsmaling til fair priser",
     heroSubheading: "Professionelt malerarbejde uden at det koster det hvide ud af øjnene",
     intro: `Hos ${COMPANY.name} tror vi på, at alle fortjener professionelt malerarbejde til en fair pris. Vi holder omkostningerne nede uden at gå på kompromis med kvaliteten. Få et gratis tilbud og se selv, at vi kan levere kvalitet til fornuftige penge.`,
@@ -391,8 +391,8 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
 
   "sprojtespartling": {
     title: "Sprøjtespartling",
-    metaTitle: `Sprøjtespartling | Schou & Christensen — Hurtig service`,
-    metaDescription: `Professionel sprøjtespartling af vægge og lofter. Hurtigere og jævnere end traditionel spartling. Ring ${COMPANY.phone}`,
+    metaTitle: `Sprøjtespartling — Hurtigere & jævnere end traditionel`,
+    metaDescription: `Professionel sprøjtespartling af vægge og lofter. Hurtigere, jævnere og mere effektivt. Gratis tilbud — ring ${COMPANY.phone}`,
     heroHeading: "Sprøjtespartling",
     heroSubheading: "Hurtig og effektiv spartling med professionelt resultat",
     intro: `Sprøjtespartling er en effektiv metode til at skabe perfekt glatte vægge og lofter. ${COMPANY.name} tilbyder professionel sprøjtespartling, der giver et jævnt og holdbart underlag for maling eller tapet.`,
@@ -422,8 +422,8 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
 
   "sproejtmaling": {
     title: "Sprøjtemaling",
-    metaTitle: `Sprøjtemaling | Schou & Christensen — Jævn finish`,
-    metaDescription: `Sprøjtemaling af vægge, lofter og store flader. Hurtigere end rulle, jævnere resultat. Ring ${COMPANY.phone}`,
+    metaTitle: `Sprøjtemaling — Jævn finish på store flader | ★ 4.9`,
+    metaDescription: `Sprøjtemaling af vægge, lofter og facader. Hurtigere og jævnere end traditionel rulle. Gratis tilbud — ring ${COMPANY.phone}`,
     heroHeading: "Professionel sprøjtemaling",
     heroSubheading: "Hurtig og effektiv maling med professionelt udstyr",
     intro: `Sprøjtemaling er den mest effektive metode til maling af store flader. ${COMPANY.name} tilbyder professionel sprøjtemaling med moderne udstyr, der giver et flot og ensartet resultat på rekordtid.`,
@@ -453,8 +453,8 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
 
   "microcement": {
     title: "Microcement",
-    metaTitle: `Microcement | Schou & Christensen — Se 16+ projekter`,
-    metaDescription: `Microcement til badeværelse, køkken og gulve. Fugesløs, vandtæt og stilren finish. Ring ${COMPANY.phone}`,
+    metaTitle: `Microcement badeværelse & køkken — Se 16+ projekter`,
+    metaDescription: `Microcement til badeværelse, køkken og gulve. Fugesløs, vandtæt og stilren finish. Se vores projekter. Ring ${COMPANY.phone}`,
     heroHeading: "Microcement",
     heroSubheading: "Moderne, fugesløs vægbeklædning til badeværelser og køkkener",
     intro: `Microcement er populære alternativer til traditionelle fliser. ${COMPANY.name} har stor erfaring med disse moderne vægbeklædninger, der giver et smukt, fugesløst og vandtæt resultat.`,
@@ -484,8 +484,8 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
 
   "pu-gulve": {
     title: "PU-gulve",
-    metaTitle: `PU-gulve | Schou & Christensen — Holdbare gulve`,
-    metaDescription: `Professionelle PU-gulve til private og erhverv. Holdbare, kemikalieresistente og lette at vedligeholde. Ring ${COMPANY.phone}`,
+    metaTitle: `PU-gulve — Holdbare polyuretangulve | Alle formål`,
+    metaDescription: `Professionelle PU-gulve til private og erhverv. Holdbare, kemikaliebestandige og nemme at vedligeholde. Ring ${COMPANY.phone}`,
     heroHeading: "Polyuretangulve (PU-gulve)",
     heroSubheading: "Holdbare og fleksible gulvløsninger til alle formål",
     intro: `PU-gulve (polyuretangulve) er en af de mest alsidige og holdbare gulvløsninger på markedet. ${COMPANY.name} tilbyder professionelle PU-gulve til private, erhverv og industri.`,
@@ -515,8 +515,8 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
 
   "indvendig-maling": {
     title: "Indvendig maling",
-    metaTitle: `Indvendig maling | Schou & Christensen — Professionelt`,
-    metaDescription: `Indvendig maling af vægge, lofter og træværk. Grundig forberedelse og kvalitetsmaling. Gratis tilbud — ring ${COMPANY.phone}`,
+    metaTitle: `Indvendig maling — Vægge, lofter & træværk | Gratis tilbud`,
+    metaDescription: `Professionel indvendig maling af vægge, lofter, døre og paneler. Grundig forberedelse, perfekt resultat. Ring ${COMPANY.phone}`,
     heroHeading: "Professionel indvendig maling",
     heroSubheading: "Giv dit hjem en frisk start med professionel indvendig maling",
     intro: `Indvendig maling forvandler dit hjem og skaber en helt ny atmosfære. Hos ${COMPANY.name} har vi over mange år opbygget ekspertise i indvendig maling af alle typer boliger — fra moderne lejligheder til ældre villaer med stukkatur og paneler. Vores erfarne malere leverer altid et professionelt resultat, der holder i årevis. Vi er medlemmer af Danske Malermestre og har en Trustpilot-score på 4,9 baseret på over 250 anmeldelser fra tilfredse kunder i Slagelse og omegn.`,
@@ -559,8 +559,8 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
 
   "udvendig-maling": {
     title: "Udvendig maling",
-    metaTitle: `Udvendig maling | Schou & Christensen — Hold huset flot`,
-    metaDescription: `Udvendig maling af hus med vejrbestandig kvalitetsmaling. Facade, gavle, vinduer og træværk. Ring ${COMPANY.phone}`,
+    metaTitle: `Udvendig maling — Hold dit hus flot i årevis | ★ 4.9`,
+    metaDescription: `Udvendig maling af hus, facade og træværk. Vejrbestandig kvalitetsmaling der holder. Gratis tilbud — ring ${COMPANY.phone}`,
     heroHeading: "Udvendig maling af hus",
     heroSubheading: "Beskyt og forskøn dit hus med professionel udvendig maling",
     intro: `Udvendig maling er husets første forsvar mod det danske vejr — regn, frost, sol og fugt. Hos ${COMPANY.name} har vi specialiseret os i udvendig maling af alle typer huse i Slagelse og på hele Sjælland. Vores erfarne malere ved præcis, hvilke produkter og teknikker der giver det bedste og mest holdbare resultat. Vi er stolte medlemmer af Danske Malermestre og har en Trustpilot-score på 4,9 fra over 250 tilfredse kunder.`,
@@ -603,8 +603,8 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
 
   "maling-af-loft": {
     title: "Maling af loft",
-    metaTitle: `Maling af loft | Schou & Christensen — Perfekt resultat`,
-    metaDescription: `Maling af loft uden striber og rullemærker. Professionel loftmaling til alle rum. Gratis tilbud — ring ${COMPANY.phone}`,
+    metaTitle: `Maling af loft — Ingen striber eller rullemærker | ★ 4.9`,
+    metaDescription: `Professionel loftmaling uden striber. Sprøjte- og rulleteknik for perfekt resultat i alle rum. Ring ${COMPANY.phone}`,
     heroHeading: "Professionel maling af loft",
     heroSubheading: "Få et perfekt malet loft uden striber og rullemærker",
     intro: `Loftet er ofte det mest krævende element at male — men også det element, der gør den største forskel i et rum. Hos ${COMPANY.name} har vores malere specialiseret sig i loftmaling og ved præcis, hvordan man opnår et perfekt resultat uden synlige rullemærker, striber eller skygger. Vi arbejder i hele Slagelse og på Sjælland, og med over 250 femstjernede anmeldelser på Trustpilot kan du være tryg ved at vælge os til dit næste loftprojekt.`,
@@ -647,8 +647,8 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
 
   "maling-af-facade": {
     title: "Facademaling",
-    metaTitle: `Facademaling | Schou & Christensen — Nyt liv til huset`,
-    metaDescription: `Facademaling og renovering af alle facadetyper. Puds, mursten, beton og træ. Gratis tilbud — ring ${COMPANY.phone}`,
+    metaTitle: `Facademaling — Nyt liv til dit hus | 250+ tilfredse kunder`,
+    metaDescription: `Facademaling og renovering af alle typer: puds, mursten, beton og træ. Vejrbestandig finish. Gratis tilbud — ring ${COMPANY.phone}`,
     heroHeading: "Professionel facademaling",
     heroSubheading: "Giv din facade nyt liv med holdbar kvalitetsmaling",
     intro: `Facaden er det første, man ser, når man nærmer sig dit hjem — og en velholdt facade gør hele forskellen for husets udtryk og værdi. Hos ${COMPANY.name} har vi mange års erfaring med facademaling af alle typer huse i Slagelse og på hele Sjælland. Vores fagligt dygtige malere behandler din facade med de bedste produkter på markedet og sikrer et resultat, der holder i 10-15 år. Med over 250 femstjernede anmeldelser på Trustpilot og medlemskab af Danske Malermestre er vi et trygt valg.`,
@@ -691,8 +691,8 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
 
   "maling-af-vinduer": {
     title: "Maling af vinduer",
-    metaTitle: `Maling af vinduer | Schou & Christensen — Forlæng livet`,
-    metaDescription: `Professionel maling af vinduer ude og inde. Forlæng vinduernes levetid med grundig forbehandling. Ring ${COMPANY.phone}`,
+    metaTitle: `Maling af vinduer — Forlæng levetiden med 10+ år`,
+    metaDescription: `Professionel vinduesmaling ude og inde. Grundig slibning, grunding og finish. Forlæng levetiden markant. Ring ${COMPANY.phone}`,
     heroHeading: "Professionel maling af vinduer",
     heroSubheading: "Forlæng dine vinduers levetid med professionel vinduesmaling",
     intro: `Vinduer er blandt de mest udsatte dele af dit hus — de skal modstå regn, sol, frost og kondens døgnet rundt. Regelmæssig maling af vinduer er den bedste investering, du kan gøre for at forlænge deres levetid og undgå dyre udskiftninger. Hos ${COMPANY.name} i Slagelse har vi specialiseret os i vinduesmaling med korrekt forbehandling og kvalitetsprodukter. Vores kunder på Sjælland giver os 4,9 ud af 5 stjerner på Trustpilot — et bevis på, at vi leverer kvalitet.`,
@@ -735,8 +735,8 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
 
   "maler-sjaelland": {
     title: "Maler Sjælland",
-    metaTitle: `Maler på Sjælland | Schou & Christensen — Hele øen`,
-    metaDescription: `Professionelt malerfirma på Sjælland. Fra Slagelse dækker vi hele øen. ★ 4.9 Trustpilot. Ring ${COMPANY.phone}`,
+    metaTitle: `Maler på Sjælland — Vi dækker hele øen | 15+ års erfaring`,
+    metaDescription: `Professionelt malerfirma der dækker hele Sjælland. Fra Slagelse til København. 250+ tilfredse kunder. Ring ${COMPANY.phone}`,
     heroHeading: "Din maler på hele Sjælland",
     heroSubheading: "Fra vores base i Slagelse dækker vi alle områder på Sjælland",
     intro: `Leder du efter et pålideligt malerfirma på Sjælland? ${COMPANY.name} er baseret i Slagelse og servicerer kunder i hele regionen — fra København og Nordsjælland til Næstved og Kalundborg. Med 8 erfarne medarbejdere, over 250 femstjernede Trustpilot-anmeldelser og medlemskab af Danske Malermestre er vi et trygt valg uanset hvor på Sjælland, du bor. Ring til Jess på 53 50 77 00 og få et gratis tilbud i dag.`,
@@ -779,8 +779,8 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
 
   "spartling": {
     title: "Spartling",
-    metaTitle: `Spartling | Schou & Christensen — Perfekte vægge`,
-    metaDescription: `Spartling af vægge for et perfekt malerresultat. Plet-spartling og fuld spartling. Gratis tilbud — ring ${COMPANY.phone}`,
+    metaTitle: `Spartling af vægge — Perfekt resultat inden maling | ★ 4.9`,
+    metaDescription: `Professionel spartling af vægge og lofter. Plet-spartling, fuld spartling og filt. Perfekt underlag for maling. Ring ${COMPANY.phone}`,
     heroHeading: "Professionel spartling",
     heroSubheading: "Skab det perfekte underlag for maling med professionel spartling",
     intro: `Spartling er fundamentet for et flot malerresultat. Selv den bedste maling kan ikke skjule ujævne vægge, huller og revner — men professionel spartling kan. Hos ${COMPANY.name} tilbyder vi alle typer spartling, fra små reparationer til fuld vægspartling af hele rum. Vores erfarne malere i Slagelse og på Sjælland sikrer et glat og ensartet underlag, der får din maling til at se professionel ud. Med 4,9 på Trustpilot og over 250 anmeldelser er vi et trygt valg.`,
@@ -823,8 +823,8 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
 
   "erhvervsmaling": {
     title: "Erhvervsmaling",
-    metaTitle: `Erhvervsmaling | Schou & Christensen — Kontor & butik`,
-    metaDescription: `Maling af erhvervslokaler med minimal forstyrrelse. Kontorer, butikker, lager og industri. Ring ${COMPANY.phone}`,
+    metaTitle: `Erhvervsmaling — Weekend & aftenarbejde | Minimal gene`,
+    metaDescription: `Maling af erhvervslokaler med minimal forstyrrelse. Kontorer, butikker og lagre. Weekend- og aftenarbejde. Ring ${COMPANY.phone}`,
     heroHeading: "Professionel erhvervsmaling",
     heroSubheading: "Maling af erhvervslokaler med minimal forstyrrelse af din drift",
     intro: `Erhvervslokaler har særlige krav til malerarbejde — det skal være effektivt, professionelt og forstyrre driften mindst muligt. Hos ${COMPANY.name} har vi mange års erfaring med erhvervsmaling af kontorer, butikker, restauranter, lagerhaller og produktionsfaciliteter i Slagelse og på hele Sjælland. Vores hold på 8 erfarne malere kan håndtere projekter i alle størrelser, og vi tilbyder fleksible arbejdstider inkl. aften og weekend. Ring til Jess på 53 50 77 00 for et gratis tilbud.`,
@@ -867,8 +867,8 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
 
   "maling-af-radiator": {
     title: "Maling af radiator",
-    metaTitle: `Maling af radiator | Schou & Christensen — Nyt liv`,
-    metaDescription: `Radiatormaling med varmebestandig maling. Spray- og penselteknik for perfekt finish. Ring ${COMPANY.phone}`,
+    metaTitle: `Maling af radiator — Varmebestandig, flot finish | ★ 4.9`,
+    metaDescription: `Professionel radiatormaling med varmebestandig maling. Spray og pensel for perfekt finish. Gratis tilbud — ring ${COMPANY.phone}`,
     heroHeading: "Professionel maling af radiator",
     heroSubheading: "Giv dine radiatorer nyt liv med varmebestandig maling",
     intro: `Radiatorer er en ofte overset del af hjemmet, men en gammel, gulnet eller rusten radiator kan ødelægge indtryk af et ellers nymaletet rum. Hos ${COMPANY.name} tilbyder vi professionel radiatormaling med specialmaling, der tåler høje temperaturer. Vores erfarne malere i Slagelse og på Sjælland sikrer en flot og holdbar finish, der matcher dine vægge. Med 4,9 på Trustpilot og over 250 anmeldelser kan du stole på vores kvalitet.`,
@@ -911,8 +911,8 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
 
   "nybyg-maling": {
     title: "Nybyg maling",
-    metaTitle: `Nybyg maling | Schou & Christensen — Maler til nybyg`,
-    metaDescription: `Maling af nybyggeri og nye huse. Komplet pakke til bygherrer og entreprenører. Ring ${COMPANY.phone}`,
+    metaTitle: `Nybyg maling — Komplet pakke til nye huse | Gratis tilbud`,
+    metaDescription: `Maling af nybyggeri. Komplet pakke med vægge, lofter, træværk og specialfinish. Samarbejde med bygherrer. Ring ${COMPANY.phone}`,
     heroHeading: "Maling af nybyggeri",
     heroSubheading: "Din professionelle partner til maling af nye huse og byggeprojekter",
     intro: `Bygger du nyt hus eller er du entreprenør med et nybyggeri-projekt? ${COMPANY.name} er din erfarne partner til maling af nybyggeri i Slagelse og på hele Sjælland. Vi samarbejder med bygherrer, arkitekter og entreprenører om at levere professionel maling af nye boliger — fra første spartling til den sidste penselstrøg. Med 8 erfarne medarbejdere kan vi håndtere projekter i alle størrelser og overholde stramme tidsplaner.`,

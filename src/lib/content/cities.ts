@@ -87,12 +87,17 @@ function generateCityContent(city: typeof CITIES[0]): CityContent {
     ? cityDescriptions[city.name]
     : aboutCity
 
+  // Dynamic title based on city name length (≤60 chars)
+  const cityTitle = city.name.length > 10
+    ? `Maler ${prep(city.name)} ${city.name} — ★ 4.9 | Gratis tilbud`
+    : `Maler ${prep(city.name)} ${city.name} — ★ 4.9 på Trustpilot | Gratis tilbud`
+
   return {
     name: city.name,
     slug: city.slug,
     distance: city.distance,
-    metaTitle: `Maler ${city.name} | Schou & Christensen — ★ 4.9 Trustpilot`,
-    metaDescription: `Professionel maler ${prep(city.name)} ${city.name}. Indvendig og udvendig maling, tapetsering, sprøjtespartling og microcement. ★ 4.9 på Trustpilot, 250+ kunder. Gratis tilbud — ring ${COMPANY.phone}`,
+    metaTitle: cityTitle,
+    metaDescription: `Professionel maler ${prep(city.name)} ${city.name}. Indvendig og udvendig maling, tapetsering og spartling. 250+ tilfredse kunder. Ring ${COMPANY.phone}`,
     heroHeading: `Maler ${prep(city.name)} ${city.name}`,
     heroSubheading: `Professionelt malerarbejde til private og erhverv ${prep(city.name)} ${city.name}`,
     intro,

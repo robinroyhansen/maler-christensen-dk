@@ -6,8 +6,8 @@ import { COMPANY } from "@/lib/constants"
 import { Target, Heart, Lightbulb, TrendingUp } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Vores vision | Schou & Christensen — Kvalitet i fokus",
-  description: `Schou & Christensens vision: At levere det bedste malerarbejde i Sjælland med fokus på kvalitet, pålidelighed og kundetilfredshed.`,
+  title: "Vores vision — Din tilfredshed er vores fremtid",
+  description: `Vi bygger på stolte håndværkstraditioner. Kvalitetsarbejde, personlig service og 100% kundetilfredshed. Schou & Christensen, Slagelse.`,
   alternates: {
     canonical: `https://${COMPANY.domain}/vision/`,
   },

@@ -4,8 +4,8 @@ import { ContactForm } from "@/components/sections/ContactForm"
 import { COMPANY } from "@/lib/constants"
 
 export const metadata: Metadata = {
-  title: "Kontakt os | Schou & Christensen — Ring 53 50 77 00",
-  description: `Kontakt Schou & Christensen for gratis tilbud på malerarbejde. Ring ${COMPANY.phone} eller skriv til ${COMPANY.email}. Vi svarer inden for 24 timer.`,
+  title: "Kontakt os — Ring 53 50 77 00 | Gratis tilbud inden 24 timer",
+  description: `Kontakt Schou & Christensen for et gratis maletilbud. Ring ${COMPANY.phone} eller udfyld formularen. Vi vender tilbage inden 24 timer.`,
   alternates: {
     canonical: `https://${COMPANY.domain}/kontakt/`,
   },
