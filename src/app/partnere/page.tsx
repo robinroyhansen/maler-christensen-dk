@@ -19,37 +19,37 @@ const PARTNERS = [
     name: "Herlufmagle Skole",
     type: "Offentlig institution",
     description: "Langvarigt samarbejde om vedligeholdelse og renovering af skolens bygninger.",
-    logo: "https://maler-christensen.dk/wp-content/uploads/2021/06/herlufmagle-skole.png",
+    logo: "/images/partners/herlufmagle-skole.png",
   },
   {
     name: "Tømrer Skovgaard",
     type: "Håndværkspartner",
     description: "Samarbejde om totalrenoveringsprojekter, hvor vi kombinerer tømrer- og malerarbejde.",
-    logo: "https://maler-christensen.dk/wp-content/uploads/2021/06/Toemrer-skovgaard.png",
+    logo: "/images/partners/Toemrer-skovgaard.png",
   },
   {
     name: "Slagelse Kommune",
     type: "Offentlig institution",
     description: "Udførsel af malerarbejde på kommunale bygninger og institutioner.",
-    logo: "https://maler-christensen.dk/wp-content/uploads/2021/06/Slagelse-kommune.png",
+    logo: "/images/partners/Slagelse-kommune.png",
   },
   {
     name: "Lars Printz",
     type: "Erhvervspartner",
     description: "Samarbejde om erhvervsprojekter og industrimaleri.",
-    logo: "https://maler-christensen.dk/wp-content/uploads/2021/06/Lars-Printz.png",
+    logo: "/images/partners/Lars-Printz.png",
   },
   {
     name: "Lux Tag",
     type: "Samarbejdspartner",
     description: "Partnerskab om boligrenovering og istandsættelse.",
-    logo: "https://maler-christensen.dk/wp-content/uploads/2021/06/lux-tag.png",
+    logo: "/images/partners/lux-tag.png",
   },
   {
     name: "Danske Malermestre",
     type: "Brancheforening",
     description: "Vi er stolte medlemmer af Danske Malermestre, som sikrer fagligt korrekt arbejde.",
-    logo: "https://maler-christensen.dk/wp-content/uploads/2021/06/danskemalermestre-hvid.png",
+    logo: "/images/partners/danskemalermestre-hvid.png",
   },
 ]
 

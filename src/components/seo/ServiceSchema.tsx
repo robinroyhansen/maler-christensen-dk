@@ -17,7 +17,7 @@ export function ServiceSchema({ name, description, url, image }: ServiceSchemaPr
     "provider": {
       "@type": "LocalBusiness",
       "name": COMPANY.name,
-      "image": "https://maler-christensen.dk/wp-content/uploads/2025/10/Firmalogo-Schou-Christensen.png",
+      "image": "/images/logo.png",
       "telephone": COMPANY.phone,
       "email": COMPANY.email,
       "address": {

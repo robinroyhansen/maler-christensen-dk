@@ -120,7 +120,7 @@ export default async function BlogPostPage({
       name: COMPANY.name,
       logo: {
         "@type": "ImageObject",
-        url: "https://maler-christensen.dk/wp-content/uploads/2025/10/Firmalogo-Schou-Christensen.png",
+        url: "/images/logo.png",
       },
     },
     mainEntityOfPage: {

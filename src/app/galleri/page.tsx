@@ -13,18 +13,18 @@ export const metadata: Metadata = {
   },
 }
 
-// Indoor gallery images from WordPress (only verified working URLs)
+// Indoor gallery images (self-hosted)
 const INDOOR_WORKING_IDS = [1, 2, 7, 8, 9, 10, 13, 14, 15, 16, 17, 18, 23, 24]
 const INDOOR_GALLERY_IMAGES: GalleryImage[] = INDOOR_WORKING_IDS.map((id, i) => ({
-  src: `https://maler-christensen.dk/wp-content/uploads/2021/06/${id}-300x225-1.jpg`,
+  src: `/images/gallery/indoor/${id}.jpg`,
   alt: `Indvendigt malerarbejde — vægge og lofter, projekt ${i + 1}`,
   caption: "Indvendigt malerarbejde",
 }))
 
-// Outdoor gallery images from WordPress (only verified working URLs)
+// Outdoor gallery images (self-hosted)
 const OUTDOOR_WORKING_IDS = [33, 34, 35, 36, 37, 38, 39, 43]
 const OUTDOOR_GALLERY_IMAGES: GalleryImage[] = OUTDOOR_WORKING_IDS.map((id, i) => ({
-  src: `https://maler-christensen.dk/wp-content/uploads/2021/06/${id}-300x225-1.jpg`,
+  src: `/images/gallery/outdoor/${id}.jpg`,
   alt: `Udvendigt malerarbejde — facade og vinduer, projekt ${i + 1}`,
   caption: "Udvendigt malerarbejde",
 }))

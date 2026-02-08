@@ -5,8 +5,8 @@ import { COMPANY, CITIES } from "@/lib/constants"
 import { SERVICE_CATEGORIES } from "@/lib/serviceCategories"
 import { Phone, Mail, MapPin, Star } from "lucide-react"
 
-const LOGO_URL = "https://maler-christensen.dk/wp-content/uploads/2025/10/Firmalogo-Schou-Christensen.png"
-const DANSKE_MALERMESTRE_URL = "https://maler-christensen.dk/wp-content/uploads/2021/06/danskemalermestre-hvid.png"
+const LOGO_URL = "/images/logo.png"
+const DANSKE_MALERMESTRE_URL = "/images/partners/danskemalermestre-hvid.png"
 
 // Sort cities: existing first, then by distance
 const sortedCities = [...CITIES].sort((a, b) => {

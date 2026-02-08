@@ -3,9 +3,9 @@ import Link from "next/link"
 import { Star } from "lucide-react"
 
 const TRUSTPILOT_URL = "https://www.trustpilot.com/review/www.maler-christensen.dk?languages=all"
-const TRUSTPILOT_STARS = "https://maler-christensen.dk/wp-content/uploads/2023/05/trustpilot_Stars.png"
+const TRUSTPILOT_STARS = "/images/trustpilot-stars.png"
 const ANMELD_URL = "https://www.anmeld-haandvaerker.dk/maler/malerfirmaet-schou-christensen-aps"
-const ANMELD_SMILEYS = "https://maler-christensen.dk/wp-content/uploads/2023/05/5ah.png"
+const ANMELD_SMILEYS = "/images/anmeld-smileys.png"
 
 export function TrustBar() {
   return (

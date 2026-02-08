@@ -10,7 +10,7 @@ import { SERVICE_CATEGORIES } from "@/lib/serviceCategories"
 import { Menu, X, ChevronDown, Phone } from "lucide-react"
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion"
 
-const LOGO_URL = "https://maler-christensen.dk/wp-content/uploads/2025/10/Firmalogo-Schou-Christensen.png"
+const LOGO_URL = "/images/logo.png"
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)

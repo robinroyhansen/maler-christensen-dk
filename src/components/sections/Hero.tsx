@@ -17,7 +17,7 @@ interface HeroProps {
   variant?: "home" | "page"
 }
 
-const HERO_IMAGE = "https://maler-christensen.dk/wp-content/uploads/2022/09/0U2A3895-09.22.38.jpg"
+const HERO_IMAGE = "/images/hero/hero.jpg"
 
 // Paint brush SVG decoration
 function PaintBrushDecor() {

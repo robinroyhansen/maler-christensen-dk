@@ -8,27 +8,27 @@ import { motion, useReducedMotion } from "framer-motion"
 const PARTNER_LOGOS = [
   {
     name: "Herlufmagle Skole",
-    src: "https://maler-christensen.dk/wp-content/uploads/2021/06/herlufmagle-skole.png",
+    src: "/images/partners/herlufmagle-skole.png",
   },
   {
     name: "Tømrer Skovgaard",
-    src: "https://maler-christensen.dk/wp-content/uploads/2021/06/Toemrer-skovgaard.png",
+    src: "/images/partners/Toemrer-skovgaard.png",
   },
   {
     name: "Slagelse Kommune",
-    src: "https://maler-christensen.dk/wp-content/uploads/2021/06/Slagelse-kommune.png",
+    src: "/images/partners/Slagelse-kommune.png",
   },
   {
     name: "Partner",
-    src: "https://maler-christensen.dk/wp-content/uploads/2021/06/Artboard-1.png",
+    src: "/images/partners/Artboard-1.png",
   },
   {
     name: "Lars Printz",
-    src: "https://maler-christensen.dk/wp-content/uploads/2021/06/Lars-Printz.png",
+    src: "/images/partners/Lars-Printz.png",
   },
   {
     name: "Lux Tag",
-    src: "https://maler-christensen.dk/wp-content/uploads/2021/06/lux-tag.png",
+    src: "/images/partners/lux-tag.png",
   },
 ]
 
