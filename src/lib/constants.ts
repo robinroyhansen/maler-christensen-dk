@@ -38,6 +38,16 @@ export const SERVICES = [
   { name: "Sprøjtemaling", slug: "sproejtmaling", description: "Professionel sprøjtemaling" },
   { name: "Microcement", slug: "microcement", description: "Microcement-løsninger" },
   { name: "PU-gulve", slug: "pu-gulve", description: "Polyuretangulve til alle formål" },
+  { name: "Indvendig maling", slug: "indvendig-maling", description: "Professionel indvendig maling af vægge, lofter og træværk" },
+  { name: "Udvendig maling", slug: "udvendig-maling", description: "Udvendig husmaling der holder i årevis" },
+  { name: "Maling af loft", slug: "maling-af-loft", description: "Perfekt loftmaling uden striber" },
+  { name: "Maling af facade", slug: "maling-af-facade", description: "Facademaling og renovering" },
+  { name: "Maling af vinduer", slug: "maling-af-vinduer", description: "Professionel vinduesmaling inde og ude" },
+  { name: "Maler Sjælland", slug: "maler-sjaelland", description: "Din maler på hele Sjælland" },
+  { name: "Spartling", slug: "spartling", description: "Spartling af vægge for perfekte overflader" },
+  { name: "Erhvervsmaling", slug: "erhvervsmaling", description: "Professionel maling af erhvervslokaler" },
+  { name: "Maling af radiator", slug: "maling-af-radiator", description: "Radiatormaling med varmebestandig maling" },
+  { name: "Nybyg maling", slug: "nybyg-maling", description: "Maling af nybyggeri og nye huse" },
 ]
 
 export const CITIES = [
@@ -80,4 +90,20 @@ export const CITIES = [
   { name: "Østerbro", slug: "maler-oesterbro", distance: 78, existing: false },
   { name: "Hornbæk", slug: "maler-hornbaek", distance: 110, existing: false },
   { name: "Søborg", slug: "maler-soeborg", distance: 75, existing: false },
+  // New cities - batch 2
+  { name: "Taastrup", slug: "maler-taastrup", distance: 65, existing: false },
+  { name: "Frederikssund", slug: "maler-frederikssund", distance: 70, existing: false },
+  { name: "Birkerød", slug: "maler-birkeroed", distance: 85, existing: false },
+  { name: "Farum", slug: "maler-farum", distance: 80, existing: false },
+  { name: "Allerød", slug: "maler-alleroed", distance: 85, existing: false },
+  { name: "Ishøj", slug: "maler-ishoej", distance: 60, existing: false },
+  { name: "Albertslund", slug: "maler-albertslund", distance: 65, existing: false },
+  { name: "Nørrebro", slug: "maler-noerrebro", distance: 78, existing: false },
+  { name: "Amager", slug: "maler-amager", distance: 85, existing: false },
+  { name: "Vesterbro", slug: "maler-vesterbro", distance: 77, existing: false },
+  { name: "Vanløse", slug: "maler-vanloese", distance: 73, existing: false },
+  { name: "Gilleleje", slug: "maler-gilleleje", distance: 115, existing: false },
+  { name: "Faxe", slug: "maler-faxe", distance: 50, existing: false },
+  { name: "Præstø", slug: "maler-praestoe", distance: 60, existing: false },
+  { name: "Brøndby", slug: "maler-broendby", distance: 65, existing: false },
 ]
