@@ -29,14 +29,16 @@ interface ReviewsProps {
   title?: string
   subtitle?: string
   pageSlug?: string
+  preloadedReviews?: Review[]
 }
 
 export function Reviews({ 
   title = "Hvad vores kunder siger",
   subtitle = `${COMPANY.trustpilotRating}/5 stjerner baseret på ${COMPANY.trustpilotReviews}+ anmeldelser på Trustpilot`,
-  pageSlug = "homepage"
+  pageSlug = "homepage",
+  preloadedReviews
 }: ReviewsProps) {
-  const reviews = getReviewsForPage(pageSlug, 6)
+  const reviews = preloadedReviews || getReviewsForPage(pageSlug, 6)
   const prefersReducedMotion = useReducedMotion()
 
   return (

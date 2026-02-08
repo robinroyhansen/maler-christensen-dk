@@ -1,3 +1,5 @@
+import { createClient } from '@/lib/supabase/client'
+
 export type ReviewSource = "trustpilot" | "anmeld-haandvaerker"
 
 export interface Review {
@@ -220,7 +222,7 @@ export const REVIEWS: Review[] = [
   }
 ]
 
-// Helper: get reviews for a specific page slug
+// Helper: get reviews for a specific page slug (hardcoded fallback)
 // Falls back to homepage reviews if no specific reviews exist
 export function getReviewsForPage(slug: string, limit = 6): Review[] {
   const matching = REVIEWS.filter(r => r.pageSlugs.includes(slug))
@@ -233,4 +235,118 @@ export function getReviewsForPage(slug: string, limit = 6): Review[] {
     return fallback.slice(0, limit)
   }
   return REVIEWS.filter(r => r.pageSlugs.includes("homepage")).slice(0, limit)
+}
+
+// Convert Supabase row to Review interface
+function mapSupabaseToReview(row: any): Review {
+  return {
+    id: row.id,
+    author: row.author_name,
+    rating: row.rating,
+    text: row.review_text,
+    source: row.source as ReviewSource,
+    date: new Date(row.created_at).toISOString().split('T')[0], // YYYY-MM-DD format
+    pageSlugs: row.page_slugs || []
+  }
+}
+
+// Fetch all reviews from Supabase
+export async function fetchReviews(limit = 50): Promise<Review[]> {
+  try {
+    const supabase = createClient()
+    
+    const { data, error } = await supabase
+      .from('reviews')
+      .select('*')
+      .eq('is_visible', true)
+      .order('sort_order', { ascending: true })
+      .limit(limit)
+
+    if (error) {
+      console.error('Error fetching reviews:', error)
+      // Fallback to hardcoded reviews
+      return REVIEWS.slice(0, limit)
+    }
+
+    return data?.map(mapSupabaseToReview) || REVIEWS.slice(0, limit)
+  } catch (error) {
+    console.error('Error in fetchReviews:', error)
+    // Fallback to hardcoded reviews
+    return REVIEWS.slice(0, limit)
+  }
+}
+
+// Fetch reviews for a specific page slug from Supabase
+export async function fetchReviewsForPage(slug: string, limit = 6): Promise<Review[]> {
+  try {
+    const supabase = createClient()
+    
+    // Use Supabase's @> operator for jsonb containment - check if page_slugs contains the slug
+    const { data, error } = await supabase
+      .from('reviews')
+      .select('*')
+      .eq('is_visible', true)
+      .filter('page_slugs', 'cs', `"${slug}"`)
+      .order('sort_order', { ascending: true })
+      .limit(limit)
+
+    if (error) {
+      console.error('Error fetching reviews for page:', error)
+      // Fallback to hardcoded reviews
+      return getReviewsForPage(slug, limit)
+    }
+
+    const reviews = data?.map(mapSupabaseToReview) || []
+    
+    // If we don't have enough reviews for this page, fallback to homepage/malerarbejde
+    if (reviews.length < 2) {
+      const fallbackReviews = await fetchFallbackReviews(limit)
+      return fallbackReviews.slice(0, limit)
+    }
+
+    return reviews.slice(0, limit)
+  } catch (error) {
+    console.error('Error in fetchReviewsForPage:', error)
+    // Fallback to hardcoded reviews
+    return getReviewsForPage(slug, limit)
+  }
+}
+
+// Helper: fetch fallback reviews (malerarbejde or homepage)
+async function fetchFallbackReviews(limit = 6): Promise<Review[]> {
+  try {
+    const supabase = createClient()
+    
+    // Try malerarbejde first
+    let { data, error } = await supabase
+      .from('reviews')
+      .select('*')
+      .eq('is_visible', true)
+      .filter('page_slugs', 'cs', '"malerarbejde"')
+      .order('sort_order', { ascending: true })
+      .limit(limit)
+
+    if (!error && data && data.length >= 2) {
+      return data.map(mapSupabaseToReview)
+    }
+
+    // Fallback to homepage
+    const { data: homepageData, error: homepageError } = await supabase
+      .from('reviews')
+      .select('*')
+      .eq('is_visible', true)
+      .filter('page_slugs', 'cs', '"homepage"')
+      .order('sort_order', { ascending: true })
+      .limit(limit)
+
+    if (!homepageError && homepageData) {
+      return homepageData.map(mapSupabaseToReview)
+    }
+
+    // Final fallback to hardcoded
+    return REVIEWS.slice(0, limit)
+  } catch (error) {
+    console.error('Error in fetchFallbackReviews:', error)
+    return REVIEWS.slice(0, limit)
+  }
 }

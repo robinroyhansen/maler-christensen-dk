@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { Hero } from "@/components/sections/Hero"
 import { Container } from "@/components/ui/Container"
-import { Reviews } from "@/components/sections/Reviews"
+import { ReviewsServer } from "@/components/sections/ReviewsServer"
 import { CTA } from "@/components/sections/CTA"
 import { COMPANY } from "@/lib/constants"
 import { Building2, Home, Factory, TreePine, Star } from "lucide-react"
@@ -108,7 +108,7 @@ export default function ReferencerPage() {
         </Container>
       </section>
 
-      <Reviews 
+      <ReviewsServer 
         title="Kundeanmeldelser"
         subtitle={`${COMPANY.trustpilotRating}/5 stjerner baseret på ${COMPANY.trustpilotReviews}+ anmeldelser`}
       />

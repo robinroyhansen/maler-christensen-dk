@@ -1,6 +1,6 @@
 import { Hero } from "@/components/sections/Hero"
 import { Services } from "@/components/sections/Services"
-import { Reviews } from "@/components/sections/Reviews"
+import { ReviewsServer } from "@/components/sections/ReviewsServer"
 import { About } from "@/components/sections/About"
 import { GalleryPreview } from "@/components/sections/GalleryPreview"
 import { Cities } from "@/components/sections/Cities"
@@ -24,7 +24,7 @@ export default function HomePage() {
       
       <GalleryPreview />
       
-      <Reviews pageSlug="homepage" />
+      <ReviewsServer pageSlug="homepage" />
       
       <Partners variant="strip" />
       

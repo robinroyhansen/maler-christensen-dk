@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { Hero } from "@/components/sections/Hero"
 import { ContactForm } from "@/components/sections/ContactForm"
 import { Container } from "@/components/ui/Container"
-import { Reviews } from "@/components/sections/Reviews"
+import { ReviewsServer } from "@/components/sections/ReviewsServer"
 import { COMPANY } from "@/lib/constants"
 import { CheckCircle, Clock, Shield, Banknote } from "lucide-react"
 
@@ -74,7 +74,7 @@ export default function MalerTilbudPage() {
         pageSlug="maler-tilbud"
       />
 
-      <Reviews />
+      <ReviewsServer />
     </>
   )
 }
