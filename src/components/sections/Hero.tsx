@@ -6,6 +6,7 @@ import { COMPANY } from "@/lib/constants"
 import Link from "next/link"
 import Image from "next/image"
 import { Star, Phone, CheckCircle } from "lucide-react"
+import { motion, useReducedMotion } from "framer-motion"
 
 interface HeroProps {
   title?: string
@@ -35,14 +36,28 @@ function PaintBrushDecor() {
   )
 }
 
-// Floating Trustpilot Badge Card - responsive sizes
+// Floating Trustpilot Badge Card - responsive sizes with animation
 function TrustpilotBadge() {
+  const prefersReducedMotion = useReducedMotion()
+
   return (
-    <div className="trustpilot-badge rounded-xl sm:rounded-2xl px-4 sm:px-6 py-4 sm:py-5 inline-flex flex-col items-center animate-fade-in animation-delay-300">
+    <motion.div
+      initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, scale: 0.9, y: 20 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
+      className="trustpilot-badge rounded-xl sm:rounded-2xl px-4 sm:px-6 py-4 sm:py-5 inline-flex flex-col items-center"
+    >
       {/* Stars */}
       <div className="flex gap-0.5 sm:gap-1 mb-1.5 sm:mb-2">
         {[...Array(5)].map((_, i) => (
-          <Star key={i} className="w-5 h-5 sm:w-7 sm:h-7 text-[#00b67a] fill-[#00b67a]" />
+          <motion.div
+            key={i}
+            initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.3, delay: 0.5 + i * 0.1 }}
+          >
+            <Star className="w-5 h-5 sm:w-7 sm:h-7 text-[#00b67a] fill-[#00b67a]" />
+          </motion.div>
         ))}
       </div>
       {/* Score */}
@@ -58,7 +73,33 @@ function TrustpilotBadge() {
         <Star className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-[#00b67a] text-[#00b67a]" />
         Trustpilot
       </div>
-    </div>
+    </motion.div>
+  )
+}
+
+// Animated text reveal for hero heading
+function AnimatedHeading({ text }: { text: string }) {
+  const prefersReducedMotion = useReducedMotion()
+  const words = text.split(" ")
+
+  if (prefersReducedMotion) {
+    return <>{text}</>
+  }
+
+  return (
+    <>
+      {words.map((word, i) => (
+        <motion.span
+          key={i}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: i * 0.1, ease: "easeOut" }}
+          className="inline-block mr-[0.25em]"
+        >
+          {word}
+        </motion.span>
+      ))}
+    </>
   )
 }
 
@@ -71,6 +112,11 @@ export function Hero({
   variant = "home",
 }: HeroProps) {
   const isHome = variant === "home"
+  const prefersReducedMotion = useReducedMotion()
+  
+  // Calculate animation delays based on title word count
+  const titleWords = title.split(" ").length
+  const titleAnimDuration = titleWords * 0.1
   
   return (
     <section className={`relative ${isHome ? "min-h-[480px] sm:min-h-[550px] md:min-h-[600px] py-12 sm:py-16 md:py-24 lg:py-32" : "py-12 sm:py-16 md:py-24"} text-white overflow-hidden`}>
@@ -103,45 +149,69 @@ export function Hero({
           <div className={isHome ? "lg:col-span-3" : "max-w-3xl"}>
             {/* Small Trustpilot indicator for page variant */}
             {showTrustpilot && !isHome && (
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6 animate-fade-in">
+              <motion.div
+                initial={prefersReducedMotion ? {} : { opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4 }}
+                className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6"
+              >
                 <div className="flex">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="w-4 h-4 text-[#00b67a] fill-[#00b67a]" />
                   ))}
                 </div>
                 <span className="text-sm font-medium">{COMPANY.trustpilotRating}/5 på Trustpilot</span>
-              </div>
+              </motion.div>
             )}
 
-            {/* Title */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight tracking-tight animate-slide-in-left">
-              {title}
+            {/* Title - with word-by-word animation on home page */}
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight tracking-tight">
+              {isHome ? <AnimatedHeading text={title} /> : title}
             </h1>
 
             {/* Subtitle */}
-            <p className="text-lg sm:text-xl md:text-2xl text-gray-200 mb-6 sm:mb-8 leading-relaxed animate-fade-in-up animation-delay-100">
+            <motion.p
+              initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: isHome ? titleAnimDuration + 0.1 : 0.1 }}
+              className="text-lg sm:text-xl md:text-2xl text-gray-200 mb-6 sm:mb-8 leading-relaxed"
+            >
               {subtitle}
-            </p>
+            </motion.p>
 
             {/* USPs */}
-            <div className="flex flex-wrap gap-3 sm:gap-4 md:gap-6 mb-6 sm:mb-8 animate-fade-in-up animation-delay-200">
-              <div className="flex items-center gap-1.5 sm:gap-2 text-[#85bd41]">
-                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5" />
-                <span className="font-medium text-sm sm:text-base">Gratis tilbud</span>
-              </div>
-              <div className="flex items-center gap-1.5 sm:gap-2 text-[#85bd41]">
-                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5" />
-                <span className="font-medium text-sm sm:text-base">Hurtig opstart</span>
-              </div>
-              <div className="flex items-center gap-1.5 sm:gap-2 text-[#85bd41]">
-                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5" />
-                <span className="font-medium text-sm sm:text-base">Erfarne malere</span>
-              </div>
-            </div>
+            <motion.div
+              initial={prefersReducedMotion ? {} : { opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.4, delay: isHome ? titleAnimDuration + 0.2 : 0.2 }}
+              className="flex flex-wrap gap-3 sm:gap-4 md:gap-6 mb-6 sm:mb-8"
+            >
+              {[
+                { text: "Gratis tilbud", delay: 0 },
+                { text: "Hurtig opstart", delay: 0.1 },
+                { text: "Erfarne malere", delay: 0.2 },
+              ].map((usp, i) => (
+                <motion.div
+                  key={usp.text}
+                  initial={prefersReducedMotion ? {} : { opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.3, delay: isHome ? titleAnimDuration + 0.3 + usp.delay : 0.3 + usp.delay }}
+                  className="flex items-center gap-1.5 sm:gap-2 text-[#85bd41]"
+                >
+                  <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5" />
+                  <span className="font-medium text-sm sm:text-base">{usp.text}</span>
+                </motion.div>
+              ))}
+            </motion.div>
 
             {/* CTAs - Full width and stacked on mobile */}
             {showCTA && (
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 animate-fade-in-up animation-delay-300">
+              <motion.div
+                initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: isHome ? titleAnimDuration + 0.5 : 0.4 }}
+                className="flex flex-col sm:flex-row gap-3 sm:gap-4"
+              >
                 <Link href="/maler-tilbud/" className="w-full sm:w-auto">
                   <Button size="lg" className="w-full sm:w-auto min-h-[48px]">
                     Få et gratis tilbud
@@ -153,7 +223,7 @@ export function Hero({
                     Ring {COMPANY.phone}
                   </Button>
                 </a>
-              </div>
+              </motion.div>
             )}
           </div>
 

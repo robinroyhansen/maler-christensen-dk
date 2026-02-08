@@ -3,7 +3,9 @@
 import { useState, useCallback, useEffect } from "react"
 import Image from "next/image"
 import { Container } from "@/components/ui/Container"
+import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/ui/AnimateIn"
 import { X, ChevronLeft, ChevronRight, ZoomIn } from "lucide-react"
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion"
 
 export interface GalleryImage {
   src: string
@@ -28,6 +30,7 @@ export function ProjectGallery({
 }: ProjectGalleryProps) {
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)
+  const prefersReducedMotion = useReducedMotion()
 
   const openLightbox = (index: number) => {
     setCurrentIndex(index)
@@ -73,41 +76,45 @@ export function ProjectGallery({
   const gridContent = (
     <>
       {title && (
-        <div className="text-center mb-8">
+        <AnimateIn className="text-center mb-8">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">{title}</h2>
           {subtitle && <p className="text-gray-600">{subtitle}</p>}
-        </div>
+        </AnimateIn>
       )}
       
-      <div className={`grid grid-cols-2 ${columns === 4 ? 'md:grid-cols-3 lg:grid-cols-4' : 'md:grid-cols-3'} gap-4`}>
+      <StaggerContainer className={`grid grid-cols-2 ${columns === 4 ? 'md:grid-cols-3 lg:grid-cols-4' : 'md:grid-cols-3'} gap-4`} staggerDelay={0.05}>
         {images.map((image, index) => (
-          <button
-            key={index}
-            onClick={() => openLightbox(index)}
-            className="group relative aspect-square overflow-hidden rounded-xl bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#6b9834] focus:ring-offset-2"
-          >
-            <Image
-              src={image.src}
-              alt={image.alt}
-              fill
-              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-              className="object-cover transition-transform duration-300 group-hover:scale-110"
-            />
-            
-            {/* Hover overlay */}
-            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-center justify-center">
-              <ZoomIn className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
-            </div>
-
-            {/* Caption on hover */}
-            {image.caption && (
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3 translate-y-full group-hover:translate-y-0 transition-transform">
-                <p className="text-white text-sm font-medium truncate">{image.caption}</p>
+          <StaggerItem key={index} variant="scale">
+            <motion.button
+              onClick={() => openLightbox(index)}
+              whileHover={prefersReducedMotion ? {} : { scale: 1.02 }}
+              whileTap={prefersReducedMotion ? {} : { scale: 0.98 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              className="group relative aspect-square overflow-hidden rounded-xl bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#6b9834] focus:ring-offset-2 w-full"
+            >
+              <Image
+                src={image.src}
+                alt={image.alt}
+                fill
+                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                className="object-cover transition-transform duration-300 group-hover:scale-110"
+              />
+              
+              {/* Hover overlay */}
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-center justify-center">
+                <ZoomIn className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
-            )}
-          </button>
+
+              {/* Caption on hover */}
+              {image.caption && (
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3 translate-y-full group-hover:translate-y-0 transition-transform">
+                  <p className="text-white text-sm font-medium truncate">{image.caption}</p>
+                </div>
+              )}
+            </motion.button>
+          </StaggerItem>
         ))}
-      </div>
+      </StaggerContainer>
     </>
   )
 
@@ -121,67 +128,77 @@ export function ProjectGallery({
         gridContent
       )}
 
-      {/* Lightbox */}
-      {lightboxOpen && (
-        <div 
-          className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center"
-          onClick={closeLightbox}
-        >
-          {/* Close button */}
-          <button
+      {/* Lightbox with AnimatePresence */}
+      <AnimatePresence>
+        {lightboxOpen && (
+          <motion.div
+            initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center"
             onClick={closeLightbox}
-            className="absolute top-4 right-4 z-10 p-2 text-white/80 hover:text-white transition-colors"
-            aria-label="Luk"
           >
-            <X className="w-8 h-8" />
-          </button>
+            {/* Close button */}
+            <button
+              onClick={closeLightbox}
+              className="absolute top-4 right-4 z-10 p-2 text-white/80 hover:text-white transition-colors"
+              aria-label="Luk"
+            >
+              <X className="w-8 h-8" />
+            </button>
 
-          {/* Previous button */}
-          <button
-            onClick={(e) => { e.stopPropagation(); goToPrevious(); }}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-2 text-white/80 hover:text-white transition-colors"
-            aria-label="Forrige billede"
-          >
-            <ChevronLeft className="w-10 h-10" />
-          </button>
+            {/* Previous button */}
+            <button
+              onClick={(e) => { e.stopPropagation(); goToPrevious(); }}
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-2 text-white/80 hover:text-white transition-colors"
+              aria-label="Forrige billede"
+            >
+              <ChevronLeft className="w-10 h-10" />
+            </button>
 
-          {/* Next button */}
-          <button
-            onClick={(e) => { e.stopPropagation(); goToNext(); }}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-2 text-white/80 hover:text-white transition-colors"
-            aria-label="Næste billede"
-          >
-            <ChevronRight className="w-10 h-10" />
-          </button>
+            {/* Next button */}
+            <button
+              onClick={(e) => { e.stopPropagation(); goToNext(); }}
+              className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-2 text-white/80 hover:text-white transition-colors"
+              aria-label="Næste billede"
+            >
+              <ChevronRight className="w-10 h-10" />
+            </button>
 
-          {/* Image */}
-          <div 
-            className="relative w-full h-full max-w-5xl max-h-[85vh] m-8"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <Image
-              src={images[currentIndex].src}
-              alt={images[currentIndex].alt}
-              fill
-              sizes="100vw"
-              className="object-contain"
-              priority
-            />
-          </div>
+            {/* Image with animation */}
+            <motion.div 
+              key={currentIndex}
+              initial={prefersReducedMotion ? {} : { opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.2 }}
+              className="relative w-full h-full max-w-5xl max-h-[85vh] m-8"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Image
+                src={images[currentIndex].src}
+                alt={images[currentIndex].alt}
+                fill
+                sizes="100vw"
+                className="object-contain"
+                priority
+              />
+            </motion.div>
 
-          {/* Counter */}
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/80 text-sm">
-            {currentIndex + 1} / {images.length}
-          </div>
-
-          {/* Caption */}
-          {images[currentIndex].caption && (
-            <div className="absolute bottom-12 left-1/2 -translate-x-1/2 text-white text-center max-w-xl px-4">
-              <p className="text-lg">{images[currentIndex].caption}</p>
+            {/* Counter */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/80 text-sm">
+              {currentIndex + 1} / {images.length}
             </div>
-          )}
-        </div>
-      )}
+
+            {/* Caption */}
+            {images[currentIndex].caption && (
+              <div className="absolute bottom-12 left-1/2 -translate-x-1/2 text-white text-center max-w-xl px-4">
+                <p className="text-lg">{images[currentIndex].caption}</p>
+              </div>
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   )
 }
