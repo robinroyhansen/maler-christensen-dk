@@ -9,7 +9,7 @@ import Link from "next/link"
 
 export const metadata: Metadata = {
   title: "Referencer | Schou & Christensen — Tilfredse kunder",
-  description: `Læs anmeldelser og se referencer fra 200+ tilfredse kunder. ★ 4.9 på Trustpilot. Schou & Christensen — professionelt malerarbejde i Slagelse.`,
+  description: `Læs anmeldelser og se referencer fra 250+ tilfredse kunder. ★ 4.9 på Trustpilot. Schou & Christensen — malerarbejde i Slagelse.`,
   alternates: {
     canonical: `https://${COMPANY.domain}/referencer/`,
   },

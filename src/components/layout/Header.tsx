@@ -5,7 +5,8 @@ import Link from "next/link"
 import Image from "next/image"
 import { Container } from "@/components/ui/Container"
 import { Button } from "@/components/ui/Button"
-import { COMPANY, SERVICES } from "@/lib/constants"
+import { COMPANY } from "@/lib/constants"
+import { SERVICE_CATEGORIES } from "@/lib/serviceCategories"
 import { Menu, X, ChevronDown, Phone } from "lucide-react"
 
 const LOGO_URL = "https://maler-christensen.dk/wp-content/uploads/2025/10/Firmalogo-Schou-Christensen.png"
@@ -13,6 +14,7 @@ const LOGO_URL = "https://maler-christensen.dk/wp-content/uploads/2025/10/Firmal
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [servicesOpen, setServicesOpen] = useState(false)
+  const [expandedCategory, setExpandedCategory] = useState<string | null>(null)
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
@@ -30,6 +32,11 @@ export function Header() {
   const handleLinkClick = () => {
     setMobileMenuOpen(false)
     setServicesOpen(false)
+    setExpandedCategory(null)
+  }
+
+  const toggleCategory = (categoryName: string) => {
+    setExpandedCategory(prev => prev === categoryName ? null : categoryName)
   }
 
   return (
@@ -55,8 +62,8 @@ export function Header() {
               Forside
             </Link>
 
-            {/* Services Dropdown */}
-            <div className="relative group">
+            {/* Services Mega Menu */}
+            <div className="relative">
               <button 
                 className="flex items-center gap-1 px-4 py-2 text-gray-700 hover:text-[#6b9834] font-medium transition-colors"
                 onMouseEnter={() => setServicesOpen(true)}
@@ -64,20 +71,35 @@ export function Header() {
               >
                 Ydelser <ChevronDown className="w-4 h-4" />
               </button>
+              
+              {/* Mega Menu Dropdown */}
               <div 
-                className={`absolute top-full left-0 w-64 bg-white shadow-lg rounded-lg py-2 transition-all duration-200 ${servicesOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
+                className={`absolute top-full left-1/2 -translate-x-1/2 w-[800px] bg-white shadow-xl rounded-xl py-6 px-8 transition-all duration-200 ${servicesOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}
                 onMouseEnter={() => setServicesOpen(true)}
                 onMouseLeave={() => setServicesOpen(false)}
               >
-                {SERVICES.map((service) => (
-                  <Link
-                    key={service.slug}
-                    href={`/${service.slug}/`}
-                    className="block px-4 py-2 text-gray-700 hover:bg-[#6b9834]/10 hover:text-[#6b9834] transition-colors"
-                  >
-                    {service.name}
-                  </Link>
-                ))}
+                <div className="grid grid-cols-4 gap-8">
+                  {SERVICE_CATEGORIES.map((category) => (
+                    <div key={category.name}>
+                      <h3 className="font-bold text-[#6b9834] mb-3 text-sm uppercase tracking-wide">
+                        {category.name}
+                      </h3>
+                      <ul className="space-y-1.5">
+                        {category.services.map((service) => (
+                          <li key={service.slug}>
+                            <Link
+                              href={`/${service.slug}/`}
+                              className="block text-gray-600 hover:text-[#6b9834] transition-colors text-sm py-0.5"
+                              onClick={handleLinkClick}
+                            >
+                              {service.name}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
 
@@ -126,6 +148,7 @@ export function Header() {
                   Forside
                 </Link>
                 
+                {/* Services with categories */}
                 <div>
                   <button 
                     className="flex items-center justify-between w-full px-4 py-3 text-gray-700 font-medium min-h-[48px] active:bg-gray-100"
@@ -133,17 +156,34 @@ export function Header() {
                   >
                     Ydelser <ChevronDown className={`w-5 h-5 transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
                   </button>
+                  
                   {servicesOpen && (
                     <div className="bg-gray-50 border-y border-gray-100">
-                      {SERVICES.map((service) => (
-                        <Link
-                          key={service.slug}
-                          href={`/${service.slug}/`}
-                          className="block px-8 py-3 text-gray-600 hover:text-[#6b9834] min-h-[48px] flex items-center active:bg-gray-100"
-                          onClick={handleLinkClick}
-                        >
-                          {service.name}
-                        </Link>
+                      {SERVICE_CATEGORIES.map((category) => (
+                        <div key={category.name}>
+                          <button
+                            className="flex items-center justify-between w-full px-6 py-3 text-[#6b9834] font-semibold text-sm min-h-[44px] active:bg-gray-100"
+                            onClick={() => toggleCategory(category.name)}
+                          >
+                            {category.name}
+                            <ChevronDown className={`w-4 h-4 transition-transform ${expandedCategory === category.name ? 'rotate-180' : ''}`} />
+                          </button>
+                          
+                          {expandedCategory === category.name && (
+                            <div className="bg-white border-t border-gray-100">
+                              {category.services.map((service) => (
+                                <Link
+                                  key={service.slug}
+                                  href={`/${service.slug}/`}
+                                  className="block px-10 py-2.5 text-gray-600 hover:text-[#6b9834] min-h-[44px] flex items-center active:bg-gray-50 text-sm"
+                                  onClick={handleLinkClick}
+                                >
+                                  {service.name}
+                                </Link>
+                              ))}
+                            </div>
+                          )}
+                        </div>
                       ))}
                     </div>
                   )}

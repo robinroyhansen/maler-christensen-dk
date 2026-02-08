@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     default: `Maler Slagelse | Schou & Christensen — ★ 4.9 Trustpilot`,
     template: `%s | Schou & Christensen`,
   },
-  description: `Malerfirma i Slagelse med 4.9/5 på Trustpilot fra 200+ kunder. Indvendig og udvendig maling, sprøjtespartling, tapetsering, microcement og PU-gulve. Gratis tilbud — ring 53 50 77 00`,
+  description: `Malerfirma i Slagelse med ★ 4.9 på Trustpilot. Indvendig og udvendig maling, sprøjtespartling, tapetsering og microcement. Ring 53 50 77 00`,
   keywords: ["maler", "malerfirma", "Slagelse", "malerarbejde", "maling", "tapetsering", "sprøjtespartling"],
   authors: [{ name: COMPANY.name }],
   creator: COMPANY.name,

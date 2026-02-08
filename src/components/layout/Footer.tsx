@@ -1,7 +1,8 @@
 import Link from "next/link"
 import Image from "next/image"
 import { Container } from "@/components/ui/Container"
-import { COMPANY, SERVICES, CITIES } from "@/lib/constants"
+import { COMPANY, CITIES } from "@/lib/constants"
+import { SERVICE_CATEGORIES } from "@/lib/serviceCategories"
 import { Phone, Mail, MapPin, Star } from "lucide-react"
 
 const LOGO_URL = "https://maler-christensen.dk/wp-content/uploads/2025/10/Firmalogo-Schou-Christensen.png"
@@ -48,9 +49,10 @@ export function Footer() {
       {/* Main Footer */}
       <div className="py-12 sm:py-16 pt-16 sm:pt-20">
         <Container>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
+          {/* Company Info + Alle Ydelser */}
+          <div className="grid grid-cols-1 lg:grid-cols-6 gap-8 lg:gap-12 mb-12">
             {/* Company Info */}
-            <div className="sm:col-span-2 lg:col-span-1">
+            <div className="lg:col-span-2">
               <div className="flex items-center gap-3 mb-6">
                 <div className="relative h-10 sm:h-12 w-28 sm:w-36">
                   <Image
@@ -93,24 +95,50 @@ export function Footer() {
                 </div>
                 <span className="text-gray-300 text-sm">{COMPANY.trustpilotRating}/5</span>
               </a>
+
+              {/* Danske Malermestre */}
+              <div className="mt-6">
+                <p className="text-xs text-gray-500 mb-3">Medlem af</p>
+                <div className="relative h-8 sm:h-10 w-28 sm:w-32">
+                  <Image
+                    src={DANSKE_MALERMESTRE_URL}
+                    alt="Danske Malermestre"
+                    fill
+                    className="object-contain object-left"
+                  />
+                </div>
+              </div>
             </div>
 
-            {/* Services */}
-            <div>
-              <h3 className="font-bold text-base sm:text-lg mb-4 sm:mb-6 text-white">Ydelser</h3>
-              <ul className="space-y-1 sm:space-y-2">
-                {SERVICES.slice(0, 10).map((service) => (
-                  <li key={service.slug}>
-                    <Link href={`/${service.slug}/`} className="text-gray-400 hover:text-[#85bd41] transition-colors text-sm min-h-[44px] py-1.5 block">
-                      {service.name}
-                    </Link>
-                  </li>
+            {/* All Services by Category */}
+            <div className="lg:col-span-4">
+              <h3 className="font-bold text-base sm:text-lg mb-6 text-white">Alle ydelser</h3>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                {SERVICE_CATEGORIES.map((category) => (
+                  <div key={category.name}>
+                    <h4 className="font-semibold text-[#85bd41] text-sm mb-3">{category.name}</h4>
+                    <ul className="space-y-1">
+                      {category.services.map((service) => (
+                        <li key={service.slug}>
+                          <Link 
+                            href={`/${service.slug}/`} 
+                            className="text-gray-400 hover:text-[#85bd41] transition-colors text-sm py-0.5 block"
+                          >
+                            {service.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </div>
+          </div>
 
-            {/* Cities - 2 columns on mobile, 3 columns spanning 2 grid cols on desktop */}
-            <div className="sm:col-span-2 lg:col-span-2">
+          {/* Cities + Quick Links */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 pt-8 border-t border-gray-800">
+            {/* Cities - 3 columns */}
+            <div className="sm:col-span-2 lg:col-span-3">
               <h3 className="font-bold text-base sm:text-lg mb-4 sm:mb-6 text-white">Vi dækker hele Sjælland</h3>
               
               {/* Mobile: 2 columns */}
@@ -191,19 +219,6 @@ export function Footer() {
                   </Link>
                 </li>
               </ul>
-
-              {/* Danske Malermestre */}
-              <div className="mt-6 sm:mt-8">
-                <p className="text-xs text-gray-500 mb-3">Medlem af</p>
-                <div className="relative h-8 sm:h-10 w-28 sm:w-32">
-                  <Image
-                    src={DANSKE_MALERMESTRE_URL}
-                    alt="Danske Malermestre"
-                    fill
-                    className="object-contain object-left"
-                  />
-                </div>
-              </div>
             </div>
           </div>
         </Container>
