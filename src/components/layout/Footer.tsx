@@ -50,14 +50,19 @@ export function Footer() {
               </div>
 
               {/* Trustpilot Badge */}
-              <div className="mt-6 flex items-center gap-2">
+              <a 
+                href="https://www.trustpilot.com/review/www.maler-christensen.dk?languages=all"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 flex items-center gap-2 hover:opacity-80 transition-opacity"
+              >
                 <div className="flex">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="w-5 h-5 text-[#00b67a] fill-[#00b67a]" />
                   ))}
                 </div>
                 <span className="text-gray-300">{COMPANY.trustpilotRating}/5 på Trustpilot</span>
-              </div>
+              </a>
             </div>
 
             {/* Services */}
