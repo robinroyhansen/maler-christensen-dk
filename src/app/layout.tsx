@@ -3,6 +3,7 @@ import { Inter } from "next/font/google"
 import "./globals.css"
 import { Header } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
+import { TrustBar } from "@/components/layout/TrustBar"
 import { COMPANY } from "@/lib/constants"
 
 const inter = Inter({ 
@@ -104,6 +105,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.className} antialiased`}>
+        <TrustBar />
         <Header />
         <main>{children}</main>
         <Footer />
