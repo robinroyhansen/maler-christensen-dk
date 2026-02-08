@@ -15,9 +15,11 @@ interface HeroProps {
   showCTA?: boolean
   backgroundImage?: string
   variant?: "home" | "page"
+  showVideo?: boolean
 }
 
 const HERO_IMAGE = "/images/hero/hero.jpg"
+const HERO_VIDEO = "https://qdphnqduwgnnwvmpksrr.supabase.co/storage/v1/object/public/site-assets/hero-video.mp4"
 
 // Paint brush SVG decoration
 function PaintBrushDecor() {
@@ -110,9 +112,11 @@ export function Hero({
   showCTA = true,
   backgroundImage = HERO_IMAGE,
   variant = "home",
+  showVideo = true,
 }: HeroProps) {
   const isHome = variant === "home"
   const prefersReducedMotion = useReducedMotion()
+  const useVideo = isHome && showVideo && !prefersReducedMotion
   
   // Calculate animation delays based on title word count
   const titleWords = title.split(" ").length
@@ -120,17 +124,31 @@ export function Hero({
   
   return (
     <section className={`relative ${isHome ? "min-h-[480px] sm:min-h-[550px] md:min-h-[600px] py-12 sm:py-16 md:py-24 lg:py-32" : "py-12 sm:py-16 md:py-24"} text-white overflow-hidden`}>
-      {/* Background Image */}
+      {/* Background Video or Image */}
       <div className="absolute inset-0">
-        <Image
-          src={backgroundImage}
-          alt="Professionelt malerarbejde udført af Schou & Christensen i Slagelse"
-          fill
-          className="object-cover"
-          priority
-          fetchPriority="high"
-          sizes="100vw"
-        />
+        {useVideo ? (
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            poster={backgroundImage}
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src={HERO_VIDEO} type="video/mp4" />
+          </video>
+        ) : (
+          <Image
+            src={backgroundImage}
+            alt="Professionelt malerarbejde udført af Schou & Christensen i Slagelse"
+            fill
+            className="object-cover"
+            priority
+            fetchPriority="high"
+            sizes="100vw"
+          />
+        )}
         {/* Dark overlay with gradient */}
         <div className="absolute inset-0 bg-gradient-to-r from-gray-900/95 via-gray-900/85 to-gray-900/70" />
         {/* Subtle pattern overlay */}
