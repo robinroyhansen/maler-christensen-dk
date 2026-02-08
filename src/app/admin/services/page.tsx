@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { createClient } from "@/lib/supabase/client"
 import { SERVICES } from "@/lib/constants"
+import { SERVICE_CONTENT } from "@/lib/content/services"
 import { Button } from "@/components/ui/Button"
 import { Input } from "@/components/ui/Input"
 import { Textarea } from "@/components/ui/Textarea"
@@ -21,6 +22,8 @@ interface ServiceItem {
   is_visible: boolean
   sort_order: number
   isFromCode: boolean
+  metaTitle: string
+  metaDescription: string
 }
 
 export default function ServicesPage() {
@@ -58,6 +61,7 @@ export default function ServicesPage() {
     // Merge with code services
     const allServices: ServiceItem[] = SERVICES.map((service, index) => {
       const dbService = dbServiceMap.get(service.slug)
+      const content = SERVICE_CONTENT[service.slug]
       return {
         id: dbService?.id || null,
         slug: service.slug,
@@ -67,6 +71,8 @@ export default function ServicesPage() {
         is_visible: dbService?.is_visible ?? true,
         sort_order: dbService?.sort_order ?? index,
         isFromCode: true,
+        metaTitle: dbService?.meta_title || content?.metaTitle || "",
+        metaDescription: dbService?.meta_description || content?.metaDescription || "",
       }
     })
 
@@ -152,6 +158,8 @@ export default function ServicesPage() {
       icon: selectedService.icon,
       is_visible: selectedService.is_visible,
       sort_order: selectedService.sort_order,
+      meta_title: selectedService.metaTitle || null,
+      meta_description: selectedService.metaDescription || null,
     }
 
     if (selectedService.id) {
@@ -392,7 +400,7 @@ export default function ServicesPage() {
                 onChange={(e) => setSelectedService({ ...selectedService, description: e.target.value })}
               />
 
-              <div className="flex items-center gap-4 pt-4">
+              <div className="flex items-center gap-4 pt-2">
                 <label className="flex items-center gap-2">
                   <input
                     type="checkbox"
@@ -404,17 +412,44 @@ export default function ServicesPage() {
                 </label>
               </div>
 
+              {/* SEO Fields */}
+              <div className="border-t pt-4 mt-4">
+                <p className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-3">SEO</p>
+                <div className="space-y-3">
+                  <Input
+                    label={`Meta titel (${(selectedService.metaTitle || '').length}/60)`}
+                    value={selectedService.metaTitle}
+                    onChange={(e) => setSelectedService({ ...selectedService, metaTitle: e.target.value })}
+                    placeholder={SERVICE_CONTENT[selectedService.slug]?.metaTitle || "Auto-genereret titel..."}
+                    maxLength={60}
+                  />
+                  <Textarea
+                    label={`Meta beskrivelse (${(selectedService.metaDescription || '').length}/160)`}
+                    rows={2}
+                    value={selectedService.metaDescription}
+                    onChange={(e) => setSelectedService({ ...selectedService, metaDescription: e.target.value })}
+                    placeholder={SERVICE_CONTENT[selectedService.slug]?.metaDescription || "Auto-genereret beskrivelse..."}
+                    maxLength={160}
+                  />
+                  {/* SERP Preview */}
+                  <div className="bg-white border rounded-lg p-3">
+                    <p className="text-xs text-gray-400 mb-1">Google forhåndsvisning:</p>
+                    <p className="text-blue-700 text-sm font-medium truncate">
+                      {selectedService.metaTitle || SERVICE_CONTENT[selectedService.slug]?.metaTitle || selectedService.name}
+                    </p>
+                    <p className="text-green-700 text-xs">maler-christensen.dk/{selectedService.slug}/</p>
+                    <p className="text-gray-600 text-xs line-clamp-2">
+                      {selectedService.metaDescription || SERVICE_CONTENT[selectedService.slug]?.metaDescription || selectedService.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
               <div className="flex gap-4 pt-4">
                 <Button onClick={handleSaveService} disabled={saving}>
                   <Save className="w-4 h-4 mr-2" />
                   {saving ? "Gemmer..." : "Gem ændringer"}
                 </Button>
-                <Link href={`/admin/pages/${selectedService.slug}`}>
-                  <Button variant="outline">
-                    <Edit className="w-4 h-4 mr-2" />
-                    Rediger indhold
-                  </Button>
-                </Link>
                 {!selectedService.isFromCode && (
                   <Button 
                     variant="outline" 
