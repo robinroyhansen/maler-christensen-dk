@@ -107,16 +107,16 @@ export default function SEODashboard() {
       })
     })
 
-    // Add static pages
+    // Add static pages (with hardcoded meta from page files)
     const staticPages = [
-      { slug: "forside", name: "Forside", url: "/" },
-      { slug: "kontakt", name: "Kontakt", url: "/kontakt/" },
-      { slug: "om-os", name: "Om os", url: "/om-os/" },
-      { slug: "galleri", name: "Galleri", url: "/galleri/" },
-      { slug: "partnere", name: "Partnere", url: "/partnere/" },
-      { slug: "referencer", name: "Referencer", url: "/referencer/" },
-      { slug: "maler-tilbud", name: "Gratis tilbud", url: "/maler-tilbud/" },
-      { slug: "vision", name: "Vision", url: "/vision/" },
+      { slug: "forside", name: "Forside", url: "/", metaTitle: "Malerfirma Slagelse — ★ 4.9 på Trustpilot | 250+ anmeldelser", metaDescription: "Professionelt malerfirma i Slagelse. Indvendig og udvendig maling, spartling, tapetsering og microcement. Gratis tilbud — ring 53 50 77 00" },
+      { slug: "kontakt", name: "Kontakt", url: "/kontakt/", metaTitle: "Kontakt os — Ring 53 50 77 00 | Gratis tilbud inden 24 timer", metaDescription: "Kontakt Schou & Christensen for et gratis maletilbud. Ring 53 50 77 00 eller udfyld formularen. Vi vender tilbage inden 24 timer." },
+      { slug: "om-os", name: "Om os", url: "/om-os/", metaTitle: "Om os — Malerfirmaet Schou & Christensen | Slagelse", metaDescription: "Mød Jess og Stefan — ejerne af Schou & Christensen, lokalt malerfirma i Slagelse med 15+ års erfaring. Medlem af Danske Malermestre. ★ 4.9 på Trustpilot" },
+      { slug: "galleri", name: "Galleri", url: "/galleri/", metaTitle: "Galleri — Se vores malerarbejde | Før og efter billeder", metaDescription: "Se eksempler på vores malerarbejde. Microcement, husmaling, lejligheder og erhverv. Lad dig inspirere til dit næste projekt." },
+      { slug: "partnere", name: "Partnere", url: "/partnere/", metaTitle: "Partnere — Danske Malermestre & samarbejdspartnere", metaDescription: "Vi samarbejder med Danske Malermestre og førende leverandører. Kvalitetsmaling og professionelt udstyr til ethvert projekt." },
+      { slug: "referencer", name: "Referencer", url: "/referencer/", metaTitle: "Referencer — Læs 250+ kundeanmeldelser | ★ 4.9 Trustpilot", metaDescription: "Se hvad vores kunder siger om Schou & Christensen. 250+ anmeldelser med 4.9 stjerner på Trustpilot." },
+      { slug: "maler-tilbud", name: "Gratis tilbud", url: "/maler-tilbud/", metaTitle: "Få et gratis maletilbud — Svar inden 24 timer | ★ 4.9", metaDescription: "Udfyld formularen og få et gratis, uforpligtende tilbud på dit malerarbejde. Vi svarer inden 24 timer. Ring 53 50 77 00" },
+      { slug: "vision", name: "Vision", url: "/vision/", metaTitle: "Vores vision — Din tilfredshed er vores fremtid", metaDescription: "Vi bygger på stolte håndværkstraditioner. Kvalitetsarbejde, personlig service og 100% kundetilfredshed. Schou & Christensen, Slagelse." },
     ]
 
     staticPages.forEach((page) => {
@@ -125,8 +125,8 @@ export default function SEODashboard() {
         slug: page.slug,
         name: page.name,
         type: "static",
-        metaTitle: dbOverride?.meta_title || "",
-        metaDescription: dbOverride?.meta_description || "",
+        metaTitle: dbOverride?.meta_title || page.metaTitle,
+        metaDescription: dbOverride?.meta_description || page.metaDescription,
         hasDbOverride: !!dbOverride,
         url: page.url,
       })
