@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import Image from "next/image"
 import { Hero } from "@/components/sections/Hero"
 import { Container } from "@/components/ui/Container"
 import { CTA } from "@/components/sections/CTA"
@@ -44,6 +45,22 @@ export default function OmOsPage() {
                 malere håndterer alt fra små istandsættelser til store renoveringsprojekter. Vores 
                 {COMPANY.trustpilotRating}/5 rating på Trustpilot vidner om vores engagement i kundetilfredshed.
               </p>
+
+              {/* Historical Photo */}
+              <figure className="mt-8 mb-4">
+                <div className="relative w-full max-w-md mx-auto overflow-hidden rounded-lg shadow-lg">
+                  <Image
+                    src="/images/historie-1892.jpg"
+                    alt="Malere fra 1892 — den stærke danske håndværkstradition"
+                    width={2018}
+                    height={2835}
+                    className="w-full h-auto grayscale"
+                  />
+                </div>
+                <figcaption className="text-center text-sm text-gray-500 mt-3 italic">
+                  Malere anno 1892 — vi bygger videre på en stolt dansk håndværkstradition
+                </figcaption>
+              </figure>
 
               <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Vores værdier</h2>
               <p className="text-gray-600 leading-relaxed">
