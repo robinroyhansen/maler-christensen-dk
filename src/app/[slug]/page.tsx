@@ -13,6 +13,7 @@ import { FAQ } from "@/components/sections/FAQ"
 import { ContactForm } from "@/components/sections/ContactForm"
 import { ServiceAreas } from "@/components/sections/ServiceAreas"
 import { ProjectGallery, SILKECEMENT_IMAGES } from "@/components/sections/ProjectGallery"
+import { ServiceGallery } from "@/components/sections/ServiceGallery"
 import { FAQSchema, ServiceSchema } from "@/components/seo"
 import { Container } from "@/components/ui/Container"
 import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/ui/AnimateIn"
@@ -113,7 +114,8 @@ function ServicePage({
   slug: string 
 }) {
   const relatedServices = SERVICES.filter(s => content.relatedServices.includes(s.slug))
-  const showGallery = slug === "microcement" || slug === "metallisk-pu-gulv"
+  const showMicrocementGallery = slug === "microcement"
+  const showPUGulvGallery = slug === "metallisk-pu-gulv"
   const serviceFaqs = getServiceFAQs(slug)
 
   return (
@@ -182,13 +184,23 @@ function ServicePage({
         </Container>
       </section>
 
-      {/* Project Gallery for microcement/microcement pages */}
-      {showGallery && (
+      {/* Project Gallery for microcement pages */}
+      {showMicrocementGallery && (
         <ProjectGallery
           images={SILKECEMENT_IMAGES}
           title="Se vores projekter"
           subtitle="Klik på billederne for at se dem i fuld størrelse"
           columns={4}
+        />
+      )}
+
+      {/* Service Gallery for metallisk PU gulv from Supabase */}
+      {showPUGulvGallery && (
+        <ServiceGallery
+          category="pu-gulv"
+          title="Se vores PU gulv projekter"
+          subtitle="Klik på billederne for at se dem i fuld størrelse"
+          columns={3}
         />
       )}
 
