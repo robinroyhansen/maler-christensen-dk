@@ -4,14 +4,19 @@ import { Hero } from "@/components/sections/Hero"
 import { Container } from "@/components/ui/Container"
 import { CTA } from "@/components/sections/CTA"
 import { COMPANY } from "@/lib/constants"
+import { getPageMeta } from "@/lib/data/page-meta"
 import { Handshake, Building, Users, Award } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "Partnere — Danske Malermestre & samarbejdspartnere",
-  description: `Vi samarbejder med Danske Malermestre og førende leverandører. Kvalitetsmaling og professionelt udstyr til ethvert projekt.`,
-  alternates: {
-    canonical: `https://${COMPANY.domain}/partnere/`,
-  },
+export async function generateMetadata(): Promise<Metadata> {
+  const meta = await getPageMeta("partnere", {
+    title: "Partnere — Danske Malermestre & samarbejdspartnere",
+    description: "Vi samarbejder med Danske Malermestre og førende leverandører. Kvalitetsmaling og professionelt udstyr til ethvert projekt.",
+  })
+  return {
+    title: meta.title,
+    description: meta.description,
+    alternates: { canonical: `https://${COMPANY.domain}/partnere/` },
+  }
 }
 
 const PARTNERS = [

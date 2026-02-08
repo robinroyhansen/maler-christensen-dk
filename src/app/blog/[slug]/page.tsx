@@ -44,6 +44,7 @@ export async function generateMetadata({
       publishedTime: post.date,
       authors: [post.author],
       siteName: COMPANY.name,
+      images: [{ url: `https://${COMPANY.domain}/images/hero/hero.jpg`, width: 1200, height: 630, alt: post.title }],
     },
     twitter: {
       card: "summary_large_image",

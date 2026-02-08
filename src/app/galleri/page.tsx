@@ -4,13 +4,24 @@ import { Container } from "@/components/ui/Container"
 import { CTA } from "@/components/sections/CTA"
 import { ServiceGallery } from "@/components/sections/ServiceGallery"
 import { COMPANY } from "@/lib/constants"
+import { getPageMeta } from "@/lib/data/page-meta"
 
-export const metadata: Metadata = {
-  title: "Galleri — Se vores malerarbejde | Før og efter billeder",
-  description: `Se eksempler på vores malerarbejde. Microcement, husmaling, lejligheder og erhverv. Lad dig inspirere til dit næste projekt.`,
-  alternates: {
-    canonical: `https://${COMPANY.domain}/galleri/`,
-  },
+export async function generateMetadata(): Promise<Metadata> {
+  const meta = await getPageMeta("galleri", {
+    title: "Galleri — Se vores malerarbejde | Før og efter billeder",
+    description: "Se eksempler på vores malerarbejde. Microcement, husmaling, lejligheder og erhverv. Lad dig inspirere til dit næste projekt.",
+  })
+  return {
+    title: meta.title,
+    description: meta.description,
+    alternates: { canonical: `https://${COMPANY.domain}/galleri/` },
+    openGraph: {
+      title: meta.title,
+      description: meta.description,
+      url: `https://${COMPANY.domain}/galleri/`,
+      images: [{ url: `https://${COMPANY.domain}/images/hero/hero.jpg`, width: 1200, height: 630, alt: "Galleri — Schou & Christensen malerarbejde" }],
+    },
+  }
 }
 
 const GALLERY_SECTIONS = [

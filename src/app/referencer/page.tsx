@@ -4,15 +4,26 @@ import { Container } from "@/components/ui/Container"
 import { ReviewsServer } from "@/components/sections/ReviewsServer"
 import { CTA } from "@/components/sections/CTA"
 import { COMPANY } from "@/lib/constants"
+import { getPageMeta } from "@/lib/data/page-meta"
 import { Building2, Home, Factory, TreePine, Star } from "lucide-react"
 import Link from "next/link"
 
-export const metadata: Metadata = {
-  title: "Referencer — Læs 250+ kundeanmeldelser | ★ 4.9 Trustpilot",
-  description: `Læs hvad vores kunder siger. 250+ anmeldelser på Trustpilot med 4.9/5 i score. Se hvorfor vi er Sjællands bedst anmeldte maler.`,
-  alternates: {
-    canonical: `https://${COMPANY.domain}/referencer/`,
-  },
+export async function generateMetadata(): Promise<Metadata> {
+  const meta = await getPageMeta("referencer", {
+    title: "Referencer — Læs 250+ kundeanmeldelser | ★ 4.9 Trustpilot",
+    description: "Læs hvad vores kunder siger. 250+ anmeldelser på Trustpilot med 4.9/5 i score. Se hvorfor vi er Sjællands bedst anmeldte maler.",
+  })
+  return {
+    title: meta.title,
+    description: meta.description,
+    alternates: { canonical: `https://${COMPANY.domain}/referencer/` },
+    openGraph: {
+      title: meta.title,
+      description: meta.description,
+      url: `https://${COMPANY.domain}/referencer/`,
+      images: [{ url: `https://${COMPANY.domain}/images/hero/hero.jpg`, width: 1200, height: 630, alt: "Referencer — Schou & Christensen" }],
+    },
+  }
 }
 
 const REFERENCE_PROJECTS = [

@@ -18,6 +18,7 @@ export const metadata: Metadata = {
     title: "Blog — Maletips og inspiration | Schou & Christensen",
     description: "Få tips og inspiration til malerarbejde. Læs om priser, vedligeholdelse og de nyeste trends.",
     url: `https://${COMPANY.domain}/blog/`,
+    images: [{ url: `https://${COMPANY.domain}/images/hero/hero.jpg`, width: 1200, height: 630, alt: "Schou & Christensen Blog" }],
   },
 }
 

@@ -3,15 +3,21 @@ import { Hero } from "@/components/sections/Hero"
 import { Container } from "@/components/ui/Container"
 import { CTA } from "@/components/sections/CTA"
 import { COMPANY } from "@/lib/constants"
+import { getPageMeta } from "@/lib/data/page-meta"
 import { Target, Heart, Lightbulb, TrendingUp } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "Vores vision — Din tilfredshed er vores fremtid",
-  description: `Vi bygger på stolte håndværkstraditioner. Kvalitetsarbejde, personlig service og 100% kundetilfredshed. Schou & Christensen, Slagelse.`,
-  alternates: {
-    canonical: `https://${COMPANY.domain}/vision/`,
-  },
+export async function generateMetadata(): Promise<Metadata> {
+  const meta = await getPageMeta("vision", {
+    title: "Vores vision — Din tilfredshed er vores fremtid",
+    description: "Vi bygger på stolte håndværkstraditioner. Kvalitetsarbejde, personlig service og 100% kundetilfredshed. Schou & Christensen, Slagelse.",
+  })
+  return {
+    title: meta.title,
+    description: meta.description,
+    alternates: { canonical: `https://${COMPANY.domain}/vision/` },
+  }
 }
+
 
 export default function VisionPage() {
   return (

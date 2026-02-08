@@ -4,14 +4,25 @@ import { ContactForm } from "@/components/sections/ContactForm"
 import { Container } from "@/components/ui/Container"
 import { ReviewsServer } from "@/components/sections/ReviewsServer"
 import { COMPANY } from "@/lib/constants"
+import { getPageMeta } from "@/lib/data/page-meta"
 import { CheckCircle, Clock, Shield, Banknote } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "Få et gratis maletilbud — Svar inden 24 timer | ★ 4.9",
-  description: `Udfyld formularen og få et gratis, uforpligtende tilbud på dit malerarbejde. Vi svarer inden 24 timer. Ring ${COMPANY.phone}`,
-  alternates: {
-    canonical: `https://${COMPANY.domain}/maler-tilbud/`,
-  },
+export async function generateMetadata(): Promise<Metadata> {
+  const meta = await getPageMeta("maler-tilbud", {
+    title: "Få et gratis maletilbud — Svar inden 24 timer | ★ 4.9",
+    description: "Udfyld formularen og få et gratis, uforpligtende tilbud på dit malerarbejde. Vi svarer inden 24 timer. Ring 53 50 77 00",
+  })
+  return {
+    title: meta.title,
+    description: meta.description,
+    alternates: { canonical: `https://${COMPANY.domain}/maler-tilbud/` },
+    openGraph: {
+      title: meta.title,
+      description: meta.description,
+      url: `https://${COMPANY.domain}/maler-tilbud/`,
+      images: [{ url: `https://${COMPANY.domain}/images/hero/hero.jpg`, width: 1200, height: 630, alt: "Få et gratis maletilbud" }],
+    },
+  }
 }
 
 export default function MalerTilbudPage() {

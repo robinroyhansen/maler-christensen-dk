@@ -30,11 +30,20 @@ export const metadata: Metadata = {
     siteName: COMPANY.name,
     title: `Maler Slagelse | ${COMPANY.name}`,
     description: `Professionelt malerfirma i Slagelse med ${COMPANY.trustpilotRating}/5 på Trustpilot.`,
+    images: [
+      {
+        url: `https://${COMPANY.domain}/images/hero/hero.jpg`,
+        width: 1200,
+        height: 630,
+        alt: `${COMPANY.name} — professionelt malerarbejde`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `Maler Slagelse | ${COMPANY.name}`,
     description: `Professionelt malerfirma i Slagelse med ${COMPANY.trustpilotRating}/5 på Trustpilot.`,
+    images: [`https://${COMPANY.domain}/images/hero/hero.jpg`],
   },
   robots: {
     index: true,

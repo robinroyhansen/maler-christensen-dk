@@ -5,18 +5,26 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/Button"
 import { cn } from "@/lib/utils"
+import { createClient } from "@/lib/supabase/client"
 import { 
   LayoutDashboard, FileText, Image, Star, Mail, 
   Users, Settings, LogOut, Menu, X, MapPin, ArrowLeft,
   Repeat, BarChart3, Wrench, PenLine, SearchCheck
 } from "lucide-react"
 
-const NAV_ITEMS = [
+type NavItem = {
+  href: string
+  label: string
+  icon: React.ComponentType<{ className?: string }>
+  hasBadge?: boolean
+}
+
+const NAV_ITEMS: NavItem[] = [
   { href: "/admin", label: "SEO Oversigt", icon: LayoutDashboard },
   { href: "/admin/pages", label: "Sider", icon: FileText },
   { href: "/admin/blog", label: "Blog", icon: PenLine },
   { href: "/admin/reviews", label: "Anmeldelser", icon: Star },
-  { href: "/admin/leads", label: "Henvendelser", icon: Mail },
+  { href: "/admin/leads", label: "Henvendelser", icon: Mail, hasBadge: true },
   { href: "/admin/gallery", label: "Galleri", icon: Image },
   { href: "/admin/services", label: "Services", icon: Wrench },
   { href: "/admin/cities", label: "Byer", icon: MapPin },
@@ -55,7 +63,27 @@ export default function AdminLayout({
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [unreadLeads, setUnreadLeads] = useState(0)
   const pathname = usePathname()
+  const supabase = createClient()
+
+  // Fetch unread lead count
+  useEffect(() => {
+    const fetchUnreadCount = async () => {
+      const { count } = await supabase
+        .from("contact_submissions")
+        .select("*", { count: "exact", head: true })
+        .eq("is_read", false)
+      setUnreadLeads(count || 0)
+    }
+    
+    if (getAuthCookie()) {
+      fetchUnreadCount()
+      // Refresh every 30 seconds
+      const interval = setInterval(fetchUnreadCount, 30000)
+      return () => clearInterval(interval)
+    }
+  }, [pathname])
 
   useEffect(() => {
     setIsAuthenticated(getAuthCookie())
@@ -180,7 +208,7 @@ export default function AdminLayout({
                 href={item.href}
                 onClick={() => setSidebarOpen(false)}
                 className={cn(
-                  "flex items-center gap-3 px-4 py-3 rounded-lg transition-colors",
+                  "flex items-center gap-3 px-4 py-3 rounded-lg transition-colors relative",
                   pathname === item.href
                     ? "bg-[#6b9834] text-white"
                     : "text-gray-700 hover:bg-gray-100"
@@ -188,6 +216,16 @@ export default function AdminLayout({
               >
                 <item.icon className="w-5 h-5" />
                 {item.label}
+                {item.hasBadge && unreadLeads > 0 && (
+                  <span className={cn(
+                    "absolute right-3 min-w-[20px] h-5 flex items-center justify-center rounded-full text-xs font-bold",
+                    pathname === item.href
+                      ? "bg-white text-[#6b9834]"
+                      : "bg-red-500 text-white"
+                  )}>
+                    {unreadLeads > 99 ? "99+" : unreadLeads}
+                  </span>
+                )}
               </Link>
             ))}
           </nav>

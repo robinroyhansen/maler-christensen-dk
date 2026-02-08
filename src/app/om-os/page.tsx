@@ -6,14 +6,25 @@ import { CTA } from "@/components/sections/CTA"
 import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/ui/AnimateIn"
 import { CountUp } from "@/components/ui/CountUp"
 import { COMPANY } from "@/lib/constants"
+import { getPageMeta } from "@/lib/data/page-meta"
 import { CheckCircle, Award, Users, Clock, Star, Shield } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "Om os — Malerfirmaet Schou & Christensen | Slagelse",
-  description: `Mød Jess og Stefan — ejerne af Schou & Christensen, lokalt malerfirma i Slagelse med 15+ års erfaring. Medlem af Danske Malermestre. ★ 4.9 på Trustpilot`,
-  alternates: {
-    canonical: `https://${COMPANY.domain}/om-os/`,
-  },
+export async function generateMetadata(): Promise<Metadata> {
+  const meta = await getPageMeta("om-os", {
+    title: "Om os — Malerfirmaet Schou & Christensen | Slagelse",
+    description: `Mød Jess og Stefan — ejerne af Schou & Christensen, lokalt malerfirma i Slagelse med 15+ års erfaring. Medlem af Danske Malermestre. ★ 4.9 på Trustpilot`,
+  })
+  return {
+    title: meta.title,
+    description: meta.description,
+    alternates: { canonical: `https://${COMPANY.domain}/om-os/` },
+    openGraph: {
+      title: meta.title,
+      description: meta.description,
+      url: `https://${COMPANY.domain}/om-os/`,
+      images: [{ url: `https://${COMPANY.domain}/images/historie-1892.jpg`, width: 1200, height: 630, alt: "Om Schou & Christensen" }],
+    },
+  }
 }
 
 export default function OmOsPage() {
