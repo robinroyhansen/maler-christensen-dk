@@ -119,6 +119,8 @@ function ServicePage({
   const showUdvendigGallery = slug === "udvendig-maling"
   const showTrappeGallery = slug === "maling-trappe"
   const showIndvendigGallery = slug === "indvendig-maling"
+  const showSprojtespartlingGallery = slug === "sprojtespartling"
+  const showSproejtmalingGallery = slug === "sproejtmaling"
   const serviceFaqs = getServiceFAQs(slug)
 
   return (
@@ -234,6 +236,26 @@ function ServicePage({
           title="Se vores indvendige maleropgaver"
           subtitle="Klik på billederne for at se dem i fuld størrelse"
           columns={3}
+        />
+      )}
+
+      {/* Service Gallery for sprøjtespartling from Supabase */}
+      {showSprojtespartlingGallery && (
+        <ServiceGallery
+          category="sprojtespartling"
+          title="Se vores sprøjtespartling-projekter"
+          subtitle="Klik på billederne for at se dem i fuld størrelse"
+          columns={3}
+        />
+      )}
+
+      {/* Service Gallery for sprøjtemaling from Supabase */}
+      {showSproejtmalingGallery && (
+        <ServiceGallery
+          category="sproejtmaling"
+          title="Se vores sprøjtemaling — før og efter"
+          subtitle="Klik på billederne for at se dem i fuld størrelse"
+          columns={2}
         />
       )}
 
