@@ -35,27 +35,27 @@ function PaintBrushDecor() {
   )
 }
 
-// Floating Trustpilot Badge Card
+// Floating Trustpilot Badge Card - responsive sizes
 function TrustpilotBadge() {
   return (
-    <div className="trustpilot-badge rounded-2xl px-6 py-5 inline-flex flex-col items-center animate-fade-in animation-delay-300">
+    <div className="trustpilot-badge rounded-xl sm:rounded-2xl px-4 sm:px-6 py-4 sm:py-5 inline-flex flex-col items-center animate-fade-in animation-delay-300">
       {/* Stars */}
-      <div className="flex gap-1 mb-2">
+      <div className="flex gap-0.5 sm:gap-1 mb-1.5 sm:mb-2">
         {[...Array(5)].map((_, i) => (
-          <Star key={i} className="w-7 h-7 text-[#00b67a] fill-[#00b67a]" />
+          <Star key={i} className="w-5 h-5 sm:w-7 sm:h-7 text-[#00b67a] fill-[#00b67a]" />
         ))}
       </div>
       {/* Score */}
-      <div className="text-3xl font-bold text-white mb-1">
+      <div className="text-2xl sm:text-3xl font-bold text-white mb-0.5 sm:mb-1">
         {COMPANY.trustpilotRating} / 5
       </div>
       {/* Subtext */}
-      <div className="text-white/80 text-sm">
+      <div className="text-white/80 text-xs sm:text-sm">
         Baseret på {COMPANY.trustpilotReviews}+ anmeldelser
       </div>
       {/* Trustpilot logo text */}
-      <div className="mt-2 flex items-center gap-1.5 text-xs text-white/60">
-        <Star className="w-3.5 h-3.5 fill-[#00b67a] text-[#00b67a]" />
+      <div className="mt-1.5 sm:mt-2 flex items-center gap-1.5 text-xs text-white/60">
+        <Star className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-[#00b67a] text-[#00b67a]" />
         Trustpilot
       </div>
     </div>
@@ -73,7 +73,7 @@ export function Hero({
   const isHome = variant === "home"
   
   return (
-    <section className={`relative ${isHome ? "min-h-[550px] md:min-h-[600px] py-24 md:py-32" : "py-16 md:py-24"} text-white overflow-hidden`}>
+    <section className={`relative ${isHome ? "min-h-[480px] sm:min-h-[550px] md:min-h-[600px] py-12 sm:py-16 md:py-24 lg:py-32" : "py-12 sm:py-16 md:py-24"} text-white overflow-hidden`}>
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
@@ -98,7 +98,7 @@ export function Hero({
       <PaintBrushDecor />
 
       <Container className="relative z-10">
-        <div className={`${isHome ? "grid lg:grid-cols-5 gap-8 items-center" : ""}`}>
+        <div className={`${isHome ? "flex flex-col lg:grid lg:grid-cols-5 gap-6 lg:gap-8 items-center" : ""}`}>
           {/* Content */}
           <div className={isHome ? "lg:col-span-3" : "max-w-3xl"}>
             {/* Small Trustpilot indicator for page variant */}
@@ -114,41 +114,41 @@ export function Hero({
             )}
 
             {/* Title */}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight tracking-tight animate-slide-in-left">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight tracking-tight animate-slide-in-left">
               {title}
             </h1>
 
             {/* Subtitle */}
-            <p className="text-xl md:text-2xl text-gray-200 mb-8 leading-relaxed animate-fade-in-up animation-delay-100">
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-200 mb-6 sm:mb-8 leading-relaxed animate-fade-in-up animation-delay-100">
               {subtitle}
             </p>
 
             {/* USPs */}
-            <div className="flex flex-wrap gap-4 md:gap-6 mb-8 animate-fade-in-up animation-delay-200">
-              <div className="flex items-center gap-2 text-[#85bd41]">
-                <CheckCircle className="w-5 h-5" />
-                <span className="font-medium">Gratis tilbud</span>
+            <div className="flex flex-wrap gap-3 sm:gap-4 md:gap-6 mb-6 sm:mb-8 animate-fade-in-up animation-delay-200">
+              <div className="flex items-center gap-1.5 sm:gap-2 text-[#85bd41]">
+                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5" />
+                <span className="font-medium text-sm sm:text-base">Gratis tilbud</span>
               </div>
-              <div className="flex items-center gap-2 text-[#85bd41]">
-                <CheckCircle className="w-5 h-5" />
-                <span className="font-medium">Hurtig opstart</span>
+              <div className="flex items-center gap-1.5 sm:gap-2 text-[#85bd41]">
+                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5" />
+                <span className="font-medium text-sm sm:text-base">Hurtig opstart</span>
               </div>
-              <div className="flex items-center gap-2 text-[#85bd41]">
-                <CheckCircle className="w-5 h-5" />
-                <span className="font-medium">Erfarne malere</span>
+              <div className="flex items-center gap-1.5 sm:gap-2 text-[#85bd41]">
+                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5" />
+                <span className="font-medium text-sm sm:text-base">Erfarne malere</span>
               </div>
             </div>
 
-            {/* CTAs */}
+            {/* CTAs - Full width and stacked on mobile */}
             {showCTA && (
-              <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up animation-delay-300">
-                <Link href="/maler-tilbud/">
-                  <Button size="lg" className="w-full sm:w-auto">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 animate-fade-in-up animation-delay-300">
+                <Link href="/maler-tilbud/" className="w-full sm:w-auto">
+                  <Button size="lg" className="w-full sm:w-auto min-h-[48px]">
                     Få et gratis tilbud
                   </Button>
                 </Link>
-                <a href={COMPANY.phoneLink}>
-                  <Button variant="outline" size="lg" className="w-full sm:w-auto border-white text-white hover:bg-white hover:text-gray-900">
+                <a href={COMPANY.phoneLink} className="w-full sm:w-auto">
+                  <Button variant="outline" size="lg" className="w-full sm:w-auto border-white text-white hover:bg-white hover:text-gray-900 min-h-[48px]">
                     <Phone className="w-5 h-5 mr-2" />
                     Ring {COMPANY.phone}
                   </Button>
@@ -157,9 +157,9 @@ export function Hero({
             )}
           </div>
 
-          {/* Trustpilot Badge - only on home */}
+          {/* Trustpilot Badge - below content on mobile, to the right on desktop */}
           {showTrustpilot && isHome && (
-            <div className="lg:col-span-2 flex justify-center lg:justify-end mt-8 lg:mt-0">
+            <div className="lg:col-span-2 flex justify-center lg:justify-end mt-6 lg:mt-0">
               <TrustpilotBadge />
             </div>
           )}

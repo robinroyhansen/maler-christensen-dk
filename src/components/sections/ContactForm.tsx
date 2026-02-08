@@ -75,18 +75,18 @@ export function ContactForm({
 
   if (variant === "compact") {
     return (
-      <div className="bg-gray-900 rounded-2xl p-8 text-white">
-        <h3 className="text-2xl font-bold mb-4">{title}</h3>
-        <p className="text-gray-300 mb-6">{subtitle}</p>
+      <div className="bg-gray-900 rounded-xl sm:rounded-2xl p-6 sm:p-8 text-white">
+        <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">{title}</h3>
+        <p className="text-gray-300 mb-4 sm:mb-6 text-sm sm:text-base">{subtitle}</p>
 
         {isSubmitted ? (
-          <div className="text-center py-8">
-            <CheckCircle className="w-16 h-16 text-[#85bd41] mx-auto mb-4" />
-            <h4 className="text-xl font-semibold mb-2">Tak for din henvendelse!</h4>
-            <p className="text-gray-300">Vi kontakter dig inden for 24 timer.</p>
+          <div className="text-center py-6 sm:py-8">
+            <CheckCircle className="w-12 h-12 sm:w-16 sm:h-16 text-[#85bd41] mx-auto mb-3 sm:mb-4" />
+            <h4 className="text-lg sm:text-xl font-semibold mb-2">Tak for din henvendelse!</h4>
+            <p className="text-gray-300 text-sm sm:text-base">Vi kontakter dig inden for 24 timer.</p>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
             <input
               type="text"
               name="website"
@@ -103,7 +103,7 @@ export function ContactForm({
               required
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              className="bg-gray-800 border-gray-700 text-white placeholder:text-gray-400"
+              className="bg-gray-800 border-gray-700 text-white placeholder:text-gray-400 min-h-[48px]"
             />
             <Input
               id="email"
@@ -112,7 +112,7 @@ export function ContactForm({
               required
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              className="bg-gray-800 border-gray-700 text-white placeholder:text-gray-400"
+              className="bg-gray-800 border-gray-700 text-white placeholder:text-gray-400 min-h-[48px]"
             />
             <Input
               id="phone"
@@ -120,7 +120,7 @@ export function ContactForm({
               placeholder="Dit telefonnummer"
               value={formData.phone}
               onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-              className="bg-gray-800 border-gray-700 text-white placeholder:text-gray-400"
+              className="bg-gray-800 border-gray-700 text-white placeholder:text-gray-400 min-h-[48px]"
             />
             <Textarea
               id="message"
@@ -134,7 +134,7 @@ export function ContactForm({
 
             {error && <p className="text-red-400 text-sm">{error}</p>}
 
-            <Button type="submit" className="w-full" disabled={isSubmitting}>
+            <Button type="submit" className="w-full min-h-[48px]" disabled={isSubmitting}>
               {isSubmitting ? "Sender..." : "Send besked"}
               <Send className="w-4 h-4 ml-2" />
             </Button>
@@ -145,66 +145,68 @@ export function ContactForm({
   }
 
   return (
-    <section className="py-16 md:py-24 bg-white relative">
+    <section className="py-12 sm:py-16 md:py-24 bg-white relative">
       <Container>
-        <div className="text-center mb-14">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 tracking-tight section-heading-accent">
+        <div className="text-center mb-10 sm:mb-14">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 tracking-tight section-heading-accent">
             {title}
           </h2>
-          <p className="text-lg text-gray-500 max-w-2xl mx-auto mt-6">{subtitle}</p>
+          <p className="text-base sm:text-lg text-gray-500 max-w-2xl mx-auto mt-6 px-4 sm:px-0">{subtitle}</p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Contact Info */}
           <div>
-            <div className="bg-gray-50 rounded-2xl p-8 mb-8">
-              <h3 className="text-xl font-bold text-gray-900 mb-6">Kontaktoplysninger</h3>
+            <div className="bg-gray-50 rounded-xl sm:rounded-2xl p-6 sm:p-8 mb-6 sm:mb-8">
+              <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 sm:mb-6">Kontaktoplysninger</h3>
               
-              <div className="space-y-6">
-                <a href={COMPANY.phoneLink} className="flex items-center gap-4 group">
-                  <div className="w-14 h-14 bg-[#6b9834]/10 rounded-xl flex items-center justify-center group-hover:bg-[#6b9834] transition-colors">
-                    <Phone className="w-6 h-6 text-[#6b9834] group-hover:text-white transition-colors" />
+              <div className="space-y-4 sm:space-y-6">
+                {/* Phone - tappable */}
+                <a href={COMPANY.phoneLink} className="flex items-center gap-3 sm:gap-4 group min-h-[56px] active:opacity-80">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-[#6b9834]/10 rounded-lg sm:rounded-xl flex items-center justify-center group-hover:bg-[#6b9834] transition-colors flex-shrink-0">
+                    <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-[#6b9834] group-hover:text-white transition-colors" />
                   </div>
-                  <div>
-                    <p className="text-sm text-gray-500">Telefon</p>
-                    <p className="font-semibold text-gray-900 text-lg group-hover:text-[#6b9834] transition-colors">{COMPANY.phone}</p>
-                  </div>
-                </a>
-
-                <a href={`mailto:${COMPANY.email}`} className="flex items-center gap-4 group">
-                  <div className="w-14 h-14 bg-[#6b9834]/10 rounded-xl flex items-center justify-center group-hover:bg-[#6b9834] transition-colors">
-                    <Mail className="w-6 h-6 text-[#6b9834] group-hover:text-white transition-colors" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-500">E-mail</p>
-                    <p className="font-semibold text-gray-900 text-lg group-hover:text-[#6b9834] transition-colors">{COMPANY.email}</p>
+                  <div className="min-w-0">
+                    <p className="text-xs sm:text-sm text-gray-500">Telefon</p>
+                    <p className="font-semibold text-gray-900 text-base sm:text-lg group-hover:text-[#6b9834] transition-colors">{COMPANY.phone}</p>
                   </div>
                 </a>
 
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 bg-[#6b9834]/10 rounded-xl flex items-center justify-center">
-                    <MapPin className="w-6 h-6 text-[#6b9834]" />
+                {/* Email - tappable */}
+                <a href={`mailto:${COMPANY.email}`} className="flex items-center gap-3 sm:gap-4 group min-h-[56px] active:opacity-80">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-[#6b9834]/10 rounded-lg sm:rounded-xl flex items-center justify-center group-hover:bg-[#6b9834] transition-colors flex-shrink-0">
+                    <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-[#6b9834] group-hover:text-white transition-colors" />
                   </div>
-                  <div>
-                    <p className="text-sm text-gray-500">Adresse</p>
-                    <p className="font-semibold text-gray-900 text-lg">{COMPANY.fullAddress}</p>
+                  <div className="min-w-0">
+                    <p className="text-xs sm:text-sm text-gray-500">E-mail</p>
+                    <p className="font-semibold text-gray-900 text-base sm:text-lg group-hover:text-[#6b9834] transition-colors break-all">{COMPANY.email}</p>
+                  </div>
+                </a>
+
+                <div className="flex items-center gap-3 sm:gap-4 min-h-[56px]">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-[#6b9834]/10 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-[#6b9834]" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-xs sm:text-sm text-gray-500">Adresse</p>
+                    <p className="font-semibold text-gray-900 text-base sm:text-lg">{COMPANY.fullAddress}</p>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 bg-[#6b9834]/10 rounded-xl flex items-center justify-center">
-                    <Clock className="w-6 h-6 text-[#6b9834]" />
+                <div className="flex items-center gap-3 sm:gap-4 min-h-[56px]">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-[#6b9834]/10 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0">
+                    <Clock className="w-5 h-5 sm:w-6 sm:h-6 text-[#6b9834]" />
                   </div>
-                  <div>
-                    <p className="text-sm text-gray-500">Svartid</p>
-                    <p className="font-semibold text-gray-900 text-lg">Inden for 24 timer</p>
+                  <div className="min-w-0">
+                    <p className="text-xs sm:text-sm text-gray-500">Svartid</p>
+                    <p className="font-semibold text-gray-900 text-base sm:text-lg">Inden for 24 timer</p>
                   </div>
                 </div>
               </div>
             </div>
 
             {showMap && (
-              <div className="rounded-2xl overflow-hidden shadow-sm h-64 border border-gray-100">
+              <div className="rounded-xl sm:rounded-2xl overflow-hidden shadow-sm h-48 sm:h-64 border border-gray-100">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2255.5!2d11.3533!3d55.4019!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4652e9aec6c1a0eb%3A0x1234567890abcdef!2sYdunsvej%209%2C%204200%20Slagelse!5e0!3m2!1sda!2sdk!4v1707350000000!5m2!1sda!2sdk"
                   width="100%"
@@ -220,20 +222,20 @@ export function ContactForm({
           </div>
 
           {/* Form */}
-          <div className="bg-gray-50 rounded-2xl p-8">
+          <div className="bg-gray-50 rounded-xl sm:rounded-2xl p-6 sm:p-8">
             {isSubmitted ? (
-              <div className="text-center py-12">
-                <div className="w-20 h-20 bg-[#6b9834]/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <CheckCircle className="w-10 h-10 text-[#6b9834]" />
+              <div className="text-center py-8 sm:py-12">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#6b9834]/10 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
+                  <CheckCircle className="w-8 h-8 sm:w-10 sm:h-10 text-[#6b9834]" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Tak for din henvendelse!</h3>
-                <p className="text-gray-600 mb-8">Vi har modtaget din besked og vender tilbage inden for 24 timer.</p>
-                <Button onClick={() => setIsSubmitted(false)} variant="outline" className="border-[#6b9834] text-[#6b9834] hover:bg-[#6b9834] hover:text-white">
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">Tak for din henvendelse!</h3>
+                <p className="text-gray-600 mb-6 sm:mb-8 text-sm sm:text-base">Vi har modtaget din besked og vender tilbage inden for 24 timer.</p>
+                <Button onClick={() => setIsSubmitted(false)} variant="outline" className="border-[#6b9834] text-[#6b9834] hover:bg-[#6b9834] hover:text-white min-h-[48px]">
                   Send en ny besked
                 </Button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                 <input
                   type="text"
                   name="website"
@@ -251,8 +253,9 @@ export function ContactForm({
                   required
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  className="min-h-[48px]"
                 />
-                <div className="grid sm:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                   <Input
                     id="email"
                     type="email"
@@ -261,6 +264,7 @@ export function ContactForm({
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="min-h-[48px]"
                   />
                   <Input
                     id="phone"
@@ -269,6 +273,7 @@ export function ContactForm({
                     placeholder="12 34 56 78"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    className="min-h-[48px]"
                   />
                 </div>
                 <Textarea
@@ -283,12 +288,12 @@ export function ContactForm({
 
                 {error && <p className="text-red-500 text-sm">{error}</p>}
 
-                <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
+                <Button type="submit" size="lg" className="w-full min-h-[48px]" disabled={isSubmitting}>
                   {isSubmitting ? "Sender..." : "Send besked"}
                   <Send className="w-5 h-5 ml-2" />
                 </Button>
 
-                <p className="text-sm text-gray-500 text-center">
+                <p className="text-xs sm:text-sm text-gray-500 text-center">
                   Ved at sende accepterer du at vi kontakter dig vedrørende dit projekt.
                 </p>
               </form>

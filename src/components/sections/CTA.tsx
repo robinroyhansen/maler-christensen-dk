@@ -20,7 +20,7 @@ export function CTA({
     : "bg-gradient-to-r from-gray-900 to-gray-800"
 
   return (
-    <section className={`py-16 md:py-20 ${bgClass} text-white relative overflow-hidden`}>
+    <section className={`py-12 sm:py-16 md:py-20 ${bgClass} text-white relative overflow-hidden`}>
       {/* Background pattern */}
       <div className="absolute inset-0 hero-pattern opacity-50" />
       
@@ -29,38 +29,39 @@ export function CTA({
       <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-white/5 rounded-full blur-3xl" />
 
       <Container className="relative z-10">
-        <div className="text-center max-w-3xl mx-auto">
+        <div className="text-center max-w-3xl mx-auto px-4 sm:px-0">
           {/* Trustpilot mini badge */}
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
+          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-3 sm:px-4 py-2 mb-4 sm:mb-6">
             <div className="flex">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-4 h-4 text-[#00b67a] fill-[#00b67a]" />
+                <Star key={i} className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#00b67a] fill-[#00b67a]" />
               ))}
             </div>
-            <span className="text-sm font-medium text-white/90">{COMPANY.trustpilotRating}/5 på Trustpilot</span>
+            <span className="text-xs sm:text-sm font-medium text-white/90">{COMPANY.trustpilotRating}/5 på Trustpilot</span>
           </div>
 
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 tracking-tight">{title}</h2>
-          <p className="text-xl text-white/90 mb-8">{subtitle}</p>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 tracking-tight">{title}</h2>
+          <p className="text-base sm:text-lg md:text-xl text-white/90 mb-6 sm:mb-8">{subtitle}</p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/maler-tilbud/">
+          {/* Buttons: full width and stacked on mobile */}
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+            <Link href="/maler-tilbud/" className="w-full sm:w-auto">
               <Button 
                 size="lg" 
-                className={`${variant === "green" 
+                className={`w-full sm:w-auto min-h-[48px] ${variant === "green" 
                   ? "bg-white text-[#6b9834] hover:bg-gray-100" 
                   : "bg-[#6b9834] text-white hover:bg-[#5a8229]"
-                } shadow-lg hover:shadow-xl transition-all`}
+                } shadow-lg hover:shadow-xl transition-all active:scale-[0.98]`}
               >
                 Få gratis tilbud
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
             </Link>
-            <a href={COMPANY.phoneLink}>
+            <a href={COMPANY.phoneLink} className="w-full sm:w-auto">
               <Button 
                 size="lg" 
                 variant="outline"
-                className="border-white text-white hover:bg-white/10 backdrop-blur-sm"
+                className="w-full sm:w-auto min-h-[48px] border-white text-white hover:bg-white/10 backdrop-blur-sm active:scale-[0.98]"
               >
                 <Phone className="w-5 h-5 mr-2" />
                 Ring {COMPANY.phone}

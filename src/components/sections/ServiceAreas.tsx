@@ -21,29 +21,30 @@ export function ServiceAreas({ excludeSlug }: ServiceAreasProps) {
     : sortedCities
 
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-12 sm:py-16 bg-gray-50">
       <Container>
-        <div className="text-center mb-10">
+        <div className="text-center mb-8 sm:mb-10">
           <div className="inline-flex items-center gap-2 text-[#6b9834] font-medium mb-4">
             <MapPin className="w-5 h-5" />
             <span>Dækningsområde</span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Vi dækker hele Sjælland
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto px-4 sm:px-0">
             Uanset hvor du bor på Sjælland, kan vi hjælpe dig med professionelt malerarbejde
           </p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
+        {/* Responsive grid: 2 cols on mobile, scales up on larger screens */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2 sm:gap-3">
           {citiesToShow.map((city) => (
             <Link
               key={city.slug}
               href={`/${city.slug}/`}
-              className="group bg-white rounded-lg px-4 py-3 text-center shadow-sm hover:shadow-md border border-gray-100 hover:border-[#6b9834]/30 transition-all"
+              className="group bg-white rounded-lg px-3 sm:px-4 py-2.5 sm:py-3 text-center shadow-sm hover:shadow-md border border-gray-100 hover:border-[#6b9834]/30 transition-all min-h-[44px] flex items-center justify-center active:scale-[0.98]"
             >
-              <span className="text-gray-700 group-hover:text-[#6b9834] font-medium transition-colors">
+              <span className="text-gray-700 group-hover:text-[#6b9834] font-medium transition-colors text-xs sm:text-sm">
                 {city.name}
               </span>
             </Link>

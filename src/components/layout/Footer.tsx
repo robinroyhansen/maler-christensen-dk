@@ -15,16 +15,22 @@ const sortedCities = [...CITIES].sort((a, b) => {
 })
 
 export function Footer() {
-  // Split cities into 3 columns
+  // Split cities into 2 columns on mobile, 3 on desktop
   const citiesPerColumn = Math.ceil(sortedCities.length / 3)
   const cityColumns = [
     sortedCities.slice(0, citiesPerColumn),
     sortedCities.slice(citiesPerColumn, citiesPerColumn * 2),
     sortedCities.slice(citiesPerColumn * 2),
   ]
+  
+  // For mobile, merge into 2 columns
+  const mobileColumns = [
+    sortedCities.slice(0, Math.ceil(sortedCities.length / 2)),
+    sortedCities.slice(Math.ceil(sortedCities.length / 2)),
+  ]
 
   return (
-    <footer className="bg-gray-900 text-white relative">
+    <footer className="bg-gray-900 text-white relative overflow-x-hidden">
       {/* Wave divider */}
       <div className="absolute -top-10 left-0 right-0 h-10 overflow-hidden">
         <svg 
@@ -40,13 +46,13 @@ export function Footer() {
       </div>
 
       {/* Main Footer */}
-      <div className="py-16 pt-20">
+      <div className="py-12 sm:py-16 pt-16 sm:pt-20">
         <Container>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
             {/* Company Info */}
-            <div className="lg:col-span-1">
+            <div className="sm:col-span-2 lg:col-span-1">
               <div className="flex items-center gap-3 mb-6">
-                <div className="relative h-12 w-36">
+                <div className="relative h-10 sm:h-12 w-28 sm:w-36">
                   <Image
                     src={LOGO_URL}
                     alt={COMPANY.shortName}
@@ -57,16 +63,18 @@ export function Footer() {
               </div>
               
               <div className="space-y-3 text-gray-300">
-                <a href={COMPANY.phoneLink} className="flex items-center gap-3 hover:text-[#85bd41] transition-colors">
-                  <Phone className="w-5 h-5 text-[#85bd41]" />
-                  {COMPANY.phone}
+                {/* Tappable phone */}
+                <a href={COMPANY.phoneLink} className="flex items-center gap-3 hover:text-[#85bd41] transition-colors min-h-[44px] active:opacity-80">
+                  <Phone className="w-5 h-5 text-[#85bd41] flex-shrink-0" />
+                  <span>{COMPANY.phone}</span>
                 </a>
-                <a href={`mailto:${COMPANY.email}`} className="flex items-center gap-3 hover:text-[#85bd41] transition-colors">
-                  <Mail className="w-5 h-5 text-[#85bd41]" />
-                  {COMPANY.email}
+                {/* Tappable email */}
+                <a href={`mailto:${COMPANY.email}`} className="flex items-center gap-3 hover:text-[#85bd41] transition-colors min-h-[44px] active:opacity-80">
+                  <Mail className="w-5 h-5 text-[#85bd41] flex-shrink-0" />
+                  <span className="break-all">{COMPANY.email}</span>
                 </a>
-                <div className="flex items-start gap-3">
-                  <MapPin className="w-5 h-5 text-[#85bd41] mt-0.5" />
+                <div className="flex items-start gap-3 min-h-[44px]">
+                  <MapPin className="w-5 h-5 text-[#85bd41] mt-0.5 flex-shrink-0" />
                   <span>{COMPANY.fullAddress}</span>
                 </div>
               </div>
@@ -76,7 +84,7 @@ export function Footer() {
                 href="https://www.trustpilot.com/review/www.maler-christensen.dk?languages=all"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-6 inline-flex items-center gap-2 bg-[#00b67a]/10 hover:bg-[#00b67a]/20 transition-colors px-4 py-2 rounded-full"
+                className="mt-6 inline-flex items-center gap-2 bg-[#00b67a]/10 hover:bg-[#00b67a]/20 transition-colors px-4 py-2 rounded-full min-h-[44px]"
               >
                 <div className="flex">
                   {[...Array(5)].map((_, i) => (
@@ -88,12 +96,12 @@ export function Footer() {
             </div>
 
             {/* Services */}
-            <div className="lg:col-span-1">
-              <h3 className="font-bold text-lg mb-6 text-white">Ydelser</h3>
-              <ul className="space-y-2">
+            <div>
+              <h3 className="font-bold text-base sm:text-lg mb-4 sm:mb-6 text-white">Ydelser</h3>
+              <ul className="space-y-1 sm:space-y-2">
                 {SERVICES.slice(0, 10).map((service) => (
                   <li key={service.slug}>
-                    <Link href={`/${service.slug}/`} className="text-gray-400 hover:text-[#85bd41] transition-colors text-sm">
+                    <Link href={`/${service.slug}/`} className="text-gray-400 hover:text-[#85bd41] transition-colors text-sm min-h-[44px] py-1.5 block">
                       {service.name}
                     </Link>
                   </li>
@@ -101,10 +109,29 @@ export function Footer() {
               </ul>
             </div>
 
-            {/* Cities - spans 2 columns */}
-            <div className="lg:col-span-2">
-              <h3 className="font-bold text-lg mb-6 text-white">Vi dækker hele Sjælland</h3>
-              <div className="grid grid-cols-3 gap-x-6">
+            {/* Cities - 2 columns on mobile, 3 columns spanning 2 grid cols on desktop */}
+            <div className="sm:col-span-2 lg:col-span-2">
+              <h3 className="font-bold text-base sm:text-lg mb-4 sm:mb-6 text-white">Vi dækker hele Sjælland</h3>
+              
+              {/* Mobile: 2 columns */}
+              <div className="grid grid-cols-2 gap-x-4 sm:hidden">
+                {mobileColumns.map((column, colIndex) => (
+                  <div key={colIndex} className="space-y-1">
+                    {column.map((city) => (
+                      <Link 
+                        key={city.slug} 
+                        href={`/${city.slug}/`} 
+                        className="block text-sm text-gray-400 hover:text-[#85bd41] transition-colors py-1.5 min-h-[44px] flex items-center"
+                      >
+                        Maler {city.name}
+                      </Link>
+                    ))}
+                  </div>
+                ))}
+              </div>
+              
+              {/* Desktop: 3 columns */}
+              <div className="hidden sm:grid grid-cols-3 gap-x-6">
                 {cityColumns.map((column, colIndex) => (
                   <div 
                     key={colIndex} 
@@ -125,50 +152,50 @@ export function Footer() {
             </div>
 
             {/* Quick Links */}
-            <div className="lg:col-span-1">
-              <h3 className="font-bold text-lg mb-6 text-white">Genveje</h3>
-              <ul className="space-y-2">
+            <div>
+              <h3 className="font-bold text-base sm:text-lg mb-4 sm:mb-6 text-white">Genveje</h3>
+              <ul className="space-y-1 sm:space-y-2">
                 <li>
-                  <Link href="/om-os/" className="text-gray-400 hover:text-[#85bd41] transition-colors text-sm">
+                  <Link href="/om-os/" className="text-gray-400 hover:text-[#85bd41] transition-colors text-sm min-h-[44px] py-1.5 block">
                     Om os
                   </Link>
                 </li>
                 <li>
-                  <Link href="/galleri/" className="text-gray-400 hover:text-[#85bd41] transition-colors text-sm">
+                  <Link href="/galleri/" className="text-gray-400 hover:text-[#85bd41] transition-colors text-sm min-h-[44px] py-1.5 block">
                     Galleri
                   </Link>
                 </li>
                 <li>
-                  <Link href="/referencer/" className="text-gray-400 hover:text-[#85bd41] transition-colors text-sm">
+                  <Link href="/referencer/" className="text-gray-400 hover:text-[#85bd41] transition-colors text-sm min-h-[44px] py-1.5 block">
                     Referencer
                   </Link>
                 </li>
                 <li>
-                  <Link href="/partnere/" className="text-gray-400 hover:text-[#85bd41] transition-colors text-sm">
+                  <Link href="/partnere/" className="text-gray-400 hover:text-[#85bd41] transition-colors text-sm min-h-[44px] py-1.5 block">
                     Partnere
                   </Link>
                 </li>
                 <li>
-                  <Link href="/vision/" className="text-gray-400 hover:text-[#85bd41] transition-colors text-sm">
+                  <Link href="/vision/" className="text-gray-400 hover:text-[#85bd41] transition-colors text-sm min-h-[44px] py-1.5 block">
                     Vores vision
                   </Link>
                 </li>
                 <li>
-                  <Link href="/kontakt/" className="text-gray-400 hover:text-[#85bd41] transition-colors text-sm">
+                  <Link href="/kontakt/" className="text-gray-400 hover:text-[#85bd41] transition-colors text-sm min-h-[44px] py-1.5 block">
                     Kontakt
                   </Link>
                 </li>
                 <li>
-                  <Link href="/maler-tilbud/" className="text-gray-400 hover:text-[#85bd41] transition-colors text-sm font-medium">
+                  <Link href="/maler-tilbud/" className="text-gray-400 hover:text-[#85bd41] transition-colors text-sm font-medium min-h-[44px] py-1.5 block">
                     Få tilbud
                   </Link>
                 </li>
               </ul>
 
               {/* Danske Malermestre */}
-              <div className="mt-8">
+              <div className="mt-6 sm:mt-8">
                 <p className="text-xs text-gray-500 mb-3">Medlem af</p>
-                <div className="relative h-10 w-32">
+                <div className="relative h-8 sm:h-10 w-28 sm:w-32">
                   <Image
                     src={DANSKE_MALERMESTRE_URL}
                     alt="Danske Malermestre"
@@ -183,9 +210,9 @@ export function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-gray-800 py-6">
+      <div className="border-t border-gray-800 py-4 sm:py-6">
         <Container>
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-4 text-xs sm:text-sm text-gray-500">
             <p>© {new Date().getFullYear()} {COMPANY.name}. Alle rettigheder forbeholdes.</p>
             <p>CVR: {COMPANY.cvr}</p>
           </div>
