@@ -255,7 +255,7 @@ function ServicePage({
           category="sproejtmaling"
           title="Se vores sprøjtemaling — før og efter"
           subtitle="Klik på billederne for at se dem i fuld størrelse"
-          columns={2}
+          columns={3}
         />
       )}
 
