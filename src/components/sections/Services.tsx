@@ -42,7 +42,7 @@ export function Services({
   const displayedServices = showAll ? SERVICES : SERVICES.slice(0, limit)
 
   return (
-    <section className="py-16 md:py-24 bg-white relative">
+    <section className="py-16 md:py-24 bg-gray-50 relative">
       <Container>
         <div className="text-center mb-14">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 tracking-tight section-heading-accent">

@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/Button"
 import { Input } from "@/components/ui/Input"
 import { Textarea } from "@/components/ui/Textarea"
 import { COMPANY } from "@/lib/constants"
-import { Phone, Mail, MapPin, Send, CheckCircle } from "lucide-react"
+import { Phone, Mail, MapPin, Send, CheckCircle, Clock } from "lucide-react"
 
 interface ContactFormProps {
   title?: string
@@ -145,54 +145,66 @@ export function ContactForm({
   }
 
   return (
-    <section className="py-16 md:py-24 bg-gray-50">
+    <section className="py-16 md:py-24 bg-white relative">
       <Container>
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{title}</h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">{subtitle}</p>
+        <div className="text-center mb-14">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 tracking-tight section-heading-accent">
+            {title}
+          </h2>
+          <p className="text-lg text-gray-500 max-w-2xl mx-auto mt-6">{subtitle}</p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Info */}
           <div>
-            <div className="bg-white rounded-2xl p-8 shadow-sm mb-8">
+            <div className="bg-gray-50 rounded-2xl p-8 mb-8">
               <h3 className="text-xl font-bold text-gray-900 mb-6">Kontaktoplysninger</h3>
               
               <div className="space-y-6">
                 <a href={COMPANY.phoneLink} className="flex items-center gap-4 group">
-                  <div className="w-12 h-12 bg-[#6b9834]/10 rounded-lg flex items-center justify-center group-hover:bg-[#6b9834] transition-colors">
+                  <div className="w-14 h-14 bg-[#6b9834]/10 rounded-xl flex items-center justify-center group-hover:bg-[#6b9834] transition-colors">
                     <Phone className="w-6 h-6 text-[#6b9834] group-hover:text-white transition-colors" />
                   </div>
                   <div>
                     <p className="text-sm text-gray-500">Telefon</p>
-                    <p className="font-semibold text-gray-900 group-hover:text-[#6b9834] transition-colors">{COMPANY.phone}</p>
+                    <p className="font-semibold text-gray-900 text-lg group-hover:text-[#6b9834] transition-colors">{COMPANY.phone}</p>
                   </div>
                 </a>
 
                 <a href={`mailto:${COMPANY.email}`} className="flex items-center gap-4 group">
-                  <div className="w-12 h-12 bg-[#6b9834]/10 rounded-lg flex items-center justify-center group-hover:bg-[#6b9834] transition-colors">
+                  <div className="w-14 h-14 bg-[#6b9834]/10 rounded-xl flex items-center justify-center group-hover:bg-[#6b9834] transition-colors">
                     <Mail className="w-6 h-6 text-[#6b9834] group-hover:text-white transition-colors" />
                   </div>
                   <div>
                     <p className="text-sm text-gray-500">E-mail</p>
-                    <p className="font-semibold text-gray-900 group-hover:text-[#6b9834] transition-colors">{COMPANY.email}</p>
+                    <p className="font-semibold text-gray-900 text-lg group-hover:text-[#6b9834] transition-colors">{COMPANY.email}</p>
                   </div>
                 </a>
 
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-[#6b9834]/10 rounded-lg flex items-center justify-center">
+                  <div className="w-14 h-14 bg-[#6b9834]/10 rounded-xl flex items-center justify-center">
                     <MapPin className="w-6 h-6 text-[#6b9834]" />
                   </div>
                   <div>
                     <p className="text-sm text-gray-500">Adresse</p>
-                    <p className="font-semibold text-gray-900">{COMPANY.fullAddress}</p>
+                    <p className="font-semibold text-gray-900 text-lg">{COMPANY.fullAddress}</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <div className="w-14 h-14 bg-[#6b9834]/10 rounded-xl flex items-center justify-center">
+                    <Clock className="w-6 h-6 text-[#6b9834]" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-500">Svartid</p>
+                    <p className="font-semibold text-gray-900 text-lg">Inden for 24 timer</p>
                   </div>
                 </div>
               </div>
             </div>
 
             {showMap && (
-              <div className="rounded-2xl overflow-hidden shadow-sm h-64">
+              <div className="rounded-2xl overflow-hidden shadow-sm h-64 border border-gray-100">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2255.5!2d11.3533!3d55.4019!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4652e9aec6c1a0eb%3A0x1234567890abcdef!2sYdunsvej%209%2C%204200%20Slagelse!5e0!3m2!1sda!2sdk!4v1707350000000!5m2!1sda!2sdk"
                   width="100%"
@@ -208,13 +220,15 @@ export function ContactForm({
           </div>
 
           {/* Form */}
-          <div className="bg-white rounded-2xl p-8 shadow-sm">
+          <div className="bg-gray-50 rounded-2xl p-8">
             {isSubmitted ? (
               <div className="text-center py-12">
-                <CheckCircle className="w-20 h-20 text-[#6b9834] mx-auto mb-6" />
+                <div className="w-20 h-20 bg-[#6b9834]/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <CheckCircle className="w-10 h-10 text-[#6b9834]" />
+                </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Tak for din henvendelse!</h3>
                 <p className="text-gray-600 mb-8">Vi har modtaget din besked og vender tilbage inden for 24 timer.</p>
-                <Button onClick={() => setIsSubmitted(false)} variant="outline">
+                <Button onClick={() => setIsSubmitted(false)} variant="outline" className="border-[#6b9834] text-[#6b9834] hover:bg-[#6b9834] hover:text-white">
                   Send en ny besked
                 </Button>
               </div>

@@ -2,6 +2,7 @@ import { Hero } from "@/components/sections/Hero"
 import { Services } from "@/components/sections/Services"
 import { Reviews } from "@/components/sections/Reviews"
 import { About } from "@/components/sections/About"
+import { GalleryPreview } from "@/components/sections/GalleryPreview"
 import { Cities } from "@/components/sections/Cities"
 import { CTA } from "@/components/sections/CTA"
 import { ContactForm } from "@/components/sections/ContactForm"
@@ -14,11 +15,14 @@ export default function HomePage() {
       <Hero 
         title={`Maler i ${COMPANY.city} med ${COMPANY.trustpilotRating} på Trustpilot`}
         subtitle="Professionelt malerarbejde til private og erhverv. Vi leverer kvalitet, pålidelighed og konkurrencedygtige priser – hver gang."
+        variant="home"
       />
       
       <Services />
       
       <About />
+      
+      <GalleryPreview />
       
       <Reviews pageSlug="homepage" />
       
