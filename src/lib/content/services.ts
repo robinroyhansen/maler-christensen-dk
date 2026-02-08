@@ -539,7 +539,7 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
       },
       {
         title: "Indvendig maling pris — hvad koster det?",
-        content: "Prisen på indvendig maling afhænger af flere faktorer: rummets størrelse, overfladens tilstand, farvevalg og ønsket finish. Vi tilbyder altid et gratis og uforpligtende tilbud, hvor vi gennemgår projektet på stedet. Vores priser er konkurrencedygtige, og vi giver en fast pris uden skjulte omkostninger. Ring til Jess på 53 50 77 00 eller udfyld kontaktformularen, så vender vi tilbage med et tilbud inden for 24 timer."
+        content: "Prisen på indvendig maling afhænger af flere faktorer: rummets størrelse, overfladens tilstand, farvevalg og ønsket finish. Vi tilbyder altid et gratis og uforpligtende tilbud, hvor vi gennemgår projektet på stedet. Vores priser er konkurrencedygtige, og vi giver en fast pris uden skjulte omkostninger. Ring til os på 53 50 77 00 eller udfyld kontaktformularen, så vender vi tilbage med et tilbud inden for 24 timer."
       },
       {
         title: "Hvorfor vælge professionel indvendig maling?",
@@ -587,7 +587,7 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
       },
       {
         title: "Udvendig maling pris — hvad skal du forvente?",
-        content: "Prisen på udvendig maling afhænger af husets størrelse, overfladernes tilstand, valg af farve og produkter samt behovet for stillads. Vi tilbyder altid et gratis besøg, hvor vi vurderer opgaven og giver et fast tilbud uden overraskelser. Som tommelfingerregel kan udvendig maling af et typisk parcelhus ligge fra 30.000-80.000 kr. afhængigt af omfanget. Ring til Jess på 53 50 77 00 for at høre mere om priser og muligheder."
+        content: "Prisen på udvendig maling afhænger af husets størrelse, overfladernes tilstand, valg af farve og produkter samt behovet for stillads. Vi tilbyder altid et gratis besøg, hvor vi vurderer opgaven og giver et fast tilbud uden overraskelser. Som tommelfingerregel kan udvendig maling af et typisk parcelhus ligge fra 30.000-80.000 kr. afhængigt af omfanget. Ring til os på 53 50 77 00 for at høre mere om priser og muligheder."
       }
     ],
     benefits: [
@@ -631,7 +631,7 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
       },
       {
         title: "Pris på maling af loft",
-        content: "Prisen på loftmaling afhænger af rummets størrelse, loftets tilstand og om der skal spartles først. Vi tilbyder altid et gratis tilbudsbesøg, hvor vi vurderer opgaven og giver en fast pris. Som udgangspunkt regner vi fra ca. 60-100 kr. pr. m² for loftmaling inkl. forberedelse og materialer. Ring til Jess på 53 50 77 00 eller udfyld kontaktformularen for et konkret tilbud på dit projekt."
+        content: "Prisen på loftmaling afhænger af rummets størrelse, loftets tilstand og om der skal spartles først. Vi tilbyder altid et gratis tilbudsbesøg, hvor vi vurderer opgaven og giver en fast pris. Som udgangspunkt regner vi fra ca. 60-100 kr. pr. m² for loftmaling inkl. forberedelse og materialer. Ring til os på 53 50 77 00 eller udfyld kontaktformularen for et konkret tilbud på dit projekt."
       }
     ],
     benefits: [
@@ -675,7 +675,7 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
       },
       {
         title: "Facademaling pris",
-        content: "Prisen på facademaling varierer afhængigt af husets størrelse, facadens tilstand, adgangsforhold og farvevalg. Et typisk parcelhus kan ligge fra 40.000-100.000 kr. for komplet facademaling inkl. stillads og forberedelse. Vi tilbyder altid et gratis besøg, hvor vi vurderer opgaven og giver et detaljeret, fast tilbud. Ring til Jess på 53 50 77 00 for at aftale et uforpligtende tilbudsbesøg."
+        content: "Prisen på facademaling varierer afhængigt af husets størrelse, facadens tilstand, adgangsforhold og farvevalg. Et typisk parcelhus kan ligge fra 40.000-100.000 kr. for komplet facademaling inkl. stillads og forberedelse. Vi tilbyder altid et gratis besøg, hvor vi vurderer opgaven og giver et detaljeret, fast tilbud. Ring til os på 53 50 77 00 for at aftale et uforpligtende tilbudsbesøg."
       }
     ],
     benefits: [
@@ -719,7 +719,7 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
       },
       {
         title: "Pris på vinduesmaling",
-        content: "Prisen på maling af vinduer afhænger af antallet af vinduer, deres størrelse, tilstand og om der skal arbejdes på flere etager. Som tommelfingerregel koster et standard vindue fra 400-1.000 kr. at male afhængigt af omfanget af forberedelse. Vi tilbyder altid et gratis tilbudsbesøg, hvor vi vurderer hvert vindue og giver en samlet fast pris. Ring til Jess på 53 50 77 00 for at aftale et besøg."
+        content: "Prisen på maling af vinduer afhænger af antallet af vinduer, deres størrelse, tilstand og om der skal arbejdes på flere etager. Som tommelfingerregel koster et standard vindue fra 400-1.000 kr. at male afhængigt af omfanget af forberedelse. Vi tilbyder altid et gratis tilbudsbesøg, hvor vi vurderer hvert vindue og giver en samlet fast pris. Ring til os på 53 50 77 00 for at aftale et besøg."
       }
     ],
     benefits: [
@@ -739,7 +739,7 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
     metaDescription: `Professionelt malerfirma der dækker hele Sjælland. Fra Slagelse til København. 250+ tilfredse kunder. Ring ${COMPANY.phone}`,
     heroHeading: "Din maler på hele Sjælland",
     heroSubheading: "Fra vores base i Slagelse dækker vi alle områder på Sjælland",
-    intro: `Leder du efter et pålideligt malerfirma på Sjælland? ${COMPANY.name} er baseret i Slagelse og servicerer kunder i hele regionen — fra København og Nordsjælland til Næstved og Kalundborg. Med 8 erfarne medarbejdere, over 250 femstjernede Trustpilot-anmeldelser og medlemskab af Danske Malermestre er vi et trygt valg uanset hvor på Sjælland, du bor. Ring til Jess på 53 50 77 00 og få et gratis tilbud i dag.`,
+    intro: `Leder du efter et pålideligt malerfirma på Sjælland? ${COMPANY.name} er baseret i Slagelse og servicerer kunder i hele regionen — fra København og Nordsjælland til Næstved og Kalundborg. Med 8 erfarne medarbejdere, over 250 femstjernede Trustpilot-anmeldelser og medlemskab af Danske Malermestre er vi et trygt valg uanset hvor på Sjælland, du bor. Ring til os på 53 50 77 00 og få et gratis tilbud i dag.`,
     sections: [
       {
         title: "Vi dækker hele Sjælland",
@@ -747,7 +747,7 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
       },
       {
         title: "Hvorfor vælge os som maler på Sjælland?",
-        content: "Der findes mange malerfirmaer på Sjælland, men vi skiller os ud på flere måder. For det første er vi medlemmer af Danske Malermestre, som garanterer fagligt korrekt arbejde. For det andet har vi en Trustpilot-score på 4,9 baseret på over 250 anmeldelser — et bevis på, at vores kunder er tilfredse. For det tredje har vi 8 fastansatte malere, hvilket betyder, at vi kan håndtere både små og store projekter med kort varsel. Og endelig er vores ejer Jess personligt involveret i alle projekter og sikrer, at kvaliteten er i top."
+        content: "Der findes mange malerfirmaer på Sjælland, men vi skiller os ud på flere måder. For det første er vi medlemmer af Danske Malermestre, som garanterer fagligt korrekt arbejde. For det andet har vi en Trustpilot-score på 4,9 baseret på over 250 anmeldelser — et bevis på, at vores kunder er tilfredse. For det tredje har vi 8 fastansatte malere, hvilket betyder, at vi kan håndtere både små og store projekter med kort varsel. Og endelig er vores ejere personligt involveret i alle projekter og sikrer, at kvaliteten er i top."
       },
       {
         title: "Alle typer malerarbejde",
@@ -763,7 +763,7 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
       },
       {
         title: "Kontakt os for et gratis tilbud",
-        content: "Uanset hvor på Sjælland du befinder dig, kommer vi gerne forbi og giver et gratis, uforpligtende tilbud. Ring til Jess på 53 50 77 00 eller udfyld kontaktformularen herunder. Vi svarer typisk inden for 24 timer og kan ofte komme forbi samme uge. Lad os vise dig, hvorfor over 250 kunder har givet os 5 stjerner på Trustpilot."
+        content: "Uanset hvor på Sjælland du befinder dig, kommer vi gerne forbi og giver et gratis, uforpligtende tilbud. Ring til os på 53 50 77 00 eller udfyld kontaktformularen herunder. Vi svarer typisk inden for 24 timer og kan ofte komme forbi samme uge. Lad os vise dig, hvorfor over 250 kunder har givet os 5 stjerner på Trustpilot."
       }
     ],
     benefits: [
@@ -807,7 +807,7 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
       },
       {
         title: "Pris på spartling",
-        content: "Prisen på spartling afhænger af omfanget: plet-spartling af huller og skader er billigere end fuld spartling af alle vægge. Væggenes tilstand spiller også ind — vægge med mange revner og ujævnheder kræver mere arbejde. Vi tilbyder altid et gratis tilbudsbesøg, hvor vi vurderer opgaven og giver en fast pris. Ring til Jess på 53 50 77 00 for at høre mere."
+        content: "Prisen på spartling afhænger af omfanget: plet-spartling af huller og skader er billigere end fuld spartling af alle vægge. Væggenes tilstand spiller også ind — vægge med mange revner og ujævnheder kræver mere arbejde. Vi tilbyder altid et gratis tilbudsbesøg, hvor vi vurderer opgaven og giver en fast pris. Ring til os på 53 50 77 00 for at høre mere."
       }
     ],
     benefits: [
@@ -827,7 +827,7 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
     metaDescription: `Maling af erhvervslokaler med minimal forstyrrelse. Kontorer, butikker og lagre. Weekend- og aftenarbejde. Ring ${COMPANY.phone}`,
     heroHeading: "Professionel erhvervsmaling",
     heroSubheading: "Maling af erhvervslokaler med minimal forstyrrelse af din drift",
-    intro: `Erhvervslokaler har særlige krav til malerarbejde — det skal være effektivt, professionelt og forstyrre driften mindst muligt. Hos ${COMPANY.name} har vi mange års erfaring med erhvervsmaling af kontorer, butikker, restauranter, lagerhaller og produktionsfaciliteter i Slagelse og på hele Sjælland. Vores hold på 8 erfarne malere kan håndtere projekter i alle størrelser, og vi tilbyder fleksible arbejdstider inkl. aften og weekend. Ring til Jess på 53 50 77 00 for et gratis tilbud.`,
+    intro: `Erhvervslokaler har særlige krav til malerarbejde — det skal være effektivt, professionelt og forstyrre driften mindst muligt. Hos ${COMPANY.name} har vi mange års erfaring med erhvervsmaling af kontorer, butikker, restauranter, lagerhaller og produktionsfaciliteter i Slagelse og på hele Sjælland. Vores hold på 8 erfarne malere kan håndtere projekter i alle størrelser, og vi tilbyder fleksible arbejdstider inkl. aften og weekend. Ring til os på 53 50 77 00 for et gratis tilbud.`,
     sections: [
       {
         title: "Kontormaling uden driftsforstyrrelser",
@@ -851,7 +851,7 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
       },
       {
         title: "Tilbud på erhvervsmaling",
-        content: "Vi tilbyder gratis tilbudsbesøg, hvor vi gennemgår jeres behov og giver et fast tilbud uden skjulte omkostninger. Prisen afhænger af areal, overfladernes tilstand, ønsket finish og arbejdstidspunkter. Ring til Jess på 53 50 77 00 eller udfyld kontaktformularen. Vi har erfaring med alt fra små kontorer til store produktionshaller og finder en løsning, der passer til jeres budget og tidsplan."
+        content: "Vi tilbyder gratis tilbudsbesøg, hvor vi gennemgår jeres behov og giver et fast tilbud uden skjulte omkostninger. Prisen afhænger af areal, overfladernes tilstand, ønsket finish og arbejdstidspunkter. Ring til os på 53 50 77 00 eller udfyld kontaktformularen. Vi har erfaring med alt fra små kontorer til store produktionshaller og finder en løsning, der passer til jeres budget og tidsplan."
       }
     ],
     benefits: [
@@ -895,7 +895,7 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
       },
       {
         title: "Pris på radiatormaling",
-        content: "Prisen på maling af en radiator afhænger af radiatorens størrelse, type og tilstand. En standard panelradiator koster typisk 400-800 kr. at male, mens ældre ribberadiatorer med mange elementer er mere arbejdskrævende. Vi tilbyder gerne radiatormaling som del af et større maleroprojekt til fordelagtige priser. Ring til Jess på 53 50 77 00 for et konkret tilbud."
+        content: "Prisen på maling af en radiator afhænger af radiatorens størrelse, type og tilstand. En standard panelradiator koster typisk 400-800 kr. at male, mens ældre ribberadiatorer med mange elementer er mere arbejdskrævende. Vi tilbyder gerne radiatormaling som del af et større maleroprojekt til fordelagtige priser. Ring til os på 53 50 77 00 for et konkret tilbud."
       }
     ],
     benefits: [
@@ -935,11 +935,11 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
       },
       {
         title: "Maling af hele huse til konkurrencedygtige priser",
-        content: "Ved maling af hele nye huse tilbyder vi fordelagtige m²-priser, der gør professionel maling overkommelig. Vores effektive arbejdsprocesser og erfarne malere betyder, at vi kan holde omkostningerne nede uden at gå på kompromis med kvaliteten. Ring til Jess på 53 50 77 00 for at høre om priser på nybyggeri-projekter — vi udarbejder gerne et uforpligtende tilbud baseret på tegninger eller et besøg på byggepladsen."
+        content: "Ved maling af hele nye huse tilbyder vi fordelagtige m²-priser, der gør professionel maling overkommelig. Vores effektive arbejdsprocesser og erfarne malere betyder, at vi kan holde omkostningerne nede uden at gå på kompromis med kvaliteten. Ring til os på 53 50 77 00 for at høre om priser på nybyggeri-projekter — vi udarbejder gerne et uforpligtende tilbud baseret på tegninger eller et besøg på byggepladsen."
       },
       {
         title: "Hvorfor vælge os til nybyggeri?",
-        content: "Med over 250 femstjernede anmeldelser på Trustpilot og medlemskab af Danske Malermestre er vi et trygt valg til dit nybyggeri-projekt. Vi leverer kvalitet til tiden og kommunikerer klart undervejs. Vores 8 fastansatte malere har erfaringen til at håndtere selv de største projekter, og ejer Jess er personligt involveret i alle opgaver. Kontakt os i dag og lad os blive en del af dit byggeprojekt."
+        content: "Med over 250 femstjernede anmeldelser på Trustpilot og medlemskab af Danske Malermestre er vi et trygt valg til dit nybyggeri-projekt. Vi leverer kvalitet til tiden og kommunikerer klart undervejs. Vores 8 fastansatte malere har erfaringen til at håndtere selv de største projekter, og ejerne er personligt involveret i alle opgaver. Kontakt os i dag og lad os blive en del af dit byggeprojekt."
       }
     ],
     benefits: [

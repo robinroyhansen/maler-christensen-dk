@@ -114,7 +114,7 @@ export function About({
               {showFull && (
                 <>
                   <p className="text-base sm:text-lg text-gray-600 mb-4 sm:mb-6 leading-relaxed">
-                    Med malermester Jess i spidsen, sikrer vi altid at arbejdet udføres med 
+                    Med ejerne Jess og Stefan i spidsen, sikrer vi altid at arbejdet udføres med 
                     den højeste kvalitet og professionalisme. Vi er stolte medlemmer af 
                     Danske Malermestre, hvilket garanterer vores kunder fagligt korrekt arbejde.
                   </p>
