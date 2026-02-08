@@ -8,12 +8,8 @@ import { Phone, Mail, MapPin, Star } from "lucide-react"
 const LOGO_URL = "/images/logo.png"
 const DANSKE_MALERMESTRE_URL = "/images/partners/danskemalermestre-hvid.png"
 
-// Sort cities: existing first, then by distance
-const sortedCities = [...CITIES].sort((a, b) => {
-  if (a.existing && !b.existing) return -1
-  if (!a.existing && b.existing) return 1
-  return a.distance - b.distance
-})
+// Sort cities alphabetically by name
+const sortedCities = [...CITIES].sort((a, b) => a.name.localeCompare(b.name, 'da'))
 
 export function Footer() {
   // Split cities into 2 columns on mobile, 3 on desktop
