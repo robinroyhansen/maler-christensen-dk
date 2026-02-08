@@ -183,9 +183,19 @@ export default function GalleryPage() {
                 selectedImage?.id === image.id ? "ring-2 ring-[#6b9834]" : ""
               }`}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-[#6b9834]/20 to-[#85bd41]/20 flex items-center justify-center">
-                <ImageIcon className="w-8 h-8 text-[#6b9834]/50" />
-              </div>
+              {image.url ? (
+                <Image
+                  src={image.url}
+                  alt={image.alt_text || image.caption || "Galleri billede"}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 20vw"
+                />
+              ) : (
+                <div className="absolute inset-0 bg-gradient-to-br from-[#6b9834]/20 to-[#85bd41]/20 flex items-center justify-center">
+                  <ImageIcon className="w-8 h-8 text-[#6b9834]/50" />
+                </div>
+              )}
               
               <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-end">
                 <div className="p-3 w-full">
