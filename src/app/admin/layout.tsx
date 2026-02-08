@@ -8,12 +8,13 @@ import { cn } from "@/lib/utils"
 import { 
   LayoutDashboard, FileText, Image, Star, Mail, 
   Users, Settings, LogOut, Menu, X, MapPin, ArrowLeft,
-  Repeat, BarChart3, Wrench
+  Repeat, BarChart3, Wrench, PenLine, SearchCheck
 } from "lucide-react"
 
 const NAV_ITEMS = [
   { href: "/admin", label: "SEO Oversigt", icon: LayoutDashboard },
   { href: "/admin/pages", label: "Sider", icon: FileText },
+  { href: "/admin/blog", label: "Blog", icon: PenLine },
   { href: "/admin/reviews", label: "Anmeldelser", icon: Star },
   { href: "/admin/leads", label: "Henvendelser", icon: Mail },
   { href: "/admin/gallery", label: "Galleri", icon: Image },
@@ -21,6 +22,7 @@ const NAV_ITEMS = [
   { href: "/admin/cities", label: "Byer", icon: MapPin },
   { href: "/admin/redirects", label: "Redirects", icon: Repeat },
   { href: "/admin/partners", label: "Partnere", icon: Users },
+  { href: "/admin/seo-check", label: "SEO Tjek", icon: SearchCheck },
   { href: "/admin/settings", label: "Indstillinger", icon: Settings },
   { href: "/admin/analytics", label: "Analytics", icon: BarChart3 },
 ]
