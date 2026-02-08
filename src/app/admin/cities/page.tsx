@@ -71,8 +71,8 @@ export default function CitiesPage() {
         custom_description: dbCity?.custom_description || "",
         is_visible: dbCity?.is_visible ?? true,
         isFromCode: true,
-        metaTitle: content?.metaTitle || "",
-        metaDescription: content?.metaDescription || "",
+        metaTitle: dbCity?.meta_title || content?.metaTitle || "",
+        metaDescription: dbCity?.meta_description || content?.metaDescription || "",
       }
     })
 
@@ -156,6 +156,8 @@ export default function CitiesPage() {
       distance: selectedCity.distance,
       custom_description: selectedCity.custom_description,
       is_visible: selectedCity.is_visible,
+      meta_title: selectedCity.metaTitle || null,
+      meta_description: selectedCity.metaDescription || null,
     }
 
     if (selectedCity.id) {
@@ -479,26 +481,51 @@ export default function CitiesPage() {
                 </label>
               </div>
 
-              {/* SEO Info */}
-              {selectedCity.metaTitle && (
-                <div className="bg-gray-50 rounded-lg p-4 space-y-2">
-                  <p className="text-xs font-medium text-gray-500 uppercase tracking-wider">Auto-genereret SEO</p>
-                  <p className="text-sm text-gray-700"><strong>Titel:</strong> {selectedCity.metaTitle.substring(0, 50)}...</p>
-                  <p className="text-sm text-gray-600"><strong>Beskrivelse:</strong> {selectedCity.metaDescription.substring(0, 60)}...</p>
+              {/* SEO Fields */}
+              <div className="border-t pt-4 mt-4">
+                <p className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-3">SEO</p>
+                <div className="space-y-3">
+                  <div>
+                    <Input
+                      label={`Meta titel (${(selectedCity.metaTitle || '').length}/60)`}
+                      value={selectedCity.metaTitle}
+                      onChange={(e) => setSelectedCity({ ...selectedCity, metaTitle: e.target.value })}
+                      placeholder={CITY_CONTENT[selectedCity.slug]?.metaTitle || "Auto-genereret titel..."}
+                      maxLength={60}
+                    />
+                    {selectedCity.metaTitle && (
+                      <p className="text-xs text-gray-400 mt-1">Tom = bruger auto-genereret titel</p>
+                    )}
+                  </div>
+                  <div>
+                    <Textarea
+                      label={`Meta beskrivelse (${(selectedCity.metaDescription || '').length}/160)`}
+                      rows={2}
+                      value={selectedCity.metaDescription}
+                      onChange={(e) => setSelectedCity({ ...selectedCity, metaDescription: e.target.value })}
+                      placeholder={CITY_CONTENT[selectedCity.slug]?.metaDescription || "Auto-genereret beskrivelse..."}
+                      maxLength={160}
+                    />
+                  </div>
+                  {/* SERP Preview */}
+                  <div className="bg-white border rounded-lg p-3">
+                    <p className="text-xs text-gray-400 mb-1">Google forhåndsvisning:</p>
+                    <p className="text-blue-700 text-sm font-medium truncate">
+                      {selectedCity.metaTitle || CITY_CONTENT[selectedCity.slug]?.metaTitle || `Maler ${selectedCity.name}`}
+                    </p>
+                    <p className="text-green-700 text-xs">maler-christensen.dk/{selectedCity.slug}/</p>
+                    <p className="text-gray-600 text-xs line-clamp-2">
+                      {selectedCity.metaDescription || CITY_CONTENT[selectedCity.slug]?.metaDescription || `Professionel maler i ${selectedCity.name}`}
+                    </p>
+                  </div>
                 </div>
-              )}
+              </div>
 
               <div className="flex gap-4 pt-4">
                 <Button onClick={handleSaveCity} disabled={saving}>
                   <Save className="w-4 h-4 mr-2" />
                   {saving ? "Gemmer..." : "Gem ændringer"}
                 </Button>
-                <Link href={`/admin/pages/${selectedCity.slug}`}>
-                  <Button variant="outline">
-                    <Edit className="w-4 h-4 mr-2" />
-                    Rediger SEO
-                  </Button>
-                </Link>
                 {!selectedCity.isFromCode && (
                   <Button 
                     variant="outline" 
