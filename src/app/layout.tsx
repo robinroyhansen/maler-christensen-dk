@@ -106,12 +106,11 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.className} antialiased`}>
-        <TrustBar />
-        <Header />
-        <main>{children}</main>
-        <Footer />
-        <FloatingCTA />
+        <SiteShell>{children}</SiteShell>
       </body>
     </html>
   )
 }
+
+// Client component that conditionally renders site chrome (not on /admin)
+import { SiteShell } from "@/components/layout/SiteShell"
