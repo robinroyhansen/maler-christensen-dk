@@ -2,57 +2,39 @@
 
 import { Container } from "@/components/ui/Container"
 import { COMPANY } from "@/lib/constants"
+import { getReviewsForPage, type Review } from "@/lib/data/reviews"
 import { Star, Quote } from "lucide-react"
 
-// Real reviews from Trustpilot
-const INITIAL_REVIEWS = [
-  {
-    id: "1",
-    author_name: "Anders Olsen",
-    review_text: "Super samarbejde, alle aftaler holdes. Professionel rådgivning og høj kvalitet i arbejdet. Kan varmt anbefales!",
-    rating: 5,
-  },
-  {
-    id: "2",
-    author_name: "Familien Lumholtz",
-    review_text: "Fantastisk service, kommunikation og kvalitet. Vi er yderst tilfredse med resultatet og kan kun give vores bedste anbefalinger.",
-    rating: 5,
-  },
-  {
-    id: "3",
-    author_name: "Birthe og Finn Andersen",
-    review_text: "Imponerende arbejde indenfor fastlagte tidsrammer. Professionel tilgang og flot resultat. Vi er meget tilfredse.",
-    rating: 5,
-  },
-  {
-    id: "4",
-    author_name: "Kathrine Holm",
-    review_text: "Yderst tilfreds med malerarbejdet. Flot udførsel og god kommunikation hele vejen igennem projektet.",
-    rating: 5,
-  },
-  {
-    id: "5",
-    author_name: "Tanja Almbjerg",
-    review_text: "Altid sød og venlig dialog med ejer. Godt håndværk og overholdelse af aftaler. Kan kun anbefales!",
-    rating: 5,
-  },
-  {
-    id: "6",
-    author_name: "Linda Horsted Raimond",
-    review_text: "Flot maling i nyt hus! Professionelt arbejde fra start til slut. Vi er meget glade for resultatet.",
-    rating: 5,
-  },
-]
+// Get initials from author name
+function getInitials(name: string): string {
+  if (name === "Trustpilot-bruger") {
+    return "TB"
+  }
+  return name.split(" ").map(n => n[0]).join("").toUpperCase()
+}
+
+// Format date to Danish format
+function formatDate(dateStr: string): string {
+  const date = new Date(dateStr)
+  return date.toLocaleDateString("da-DK", {
+    year: "numeric",
+    month: "long"
+  })
+}
 
 interface ReviewsProps {
   title?: string
   subtitle?: string
+  pageSlug?: string
 }
 
 export function Reviews({ 
   title = "Hvad vores kunder siger",
-  subtitle = `${COMPANY.trustpilotRating}/5 stjerner baseret på ${COMPANY.trustpilotReviews}+ anmeldelser på Trustpilot`
+  subtitle = `${COMPANY.trustpilotRating}/5 stjerner baseret på ${COMPANY.trustpilotReviews}+ anmeldelser på Trustpilot`,
+  pageSlug = "homepage"
 }: ReviewsProps) {
+  const reviews = getReviewsForPage(pageSlug, 6)
+
   return (
     <section className="py-16 md:py-24 bg-white">
       <Container>
@@ -67,41 +49,14 @@ export function Reviews({
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {INITIAL_REVIEWS.map((review) => (
-            <div
-              key={review.id}
-              className="bg-gray-50 rounded-xl p-6 relative"
-            >
-              <Quote className="absolute top-4 right-4 w-8 h-8 text-[#6b9834]/20" />
-              
-              <div className="flex items-center gap-1 mb-4">
-                {[...Array(review.rating)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 text-[#00b67a] fill-[#00b67a]" />
-                ))}
-              </div>
-
-              <p className="text-gray-700 mb-6 leading-relaxed">
-                &ldquo;{review.review_text}&rdquo;
-              </p>
-
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-[#6b9834] rounded-full flex items-center justify-center">
-                  <span className="text-white font-semibold text-sm">
-                    {review.author_name.split(" ").map(n => n[0]).join("")}
-                  </span>
-                </div>
-                <div>
-                  <p className="font-semibold text-gray-900">{review.author_name}</p>
-                  <p className="text-sm text-gray-500">Trustpilot anmeldelse</p>
-                </div>
-              </div>
-            </div>
+          {reviews.map((review) => (
+            <ReviewCard key={review.id} review={review} />
           ))}
         </div>
 
         <div className="text-center mt-12">
           <a
-            href="https://www.trustpilot.com/review/maler-christensen.dk"
+            href="https://www.trustpilot.com/review/www.maler-christensen.dk?languages=all"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-[#00b67a] font-semibold hover:underline"
@@ -114,5 +69,53 @@ export function Reviews({
         </div>
       </Container>
     </section>
+  )
+}
+
+function ReviewCard({ review }: { review: Review }) {
+  const isTrustpilot = review.source === "trustpilot"
+  
+  return (
+    <div className="bg-gray-50 rounded-xl p-6 relative flex flex-col">
+      <Quote className="absolute top-4 right-4 w-8 h-8 text-[#6b9834]/20" />
+      
+      {/* Star Rating */}
+      <div className="flex items-center gap-1 mb-4">
+        {[...Array(review.rating)].map((_, i) => (
+          <Star key={i} className="w-5 h-5 text-[#00b67a] fill-[#00b67a]" />
+        ))}
+      </div>
+
+      {/* Full Review Text */}
+      <p className="text-gray-700 mb-6 leading-relaxed flex-grow">
+        &ldquo;{review.text}&rdquo;
+      </p>
+
+      {/* Author Info */}
+      <div className="flex items-center justify-between mt-auto pt-4 border-t border-gray-200">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 bg-[#6b9834] rounded-full flex items-center justify-center">
+            <span className="text-white font-semibold text-sm">
+              {getInitials(review.author)}
+            </span>
+          </div>
+          <div>
+            <p className="font-semibold text-gray-900">{review.author}</p>
+            <p className="text-sm text-gray-500">{formatDate(review.date)}</p>
+          </div>
+        </div>
+        
+        {/* Source Badge */}
+        <div 
+          className={`px-2 py-1 rounded text-xs font-medium ${
+            isTrustpilot 
+              ? "bg-[#00b67a]/10 text-[#00b67a]" 
+              : "bg-blue-100 text-blue-700"
+          }`}
+        >
+          {isTrustpilot ? "Trustpilot" : "Anmeld Håndværker"}
+        </div>
+      </div>
+    </div>
   )
 }

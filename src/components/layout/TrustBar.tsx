@@ -3,7 +3,7 @@ import Link from "next/link"
 
 const TRUSTPILOT_URL = "https://www.trustpilot.com/review/www.maler-christensen.dk?languages=all"
 const TRUSTPILOT_STARS = "https://maler-christensen.dk/wp-content/uploads/2023/05/trustpilot_Stars.png"
-const ANMELD_URL = "https://www.anmeld-haandvaerker.dk/maler/maler-christensen-aps"
+const ANMELD_URL = "https://www.anmeld-haandvaerker.dk/maler/malerfirmaet-schou-christensen-aps"
 const ANMELD_SMILEYS = "https://maler-christensen.dk/wp-content/uploads/2023/05/5ah.png"
 
 export function TrustBar() {

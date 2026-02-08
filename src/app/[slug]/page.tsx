@@ -290,7 +290,7 @@ function CityPage({
         limit={8}
       />
 
-      <Reviews />
+      <Reviews pageSlug={city.slug} />
 
       {/* FAQ Section with Schema.org structured data */}
       {(() => {

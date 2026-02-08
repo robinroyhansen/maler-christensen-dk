@@ -20,7 +20,7 @@ export default function HomePage() {
       
       <About />
       
-      <Reviews />
+      <Reviews pageSlug="homepage" />
       
       <Partners variant="strip" />
       
