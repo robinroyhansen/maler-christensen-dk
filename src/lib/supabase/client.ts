@@ -1,46 +1,19 @@
-// This module creates Supabase client for browser usage
-// It must be called only on the client side
+import { createClient as createSupabaseClient } from '@supabase/supabase-js'
 
-let supabaseClient: any = null
-
-export async function getClient() {
-  if (typeof window === 'undefined') {
-    // Return null on server during build
-    return null
-  }
-  
-  if (supabaseClient) {
-    return supabaseClient
-  }
-  
-  const { createBrowserClient } = await import('@supabase/ssr')
-  
+// Simple Supabase client that works on both server (build) and client
+export function createClient() {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-  
-  if (!supabaseUrl || !supabaseAnonKey) {
-    console.error('Missing Supabase environment variables')
-    return null
-  }
-  
-  supabaseClient = createBrowserClient(supabaseUrl, supabaseAnonKey)
-  return supabaseClient
-}
 
-// Legacy function for components that still use createClient
-export function createClient() {
-  if (typeof window === 'undefined') {
-    // Return a mock during SSR/build
+  if (!supabaseUrl || !supabaseAnonKey) {
+    // Return a mock during build/SSR when env vars might not be available
     return {
-      auth: {
-        getSession: async () => ({ data: { session: null }, error: null }),
-        signInWithPassword: async () => ({ error: null }),
-        signOut: async () => {},
-      },
       from: () => ({
         select: () => ({
-          eq: () => ({ data: [], error: null }),
+          eq: () => ({ data: [], error: null, count: 0 }),
           order: () => ({ data: [], error: null, limit: () => ({ data: [], error: null }) }),
+          neq: () => ({ data: [], error: null }),
+          in: () => ({ data: [], error: null }),
         }),
         insert: () => ({ select: () => ({ single: () => ({ data: null, error: null }) }), error: null }),
         update: () => ({ eq: () => ({ error: null }) }),
@@ -55,11 +28,6 @@ export function createClient() {
       },
     } as any
   }
-  
-  // This is synchronous but only called client-side where we can access env vars
-  const { createBrowserClient } = require('@supabase/ssr')
-  return createBrowserClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-  )
+
+  return createSupabaseClient(supabaseUrl, supabaseAnonKey)
 }
