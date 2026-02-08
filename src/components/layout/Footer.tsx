@@ -7,15 +7,22 @@ import { Phone, Mail, MapPin, Star } from "lucide-react"
 const LOGO_URL = "https://maler-christensen.dk/wp-content/uploads/2025/10/Firmalogo-Schou-Christensen.png"
 const DANSKE_MALERMESTRE_URL = "https://maler-christensen.dk/wp-content/uploads/2021/06/danskemalermestre-hvid.png"
 
+// Sort cities: existing first, then by distance
+const sortedCities = [...CITIES].sort((a, b) => {
+  if (a.existing && !b.existing) return -1
+  if (!a.existing && b.existing) return 1
+  return a.distance - b.distance
+})
+
 export function Footer() {
   return (
     <footer className="bg-gray-900 text-white">
       {/* Main Footer */}
       <div className="py-16">
         <Container>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
             {/* Company Info */}
-            <div>
+            <div className="lg:col-span-1">
               <div className="flex items-center gap-3 mb-6">
                 <div className="relative h-12 w-36">
                   <Image
@@ -54,7 +61,7 @@ export function Footer() {
             </div>
 
             {/* Services */}
-            <div>
+            <div className="lg:col-span-1">
               <h3 className="font-bold text-lg mb-6">Ydelser</h3>
               <ul className="space-y-2">
                 {SERVICES.slice(0, 10).map((service) => (
@@ -67,22 +74,24 @@ export function Footer() {
               </ul>
             </div>
 
-            {/* Cities */}
-            <div>
-              <h3 className="font-bold text-lg mb-6">Områder</h3>
-              <ul className="space-y-2">
-                {CITIES.slice(0, 12).map((city) => (
-                  <li key={city.slug}>
-                    <Link href={`/${city.slug}/`} className="text-gray-300 hover:text-[#85bd41] transition-colors">
-                      Maler {city.name}
-                    </Link>
-                  </li>
+            {/* Cities - spans 2 columns */}
+            <div className="lg:col-span-2">
+              <h3 className="font-bold text-lg mb-6">Vi dækker hele Sjælland</h3>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-1">
+                {sortedCities.map((city) => (
+                  <Link 
+                    key={city.slug} 
+                    href={`/${city.slug}/`} 
+                    className="text-sm text-gray-300 hover:text-[#85bd41] transition-colors py-0.5"
+                  >
+                    Maler {city.name}
+                  </Link>
                 ))}
-              </ul>
+              </div>
             </div>
 
             {/* Quick Links */}
-            <div>
+            <div className="lg:col-span-1">
               <h3 className="font-bold text-lg mb-6">Genveje</h3>
               <ul className="space-y-2">
                 <li>

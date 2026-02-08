@@ -10,6 +10,7 @@ import { Reviews } from "@/components/sections/Reviews"
 import { CTA } from "@/components/sections/CTA"
 import { FAQ } from "@/components/sections/FAQ"
 import { ContactForm } from "@/components/sections/ContactForm"
+import { ServiceAreas } from "@/components/sections/ServiceAreas"
 import { ProjectGallery, SILKECEMENT_IMAGES } from "@/components/sections/ProjectGallery"
 import { Container } from "@/components/ui/Container"
 import { Button } from "@/components/ui/Button"
@@ -193,6 +194,9 @@ function ServicePage({
       )}
 
       <CTA />
+
+      {/* Service Areas Section - show all cities we cover */}
+      <ServiceAreas />
 
       <ContactForm
         title="Få et gratis tilbud"

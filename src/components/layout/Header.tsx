@@ -5,7 +5,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Container } from "@/components/ui/Container"
 import { Button } from "@/components/ui/Button"
-import { COMPANY, SERVICES, CITIES } from "@/lib/constants"
+import { COMPANY, SERVICES } from "@/lib/constants"
 import { Menu, X, ChevronDown, Phone } from "lucide-react"
 
 const LOGO_URL = "https://maler-christensen.dk/wp-content/uploads/2025/10/Firmalogo-Schou-Christensen.png"
@@ -13,7 +13,6 @@ const LOGO_URL = "https://maler-christensen.dk/wp-content/uploads/2025/10/Firmal
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [servicesOpen, setServicesOpen] = useState(false)
-  const [citiesOpen, setCitiesOpen] = useState(false)
 
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
@@ -59,32 +58,6 @@ export function Header() {
                     className="block px-4 py-2 text-gray-700 hover:bg-[#6b9834]/10 hover:text-[#6b9834] transition-colors"
                   >
                     {service.name}
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            {/* Cities Dropdown */}
-            <div className="relative group">
-              <button 
-                className="flex items-center gap-1 px-4 py-2 text-gray-700 hover:text-[#6b9834] font-medium transition-colors"
-                onMouseEnter={() => setCitiesOpen(true)}
-                onMouseLeave={() => setCitiesOpen(false)}
-              >
-                Områder <ChevronDown className="w-4 h-4" />
-              </button>
-              <div 
-                className={`absolute top-full left-0 w-64 max-h-96 overflow-y-auto bg-white shadow-lg rounded-lg py-2 transition-all duration-200 ${citiesOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
-                onMouseEnter={() => setCitiesOpen(true)}
-                onMouseLeave={() => setCitiesOpen(false)}
-              >
-                {CITIES.map((city) => (
-                  <Link
-                    key={city.slug}
-                    href={`/${city.slug}/`}
-                    className="block px-4 py-2 text-gray-700 hover:bg-[#6b9834]/10 hover:text-[#6b9834] transition-colors"
-                  >
-                    Maler {city.name}
                   </Link>
                 ))}
               </div>
@@ -145,28 +118,6 @@ export function Header() {
                         className="block py-2 text-gray-600 hover:text-[#6b9834]"
                       >
                         {service.name}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              <div>
-                <button 
-                  className="flex items-center justify-between w-full px-4 py-2 text-gray-700 font-medium"
-                  onClick={() => setCitiesOpen(!citiesOpen)}
-                >
-                  Områder <ChevronDown className={`w-4 h-4 transition-transform ${citiesOpen ? 'rotate-180' : ''}`} />
-                </button>
-                {citiesOpen && (
-                  <div className="pl-8 space-y-1 max-h-48 overflow-y-auto">
-                    {CITIES.map((city) => (
-                      <Link
-                        key={city.slug}
-                        href={`/${city.slug}/`}
-                        className="block py-2 text-gray-600 hover:text-[#6b9834]"
-                      >
-                        Maler {city.name}
                       </Link>
                     ))}
                   </div>
