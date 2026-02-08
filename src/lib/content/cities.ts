@@ -1,5 +1,16 @@
 import { COMPANY, CITIES, SERVICES } from "@/lib/constants"
 
+// Danish preposition: "på" for neighborhoods (-bro), islands, Frederiksberg; "i" for everything else
+const PÅ_AREAS = ["Nørrebro", "Vesterbro", "Østerbro", "Amager", "Frederiksberg", "Nordsjælland"]
+function prep(cityName: string): string {
+  if (PÅ_AREAS.includes(cityName)) return "på"
+  return "i"
+}
+function Prep(cityName: string): string {
+  if (PÅ_AREAS.includes(cityName)) return "På"
+  return "I"
+}
+
 interface CityContent {
   name: string
   slug: string
@@ -35,14 +46,14 @@ function generateCityContent(city: typeof CITIES[0]): CityContent {
     intro = `Som lokalt malerfirma med base i Slagelse er vi stolte af at servicere vores hjemby med professionelt malerarbejde. ${COMPANY.name} har hjulpet hundredvis af private og erhvervskunder i Slagelse med alt fra indvendig maling til komplet udvendig renovering. Med vores ${COMPANY.trustpilotRating}/5 rating på Trustpilot er vi et af de bedst anmeldte malerfirmaer i området.`
     aboutCity = `Slagelse er vores hjemby, og vi kender byens boliger som ingen andre. Fra de ældre villaer i centrum til nybyggeri i forstæderne – vi ved, hvad der kræves for at give hvert hjem den perfekte finish. Som medlemmer af Danske Malermestre garanterer vi fagligt korrekt arbejde hver gang.`
   } else if (isLocalArea) {
-    intro = `Søger du en pålidelig maler i ${city.name}? ${COMPANY.name} servicerer ${city.name} og omegn med professionelt malerarbejde. Med kun ${city.distance} km fra vores base i Slagelse, er vi hurtigt ude hos dig. Vores erfarne malere håndterer alt fra små istandsættelser til store renoveringsprojekter.`
-    aboutCity = `${city.name} ligger tæt på Slagelse, og vi kender området godt fra mange projekter. Vi har malet alt fra hyggelige rækkehuse til store villaer i ${city.name}. Vores lokalkendskab betyder, at vi forstår de særlige udfordringer og muligheder ved boligerne i dit område.`
+    intro = `Søger du en pålidelig maler ${prep(city.name)} ${city.name}? ${COMPANY.name} servicerer ${city.name} og omegn med professionelt malerarbejde. Med kun ${city.distance} km fra vores base i Slagelse, er vi hurtigt ude hos dig. Vores erfarne malere håndterer alt fra små istandsættelser til store renoveringsprojekter.`
+    aboutCity = `${city.name} ligger tæt på Slagelse, og vi kender området godt fra mange projekter. Vi har malet alt fra hyggelige rækkehuse til store villaer ${prep(city.name)} ${city.name}. Vores lokalkendskab betyder, at vi forstår de særlige udfordringer og muligheder ved boligerne i dit område.`
   } else if (isMediumDistance) {
-    intro = `Bor du i ${city.name} og søger et pålideligt malerfirma? ${COMPANY.name} dækker hele Sjælland, inklusiv ${city.name}. Vi tilbyder professionelt malerarbejde med fokus på kvalitet, pålidelighed og konkurrencedygtige priser. Kontakt os for et gratis tilbud.`
-    aboutCity = `Selvom vi har base i Slagelse, servicerer vi regelmæssigt kunder i ${city.name}. Med ${city.distance} km imellem os, planlægger vi vores projekter effektivt, så du får samme høje serviceniveau som vores lokale kunder. Vi har mange tilfredse kunder i ${city.name} og omegn.`
+    intro = `Bor du ${prep(city.name)} ${city.name} og søger et pålideligt malerfirma? ${COMPANY.name} dækker hele Sjælland, inklusiv ${city.name}. Vi tilbyder professionelt malerarbejde med fokus på kvalitet, pålidelighed og konkurrencedygtige priser. Kontakt os for et gratis tilbud.`
+    aboutCity = `Selvom vi har base i Slagelse, servicerer vi regelmæssigt kunder ${prep(city.name)} ${city.name}. Med ${city.distance} km imellem os, planlægger vi vores projekter effektivt, så du får samme høje serviceniveau som vores lokale kunder. Vi har mange tilfredse kunder ${prep(city.name)} ${city.name} og omegn.`
   } else {
-    intro = `${COMPANY.name} tilbyder nu professionelt malerarbejde i ${city.name}. Trods afstanden fra vores base i Slagelse, leverer vi samme høje kvalitet og service til kunder i ${city.name}. Ved større projekter giver afstanden ikke mærkbare meromkostninger.`
-    aboutCity = `Vi har udvidet vores serviceområde til også at dække ${city.name} og det øvrige Storkøbenhavn/Nordsjælland. Vores kunder i ${city.name} værdsætter vores kvalitetsbevidste tilgang og konkurrencedygtige priser. Kontakt os for at høre, hvordan vi kan hjælpe med dit projekt.`
+    intro = `${COMPANY.name} tilbyder nu professionelt malerarbejde ${prep(city.name)} ${city.name}. Trods afstanden fra vores base i Slagelse, leverer vi samme høje kvalitet og service til kunder ${prep(city.name)} ${city.name}. Ved større projekter giver afstanden ikke mærkbare meromkostninger.`
+    aboutCity = `Vi har udvidet vores serviceområde til også at dække ${city.name} og det øvrige Storkøbenhavn/Nordsjælland. Vores kunder ${prep(city.name)} ${city.name} værdsætter vores kvalitetsbevidste tilgang og konkurrencedygtige priser. Kontakt os for at høre, hvordan vi kan hjælpe med dit projekt.`
   }
 
   // City-specific details
@@ -81,23 +92,23 @@ function generateCityContent(city: typeof CITIES[0]): CityContent {
     slug: city.slug,
     distance: city.distance,
     metaTitle: `Maler ${city.name} | Schou & Christensen — ★ 4.9 Trustpilot`,
-    metaDescription: `Professionel maler i ${city.name}. Indvendig og udvendig maling, tapetsering, sprøjtespartling og microcement. ★ 4.9 på Trustpilot, 200+ kunder. Gratis tilbud — ring ${COMPANY.phone}`,
-    heroHeading: `Maler i ${city.name}`,
-    heroSubheading: `Professionelt malerarbejde til private og erhverv i ${city.name}`,
+    metaDescription: `Professionel maler ${prep(city.name)} ${city.name}. Indvendig og udvendig maling, tapetsering, sprøjtespartling og microcement. ★ 4.9 på Trustpilot, 250+ kunder. Gratis tilbud — ring ${COMPANY.phone}`,
+    heroHeading: `Maler ${prep(city.name)} ${city.name}`,
+    heroSubheading: `Professionelt malerarbejde til private og erhverv ${prep(city.name)} ${city.name}`,
     intro,
     aboutCity: customAboutCity,
-    whyChooseUs: `Når du vælger ${COMPANY.name} som din maler i ${city.name}, får du:
+    whyChooseUs: `Når du vælger ${COMPANY.name} som din maler ${prep(city.name)} ${city.name}, får du:
     
 • **${COMPANY.trustpilotRating}/5 på Trustpilot** – Vi er et af de bedst anmeldte malerfirmaer i regionen
 • **Erfarne malere** – Vores håndværkere har mange års erfaring
 • **Medlem af Danske Malermestre** – Garanti for fagligt korrekt arbejde
 • **Konkurrencedygtige priser** – Kvalitetsarbejde til fair priser
 • **Gratis tilbud** – Vi kommer gerne forbi og giver et uforpligtende tilbud`,
-    services: `I ${city.name} tilbyder vi samme brede vifte af malerydelser som i resten af vores serviceområde:
+    services: `${Prep(city.name)} ${city.name} tilbyder vi samme brede vifte af malerydelser som i resten af vores serviceområde:
 
 ${SERVICES.slice(0, 8).map(s => `• **${s.name}** – ${s.description}`).join('\n')}
 
-Uanset om du skal have malet din lejlighed, renoveret dit hus eller har brug for specialbehandlinger som sprøjtespartling eller microcement, står vi klar til at hjælpe dig i ${city.name}.`,
+Uanset om du skal have malet din lejlighed, renoveret dit hus eller har brug for specialbehandlinger som sprøjtespartling eller microcement, står vi klar til at hjælpe dig ${prep(city.name)} ${city.name}.`,
     nearbyAreas: nearbyCities,
   }
 }
