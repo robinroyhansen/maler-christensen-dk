@@ -3,23 +3,23 @@ import Link from "next/link"
 import Image from "next/image"
 import { ArrowRight, Camera } from "lucide-react"
 
-// Gallery images from Supabase storage
+// Real gallery images from Supabase storage
 const GALLERY_IMAGES = [
   {
-    src: "https://cduloscitjydjelqayhs.supabase.co/storage/v1/object/public/project-attachments/microcement/micro1.jpg",
-    alt: "Microcement gulv projekt"
+    src: "https://cduloscitjydjelqayhs.supabase.co/storage/v1/object/public/project-attachments/projects/052d2a61-54d3-4854-a006-9f3cf3e07a76/1770500292131-Unknown-2.jpg",
+    alt: "Microcement gulv projekt af Schou & Christensen"
   },
   {
-    src: "https://cduloscitjydjelqayhs.supabase.co/storage/v1/object/public/project-attachments/microcement/micro2.jpg",
-    alt: "Microcement væg finish"
+    src: "https://cduloscitjydjelqayhs.supabase.co/storage/v1/object/public/project-attachments/projects/052d2a61-54d3-4854-a006-9f3cf3e07a76/1770500309904-Unknown-3.jpg",
+    alt: "Microcement væg finish af Schou & Christensen"
   },
   {
-    src: "https://cduloscitjydjelqayhs.supabase.co/storage/v1/object/public/project-attachments/microcement/micro3.jpg",
-    alt: "Microcement badeværelse"
+    src: "https://cduloscitjydjelqayhs.supabase.co/storage/v1/object/public/project-attachments/projects/052d2a61-54d3-4854-a006-9f3cf3e07a76/1770500308916-Unknown-4.jpg",
+    alt: "Microcement badeværelse af Schou & Christensen"
   },
   {
-    src: "https://cduloscitjydjelqayhs.supabase.co/storage/v1/object/public/project-attachments/microcement/micro4.jpg",
-    alt: "Microcement køkken"
+    src: "https://cduloscitjydjelqayhs.supabase.co/storage/v1/object/public/project-attachments/projects/052d2a61-54d3-4854-a006-9f3cf3e07a76/1770500308084-Unknown-5.jpg",
+    alt: "Microcement køkken af Schou & Christensen"
   },
 ]
 
