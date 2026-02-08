@@ -14,8 +14,10 @@ import { ContactForm } from "@/components/sections/ContactForm"
 import { ServiceAreas } from "@/components/sections/ServiceAreas"
 import { ProjectGallery, SILKECEMENT_IMAGES } from "@/components/sections/ProjectGallery"
 import { ServiceGallery } from "@/components/sections/ServiceGallery"
+import { RelatedServices } from "@/components/sections/RelatedServices"
 import { FAQSchema, ServiceSchema } from "@/components/seo"
 import { Container } from "@/components/ui/Container"
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs"
 import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/ui/AnimateIn"
 import { Button } from "@/components/ui/Button"
 import Link from "next/link"
@@ -134,6 +136,12 @@ function ServicePage({
         variant="page"
       />
 
+      {/* Breadcrumbs */}
+      <Breadcrumbs items={[
+        { label: "Ydelser", href: "/#services" },
+        { label: content.title }
+      ]} />
+
       <section className="py-16 md:py-24">
         <Container>
           <div className="max-w-4xl mx-auto">
@@ -226,6 +234,9 @@ function ServicePage({
         />
       )}
 
+      {/* Related Services */}
+      <RelatedServices currentSlug={slug} />
+
       <CTA />
 
       {/* Service Areas Section - show all cities we cover */}
@@ -257,6 +268,12 @@ function CityPage({
         subtitle={content.heroSubheading}
         variant="page"
       />
+
+      {/* Breadcrumbs */}
+      <Breadcrumbs items={[
+        { label: "Områder", href: "/#areas" },
+        { label: `Maler ${city.name}` }
+      ]} />
 
       <section className="py-16 md:py-24">
         <Container>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Hero } from "@/components/sections/Hero"
 import { Container } from "@/components/ui/Container"
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs"
 import { ReviewsServer } from "@/components/sections/ReviewsServer"
 import { CTA } from "@/components/sections/CTA"
 import { COMPANY } from "@/lib/constants"
@@ -75,6 +76,8 @@ export default function ReferencerPage() {
         showTrustpilot={true}
         showCTA={false}
       />
+
+      <Breadcrumbs items={[{ label: "Referencer" }]} />
 
       <section className="py-16 md:py-24">
         <Container>

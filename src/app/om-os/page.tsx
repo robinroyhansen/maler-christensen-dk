@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import { Hero } from "@/components/sections/Hero"
 import { Container } from "@/components/ui/Container"
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs"
 import { CTA } from "@/components/sections/CTA"
 import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/ui/AnimateIn"
 import { CountUp } from "@/components/ui/CountUp"
@@ -36,6 +37,8 @@ export default function OmOsPage() {
         variant="page"
         showTrustpilot={true}
       />
+
+      <Breadcrumbs items={[{ label: "Om os" }]} />
 
       <section className="py-16 md:py-24">
         <Container>

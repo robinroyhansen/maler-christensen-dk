@@ -2,6 +2,7 @@ import { notFound } from "next/navigation"
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Container } from "@/components/ui/Container"
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs"
 import { CTA } from "@/components/sections/CTA"
 import { COMPANY } from "@/lib/constants"
 import { BLOG_POSTS, getBlogPost, getRelatedPosts } from "@/lib/data/blog-posts"
@@ -182,6 +183,12 @@ export default async function BlogPostPage({
           </AnimateIn>
         </Container>
       </section>
+
+      {/* Breadcrumbs */}
+      <Breadcrumbs items={[
+        { label: "Blog", href: "/blog/" },
+        { label: post.title }
+      ]} />
 
       {/* Article content */}
       <section className="py-16 md:py-24">

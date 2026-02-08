@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Hero } from "@/components/sections/Hero"
 import { ContactForm } from "@/components/sections/ContactForm"
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs"
 import { COMPANY } from "@/lib/constants"
 import { getPageMeta } from "@/lib/data/page-meta"
 
@@ -32,6 +33,8 @@ export default function KontaktPage() {
         showTrustpilot={false}
         showCTA={false}
       />
+
+      <Breadcrumbs items={[{ label: "Kontakt" }]} />
 
       <ContactForm
         title="Få et gratis tilbud"

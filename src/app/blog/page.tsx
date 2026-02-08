@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { Hero } from "@/components/sections/Hero"
 import { Container } from "@/components/ui/Container"
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs"
 import { CTA } from "@/components/sections/CTA"
 import { COMPANY } from "@/lib/constants"
 import { BLOG_POSTS, BLOG_CATEGORIES } from "@/lib/data/blog-posts"
@@ -46,6 +47,8 @@ export default function BlogPage() {
         showTrustpilot={false}
         showCTA={false}
       />
+
+      <Breadcrumbs items={[{ label: "Blog" }]} />
 
       <section className="py-16 md:py-24">
         <Container>

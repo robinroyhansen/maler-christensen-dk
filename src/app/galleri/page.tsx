@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Hero } from "@/components/sections/Hero"
 import { Container } from "@/components/ui/Container"
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs"
 import { CTA } from "@/components/sections/CTA"
 import { ServiceGallery } from "@/components/sections/ServiceGallery"
 import { COMPANY } from "@/lib/constants"
@@ -72,6 +73,8 @@ export default function GalleriPage() {
         showTrustpilot={false}
         showCTA={false}
       />
+
+      <Breadcrumbs items={[{ label: "Galleri" }]} />
 
       {GALLERY_SECTIONS.map((section, index) => (
         <section

@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Hero } from "@/components/sections/Hero"
 import { ContactForm } from "@/components/sections/ContactForm"
 import { Container } from "@/components/ui/Container"
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs"
 import { ReviewsServer } from "@/components/sections/ReviewsServer"
 import { COMPANY } from "@/lib/constants"
 import { getPageMeta } from "@/lib/data/page-meta"
@@ -34,6 +35,8 @@ export default function MalerTilbudPage() {
         variant="page"
         showCTA={false}
       />
+
+      <Breadcrumbs items={[{ label: "Gratis tilbud" }]} />
 
       <section className="py-12 bg-gray-50">
         <Container>
