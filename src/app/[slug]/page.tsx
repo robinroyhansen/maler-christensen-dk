@@ -116,6 +116,7 @@ function ServicePage({
   const relatedServices = SERVICES.filter(s => content.relatedServices.includes(s.slug))
   const showMicrocementGallery = slug === "microcement"
   const showPUGulvGallery = slug === "metallisk-pu-gulv"
+  const showUdvendigGallery = slug === "udvendig-maling"
   const serviceFaqs = getServiceFAQs(slug)
 
   return (
@@ -199,6 +200,16 @@ function ServicePage({
         <ServiceGallery
           category="pu-gulv"
           title="Se vores PU gulv projekter"
+          subtitle="Klik på billederne for at se dem i fuld størrelse"
+          columns={3}
+        />
+      )}
+
+      {/* Service Gallery for udvendig maling from Supabase */}
+      {showUdvendigGallery && (
+        <ServiceGallery
+          category="udvendig-maling"
+          title="Se vores udvendige malerarbejde"
           subtitle="Klik på billederne for at se dem i fuld størrelse"
           columns={3}
         />
