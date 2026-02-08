@@ -18,7 +18,7 @@ interface ServiceContent {
 export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
   "malerarbejde": {
     title: "Malerarbejde",
-    metaTitle: `Malerarbejde — Indvendig & udvendig maling | ★ 4.9 Trustpilot`,
+    metaTitle: `Malerarbejde — Indvendig & udvendig maling | ★ 4.9`,
     metaDescription: `Alt i malerarbejde til private og erhverv. Vægge, lofter, facade og træværk. Gratis tilbud inden 24 timer — ring ${COMPANY.phone}`,
     heroHeading: "Professionelt malerarbejde",
     heroSubheading: "Kvalitetsbevidst malerarbejde til private og erhverv i hele Sjælland",
@@ -50,7 +50,7 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
 
   "maling-af-carport": {
     title: "Maling af carport",
-    metaTitle: `Maling af carport — Holdbar finish, fair pris | Gratis tilbud`,
+    metaTitle: `Maling af carport — Holdbar finish | Gratis tilbud`,
     metaDescription: `Professionel maling af carport og garage. Grundig forbehandling og vejrbestandig maling. Få et gratis tilbud — ring ${COMPANY.phone}`,
     heroHeading: "Maling af carport",
     heroSubheading: "Professionel maling og vedligeholdelse af din carport",
@@ -174,7 +174,7 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
 
   "maling-hus": {
     title: "Maling af hus",
-    metaTitle: `Maling af hus — Indvendig & udvendig | 250+ tilfredse kunder`,
+    metaTitle: `Maling af hus — Inde & ude | 250+ tilfredse kunder`,
     metaDescription: `Komplet husmaling ude og inde. Kvalitetsmaling, erfarne malere og garanti på arbejdet. Gratis tilbud — ring ${COMPANY.phone}`,
     heroHeading: "Maling af hus",
     heroSubheading: "Komplet husmaling fra facade til fundament",
@@ -236,7 +236,7 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
 
   "tapetsering": {
     title: "Tapetsering",
-    metaTitle: `Tapetsering — Vinyl, væv & designtapet | ★ 4.9 Trustpilot`,
+    metaTitle: `Tapetsering — Vinyl, væv & designtapet | ★ 4.9`,
     metaDescription: `Professionel opsætning af alle typer tapet. Perfekt mønstermatch og holdbar finish. Gratis tilbud — ring ${COMPANY.phone}`,
     heroHeading: "Professionel tapetsering",
     heroSubheading: "Skab personlighed med professionelt opsat tapet",
@@ -267,7 +267,7 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
 
   "traemaling": {
     title: "Træmaling",
-    metaTitle: `Træmaling udvendig — Vinduer, døre & facade | Gratis tilbud`,
+    metaTitle: `Træmaling udvendig — Vinduer & døre | Gratis tilbud`,
     metaDescription: `Beskyt dit træværk med professionel udvendig maling. Vinduer, døre, facader og hegn. Holdbar finish. Ring ${COMPANY.phone}`,
     heroHeading: "Professionel træmaling",
     heroSubheading: "Beskyt og forskøn dit træværk med professionel maling",
@@ -360,7 +360,7 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
 
   "billig-maler": {
     title: "Billig maler",
-    metaTitle: `Billig maler — Kvalitet til fair priser | ★ 4.9 Trustpilot`,
+    metaTitle: `Billig maler — Kvalitet til fair priser | ★ 4.9`,
     metaDescription: `Professionelt malerarbejde til konkurrencedygtige priser. Kvalitet behøver ikke koste en formue. Gratis tilbud — ring ${COMPANY.phone}`,
     heroHeading: "Kvalitetsmaling til fair priser",
     heroSubheading: "Professionelt malerarbejde uden at det koster det hvide ud af øjnene",
@@ -515,7 +515,7 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
 
   "indvendig-maling": {
     title: "Indvendig maling",
-    metaTitle: `Indvendig maling — Vægge, lofter & træværk | Gratis tilbud`,
+    metaTitle: `Indvendig maling — Vægge, lofter & træværk | ★ 4.9`,
     metaDescription: `Professionel indvendig maling af vægge, lofter, døre og paneler. Grundig forberedelse, perfekt resultat. Ring ${COMPANY.phone}`,
     heroHeading: "Professionel indvendig maling",
     heroSubheading: "Giv dit hjem en frisk start med professionel indvendig maling",
@@ -603,7 +603,7 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
 
   "maling-af-loft": {
     title: "Maling af loft",
-    metaTitle: `Maling af loft — Ingen striber eller rullemærker | ★ 4.9`,
+    metaTitle: `Maling af loft — Ingen striber eller mærker | ★ 4.9`,
     metaDescription: `Professionel loftmaling uden striber. Sprøjte- og rulleteknik for perfekt resultat i alle rum. Ring ${COMPANY.phone}`,
     heroHeading: "Professionel maling af loft",
     heroSubheading: "Få et perfekt malet loft uden striber og rullemærker",
@@ -735,7 +735,7 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
 
   "maler-sjaelland": {
     title: "Maler Sjælland",
-    metaTitle: `Maler på Sjælland — Vi dækker hele øen | 15+ års erfaring`,
+    metaTitle: `Maler Sjælland — Vi dækker hele øen | 15+ års erfaring`,
     metaDescription: `Professionelt malerfirma der dækker hele Sjælland. Fra Slagelse til København. 250+ tilfredse kunder. Ring ${COMPANY.phone}`,
     heroHeading: "Din maler på hele Sjælland",
     heroSubheading: "Fra vores base i Slagelse dækker vi alle områder på Sjælland",
@@ -779,7 +779,7 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
 
   "spartling": {
     title: "Spartling",
-    metaTitle: `Spartling af vægge — Perfekt resultat inden maling | ★ 4.9`,
+    metaTitle: `Spartling af vægge — Perfekt resultat | ★ 4.9`,
     metaDescription: `Professionel spartling af vægge og lofter. Plet-spartling, fuld spartling og filt. Perfekt underlag for maling. Ring ${COMPANY.phone}`,
     heroHeading: "Professionel spartling",
     heroSubheading: "Skab det perfekte underlag for maling med professionel spartling",
