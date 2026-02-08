@@ -4,19 +4,18 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/Button"
-import { Input } from "@/components/ui/Input"
 import { cn } from "@/lib/utils"
 import { 
   LayoutDashboard, FileText, Image, Star, Mail, 
   Users, Settings, LogOut, Menu, X, MapPin, ArrowLeft,
-  Repeat, BarChart3, Wrench, Building2
+  Repeat, BarChart3, Wrench
 } from "lucide-react"
 
 const NAV_ITEMS = [
   { href: "/admin", label: "SEO Oversigt", icon: LayoutDashboard },
   { href: "/admin/pages", label: "Sider", icon: FileText },
   { href: "/admin/reviews", label: "Anmeldelser", icon: Star },
-  { href: "/admin/leads", label: "Henvendelser", icon: Mail, badge: true },
+  { href: "/admin/leads", label: "Henvendelser", icon: Mail },
   { href: "/admin/gallery", label: "Galleri", icon: Image },
   { href: "/admin/services", label: "Services", icon: Wrench },
   { href: "/admin/cities", label: "Byer", icon: MapPin },
@@ -26,71 +25,54 @@ const NAV_ITEMS = [
   { href: "/admin/analytics", label: "Analytics", icon: BarChart3 },
 ]
 
+// Simple cookie-based auth (no Supabase Auth dependency)
+const ADMIN_PASSWORD = "MalerAdmin2024!"
+const AUTH_COOKIE = "mc_admin_auth"
+
+function getAuthCookie(): boolean {
+  if (typeof document === "undefined") return false
+  return document.cookie.includes(`${AUTH_COOKIE}=1`)
+}
+
+function setAuthCookie() {
+  // Cookie expires in 7 days
+  const expires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toUTCString()
+  document.cookie = `${AUTH_COOKIE}=1; path=/admin; expires=${expires}; SameSite=Strict`
+}
+
+function clearAuthCookie() {
+  document.cookie = `${AUTH_COOKIE}=; path=/admin; expires=Thu, 01 Jan 1970 00:00:00 GMT`
+}
+
 export default function AdminLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null)
-  const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
-  const [loading, setLoading] = useState(false)
   const [sidebarOpen, setSidebarOpen] = useState(false)
-  const [supabase, setSupabase] = useState<any>(null)
-  const [unreadCount, setUnreadCount] = useState(0)
   const pathname = usePathname()
 
   useEffect(() => {
-    const initSupabase = async () => {
-      const { createBrowserClient } = await import('@supabase/ssr')
-      const client = createBrowserClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL!,
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-      )
-      setSupabase(client)
-      
-      const { data: { session } } = await client.auth.getSession()
-      setIsAuthenticated(!!session)
-
-      // Fetch unread submissions count
-      if (session) {
-        const { count } = await client
-          .from("contact_submissions")
-          .select("id", { count: "exact", head: true })
-          .eq("is_read", false)
-        setUnreadCount(count || 0)
-      }
-    }
-    
-    initSupabase()
+    setIsAuthenticated(getAuthCookie())
   }, [])
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleLogin = (e: React.FormEvent) => {
     e.preventDefault()
-    if (!supabase) return
-    
     setError("")
-    setLoading(true)
 
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    })
-
-    if (error) {
-      setError("Forkert email eller adgangskode")
-      setLoading(false)
-      return
+    if (password === ADMIN_PASSWORD) {
+      setAuthCookie()
+      setIsAuthenticated(true)
+    } else {
+      setError("Forkert adgangskode")
     }
-
-    setIsAuthenticated(true)
-    setLoading(false)
   }
 
-  const handleLogout = async () => {
-    if (!supabase) return
-    await supabase.auth.signOut()
+  const handleLogout = () => {
+    clearAuthCookie()
     setIsAuthenticated(false)
   }
 
@@ -115,29 +97,28 @@ export default function AdminLayout({
           </div>
 
           <form onSubmit={handleLogin} className="space-y-6">
-            <Input
-              id="email"
-              type="email"
-              label="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <Input
-              id="password"
-              type="password"
-              label="Adgangskode"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
+            <div>
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+                Adgangskode
+              </label>
+              <input
+                id="password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#6b9834] focus:border-transparent outline-none"
+                placeholder="Indtast adgangskode"
+                required
+                autoFocus
+              />
+            </div>
 
             {error && (
               <p className="text-red-500 text-sm">{error}</p>
             )}
 
-            <Button type="submit" className="w-full" disabled={loading || !supabase}>
-              {loading ? "Logger ind..." : "Log ind"}
+            <Button type="submit" className="w-full">
+              Log ind
             </Button>
           </form>
         </div>
@@ -197,26 +178,14 @@ export default function AdminLayout({
                 href={item.href}
                 onClick={() => setSidebarOpen(false)}
                 className={cn(
-                  "flex items-center justify-between px-4 py-3 rounded-lg transition-colors",
+                  "flex items-center gap-3 px-4 py-3 rounded-lg transition-colors",
                   pathname === item.href
                     ? "bg-[#6b9834] text-white"
                     : "text-gray-700 hover:bg-gray-100"
                 )}
               >
-                <div className="flex items-center gap-3">
-                  <item.icon className="w-5 h-5" />
-                  {item.label}
-                </div>
-                {item.badge && unreadCount > 0 && (
-                  <span className={cn(
-                    "px-2 py-0.5 text-xs rounded-full",
-                    pathname === item.href 
-                      ? "bg-white text-[#6b9834]" 
-                      : "bg-red-500 text-white"
-                  )}>
-                    {unreadCount}
-                  </span>
-                )}
+                <item.icon className="w-5 h-5" />
+                {item.label}
               </Link>
             ))}
           </nav>
