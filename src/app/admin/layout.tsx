@@ -171,7 +171,7 @@ export default function AdminLayout({
             </Link>
           </div>
 
-          <nav className="p-4 space-y-1 overflow-y-auto max-h-[calc(100vh-240px)]">
+          <nav className="p-4 space-y-1">
             {NAV_ITEMS.map((item) => (
               <Link
                 key={item.href}
