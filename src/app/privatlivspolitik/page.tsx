@@ -36,7 +36,7 @@ export default function PrivatlivspolitikPage() {
               Den dataansvarlige for behandlingen af dine personoplysninger er:
             </p>
             <ul>
-              <li><strong>Virksomhed:</strong> {COMPANY.name}</li>
+              <li><strong>Virksomhed:</strong> Malerfirmaet Schou &amp; Christensen ApS</li>
               <li><strong>CVR-nummer:</strong> {COMPANY.cvr}</li>
               <li><strong>Adresse:</strong> {COMPANY.fullAddress}</li>
               <li><strong>E-mail:</strong> {COMPANY.email}</li>
