@@ -114,13 +114,6 @@ function ServicePage({
   slug: string 
 }) {
   const relatedServices = SERVICES.filter(s => content.relatedServices.includes(s.slug))
-  const showMicrocementGallery = slug === "microcement"
-  const showPUGulvGallery = slug === "metallisk-pu-gulv"
-  const showUdvendigGallery = slug === "udvendig-maling"
-  const showTrappeGallery = slug === "maling-trappe"
-  const showIndvendigGallery = slug === "indvendig-maling"
-  const showSprojtespartlingGallery = slug === "sprojtespartling"
-  const showSproejtmalingGallery = slug === "sproejtmaling"
   const serviceFaqs = getServiceFAQs(slug)
 
   return (
@@ -189,75 +182,13 @@ function ServicePage({
         </Container>
       </section>
 
-      {/* Project Gallery for microcement pages */}
-      {showMicrocementGallery && (
-        <ProjectGallery
-          images={SILKECEMENT_IMAGES}
-          title="Se vores projekter"
-          subtitle="Klik på billederne for at se dem i fuld størrelse"
-          columns={4}
-        />
-      )}
-
-      {/* Service Gallery for metallisk PU gulv from Supabase */}
-      {showPUGulvGallery && (
-        <ServiceGallery
-          category="pu-gulv"
-          title="Se vores PU gulv projekter"
-          subtitle="Klik på billederne for at se dem i fuld størrelse"
-          columns={3}
-        />
-      )}
-
-      {/* Service Gallery for udvendig maling from Supabase */}
-      {showUdvendigGallery && (
-        <ServiceGallery
-          category="udvendig-maling"
-          title="Se vores udvendige malerarbejde"
-          subtitle="Klik på billederne for at se dem i fuld størrelse"
-          columns={3}
-        />
-      )}
-
-      {/* Service Gallery for trappe maling from Supabase */}
-      {showTrappeGallery && (
-        <ServiceGallery
-          category="maling-trappe"
-          title="Se vores trappeopgangs-projekter"
-          subtitle="Klik på billederne for at se dem i fuld størrelse"
-          columns={3}
-        />
-      )}
-
-      {/* Service Gallery for indvendig maling from Supabase */}
-      {showIndvendigGallery && (
-        <ServiceGallery
-          category="indvendig-maling"
-          title="Se vores indvendige maleropgaver"
-          subtitle="Klik på billederne for at se dem i fuld størrelse"
-          columns={3}
-        />
-      )}
-
-      {/* Service Gallery for sprøjtespartling from Supabase */}
-      {showSprojtespartlingGallery && (
-        <ServiceGallery
-          category="sprojtespartling"
-          title="Se vores sprøjtespartling-projekter"
-          subtitle="Klik på billederne for at se dem i fuld størrelse"
-          columns={3}
-        />
-      )}
-
-      {/* Service Gallery for sprøjtemaling from Supabase */}
-      {showSproejtmalingGallery && (
-        <ServiceGallery
-          category="sproejtmaling"
-          title="Se vores sprøjtemaling — før og efter"
-          subtitle="Klik på billederne for at se dem i fuld størrelse"
-          columns={3}
-        />
-      )}
+      {/* Dynamic Service Gallery - shows images assigned to this page via page_slugs */}
+      <ServiceGallery
+        pageSlug={slug}
+        title="Se vores projekter"
+        subtitle="Klik på billederne for at se dem i fuld størrelse"
+        columns={4}
+      />
 
       {/* Related Services */}
       {relatedServices.length > 0 && (

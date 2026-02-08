@@ -27,7 +27,7 @@ export async function PATCH(
 
   try {
     const body = await request.json()
-    const { alt_text, caption, sort_order } = body
+    const { alt_text, caption, sort_order, category, page_slugs } = body
     const resolvedParams = await params
     const imageId = resolvedParams.id
 
@@ -40,14 +40,18 @@ export async function PATCH(
 
     const supabase = getSupabaseClient()
 
+    // Build update object with only provided fields
+    const updateData: Record<string, unknown> = {}
+    if (alt_text !== undefined) updateData.alt_text = alt_text
+    if (caption !== undefined) updateData.caption = caption
+    if (sort_order !== undefined) updateData.sort_order = sort_order
+    if (category !== undefined) updateData.category = category
+    if (page_slugs !== undefined) updateData.page_slugs = page_slugs
+
     // Update the image
     const { data: updatedImage, error } = await supabase
       .from("gallery_images")
-      .update({
-        alt_text,
-        caption,
-        sort_order
-      })
+      .update(updateData)
       .eq("id", imageId)
       .select()
       .single()
