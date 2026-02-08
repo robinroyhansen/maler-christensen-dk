@@ -117,6 +117,7 @@ function ServicePage({
   const showMicrocementGallery = slug === "microcement"
   const showPUGulvGallery = slug === "metallisk-pu-gulv"
   const showUdvendigGallery = slug === "udvendig-maling"
+  const showTrappeGallery = slug === "maling-trappe"
   const serviceFaqs = getServiceFAQs(slug)
 
   return (
@@ -210,6 +211,16 @@ function ServicePage({
         <ServiceGallery
           category="udvendig-maling"
           title="Se vores udvendige malerarbejde"
+          subtitle="Klik på billederne for at se dem i fuld størrelse"
+          columns={3}
+        />
+      )}
+
+      {/* Service Gallery for trappe maling from Supabase */}
+      {showTrappeGallery && (
+        <ServiceGallery
+          category="maling-trappe"
+          title="Se vores trappeopgangs-projekter"
           subtitle="Klik på billederne for at se dem i fuld størrelse"
           columns={3}
         />
