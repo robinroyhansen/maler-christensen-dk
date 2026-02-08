@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 import { createClient } from "@supabase/supabase-js"
+import sharp from "sharp"
 
 function getSupabaseClient() {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
@@ -99,6 +100,28 @@ function slugifyFilename(text: string): string {
     .substring(0, 60)
 }
 
+async function optimizeImage(buffer: Buffer): Promise<{ main: Buffer; thumbnail: Buffer }> {
+  // Create main optimized WebP (max 1920px wide, quality 82)
+  const main = await sharp(buffer)
+    .resize(1920, null, { 
+      withoutEnlargement: true,
+      fit: 'inside'
+    })
+    .webp({ quality: 82 })
+    .toBuffer()
+
+  // Create thumbnail (400px wide for gallery grid)
+  const thumbnail = await sharp(buffer)
+    .resize(400, null, {
+      withoutEnlargement: true,
+      fit: 'inside'
+    })
+    .webp({ quality: 80 })
+    .toBuffer()
+
+  return { main, thumbnail }
+}
+
 export async function POST(request: NextRequest) {
   if (!checkAdminAuth(request)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
@@ -130,33 +153,64 @@ export async function POST(request: NextRequest) {
     const altText = generateSEOAltText(category, imageIndex)
     
     // Generate SEO-friendly filename from alt text
-    const fileExt = file.name.split('.').pop() || 'jpg'
     const seoBase = slugifyFilename(altText)
     // Add short random suffix to avoid conflicts
     const suffix = Math.random().toString(36).substring(2, 6)
-    const fileName = seoBase ? `${seoBase}-${suffix}.${fileExt}` : `${category}-${Date.now()}.${fileExt}`
-    const filePath = `${category}/${fileName}`
+    const mainFileName = seoBase ? `${seoBase}-${suffix}.webp` : `${category}-${Date.now()}.webp`
+    const thumbFileName = seoBase ? `${seoBase}-${suffix}-thumb.webp` : `${category}-${Date.now()}-thumb.webp`
+    const mainFilePath = `${category}/${mainFileName}`
+    const thumbFilePath = `${category}/${thumbFileName}`
 
-    // Upload to Supabase Storage
-    const { error: uploadError } = await supabase.storage
+    // Convert file to buffer and optimize with sharp
+    const arrayBuffer = await file.arrayBuffer()
+    const buffer = Buffer.from(arrayBuffer)
+    
+    const { main: optimizedMain, thumbnail: optimizedThumb } = await optimizeImage(buffer)
+
+    // Upload main optimized WebP to Supabase Storage
+    const { error: uploadMainError } = await supabase.storage
       .from('site-assets')
-      .upload(filePath, file, {
+      .upload(mainFilePath, optimizedMain, {
+        contentType: 'image/webp',
         cacheControl: '3600',
         upsert: false
       })
 
-    if (uploadError) {
-      console.error('Upload error:', uploadError)
+    if (uploadMainError) {
+      console.error('Main upload error:', uploadMainError)
       return NextResponse.json(
-        { error: 'Failed to upload file' },
+        { error: 'Failed to upload main image' },
         { status: 500 }
       )
     }
 
-    // Get public URL
-    const { data: urlData } = supabase.storage
+    // Upload thumbnail to Supabase Storage
+    const { error: uploadThumbError } = await supabase.storage
       .from('site-assets')
-      .getPublicUrl(filePath)
+      .upload(thumbFilePath, optimizedThumb, {
+        contentType: 'image/webp',
+        cacheControl: '3600',
+        upsert: false
+      })
+
+    if (uploadThumbError) {
+      console.error('Thumbnail upload error:', uploadThumbError)
+      // Clean up main image if thumbnail fails
+      await supabase.storage.from('site-assets').remove([mainFilePath])
+      return NextResponse.json(
+        { error: 'Failed to upload thumbnail' },
+        { status: 500 }
+      )
+    }
+
+    // Get public URLs
+    const { data: mainUrlData } = supabase.storage
+      .from('site-assets')
+      .getPublicUrl(mainFilePath)
+
+    const { data: thumbUrlData } = supabase.storage
+      .from('site-assets')
+      .getPublicUrl(thumbFilePath)
 
     const caption = generateCaption(altText)
 
@@ -171,11 +225,12 @@ export async function POST(request: NextRequest) {
 
     const nextSortOrder = (lastImage?.sort_order || 0) + 1
 
-    // Insert into database
+    // Insert into database with both URLs
     const { data: insertedImage, error: dbError } = await supabase
       .from("gallery_images")
       .insert({
-        url: urlData.publicUrl,
+        url: mainUrlData.publicUrl,
+        thumbnail_url: thumbUrlData.publicUrl,
         alt_text: altText,
         caption: caption,
         category: category,
@@ -187,8 +242,8 @@ export async function POST(request: NextRequest) {
 
     if (dbError) {
       console.error('Database error:', dbError)
-      // Try to clean up uploaded file
-      await supabase.storage.from('site-assets').remove([filePath])
+      // Clean up uploaded files on database error
+      await supabase.storage.from('site-assets').remove([mainFilePath, thumbFilePath])
       return NextResponse.json(
         { error: 'Failed to save image data' },
         { status: 500 }
