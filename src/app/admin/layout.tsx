@@ -8,25 +8,23 @@ import { Input } from "@/components/ui/Input"
 import { cn } from "@/lib/utils"
 import { 
   LayoutDashboard, FileText, Image, Star, Mail, 
-  Users, Settings, LogOut, Menu, X, MapPin
+  Users, Settings, LogOut, Menu, X, MapPin, ArrowLeft,
+  Repeat, BarChart3, Wrench, Building2
 } from "lucide-react"
 
-// Dynamic import for Supabase to avoid build-time issues
-import dynamic from 'next/dynamic'
-
 const NAV_ITEMS = [
-  { href: "/admin", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/admin", label: "SEO Oversigt", icon: LayoutDashboard },
   { href: "/admin/pages", label: "Sider", icon: FileText },
-  { href: "/admin/cities", label: "Byer", icon: MapPin },
-  { href: "/admin/gallery", label: "Galleri", icon: Image },
   { href: "/admin/reviews", label: "Anmeldelser", icon: Star },
-  { href: "/admin/submissions", label: "Henvendelser", icon: Mail },
+  { href: "/admin/leads", label: "Henvendelser", icon: Mail, badge: true },
+  { href: "/admin/gallery", label: "Galleri", icon: Image },
+  { href: "/admin/services", label: "Services", icon: Wrench },
+  { href: "/admin/cities", label: "Byer", icon: MapPin },
+  { href: "/admin/redirects", label: "Redirects", icon: Repeat },
   { href: "/admin/partners", label: "Partnere", icon: Users },
   { href: "/admin/settings", label: "Indstillinger", icon: Settings },
+  { href: "/admin/analytics", label: "Analytics", icon: BarChart3 },
 ]
-
-// Force dynamic rendering
-export const dynamic_config = 'force-dynamic'
 
 export default function AdminLayout({
   children,
@@ -40,10 +38,10 @@ export default function AdminLayout({
   const [loading, setLoading] = useState(false)
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [supabase, setSupabase] = useState<any>(null)
+  const [unreadCount, setUnreadCount] = useState(0)
   const pathname = usePathname()
 
   useEffect(() => {
-    // Initialize Supabase client on mount
     const initSupabase = async () => {
       const { createBrowserClient } = await import('@supabase/ssr')
       const client = createBrowserClient(
@@ -52,9 +50,17 @@ export default function AdminLayout({
       )
       setSupabase(client)
       
-      // Check auth
       const { data: { session } } = await client.auth.getSession()
       setIsAuthenticated(!!session)
+
+      // Fetch unread submissions count
+      if (session) {
+        const { count } = await client
+          .from("contact_submissions")
+          .select("id", { count: "exact", head: true })
+          .eq("is_read", false)
+        setUnreadCount(count || 0)
+      }
     }
     
     initSupabase()
@@ -88,7 +94,6 @@ export default function AdminLayout({
     setIsAuthenticated(false)
   }
 
-  // Loading state
   if (isAuthenticated === null) {
     return (
       <div className="min-h-screen bg-gray-100 flex items-center justify-center">
@@ -97,7 +102,6 @@ export default function AdminLayout({
     )
   }
 
-  // Login form
   if (!isAuthenticated) {
     return (
       <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
@@ -141,11 +145,10 @@ export default function AdminLayout({
     )
   }
 
-  // Admin dashboard
   return (
     <div className="min-h-screen bg-gray-100">
       {/* Mobile header */}
-      <div className="lg:hidden bg-white shadow-sm p-4 flex items-center justify-between">
+      <div className="lg:hidden bg-white shadow-sm p-4 flex items-center justify-between sticky top-0 z-50">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 bg-[#6b9834] rounded-full flex items-center justify-center">
             <span className="text-white font-bold">SC</span>
@@ -175,26 +178,50 @@ export default function AdminLayout({
             </div>
           </div>
 
-          <nav className="p-4 space-y-1">
+          {/* Back to site link */}
+          <div className="p-4 border-b">
+            <Link 
+              href="/" 
+              target="_blank"
+              className="flex items-center gap-2 text-sm text-gray-600 hover:text-[#6b9834] transition-colors"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              Tilbage til hjemmesiden
+            </Link>
+          </div>
+
+          <nav className="p-4 space-y-1 overflow-y-auto max-h-[calc(100vh-240px)]">
             {NAV_ITEMS.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setSidebarOpen(false)}
                 className={cn(
-                  "flex items-center gap-3 px-4 py-3 rounded-lg transition-colors",
+                  "flex items-center justify-between px-4 py-3 rounded-lg transition-colors",
                   pathname === item.href
                     ? "bg-[#6b9834] text-white"
                     : "text-gray-700 hover:bg-gray-100"
                 )}
               >
-                <item.icon className="w-5 h-5" />
-                {item.label}
+                <div className="flex items-center gap-3">
+                  <item.icon className="w-5 h-5" />
+                  {item.label}
+                </div>
+                {item.badge && unreadCount > 0 && (
+                  <span className={cn(
+                    "px-2 py-0.5 text-xs rounded-full",
+                    pathname === item.href 
+                      ? "bg-white text-[#6b9834]" 
+                      : "bg-red-500 text-white"
+                  )}>
+                    {unreadCount}
+                  </span>
+                )}
               </Link>
             ))}
           </nav>
 
-          <div className="absolute bottom-0 left-0 right-0 p-4 border-t">
+          <div className="absolute bottom-0 left-0 right-0 p-4 border-t bg-white">
             <button
               onClick={handleLogout}
               className="flex items-center gap-3 px-4 py-3 w-full text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
@@ -214,7 +241,7 @@ export default function AdminLayout({
         )}
 
         {/* Main content */}
-        <main className="flex-1 p-6 lg:p-8">
+        <main className="flex-1 p-6 lg:p-8 min-h-screen">
           {children}
         </main>
       </div>

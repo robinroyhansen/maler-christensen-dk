@@ -1,44 +1,44 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo } from "react"
 import { createClient } from "@/lib/supabase/client"
+import { CITIES } from "@/lib/constants"
+import { CITY_CONTENT } from "@/lib/content/cities"
 import { Button } from "@/components/ui/Button"
 import { Input } from "@/components/ui/Input"
 import { Textarea } from "@/components/ui/Textarea"
-import { CITIES } from "@/lib/constants"
-import { MapPin, Plus, Save, X, Trash2 } from "lucide-react"
+import Link from "next/link"
+import { 
+  MapPin, Plus, Save, X, Trash2, Eye, EyeOff, 
+  ExternalLink, Edit, Search, SortAsc
+} from "lucide-react"
 
-interface CityPage {
-  id: string
+interface CityItem {
+  id: string | null
   slug: string
-  title: string
-  meta_title: string
-  meta_description: string
-  city_name: string
-  hero_heading: string
-  hero_subheading: string
-  content: {
-    intro?: string
-    aboutCity?: string
-    whyChooseUs?: string
-  }
-  is_published: boolean
+  name: string
+  distance: number
+  custom_description: string
+  is_visible: boolean
+  isFromCode: boolean
+  metaTitle: string
+  metaDescription: string
 }
 
 export default function CitiesPage() {
-  const [cities, setCities] = useState<CityPage[]>([])
-  const [selectedCity, setSelectedCity] = useState<CityPage | null>(null)
+  const [cities, setCities] = useState<CityItem[]>([])
+  const [selectedCity, setSelectedCity] = useState<CityItem | null>(null)
   const [isCreating, setIsCreating] = useState(false)
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
+  const [searchQuery, setSearchQuery] = useState("")
+  const [sortBy, setSortBy] = useState<"name" | "distance">("distance")
   
-  // New city form
   const [newCity, setNewCity] = useState({
     name: "",
     slug: "",
     distance: 0,
-    intro: "",
-    aboutCity: "",
+    custom_description: "",
   })
 
   const supabase = createClient()
@@ -48,13 +48,54 @@ export default function CitiesPage() {
   }, [])
 
   const fetchCities = async () => {
-    const { data } = await supabase
-      .from("pages")
+    // Fetch DB cities
+    const { data: dbCities } = await supabase
+      .from("cities")
       .select("*")
-      .eq("page_type", "city")
-      .order("city_name")
 
-    setCities(data || [])
+    const dbCityMap = new Map<string, any>()
+    if (dbCities) {
+      dbCities.forEach((c: any) => dbCityMap.set(c.slug, c))
+    }
+
+    // Merge with code cities
+    const allCities: CityItem[] = CITIES.map((city) => {
+      const dbCity = dbCityMap.get(city.slug)
+      const content = CITY_CONTENT[city.slug]
+      
+      return {
+        id: dbCity?.id || null,
+        slug: city.slug,
+        name: dbCity?.name || city.name,
+        distance: dbCity?.distance ?? city.distance,
+        custom_description: dbCity?.custom_description || "",
+        is_visible: dbCity?.is_visible ?? true,
+        isFromCode: true,
+        metaTitle: content?.metaTitle || "",
+        metaDescription: content?.metaDescription || "",
+      }
+    })
+
+    // Add any DB-only cities
+    if (dbCities) {
+      dbCities.forEach((c: any) => {
+        if (!CITIES.find(cc => cc.slug === c.slug)) {
+          allCities.push({
+            id: c.id,
+            slug: c.slug,
+            name: c.name,
+            distance: c.distance,
+            custom_description: c.custom_description || "",
+            is_visible: c.is_visible,
+            isFromCode: false,
+            metaTitle: "",
+            metaDescription: "",
+          })
+        }
+      })
+    }
+
+    setCities(allCities)
     setLoading(false)
   }
 
@@ -72,32 +113,34 @@ export default function CitiesPage() {
     setSaving(true)
 
     const slug = newCity.slug || generateSlug(newCity.name)
-
+    
     const { data, error } = await supabase
-      .from("pages")
+      .from("cities")
       .insert({
+        name: newCity.name,
         slug,
-        title: `Maler ${newCity.name}`,
-        meta_title: `Maler ${newCity.name} | Professionelt malerarbejde`,
-        meta_description: `Søger du en maler i ${newCity.name}? Vi tilbyder professionelt malerarbejde med 4.9/5 på Trustpilot. Gratis tilbud!`,
-        page_type: "city",
-        city_name: newCity.name,
-        hero_heading: `Maler i ${newCity.name}`,
-        hero_subheading: `Professionelt malerarbejde til private og erhverv i ${newCity.name}`,
-        content: {
-          intro: newCity.intro || `Søger du en pålidelig maler i ${newCity.name}? Vi tilbyder professionelt malerarbejde til både private og erhverv.`,
-          aboutCity: newCity.aboutCity || `Vi servicerer ${newCity.name} og omegn med kvalitetsmalerarbejde.`,
-          distance: newCity.distance,
-        },
-        is_published: true,
+        distance: newCity.distance,
+        custom_description: newCity.custom_description,
+        is_visible: true,
+        sort_order: cities.length,
       })
       .select()
       .single()
 
     if (data) {
-      setCities([...cities, data])
+      setCities([...cities, {
+        id: data.id,
+        slug: data.slug,
+        name: data.name,
+        distance: data.distance,
+        custom_description: data.custom_description || "",
+        is_visible: data.is_visible,
+        isFromCode: false,
+        metaTitle: "",
+        metaDescription: "",
+      }])
       setIsCreating(false)
-      setNewCity({ name: "", slug: "", distance: 0, intro: "", aboutCity: "" })
+      setNewCity({ name: "", slug: "", distance: 0, custom_description: "" })
     }
 
     setSaving(false)
@@ -107,41 +150,120 @@ export default function CitiesPage() {
     if (!selectedCity) return
     setSaving(true)
 
-    await supabase
-      .from("pages")
-      .update({
-        title: selectedCity.title,
-        meta_title: selectedCity.meta_title,
-        meta_description: selectedCity.meta_description,
-        hero_heading: selectedCity.hero_heading,
-        hero_subheading: selectedCity.hero_subheading,
-        content: selectedCity.content,
-        is_published: selectedCity.is_published,
-      })
-      .eq("id", selectedCity.id)
+    const cityData = {
+      name: selectedCity.name,
+      slug: selectedCity.slug,
+      distance: selectedCity.distance,
+      custom_description: selectedCity.custom_description,
+      is_visible: selectedCity.is_visible,
+    }
 
-    setCities(cities.map(c => c.id === selectedCity.id ? selectedCity : c))
+    if (selectedCity.id) {
+      await supabase
+        .from("cities")
+        .update(cityData)
+        .eq("id", selectedCity.id)
+    } else {
+      const { data } = await supabase
+        .from("cities")
+        .insert({ ...cityData, sort_order: cities.length })
+        .select()
+        .single()
+      
+      if (data) {
+        selectedCity.id = data.id
+      }
+    }
+
+    setCities(cities.map(c => 
+      c.slug === selectedCity.slug ? selectedCity : c
+    ))
+    
     setSaving(false)
   }
 
-  const handleDeleteCity = async (id: string) => {
-    if (!confirm("Er du sikker på at du vil slette denne by?")) return
+  const toggleVisibility = async (city: CityItem) => {
+    const newVisibility = !city.is_visible
+    
+    if (city.id) {
+      await supabase
+        .from("cities")
+        .update({ is_visible: newVisibility })
+        .eq("id", city.id)
+    } else {
+      const { data } = await supabase
+        .from("cities")
+        .insert({
+          slug: city.slug,
+          name: city.name,
+          distance: city.distance,
+          is_visible: newVisibility,
+          sort_order: cities.length,
+        })
+        .select()
+        .single()
+      
+      if (data) {
+        city.id = data.id
+      }
+    }
 
-    await supabase.from("pages").delete().eq("id", id)
-    setCities(cities.filter(c => c.id !== id))
-    if (selectedCity?.id === id) setSelectedCity(null)
+    setCities(cities.map(c => 
+      c.slug === city.slug ? { ...c, is_visible: newVisibility } : c
+    ))
   }
 
-  // Get cities that are in the hardcoded list but not in DB
-  const existingCitySlugs = cities.map(c => c.slug)
-  const missingCities = CITIES.filter(c => !existingCitySlugs.includes(c.slug))
+  const handleDeleteCity = async (city: CityItem) => {
+    if (city.isFromCode) {
+      alert("Denne by er defineret i koden og kan ikke slettes. Brug 'Skjul' i stedet.")
+      return
+    }
+    
+    if (!confirm("Er du sikker på at du vil slette denne by?")) return
+
+    if (city.id) {
+      await supabase.from("cities").delete().eq("id", city.id)
+    }
+
+    setCities(cities.filter(c => c.slug !== city.slug))
+    if (selectedCity?.slug === city.slug) setSelectedCity(null)
+  }
+
+  // Filter and sort cities
+  const filteredCities = useMemo(() => {
+    let result = cities
+
+    if (searchQuery) {
+      const query = searchQuery.toLowerCase()
+      result = result.filter(c => 
+        c.name.toLowerCase().includes(query) ||
+        c.slug.toLowerCase().includes(query)
+      )
+    }
+
+    result = [...result].sort((a, b) => {
+      if (sortBy === "name") {
+        return a.name.localeCompare(b.name, "da")
+      }
+      return a.distance - b.distance
+    })
+
+    return result
+  }, [cities, searchQuery, sortBy])
+
+  const stats = {
+    total: cities.length,
+    visible: cities.filter(c => c.is_visible).length,
+    local: cities.filter(c => c.distance <= 30).length,
+    regional: cities.filter(c => c.distance > 30 && c.distance <= 60).length,
+  }
 
   return (
     <div>
       <div className="flex items-center justify-between mb-8">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Byer</h1>
-          <p className="text-gray-600">Administrer bysider og tilføj nye</p>
+          <p className="text-gray-600">Administrer by-sider og deres synlighed</p>
         </div>
         <Button onClick={() => setIsCreating(true)}>
           <Plus className="w-4 h-4 mr-2" />
@@ -149,19 +271,52 @@ export default function CitiesPage() {
         </Button>
       </div>
 
-      {/* Info about static cities */}
-      <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-6">
-        <p className="text-sm text-blue-800">
-          <strong>Note:</strong> {CITIES.length} byer er defineret i koden og vises automatisk. 
-          Her kan du redigere indholdet og tilføje nye byer. {cities.length} byer har custom indhold i databasen.
-        </p>
+      {/* Stats */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+        <div className="bg-white rounded-xl p-4 shadow-sm">
+          <p className="text-2xl font-bold text-gray-900">{stats.total}</p>
+          <p className="text-sm text-gray-600">Total</p>
+        </div>
+        <div className="bg-white rounded-xl p-4 shadow-sm">
+          <p className="text-2xl font-bold text-green-600">{stats.visible}</p>
+          <p className="text-sm text-gray-600">Synlige</p>
+        </div>
+        <div className="bg-white rounded-xl p-4 shadow-sm">
+          <p className="text-2xl font-bold text-blue-600">{stats.local}</p>
+          <p className="text-sm text-gray-600">Lokale (≤30 km)</p>
+        </div>
+        <div className="bg-white rounded-xl p-4 shadow-sm">
+          <p className="text-2xl font-bold text-purple-600">{stats.regional}</p>
+          <p className="text-sm text-gray-600">Regionale (30-60 km)</p>
+        </div>
       </div>
 
       <div className="grid lg:grid-cols-2 gap-6">
         {/* Cities List */}
         <div className="bg-white rounded-xl shadow-sm overflow-hidden">
-          <div className="p-4 border-b bg-gray-50">
-            <h2 className="font-semibold text-gray-900">Alle byer ({CITIES.length})</h2>
+          <div className="p-4 border-b bg-gray-50 space-y-3">
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+              <input
+                type="text"
+                placeholder="Søg efter by..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6b9834]"
+              />
+            </div>
+            
+            <div className="flex items-center gap-2">
+              <SortAsc className="w-4 h-4 text-gray-400" />
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value as "name" | "distance")}
+                className="text-sm border rounded-lg px-2 py-1 focus:outline-none focus:ring-2 focus:ring-[#6b9834]"
+              >
+                <option value="distance">Sorter efter afstand</option>
+                <option value="name">Sorter efter navn</option>
+              </select>
+            </div>
           </div>
           
           {loading ? (
@@ -170,45 +325,72 @@ export default function CitiesPage() {
             </div>
           ) : (
             <div className="divide-y max-h-[600px] overflow-y-auto">
-              {CITIES.map((city) => {
-                const dbCity = cities.find(c => c.slug === city.slug)
-                return (
-                  <div
-                    key={city.slug}
-                    onClick={() => dbCity && setSelectedCity(dbCity)}
-                    className={`p-4 cursor-pointer hover:bg-gray-50 transition-colors ${
-                      selectedCity?.slug === city.slug ? "bg-[#6b9834]/5" : ""
-                    }`}
-                  >
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <MapPin className="w-5 h-5 text-[#6b9834]" />
-                        <div>
-                          <p className="font-medium text-gray-900">{city.name}</p>
-                          <p className="text-sm text-gray-500">/{city.slug}/</p>
-                        </div>
-                      </div>
-                      <div className="text-right">
-                        <p className="text-xs text-gray-400">{city.distance} km</p>
-                        {dbCity ? (
-                          <span className="text-xs text-green-600">Custom</span>
-                        ) : (
-                          <span className="text-xs text-gray-400">Standard</span>
+              {filteredCities.map((city) => (
+                <div
+                  key={city.slug}
+                  className={`p-4 hover:bg-gray-50 transition-colors ${
+                    selectedCity?.slug === city.slug ? "bg-[#6b9834]/5" : ""
+                  } ${!city.is_visible ? "opacity-50" : ""}`}
+                >
+                  <div className="flex items-center gap-3">
+                    <div 
+                      className="flex-1 cursor-pointer"
+                      onClick={() => setSelectedCity(city)}
+                    >
+                      <div className="flex items-center gap-2">
+                        <MapPin className="w-4 h-4 text-[#6b9834]" />
+                        <p className="font-medium text-gray-900">{city.name}</p>
+                        {city.isFromCode && (
+                          <span className="text-xs text-gray-400 bg-gray-100 px-2 py-0.5 rounded">
+                            Kode
+                          </span>
+                        )}
+                        {city.custom_description && (
+                          <span className="text-xs text-purple-600 bg-purple-50 px-2 py-0.5 rounded">
+                            Custom
+                          </span>
                         )}
                       </div>
+                      <div className="flex items-center gap-2 mt-1">
+                        <span className="text-xs text-gray-500">{city.distance} km fra Slagelse</span>
+                        <span className="text-xs text-gray-400">•</span>
+                        <code className="text-xs text-gray-400">/{city.slug}/</code>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-1">
+                      <button
+                        onClick={() => toggleVisibility(city)}
+                        className={`p-2 rounded-lg transition-colors ${
+                          city.is_visible 
+                            ? "text-green-600 hover:bg-green-50" 
+                            : "text-gray-400 hover:bg-gray-100"
+                        }`}
+                        title={city.is_visible ? "Synlig" : "Skjult"}
+                      >
+                        {city.is_visible ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
+                      </button>
+                      
+                      <Link
+                        href={`/${city.slug}/`}
+                        target="_blank"
+                        className="p-2 text-gray-400 hover:text-[#6b9834] hover:bg-gray-100 rounded-lg transition-colors"
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                      </Link>
                     </div>
                   </div>
-                )
-              })}
+                </div>
+              ))}
             </div>
           )}
         </div>
 
-        {/* City Editor / Create Form */}
+        {/* Editor */}
         <div className="bg-white rounded-xl shadow-sm overflow-hidden">
           <div className="p-4 border-b bg-gray-50 flex items-center justify-between">
             <h2 className="font-semibold text-gray-900">
-              {isCreating ? "Tilføj ny by" : selectedCity ? `Rediger ${selectedCity.city_name}` : "Vælg en by"}
+              {isCreating ? "Tilføj by" : selectedCity ? `Rediger: ${selectedCity.name}` : "Vælg en by"}
             </h2>
             {(isCreating || selectedCity) && (
               <button onClick={() => { setIsCreating(false); setSelectedCity(null); }}>
@@ -222,7 +404,11 @@ export default function CitiesPage() {
               <Input
                 label="Bynavn"
                 value={newCity.name}
-                onChange={(e) => setNewCity({ ...newCity, name: e.target.value, slug: generateSlug(e.target.value) })}
+                onChange={(e) => setNewCity({ 
+                  ...newCity, 
+                  name: e.target.value,
+                  slug: generateSlug(e.target.value)
+                })}
                 placeholder="F.eks. Næstved"
               />
               <Input
@@ -235,21 +421,14 @@ export default function CitiesPage() {
                 label="Afstand fra Slagelse (km)"
                 type="number"
                 value={newCity.distance}
-                onChange={(e) => setNewCity({ ...newCity, distance: parseInt(e.target.value) })}
+                onChange={(e) => setNewCity({ ...newCity, distance: parseInt(e.target.value) || 0 })}
               />
               <Textarea
-                label="Intro tekst"
-                rows={3}
-                value={newCity.intro}
-                onChange={(e) => setNewCity({ ...newCity, intro: e.target.value })}
-                placeholder="Introduktion til bysiden..."
-              />
-              <Textarea
-                label="Om byen"
-                rows={3}
-                value={newCity.aboutCity}
-                onChange={(e) => setNewCity({ ...newCity, aboutCity: e.target.value })}
-                placeholder="Tekst om arbejde i denne by..."
+                label="Custom beskrivelse (valgfri)"
+                rows={4}
+                value={newCity.custom_description}
+                onChange={(e) => setNewCity({ ...newCity, custom_description: e.target.value })}
+                placeholder="Tilføj en brugerdefineret beskrivelse for denne by..."
               />
 
               <div className="flex gap-4 pt-4">
@@ -264,76 +443,78 @@ export default function CitiesPage() {
           ) : selectedCity ? (
             <div className="p-6 space-y-4">
               <Input
-                label="Sidetitel"
-                value={selectedCity.title}
-                onChange={(e) => setSelectedCity({ ...selectedCity, title: e.target.value })}
+                label="Bynavn"
+                value={selectedCity.name}
+                onChange={(e) => setSelectedCity({ ...selectedCity, name: e.target.value })}
               />
               <Input
-                label="Meta titel"
-                value={selectedCity.meta_title}
-                onChange={(e) => setSelectedCity({ ...selectedCity, meta_title: e.target.value })}
-              />
-              <Textarea
-                label="Meta beskrivelse"
-                rows={2}
-                value={selectedCity.meta_description}
-                onChange={(e) => setSelectedCity({ ...selectedCity, meta_description: e.target.value })}
+                label="URL slug"
+                value={selectedCity.slug}
+                onChange={(e) => setSelectedCity({ ...selectedCity, slug: e.target.value })}
+                disabled={selectedCity.isFromCode}
               />
               <Input
-                label="Hero overskrift"
-                value={selectedCity.hero_heading}
-                onChange={(e) => setSelectedCity({ ...selectedCity, hero_heading: e.target.value })}
+                label="Afstand fra Slagelse (km)"
+                type="number"
+                value={selectedCity.distance}
+                onChange={(e) => setSelectedCity({ ...selectedCity, distance: parseInt(e.target.value) || 0 })}
               />
               <Textarea
-                label="Intro tekst"
-                rows={3}
-                value={selectedCity.content?.intro || ""}
-                onChange={(e) => setSelectedCity({ 
-                  ...selectedCity, 
-                  content: { ...selectedCity.content, intro: e.target.value } 
-                })}
-              />
-              <Textarea
-                label="Om byen tekst"
-                rows={3}
-                value={selectedCity.content?.aboutCity || ""}
-                onChange={(e) => setSelectedCity({ 
-                  ...selectedCity, 
-                  content: { ...selectedCity.content, aboutCity: e.target.value } 
-                })}
+                label="Custom beskrivelse"
+                rows={4}
+                value={selectedCity.custom_description}
+                onChange={(e) => setSelectedCity({ ...selectedCity, custom_description: e.target.value })}
+                placeholder="Tilføj en brugerdefineret beskrivelse for denne by..."
               />
 
-              <div className="flex items-center gap-4 pt-4">
+              <div className="flex items-center gap-4 pt-2">
                 <label className="flex items-center gap-2">
                   <input
                     type="checkbox"
-                    checked={selectedCity.is_published}
-                    onChange={(e) => setSelectedCity({ ...selectedCity, is_published: e.target.checked })}
+                    checked={selectedCity.is_visible}
+                    onChange={(e) => setSelectedCity({ ...selectedCity, is_visible: e.target.checked })}
                     className="rounded border-gray-300 text-[#6b9834] focus:ring-[#6b9834]"
                   />
-                  <span className="text-sm text-gray-700">Publiceret</span>
+                  <span className="text-sm text-gray-700">Synlig på hjemmesiden</span>
                 </label>
               </div>
+
+              {/* SEO Info */}
+              {selectedCity.metaTitle && (
+                <div className="bg-gray-50 rounded-lg p-4 space-y-2">
+                  <p className="text-xs font-medium text-gray-500 uppercase tracking-wider">Auto-genereret SEO</p>
+                  <p className="text-sm text-gray-700"><strong>Titel:</strong> {selectedCity.metaTitle.substring(0, 50)}...</p>
+                  <p className="text-sm text-gray-600"><strong>Beskrivelse:</strong> {selectedCity.metaDescription.substring(0, 60)}...</p>
+                </div>
+              )}
 
               <div className="flex gap-4 pt-4">
                 <Button onClick={handleSaveCity} disabled={saving}>
                   <Save className="w-4 h-4 mr-2" />
                   {saving ? "Gemmer..." : "Gem ændringer"}
                 </Button>
-                <Button 
-                  variant="outline" 
-                  onClick={() => handleDeleteCity(selectedCity.id)}
-                  className="text-red-600 border-red-600 hover:bg-red-50"
-                >
-                  <Trash2 className="w-4 h-4 mr-2" />
-                  Slet
-                </Button>
+                <Link href={`/admin/pages/${selectedCity.slug}`}>
+                  <Button variant="outline">
+                    <Edit className="w-4 h-4 mr-2" />
+                    Rediger SEO
+                  </Button>
+                </Link>
+                {!selectedCity.isFromCode && (
+                  <Button 
+                    variant="outline" 
+                    onClick={() => handleDeleteCity(selectedCity)}
+                    className="text-red-600 border-red-600 hover:bg-red-50"
+                  >
+                    <Trash2 className="w-4 h-4 mr-2" />
+                    Slet
+                  </Button>
+                )}
               </div>
             </div>
           ) : (
             <div className="p-8 text-center text-gray-500">
               <MapPin className="w-12 h-12 mx-auto mb-4 text-gray-300" />
-              <p>Vælg en by for at redigere, eller tilføj en ny</p>
+              <p>Vælg en by for at redigere</p>
             </div>
           )}
         </div>
