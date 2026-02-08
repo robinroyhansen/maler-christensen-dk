@@ -37,11 +37,11 @@ function getAuthCookie(): boolean {
 function setAuthCookie() {
   // Cookie expires in 7 days
   const expires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toUTCString()
-  document.cookie = `${AUTH_COOKIE}=1; path=/admin; expires=${expires}; SameSite=Strict`
+  document.cookie = `${AUTH_COOKIE}=1; path=/; expires=${expires}; SameSite=Strict`
 }
 
 function clearAuthCookie() {
-  document.cookie = `${AUTH_COOKIE}=; path=/admin; expires=Thu, 01 Jan 1970 00:00:00 GMT`
+  document.cookie = `${AUTH_COOKIE}=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT`
 }
 
 export default function AdminLayout({

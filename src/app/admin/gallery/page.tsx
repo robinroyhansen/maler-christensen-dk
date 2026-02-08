@@ -67,7 +67,7 @@ export default function GalleryPage() {
 
   const fetchImages = async () => {
     try {
-      const response = await fetch('/api/admin/gallery')
+      const response = await fetch('/api/admin/gallery', { credentials: 'include' })
       const data = await response.json()
       
       if (data.success) {
