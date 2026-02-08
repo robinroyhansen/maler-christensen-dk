@@ -10,7 +10,7 @@ export const COMPANY = {
   email: "jess@maler-christensen.dk",
   cvr: "39187337",
   trustpilotRating: 4.9,
-  trustpilotReviews: 200,
+  trustpilotReviews: 250,
   owner: "Jess",
   domain: "maler-christensen.dk",
 }

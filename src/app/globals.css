@@ -4,6 +4,7 @@
   --color-primary: #6b9834;
   --color-primary-light: #85bd41;
   --color-primary-dark: #5a8229;
+  --color-trustpilot: #00b67a;
 }
 
 html {
@@ -59,4 +60,232 @@ html:focus-within {
 ::selection {
   background-color: var(--color-primary);
   color: white;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+/* Fade in up animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Slide in from left */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Fade in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Stagger animation delay utilities */
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.7s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Animation delay utilities */
+.animation-delay-100 {
+  animation-delay: 100ms;
+}
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+.animation-delay-300 {
+  animation-delay: 300ms;
+}
+.animation-delay-400 {
+  animation-delay: 400ms;
+}
+.animation-delay-500 {
+  animation-delay: 500ms;
+}
+
+/* Initially hidden for animation */
+.animate-on-scroll {
+  opacity: 0;
+}
+
+.animate-on-scroll.is-visible {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* ============================================
+   SECTION DECORATIONS
+   ============================================ */
+
+/* Section heading underline accent */
+.section-heading-accent {
+  position: relative;
+  display: inline-block;
+}
+
+.section-heading-accent::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light));
+  border-radius: 2px;
+}
+
+/* Left-aligned variant */
+.section-heading-accent-left::after {
+  left: 0;
+  transform: none;
+}
+
+/* ============================================
+   WAVE DIVIDERS
+   ============================================ */
+
+.wave-divider-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.wave-divider-top svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 40px;
+}
+
+.wave-divider-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.wave-divider-bottom svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 40px;
+}
+
+/* ============================================
+   TRUSTPILOT BADGE STYLES
+   ============================================ */
+
+.trustpilot-badge {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ============================================
+   CARD ENHANCEMENTS
+   ============================================ */
+
+/* Service card hover border */
+.service-card-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card-hover::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--color-primary), var(--color-primary-light));
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+}
+
+.service-card-hover:hover::before {
+  transform: scaleY(1);
+}
+
+/* Review card left border */
+.review-card {
+  position: relative;
+  border-left: 3px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.review-card:hover {
+  border-left-color: var(--color-primary);
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   HERO PATTERN OVERLAY
+   ============================================ */
+
+.hero-pattern {
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Paint brush decorative element */
+.paint-accent {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+/* ============================================
+   GALLERY GRID
+   ============================================ */
+
+.gallery-grid-item {
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.gallery-grid-item img {
+  transition: transform 0.5s ease;
+}
+
+.gallery-grid-item:hover img {
+  transform: scale(1.08);
 }

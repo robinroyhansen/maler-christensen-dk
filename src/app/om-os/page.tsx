@@ -78,16 +78,16 @@ export default function OmOsPage() {
                 <div className="text-white/80 text-sm">Trustpilot score</div>
               </div>
               <div className="bg-gray-100 rounded-xl p-6 text-center">
-                <div className="text-4xl font-bold text-gray-900 mb-2">200+</div>
-                <div className="text-gray-600 text-sm">Tilfredse kunder</div>
+                <div className="text-4xl font-bold text-gray-900 mb-2">250+</div>
+                <div className="text-gray-600 text-sm">Anmeldelser</div>
               </div>
               <div className="bg-gray-100 rounded-xl p-6 text-center">
                 <div className="text-4xl font-bold text-gray-900 mb-2">15+</div>
                 <div className="text-gray-600 text-sm">Års erfaring</div>
               </div>
               <div className="bg-gray-100 rounded-xl p-6 text-center">
-                <div className="text-4xl font-bold text-gray-900 mb-2">37+</div>
-                <div className="text-gray-600 text-sm">Byer vi dækker</div>
+                <div className="text-4xl font-bold text-gray-900 mb-2">1700+</div>
+                <div className="text-gray-600 text-sm">Tilfredse kunder</div>
               </div>
             </div>
 
