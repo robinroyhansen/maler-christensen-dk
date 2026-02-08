@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { Hero } from "@/components/sections/Hero"
 import { Container } from "@/components/ui/Container"
 import { CTA } from "@/components/sections/CTA"
-import { ProjectGallery, SILKECEMENT_IMAGES, GalleryImage } from "@/components/sections/ProjectGallery"
+import { ServiceGallery } from "@/components/sections/ServiceGallery"
 import { COMPANY } from "@/lib/constants"
 
 export const metadata: Metadata = {
@@ -13,21 +13,43 @@ export const metadata: Metadata = {
   },
 }
 
-// Indoor gallery images (self-hosted)
-const INDOOR_WORKING_IDS = [1, 2, 7, 8, 9, 10, 13, 14, 15, 16, 17, 18, 23, 24]
-const INDOOR_GALLERY_IMAGES: GalleryImage[] = INDOOR_WORKING_IDS.map((id, i) => ({
-  src: `/images/gallery/indoor/${id}.jpg`,
-  alt: `Indvendigt malerarbejde — vægge og lofter, projekt ${i + 1}`,
-  caption: "Indvendigt malerarbejde",
-}))
-
-// Outdoor gallery images (self-hosted)
-const OUTDOOR_WORKING_IDS = [33, 34, 35, 36, 37, 38, 39, 43]
-const OUTDOOR_GALLERY_IMAGES: GalleryImage[] = OUTDOOR_WORKING_IDS.map((id, i) => ({
-  src: `/images/gallery/outdoor/${id}.jpg`,
-  alt: `Udvendigt malerarbejde — facade og vinduer, projekt ${i + 1}`,
-  caption: "Udvendigt malerarbejde",
-}))
+const GALLERY_SECTIONS = [
+  {
+    category: "microcement",
+    title: "Microcement projekter",
+    subtitle: "Se vores nyeste microcement projekter — vægge, gulve og badeværelser.",
+  },
+  {
+    category: "indvendig-maling",
+    title: "Indvendigt malerarbejde",
+    subtitle: "Fra stuer og soveværelser til køkkener og erhvervslokaler — vi maler alle rum.",
+  },
+  {
+    category: "udvendig-maling",
+    title: "Udvendigt malerarbejde",
+    subtitle: "Facademaling, kirker, vinduer og døre — vi holder dit hus flot udvendigt.",
+  },
+  {
+    category: "pu-gulv",
+    title: "Metallisk PU gulv",
+    subtitle: "Unikke epoxygulve med metallisk finish — hvert gulv er et kunstværk.",
+  },
+  {
+    category: "sprojtespartling",
+    title: "Sprøjtespartling",
+    subtitle: "Professionel sprøjtespartling af lofter og vægge i nybyggeri og renovering.",
+  },
+  {
+    category: "sproejtmaling",
+    title: "Sprøjtemaling",
+    subtitle: "Effektiv sprøjtemaling af trælofter, paneler og store flader — før og efter.",
+  },
+  {
+    category: "maling-trappe",
+    title: "Trappeopgange",
+    subtitle: "Maling af trappeopgange i etageejendomme — fra afdækning til flot resultat.",
+  },
+]
 
 export default function GalleriPage() {
   return (
@@ -40,71 +62,30 @@ export default function GalleriPage() {
         showCTA={false}
       />
 
-      {/* Microcement Gallery */}
-      <section className="py-16 md:py-24">
-        <Container>
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Microcement projekter
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Se vores nyeste microcement projekter. Klik på billederne for at se dem i fuld størrelse.
-            </p>
-          </div>
+      {GALLERY_SECTIONS.map((section, index) => (
+        <section
+          key={section.category}
+          className={`py-16 md:py-24 ${index % 2 === 1 ? "bg-gray-50" : ""}`}
+        >
+          <Container>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                {section.title}
+              </h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                {section.subtitle}
+              </p>
+            </div>
 
-          <ProjectGallery
-            images={SILKECEMENT_IMAGES}
-            columns={4}
-            showContainer={false}
-          />
-        </Container>
-      </section>
-
-      {/* Indoor Gallery */}
-      <section className="py-16 md:py-24 bg-gray-50">
-        <Container>
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Indvendigt malerarbejde
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Fra stuer og soveværelser til køkkener og badeværelser – vi maler alle rum.
-            </p>
-          </div>
-
-          <ProjectGallery
-            images={INDOOR_GALLERY_IMAGES}
-            columns={4}
-            showContainer={false}
-          />
-        </Container>
-      </section>
-
-      {/* Outdoor Gallery */}
-      <section className="py-16 md:py-24">
-        <Container>
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Udvendigt malerarbejde
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Facademaling, vinduer, døre og meget mere – vi holder dit hus flot udvendigt.
-            </p>
-          </div>
-
-          <ProjectGallery
-            images={OUTDOOR_GALLERY_IMAGES}
-            columns={4}
-            showContainer={false}
-          />
-
-          <div className="text-center mt-12">
-            <p className="text-gray-600 mb-4">
-              Galleriet opdateres løbende med nye projekter. Kontakt os for at se flere eksempler på vores arbejde.
-            </p>
-          </div>
-        </Container>
-      </section>
+            <ServiceGallery
+              category={section.category}
+              title=""
+              subtitle=""
+              columns={4}
+            />
+          </Container>
+        </section>
+      ))}
 
       <CTA
         title="Inspireret til dit eget projekt?"
