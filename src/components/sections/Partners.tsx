@@ -63,7 +63,7 @@ export function Partners({
                 >
                   <Image
                     src={partner.src}
-                    alt={partner.name}
+                    alt={`${partner.name} logo - samarbejdspartner`}
                     fill
                     className="object-contain"
                     sizes="(max-width: 640px) 80px, (max-width: 768px) 96px, 112px"
@@ -94,7 +94,7 @@ export function Partners({
               >
                 <Image
                   src={partner.src}
-                  alt={partner.name}
+                  alt={`${partner.name} logo - samarbejdspartner`}
                   fill
                   className="object-contain"
                   sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 33vw, 16vw"

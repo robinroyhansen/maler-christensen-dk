@@ -81,7 +81,7 @@ export function Header() {
             <div className="relative h-10 sm:h-14 w-32 sm:w-48">
               <Image
                 src={LOGO_URL}
-                alt="Schou & Christensen - Malerfirma"
+                alt="Malerfirmaet Schou & Christensen logo - din lokale maler i Slagelse"
                 fill
                 className="object-contain object-left"
                 priority
@@ -155,6 +155,9 @@ export function Header() {
 
             <Link href="/galleri/" className="px-4 py-2 text-gray-700 hover:text-[#6b9834] font-medium transition-colors">
               Galleri
+            </Link>
+            <Link href="/blog/" className="px-4 py-2 text-gray-700 hover:text-[#6b9834] font-medium transition-colors">
+              Blog
             </Link>
             <Link href="/om-os/" className="px-4 py-2 text-gray-700 hover:text-[#6b9834] font-medium transition-colors">
               Om os
@@ -301,6 +304,13 @@ export function Header() {
                     onClick={handleLinkClick}
                   >
                     Galleri
+                  </Link>
+                  <Link 
+                    href="/blog/" 
+                    className="px-4 py-3 text-gray-700 hover:text-[#6b9834] hover:bg-gray-50 font-medium min-h-[48px] flex items-center active:bg-gray-100"
+                    onClick={handleLinkClick}
+                  >
+                    Blog
                   </Link>
                   <Link 
                     href="/om-os/" 

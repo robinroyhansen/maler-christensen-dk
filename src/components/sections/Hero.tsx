@@ -124,10 +124,11 @@ export function Hero({
       <div className="absolute inset-0">
         <Image
           src={backgroundImage}
-          alt="Professionelt malerarbejde"
+          alt="Professionelt malerarbejde udført af Schou & Christensen i Slagelse"
           fill
           className="object-cover"
           priority
+          fetchPriority="high"
           sizes="100vw"
         />
         {/* Dark overlay with gradient */}

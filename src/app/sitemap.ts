@@ -1,5 +1,6 @@
 import { MetadataRoute } from "next"
 import { SERVICES, CITIES, COMPANY } from "@/lib/constants"
+import { BLOG_POSTS } from "@/lib/data/blog-posts"
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = `https://${COMPANY.domain}`
@@ -10,15 +11,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/om-os",
     "/kontakt",
     "/galleri",
+    "/blog",
     "/referencer",
     "/partnere",
     "/vision",
     "/maler-tilbud",
+    "/privatlivspolitik",
+    "/cookiepolitik",
   ].map((route) => ({
     url: `${baseUrl}${route}/`,
     lastModified: new Date(),
     changeFrequency: "monthly" as const,
-    priority: route === "" ? 1 : 0.8,
+    priority: route === "" ? 1 : route === "/blog" ? 0.9 : 0.8,
   }))
 
   // Service pages
@@ -37,5 +41,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }))
 
-  return [...staticPages, ...servicePages, ...cityPages]
+  // Blog posts
+  const blogPages = BLOG_POSTS.map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}/`,
+    lastModified: new Date(post.date),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }))
+
+  return [...staticPages, ...servicePages, ...cityPages, ...blogPages]
 }

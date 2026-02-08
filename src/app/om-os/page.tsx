@@ -10,7 +10,7 @@ import { CheckCircle, Award, Users, Clock, Star, Shield } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Om os — Malerfirmaet Schou & Christensen | Slagelse",
-  description: `Mød Schou & Christensen — lokalt malerfirma i Slagelse med 15+ års erfaring. Medlem af Danske Malermestre. ★ 4.9 på Trustpilot`,
+  description: `Mød Jess og Stefan — ejerne af Schou & Christensen, lokalt malerfirma i Slagelse med 15+ års erfaring. Medlem af Danske Malermestre. ★ 4.9 på Trustpilot`,
   alternates: {
     canonical: `https://${COMPANY.domain}/om-os/`,
   },
@@ -39,14 +39,20 @@ export default function OmOsPage() {
 
                 <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Vores historie</h2>
                 <p className="text-gray-600 leading-relaxed">
-                  Med malermester Jess i spidsen har vi opbygget et solidt ry for kvalitetsbevidst 
-                  arbejde og personlig service. Vores rejse startede med en simpel ambition: at levere 
-                  malerarbejde, vi selv ville være stolte af i vores egne hjem.
+                  {COMPANY.name} drives af Jess og Stefan, som sammen har over 15 års erfaring inden 
+                  for malerarbejde. Med deres kombinerede ekspertise og passion for håndværk har de 
+                  opbygget et solidt ry for kvalitetsbevidst arbejde og personlig service.
                 </p>
                 <p className="text-gray-600 leading-relaxed">
-                  I dag servicerer vi kunder fra Slagelse til København, og vores team af erfarne 
-                  malere håndterer alt fra små istandsættelser til store renoveringsprojekter. Vores 
-                  {COMPANY.trustpilotRating}/5 rating på Trustpilot vidner om vores engagement i kundetilfredshed.
+                  Jess og Stefan startede firmaet med en simpel ambition: at levere malerarbejde, de 
+                  selv ville være stolte af i deres egne hjem. Den filosofi gennemsyrer stadig alt, 
+                  hvad vi gør i dag — fra de små detaljer til de store projekter.
+                </p>
+                <p className="text-gray-600 leading-relaxed">
+                  I dag servicerer vi kunder fra Slagelse til København med et team på 8 erfarne malere. 
+                  Vi håndterer alt fra små istandsættelser til store renoveringsprojekter, og vores 
+                  {COMPANY.trustpilotRating}/5 rating på Trustpilot med over 250 anmeldelser vidner om 
+                  vores engagement i kundetilfredshed.
                 </p>
               </div>
             </AnimateIn>

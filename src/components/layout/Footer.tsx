@@ -57,7 +57,7 @@ export function Footer() {
                 <div className="relative h-10 sm:h-12 w-28 sm:w-36">
                   <Image
                     src={LOGO_URL}
-                    alt={COMPANY.shortName}
+                    alt="Malerfirmaet Schou & Christensen logo"
                     fill
                     className="object-contain object-left brightness-0 invert"
                   />
@@ -189,6 +189,11 @@ export function Footer() {
                   </Link>
                 </li>
                 <li>
+                  <Link href="/blog/" className="text-gray-400 hover:text-[#85bd41] transition-colors text-sm min-h-[44px] py-1.5 block">
+                    Blog
+                  </Link>
+                </li>
+                <li>
                   <Link href="/galleri/" className="text-gray-400 hover:text-[#85bd41] transition-colors text-sm min-h-[44px] py-1.5 block">
                     Galleri
                   </Link>
@@ -204,11 +209,6 @@ export function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/vision/" className="text-gray-400 hover:text-[#85bd41] transition-colors text-sm min-h-[44px] py-1.5 block">
-                    Vores vision
-                  </Link>
-                </li>
-                <li>
                   <Link href="/kontakt/" className="text-gray-400 hover:text-[#85bd41] transition-colors text-sm min-h-[44px] py-1.5 block">
                     Kontakt
                   </Link>
@@ -216,6 +216,21 @@ export function Footer() {
                 <li>
                   <Link href="/maler-tilbud/" className="text-gray-400 hover:text-[#85bd41] transition-colors text-sm font-medium min-h-[44px] py-1.5 block">
                     Få tilbud
+                  </Link>
+                </li>
+              </ul>
+              
+              {/* Legal Links */}
+              <h3 className="font-bold text-base sm:text-lg mb-4 sm:mb-6 text-white mt-8">Juridisk</h3>
+              <ul className="space-y-1 sm:space-y-2">
+                <li>
+                  <Link href="/privatlivspolitik/" className="text-gray-400 hover:text-[#85bd41] transition-colors text-sm min-h-[44px] py-1.5 block">
+                    Privatlivspolitik
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/cookiepolitik/" className="text-gray-400 hover:text-[#85bd41] transition-colors text-sm min-h-[44px] py-1.5 block">
+                    Cookiepolitik
                   </Link>
                 </li>
               </ul>

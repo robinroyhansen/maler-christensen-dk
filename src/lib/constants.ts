@@ -11,7 +11,7 @@ export const COMPANY = {
   cvr: "39187337",
   trustpilotRating: 4.9,
   trustpilotReviews: 250,
-  owner: "Jess",
+  owners: ["Jess", "Stefan"],
   domain: "maler-christensen.dk",
 }
 

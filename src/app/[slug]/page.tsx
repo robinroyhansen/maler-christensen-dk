@@ -4,6 +4,7 @@ import { SERVICES, CITIES, COMPANY } from "@/lib/constants"
 import { getServiceContent } from "@/lib/content/services"
 import { getCityContent, getCityBySlug } from "@/lib/content/cities"
 import { getCityFAQs } from "@/lib/content/faqs"
+import { getServiceFAQs } from "@/lib/data/service-faqs"
 import { Hero } from "@/components/sections/Hero"
 import { Services } from "@/components/sections/Services"
 import { Reviews } from "@/components/sections/Reviews"
@@ -12,6 +13,7 @@ import { FAQ } from "@/components/sections/FAQ"
 import { ContactForm } from "@/components/sections/ContactForm"
 import { ServiceAreas } from "@/components/sections/ServiceAreas"
 import { ProjectGallery, SILKECEMENT_IMAGES } from "@/components/sections/ProjectGallery"
+import { FAQSchema, ServiceSchema } from "@/components/seo"
 import { Container } from "@/components/ui/Container"
 import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/ui/AnimateIn"
 import { Button } from "@/components/ui/Button"
@@ -112,9 +114,20 @@ function ServicePage({
 }) {
   const relatedServices = SERVICES.filter(s => content.relatedServices.includes(s.slug))
   const showGallery = slug === "microcement" || slug === "metallisk-pu-gulv"
+  const serviceFaqs = getServiceFAQs(slug)
 
   return (
     <>
+      {/* Schema.org structured data */}
+      <ServiceSchema
+        name={content.title}
+        description={content.metaDescription}
+        url={`https://${COMPANY.domain}/${slug}/`}
+      />
+      {serviceFaqs && serviceFaqs.length > 0 && (
+        <FAQSchema faqs={serviceFaqs} />
+      )}
+
       <Hero
         title={content.heroHeading}
         subtitle={content.heroSubheading}
@@ -203,6 +216,16 @@ function ServicePage({
             </StaggerContainer>
           </Container>
         </section>
+      )}
+
+      {/* FAQ Section for Service Pages */}
+      {serviceFaqs && serviceFaqs.length > 0 && (
+        <FAQ
+          faqs={serviceFaqs}
+          cityName=""
+          title={`Ofte stillede spørgsmål om ${content.title.toLowerCase()}`}
+          subtitle="Find svar på de mest almindelige spørgsmål"
+        />
       )}
 
       <CTA />

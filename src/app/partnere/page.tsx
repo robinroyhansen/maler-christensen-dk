@@ -83,7 +83,7 @@ export default function PartnerePage() {
                 <div className={`relative h-16 w-full mb-6 ${partner.name === "Danske Malermestre" ? "bg-gray-900 rounded-lg p-3" : ""}`}>
                   <Image
                     src={partner.logo}
-                    alt={partner.name}
+                    alt={`${partner.name} logo - samarbejdspartner med Schou & Christensen`}
                     fill
                     className="object-contain"
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
