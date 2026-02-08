@@ -4,6 +4,7 @@ import "./globals.css"
 import { Header } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
 import { TrustBar } from "@/components/layout/TrustBar"
+import { FloatingCTA } from "@/components/ui/FloatingCTA"
 import { COMPANY } from "@/lib/constants"
 
 const inter = Inter({ 
@@ -109,6 +110,7 @@ export default function RootLayout({
         <Header />
         <main>{children}</main>
         <Footer />
+        <FloatingCTA />
       </body>
     </html>
   )

@@ -2,9 +2,11 @@
 
 import { useState } from "react"
 import { Container } from "@/components/ui/Container"
+import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/ui/AnimateIn"
 import { COMPANY } from "@/lib/constants"
 import { getReviewsForPage, type Review } from "@/lib/data/reviews"
 import { Star, Quote, ExternalLink } from "lucide-react"
+import { motion, useReducedMotion } from "framer-motion"
 
 // Get initials from author name
 function getInitials(name: string): string {
@@ -35,29 +37,40 @@ export function Reviews({
   pageSlug = "homepage"
 }: ReviewsProps) {
   const reviews = getReviewsForPage(pageSlug, 6)
+  const prefersReducedMotion = useReducedMotion()
 
   return (
     <section className="py-12 sm:py-16 md:py-24 bg-white">
       <Container>
-        <div className="text-center mb-10 sm:mb-14">
+        <AnimateIn className="text-center mb-10 sm:mb-14">
           <div className="flex justify-center items-center gap-0.5 sm:gap-1 mb-4">
             {[...Array(5)].map((_, i) => (
-              <Star key={i} className="w-6 h-6 sm:w-8 sm:h-8 text-[#00b67a] fill-[#00b67a]" />
+              <motion.div
+                key={i}
+                initial={prefersReducedMotion ? {} : { opacity: 0, scale: 0 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: i * 0.1 }}
+              >
+                <Star className="w-6 h-6 sm:w-8 sm:h-8 text-[#00b67a] fill-[#00b67a]" />
+              </motion.div>
             ))}
           </div>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 tracking-tight section-heading-accent">
             {title}
           </h2>
           <p className="text-base sm:text-lg text-gray-500 mt-6 px-4 sm:px-0">{subtitle}</p>
-        </div>
+        </AnimateIn>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-          {reviews.map((review) => (
-            <ReviewCard key={review.id} review={review} />
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+          {reviews.map((review, index) => (
+            <StaggerItem key={review.id} variant={index % 2 === 0 ? "fade-left" : "fade-right"}>
+              <ReviewCard review={review} />
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
 
-        <div className="text-center mt-8 sm:mt-12">
+        <AnimateIn delay={0.4} className="text-center mt-8 sm:mt-12">
           <a
             href="https://www.trustpilot.com/review/www.maler-christensen.dk?languages=all"
             target="_blank"
@@ -67,7 +80,7 @@ export function Reviews({
             <span className="text-sm sm:text-base">Se alle anmeldelser på Trustpilot</span>
             <ExternalLink className="w-4 h-4" />
           </a>
-        </div>
+        </AnimateIn>
       </Container>
     </section>
   )
@@ -80,6 +93,7 @@ const TRUNCATE_LENGTH_DESKTOP = 200
 function ReviewCard({ review }: { review: Review }) {
   const [isExpanded, setIsExpanded] = useState(false)
   const isTrustpilot = review.source === "trustpilot"
+  const prefersReducedMotion = useReducedMotion()
   
   // Use CSS to handle different truncation on mobile vs desktop
   const needsTruncationMobile = review.text.length > TRUNCATE_LENGTH_MOBILE
@@ -94,13 +108,25 @@ function ReviewCard({ review }: { review: Review }) {
     : review.text
   
   return (
-    <div className="review-card bg-gray-50 rounded-lg sm:rounded-xl p-4 sm:p-6 relative flex flex-col border-l-3 border-transparent hover:border-[#6b9834]">
+    <motion.div
+      whileHover={prefersReducedMotion ? {} : { y: -4 }}
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+      className="review-card bg-gray-50 rounded-lg sm:rounded-xl p-4 sm:p-6 relative flex flex-col border-l-3 border-transparent hover:border-[#6b9834]"
+    >
       <Quote className="absolute top-3 right-3 sm:top-4 sm:right-4 w-6 h-6 sm:w-8 sm:h-8 text-[#6b9834]/15" />
       
-      {/* Star Rating */}
+      {/* Star Rating - animated fill */}
       <div className="flex items-center gap-0.5 sm:gap-1 mb-3 sm:mb-4">
         {[...Array(review.rating)].map((_, i) => (
-          <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 text-[#00b67a] fill-[#00b67a]" />
+          <motion.div
+            key={i}
+            initial={prefersReducedMotion ? {} : { opacity: 0, scale: 0 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.2, delay: i * 0.05 }}
+          >
+            <Star className="w-4 h-4 sm:w-5 sm:h-5 text-[#00b67a] fill-[#00b67a]" />
+          </motion.div>
         ))}
       </div>
 
@@ -140,8 +166,12 @@ function ReviewCard({ review }: { review: Review }) {
           </div>
         </div>
         
-        {/* Source Badge - compact on mobile */}
-        <div 
+        {/* Source Badge - with scale animation */}
+        <motion.div
+          initial={prefersReducedMotion ? {} : { scale: 0.8, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.3, delay: 0.2 }}
           className={`px-2 sm:px-3 py-1 sm:py-1.5 rounded-full text-[10px] sm:text-xs font-semibold flex-shrink-0 whitespace-nowrap ${
             isTrustpilot 
               ? "bg-[#00b67a] text-white" 
@@ -149,8 +179,8 @@ function ReviewCard({ review }: { review: Review }) {
           }`}
         >
           {isTrustpilot ? "★ Trustpilot" : "AH"}
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   )
 }

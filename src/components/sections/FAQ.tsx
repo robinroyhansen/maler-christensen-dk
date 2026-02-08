@@ -2,7 +2,9 @@
 
 import { useState } from "react"
 import { Container } from "@/components/ui/Container"
+import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/ui/AnimateIn"
 import { ChevronDown } from "lucide-react"
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion"
 import type { FAQ as FAQType } from "@/lib/content/faqs"
 
 interface FAQItemProps {
@@ -10,9 +12,12 @@ interface FAQItemProps {
   answer: string
   isOpen: boolean
   onToggle: () => void
+  index: number
 }
 
-function FAQItem({ question, answer, isOpen, onToggle }: FAQItemProps) {
+function FAQItem({ question, answer, isOpen, onToggle, index }: FAQItemProps) {
+  const prefersReducedMotion = useReducedMotion()
+
   return (
     <div className="border-b border-gray-200 last:border-b-0">
       <button
@@ -23,9 +28,11 @@ function FAQItem({ question, answer, isOpen, onToggle }: FAQItemProps) {
         <h3 className="text-lg font-semibold text-gray-900 group-hover:text-[#6b9834] transition-colors pr-4">
           {question}
         </h3>
-        <span
-          className={`flex-shrink-0 w-8 h-8 rounded-full bg-[#6b9834]/10 flex items-center justify-center transition-all duration-300 ${
-            isOpen ? "bg-[#6b9834] rotate-180" : "group-hover:bg-[#6b9834]/20"
+        <motion.span
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.2 }}
+          className={`flex-shrink-0 w-8 h-8 rounded-full bg-[#6b9834]/10 flex items-center justify-center transition-colors duration-300 ${
+            isOpen ? "bg-[#6b9834]" : "group-hover:bg-[#6b9834]/20"
           }`}
         >
           <ChevronDown
@@ -33,15 +40,21 @@ function FAQItem({ question, answer, isOpen, onToggle }: FAQItemProps) {
               isOpen ? "text-white" : "text-[#6b9834]"
             }`}
           />
-        </span>
+        </motion.span>
       </button>
-      <div
-        className={`overflow-hidden transition-all duration-300 ease-in-out ${
-          isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-        }`}
-      >
-        <p className="pb-5 text-gray-600 leading-relaxed pr-12">{answer}</p>
-      </div>
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            initial={prefersReducedMotion ? { opacity: 1 } : { height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={prefersReducedMotion ? { opacity: 0 } : { height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="overflow-hidden"
+          >
+            <p className="pb-5 text-gray-600 leading-relaxed pr-12">{answer}</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   )
 }
@@ -92,27 +105,30 @@ export function FAQ({
       />
 
       {/* Header */}
-      <div className="text-center mb-10">
+      <AnimateIn className="text-center mb-10">
         <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
           {title || `Ofte stillede spørgsmål om maler i ${cityName}`}
         </h2>
         {subtitle && (
           <p className="text-gray-600 max-w-2xl mx-auto">{subtitle}</p>
         )}
-      </div>
+      </AnimateIn>
 
       {/* FAQ Accordion */}
-      <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8">
-        {faqs.map((faq, index) => (
-          <FAQItem
-            key={index}
-            question={faq.question}
-            answer={faq.answer}
-            isOpen={openIndex === index}
-            onToggle={() => handleToggle(index)}
-          />
-        ))}
-      </div>
+      <AnimateIn delay={0.1} variant="fade-up">
+        <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8">
+          {faqs.map((faq, index) => (
+            <FAQItem
+              key={index}
+              index={index}
+              question={faq.question}
+              answer={faq.answer}
+              isOpen={openIndex === index}
+              onToggle={() => handleToggle(index)}
+            />
+          ))}
+        </div>
+      </AnimateIn>
     </>
   )
 

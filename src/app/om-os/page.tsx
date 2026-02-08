@@ -3,6 +3,8 @@ import Image from "next/image"
 import { Hero } from "@/components/sections/Hero"
 import { Container } from "@/components/ui/Container"
 import { CTA } from "@/components/sections/CTA"
+import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/ui/AnimateIn"
+import { CountUp } from "@/components/ui/CountUp"
 import { COMPANY } from "@/lib/constants"
 import { CheckCircle, Award, Users, Clock, Star, Shield } from "lucide-react"
 
@@ -27,26 +29,30 @@ export default function OmOsPage() {
       <section className="py-16 md:py-24">
         <Container>
           <div className="max-w-4xl mx-auto">
-            <div className="prose prose-lg prose-gray max-w-none">
-              <p className="lead text-xl text-gray-600">
-                {COMPANY.name} er et lokalt malerfirma med base i Slagelse. Vi har specialiseret 
-                os i at levere professionelt malerarbejde af højeste kvalitet til private og 
-                erhvervskunder i hele Sjælland.
-              </p>
+            <AnimateIn>
+              <div className="prose prose-lg prose-gray max-w-none">
+                <p className="lead text-xl text-gray-600">
+                  {COMPANY.name} er et lokalt malerfirma med base i Slagelse. Vi har specialiseret 
+                  os i at levere professionelt malerarbejde af højeste kvalitet til private og 
+                  erhvervskunder i hele Sjælland.
+                </p>
 
-              <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Vores historie</h2>
-              <p className="text-gray-600 leading-relaxed">
-                Med malermester Jess i spidsen har vi opbygget et solidt ry for kvalitetsbevidst 
-                arbejde og personlig service. Vores rejse startede med en simpel ambition: at levere 
-                malerarbejde, vi selv ville være stolte af i vores egne hjem.
-              </p>
-              <p className="text-gray-600 leading-relaxed">
-                I dag servicerer vi kunder fra Slagelse til København, og vores team af erfarne 
-                malere håndterer alt fra små istandsættelser til store renoveringsprojekter. Vores 
-                {COMPANY.trustpilotRating}/5 rating på Trustpilot vidner om vores engagement i kundetilfredshed.
-              </p>
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Vores historie</h2>
+                <p className="text-gray-600 leading-relaxed">
+                  Med malermester Jess i spidsen har vi opbygget et solidt ry for kvalitetsbevidst 
+                  arbejde og personlig service. Vores rejse startede med en simpel ambition: at levere 
+                  malerarbejde, vi selv ville være stolte af i vores egne hjem.
+                </p>
+                <p className="text-gray-600 leading-relaxed">
+                  I dag servicerer vi kunder fra Slagelse til København, og vores team af erfarne 
+                  malere håndterer alt fra små istandsættelser til store renoveringsprojekter. Vores 
+                  {COMPANY.trustpilotRating}/5 rating på Trustpilot vidner om vores engagement i kundetilfredshed.
+                </p>
+              </div>
+            </AnimateIn>
 
-              {/* Historical Photo */}
+            {/* Historical Photo */}
+            <AnimateIn delay={0.2} variant="scale">
               <figure className="mt-8 mb-4">
                 <div className="relative w-full max-w-md mx-auto overflow-hidden rounded-lg shadow-lg">
                   <Image
@@ -61,97 +67,131 @@ export default function OmOsPage() {
                   Malere anno 1892 — vi bygger videre på en stolt dansk håndværkstradition
                 </figcaption>
               </figure>
+            </AnimateIn>
 
-              <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Vores værdier</h2>
-              <p className="text-gray-600 leading-relaxed">
-                Vi tror på, at godt håndværk handler om mere end bare at male en væg. Det handler 
-                om at lytte til kunden, forstå deres ønsker og levere et resultat, der overgår 
-                deres forventninger. Vi rydder altid op efter os, overholder aftaler og står ved 
-                vores arbejde.
-              </p>
-            </div>
+            <AnimateIn delay={0.1}>
+              <div className="prose prose-lg prose-gray max-w-none">
+                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Vores værdier</h2>
+                <p className="text-gray-600 leading-relaxed">
+                  Vi tror på, at godt håndværk handler om mere end bare at male en væg. Det handler 
+                  om at lytte til kunden, forstå deres ønsker og levere et resultat, der overgår 
+                  deres forventninger. Vi rydder altid op efter os, overholder aftaler og står ved 
+                  vores arbejde.
+                </p>
+              </div>
+            </AnimateIn>
 
-            {/* Stats Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
-              <div className="bg-[#6b9834] text-white rounded-xl p-6 text-center">
-                <div className="text-4xl font-bold mb-2">{COMPANY.trustpilotRating}</div>
-                <div className="text-white/80 text-sm">Trustpilot score</div>
-              </div>
-              <div className="bg-gray-100 rounded-xl p-6 text-center">
-                <div className="text-4xl font-bold text-gray-900 mb-2">250+</div>
-                <div className="text-gray-600 text-sm">Anmeldelser</div>
-              </div>
-              <div className="bg-gray-100 rounded-xl p-6 text-center">
-                <div className="text-4xl font-bold text-gray-900 mb-2">15+</div>
-                <div className="text-gray-600 text-sm">Års erfaring</div>
-              </div>
-              <div className="bg-gray-100 rounded-xl p-6 text-center">
-                <div className="text-4xl font-bold text-gray-900 mb-2">1700+</div>
-                <div className="text-gray-600 text-sm">Tilfredse kunder</div>
-              </div>
-            </div>
+            {/* Stats Grid with CountUp */}
+            <StaggerContainer className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12" staggerDelay={0.1}>
+              <StaggerItem>
+                <div className="bg-[#6b9834] text-white rounded-xl p-6 text-center">
+                  <div className="text-4xl font-bold mb-2">
+                    <CountUp target={COMPANY.trustpilotRating} decimals={1} />
+                  </div>
+                  <div className="text-white/80 text-sm">Trustpilot score</div>
+                </div>
+              </StaggerItem>
+              <StaggerItem>
+                <div className="bg-gray-100 rounded-xl p-6 text-center">
+                  <div className="text-4xl font-bold text-gray-900 mb-2">
+                    <CountUp target={250} suffix="+" />
+                  </div>
+                  <div className="text-gray-600 text-sm">Anmeldelser</div>
+                </div>
+              </StaggerItem>
+              <StaggerItem>
+                <div className="bg-gray-100 rounded-xl p-6 text-center">
+                  <div className="text-4xl font-bold text-gray-900 mb-2">
+                    <CountUp target={15} suffix="+" />
+                  </div>
+                  <div className="text-gray-600 text-sm">Års erfaring</div>
+                </div>
+              </StaggerItem>
+              <StaggerItem>
+                <div className="bg-gray-100 rounded-xl p-6 text-center">
+                  <div className="text-4xl font-bold text-gray-900 mb-2">
+                    <CountUp target={1700} suffix="+" />
+                  </div>
+                  <div className="text-gray-600 text-sm">Tilfredse kunder</div>
+                </div>
+              </StaggerItem>
+            </StaggerContainer>
 
             {/* Why Choose Us */}
             <div className="mt-16">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-                Hvorfor vælge os?
-              </h2>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-[#6b9834]/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Star className="w-6 h-6 text-[#6b9834]" />
+              <AnimateIn>
+                <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+                  Hvorfor vælge os?
+                </h2>
+              </AnimateIn>
+              <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" staggerDelay={0.1}>
+                <StaggerItem>
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-[#6b9834]/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Star className="w-6 h-6 text-[#6b9834]" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-900 mb-2">Høj kundetilfredshed</h3>
+                      <p className="text-gray-600 text-sm">Med {COMPANY.trustpilotRating}/5 på Trustpilot er vi blandt de bedst anmeldte malerfirmaer i regionen.</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 mb-2">Høj kundetilfredshed</h3>
-                    <p className="text-gray-600 text-sm">Med {COMPANY.trustpilotRating}/5 på Trustpilot er vi blandt de bedst anmeldte malerfirmaer i regionen.</p>
+                </StaggerItem>
+                <StaggerItem>
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-[#6b9834]/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Award className="w-6 h-6 text-[#6b9834]" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-900 mb-2">Danske Malermestre</h3>
+                      <p className="text-gray-600 text-sm">Som medlem af Danske Malermestre garanterer vi fagligt korrekt arbejde.</p>
+                    </div>
                   </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-[#6b9834]/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Award className="w-6 h-6 text-[#6b9834]" />
+                </StaggerItem>
+                <StaggerItem>
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-[#6b9834]/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Users className="w-6 h-6 text-[#6b9834]" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-900 mb-2">Erfarne malere</h3>
+                      <p className="text-gray-600 text-sm">Vores team består af erfarne håndværkere med mange års erfaring.</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 mb-2">Danske Malermestre</h3>
-                    <p className="text-gray-600 text-sm">Som medlem af Danske Malermestre garanterer vi fagligt korrekt arbejde.</p>
+                </StaggerItem>
+                <StaggerItem>
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-[#6b9834]/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Clock className="w-6 h-6 text-[#6b9834]" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-900 mb-2">Hurtig service</h3>
+                      <p className="text-gray-600 text-sm">Vi svarer på henvendelser inden for 24 timer og holder altid vores deadlines.</p>
+                    </div>
                   </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-[#6b9834]/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Users className="w-6 h-6 text-[#6b9834]" />
+                </StaggerItem>
+                <StaggerItem>
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-[#6b9834]/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Shield className="w-6 h-6 text-[#6b9834]" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-900 mb-2">Garanti på arbejde</h3>
+                      <p className="text-gray-600 text-sm">Vi står ved vores arbejde og giver garanti på alle vores ydelser.</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 mb-2">Erfarne malere</h3>
-                    <p className="text-gray-600 text-sm">Vores team består af erfarne håndværkere med mange års erfaring.</p>
+                </StaggerItem>
+                <StaggerItem>
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-[#6b9834]/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <CheckCircle className="w-6 h-6 text-[#6b9834]" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-900 mb-2">Fast pris</h3>
+                      <p className="text-gray-600 text-sm">Vi tilbyder fast pris, så du altid ved, hvad det kommer til at koste.</p>
+                    </div>
                   </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-[#6b9834]/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Clock className="w-6 h-6 text-[#6b9834]" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 mb-2">Hurtig service</h3>
-                    <p className="text-gray-600 text-sm">Vi svarer på henvendelser inden for 24 timer og holder altid vores deadlines.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-[#6b9834]/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Shield className="w-6 h-6 text-[#6b9834]" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 mb-2">Garanti på arbejde</h3>
-                    <p className="text-gray-600 text-sm">Vi står ved vores arbejde og giver garanti på alle vores ydelser.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-[#6b9834]/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <CheckCircle className="w-6 h-6 text-[#6b9834]" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 mb-2">Fast pris</h3>
-                    <p className="text-gray-600 text-sm">Vi tilbyder fast pris, så du altid ved, hvad det kommer til at koste.</p>
-                  </div>
-                </div>
-              </div>
+                </StaggerItem>
+              </StaggerContainer>
             </div>
           </div>
         </Container>

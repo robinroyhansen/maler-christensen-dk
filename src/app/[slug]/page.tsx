@@ -13,6 +13,7 @@ import { ContactForm } from "@/components/sections/ContactForm"
 import { ServiceAreas } from "@/components/sections/ServiceAreas"
 import { ProjectGallery, SILKECEMENT_IMAGES } from "@/components/sections/ProjectGallery"
 import { Container } from "@/components/ui/Container"
+import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/ui/AnimateIn"
 import { Button } from "@/components/ui/Button"
 import Link from "next/link"
 import { CheckCircle, MapPin, ArrowRight } from "lucide-react"
@@ -124,38 +125,46 @@ function ServicePage({
         <Container>
           <div className="max-w-4xl mx-auto">
             {/* Intro */}
-            <p className="text-xl text-gray-600 leading-relaxed mb-12">
-              {content.intro}
-            </p>
+            <AnimateIn>
+              <p className="text-xl text-gray-600 leading-relaxed mb-12">
+                {content.intro}
+              </p>
+            </AnimateIn>
 
             {/* Sections */}
             <div className="space-y-12">
               {content.sections.map((section, index) => (
-                <div key={index}>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                    {section.title}
-                  </h2>
-                  <p className="text-gray-600 leading-relaxed">
-                    {section.content}
-                  </p>
-                </div>
+                <AnimateIn key={index} delay={index * 0.1}>
+                  <div>
+                    <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                      {section.title}
+                    </h2>
+                    <p className="text-gray-600 leading-relaxed">
+                      {section.content}
+                    </p>
+                  </div>
+                </AnimateIn>
               ))}
             </div>
 
             {/* Benefits */}
-            <div className="mt-16 bg-gray-50 rounded-2xl p-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">
-                Derfor skal du vælge os
-              </h2>
-              <ul className="grid sm:grid-cols-2 gap-4">
-                {content.benefits.map((benefit, index) => (
-                  <li key={index} className="flex items-center gap-3">
-                    <CheckCircle className="w-6 h-6 text-[#6b9834] flex-shrink-0" />
-                    <span className="text-gray-700">{benefit}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <AnimateIn delay={0.2}>
+              <div className="mt-16 bg-gray-50 rounded-2xl p-8">
+                <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                  Derfor skal du vælge os
+                </h2>
+                <StaggerContainer className="grid sm:grid-cols-2 gap-4" staggerDelay={0.08}>
+                  {content.benefits.map((benefit, index) => (
+                    <StaggerItem key={index}>
+                      <li className="flex items-center gap-3 list-none">
+                        <CheckCircle className="w-6 h-6 text-[#6b9834] flex-shrink-0" />
+                        <span className="text-gray-700">{benefit}</span>
+                      </li>
+                    </StaggerItem>
+                  ))}
+                </StaggerContainer>
+              </div>
+            </AnimateIn>
           </div>
         </Container>
       </section>
@@ -174,21 +183,24 @@ function ServicePage({
       {relatedServices.length > 0 && (
         <section className="py-16 bg-gray-50">
           <Container>
-            <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">
-              Relaterede ydelser
-            </h2>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <AnimateIn>
+              <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">
+                Relaterede ydelser
+              </h2>
+            </AnimateIn>
+            <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6" staggerDelay={0.1}>
               {relatedServices.map((service) => (
-                <Link
-                  key={service.slug}
-                  href={`/${service.slug}/`}
-                  className="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-shadow"
-                >
-                  <h3 className="font-semibold text-gray-900 mb-2">{service.name}</h3>
-                  <p className="text-sm text-gray-600">{service.description}</p>
-                </Link>
+                <StaggerItem key={service.slug}>
+                  <Link
+                    href={`/${service.slug}/`}
+                    className="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-shadow block"
+                  >
+                    <h3 className="font-semibold text-gray-900 mb-2">{service.name}</h3>
+                    <p className="text-sm text-gray-600">{service.description}</p>
+                  </Link>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerContainer>
           </Container>
         </section>
       )}
@@ -230,60 +242,70 @@ function CityPage({
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Main Content */}
             <div className="lg:col-span-2">
-              <p className="text-xl text-gray-600 leading-relaxed mb-8">
-                {content.intro}
-              </p>
+              <AnimateIn>
+                <p className="text-xl text-gray-600 leading-relaxed mb-8">
+                  {content.intro}
+                </p>
+              </AnimateIn>
 
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                Malerarbejde i {city.name}
-              </h2>
-              <p className="text-gray-600 leading-relaxed mb-8">
-                {content.aboutCity}
-              </p>
+              <AnimateIn delay={0.1}>
+                <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                  Malerarbejde i {city.name}
+                </h2>
+                <p className="text-gray-600 leading-relaxed mb-8">
+                  {content.aboutCity}
+                </p>
+              </AnimateIn>
 
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                Hvorfor vælge os som din maler i {city.name}?
-              </h2>
-              <div className="prose prose-gray max-w-none mb-8" dangerouslySetInnerHTML={{ 
-                __html: content.whyChooseUs.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br/>')
-              }} />
+              <AnimateIn delay={0.2}>
+                <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                  Hvorfor vælge os som din maler i {city.name}?
+                </h2>
+                <div className="prose prose-gray max-w-none mb-8" dangerouslySetInnerHTML={{ 
+                  __html: content.whyChooseUs.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br/>')
+                }} />
+              </AnimateIn>
 
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                Vores ydelser i {city.name}
-              </h2>
-              <div className="prose prose-gray max-w-none" dangerouslySetInnerHTML={{ 
-                __html: content.services.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br/>')
-              }} />
+              <AnimateIn delay={0.3}>
+                <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                  Vores ydelser i {city.name}
+                </h2>
+                <div className="prose prose-gray max-w-none" dangerouslySetInnerHTML={{ 
+                  __html: content.services.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br/>')
+                }} />
+              </AnimateIn>
             </div>
 
             {/* Sidebar */}
-            <div className="lg:col-span-1">
-              <div className="sticky top-24 space-y-6">
-                {/* Contact Card */}
-                <ContactForm variant="compact" pageSlug={city.slug} />
+            <AnimateIn variant="fade-right" delay={0.2}>
+              <div className="lg:col-span-1">
+                <div className="sticky top-24 space-y-6">
+                  {/* Contact Card */}
+                  <ContactForm variant="compact" pageSlug={city.slug} />
 
-                {/* Nearby Areas */}
-                <div className="bg-gray-50 rounded-xl p-6">
-                  <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                    <MapPin className="w-5 h-5 text-[#6b9834]" />
-                    Nærliggende områder
-                  </h3>
-                  <ul className="space-y-2">
-                    {nearbyCity.map((nearby) => (
-                      <li key={nearby.slug}>
-                        <Link
-                          href={`/${nearby.slug}/`}
-                          className="text-gray-600 hover:text-[#6b9834] transition-colors flex items-center gap-2"
-                        >
-                          <ArrowRight className="w-4 h-4" />
-                          Maler {nearby.name}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
+                  {/* Nearby Areas */}
+                  <div className="bg-gray-50 rounded-xl p-6">
+                    <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
+                      <MapPin className="w-5 h-5 text-[#6b9834]" />
+                      Nærliggende områder
+                    </h3>
+                    <StaggerContainer className="space-y-2" staggerDelay={0.05}>
+                      {nearbyCity.map((nearby) => (
+                        <StaggerItem key={nearby.slug}>
+                          <Link
+                            href={`/${nearby.slug}/`}
+                            className="text-gray-600 hover:text-[#6b9834] transition-colors flex items-center gap-2"
+                          >
+                            <ArrowRight className="w-4 h-4" />
+                            Maler {nearby.name}
+                          </Link>
+                        </StaggerItem>
+                      ))}
+                    </StaggerContainer>
+                  </div>
                 </div>
               </div>
-            </div>
+            </AnimateIn>
           </div>
         </Container>
       </section>
