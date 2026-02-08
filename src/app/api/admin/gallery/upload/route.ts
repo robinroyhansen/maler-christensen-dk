@@ -86,6 +86,19 @@ function generateCaption(altText: string): string {
   return parts[0] // Just the first part before the company attribution
 }
 
+function slugifyFilename(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/æ/g, 'ae').replace(/ø/g, 'oe').replace(/å/g, 'aa')
+    .replace(/ü/g, 'u').replace(/ö/g, 'o').replace(/ä/g, 'a')
+    .replace(/[—–]/g, '-')
+    .replace(/[^a-z0-9-\s]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '')
+    .substring(0, 60)
+}
+
 export async function POST(request: NextRequest) {
   if (!checkAdminAuth(request)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
@@ -113,9 +126,15 @@ export async function POST(request: NextRequest) {
     
     const imageIndex = existingImages?.length || 0
 
-    // Generate filename with timestamp to avoid conflicts
-    const fileExt = file.name.split('.').pop()
-    const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`
+    // Generate SEO optimized content first (need alt text for filename)
+    const altText = generateSEOAltText(category, imageIndex)
+    
+    // Generate SEO-friendly filename from alt text
+    const fileExt = file.name.split('.').pop() || 'jpg'
+    const seoBase = slugifyFilename(altText)
+    // Add short random suffix to avoid conflicts
+    const suffix = Math.random().toString(36).substring(2, 6)
+    const fileName = seoBase ? `${seoBase}-${suffix}.${fileExt}` : `${category}-${Date.now()}.${fileExt}`
     const filePath = `${category}/${fileName}`
 
     // Upload to Supabase Storage
@@ -139,8 +158,6 @@ export async function POST(request: NextRequest) {
       .from('site-assets')
       .getPublicUrl(filePath)
 
-    // Generate SEO optimized content
-    const altText = generateSEOAltText(category, imageIndex)
     const caption = generateCaption(altText)
 
     // Get next sort_order for this category
