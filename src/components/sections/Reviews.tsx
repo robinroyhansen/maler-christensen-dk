@@ -8,8 +8,8 @@ import { Star, Quote, ExternalLink } from "lucide-react"
 
 // Get initials from author name
 function getInitials(name: string): string {
-  if (name === "Trustpilot-bruger") {
-    return "TB"
+  if (name === "Verificeret kunde") {
+    return "✓"
   }
   return name.split(" ").map(n => n[0]).join("").toUpperCase()
 }

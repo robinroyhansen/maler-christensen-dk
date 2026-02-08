@@ -13,7 +13,7 @@ export interface Review {
 export const REVIEWS: Review[] = [
   {
     id: "r1",
-    author: "Trustpilot-bruger",
+    author: "Verificeret kunde",
     rating: 5,
     text: "Jeg kan på det varmeste anbefale malerfirmaet Christensen. Hele processen fra første kontakt til færdigt resultat har været professionel og tryg. Kommunikationen var klar og venlig, og de holdt aftalerne både med tid og pris. Har brugt dem af flere omgange. Til mit hus og mine forældres rygerlejlighed. Arbejdet blev udført på kun 2 dage. Selve malerarbejdet blev udført med stor omhu og præcision – resultatet er flot, ensartet og langt over mine forventninger. De efterlod også alt pænt og ryddeligt, så det var en fornøjelse at komme hjem til. Det er sjældent at opleve så høj kvalitet kombineret med god service, så jeg giver mine bedste anbefalinger til Malerfirmaet Christensen og vil helt sikkert bruge dem igen i fremtiden.",
     source: "trustpilot",
@@ -22,7 +22,7 @@ export const REVIEWS: Review[] = [
   },
   {
     id: "r2",
-    author: "Trustpilot-bruger",
+    author: "Verificeret kunde",
     rating: 5,
     text: "Jeg bestilte maling af en hel lejlighed og fik et fint tilbud. De kom 3 malere på selve dagen, til tiden. Superflinke og effektive. Vi aftalte en ekstraopgave med nogle radiatorer i løbet af dagen, som ikke var et problem at lægge oveni arbejdsprogrammet. Det tog 2 dage i alt og lejligheden står superflot. Regningen gav ingen dårlige overraskelser. Tak for godt arbejde. Vi ses helt sikkert en anden gang.",
     source: "trustpilot",
@@ -31,7 +31,7 @@ export const REVIEWS: Review[] = [
   },
   {
     id: "r3",
-    author: "Trustpilot-bruger",
+    author: "Verificeret kunde",
     rating: 5,
     text: "Vi havde en rigtig dårlig oplevelse med en maler, der ikke kunne løfte opgaven, og vores tidsplan for renovering og flytning skred. Derfor var det en stor glæde at finde Stephan og co., der påtog sig opgaven og leverede et flot arbejde på kun en uge. Tak til George for en super indsats.",
     source: "trustpilot",
@@ -40,7 +40,7 @@ export const REVIEWS: Review[] = [
   },
   {
     id: "r4",
-    author: "Trustpilot-bruger",
+    author: "Verificeret kunde",
     rating: 5,
     text: "Det har været en rigtig god oplevelse at bruge dette malerfirma i Slagelse. Vi fik snakket med Stefan og fik et skarpt tilbud på at male vores hus. Vi aftalte tid og opgaven blev fuldført ligesom vi ønskede det og til tiden. Vil helt klart anbefale dette firma til venner, familie og bekendte.",
     source: "trustpilot",
@@ -49,7 +49,7 @@ export const REVIEWS: Review[] = [
   },
   {
     id: "r5",
-    author: "Trustpilot-bruger",
+    author: "Verificeret kunde",
     rating: 5,
     text: "This great team were true professionals from the get-go. From the prompt replies, to the commitment to the job and then just being completely delightful to work with. A few small hiccups were immediately rectified, despite having to travel for 2 hours for a 30 minute 'fix'. I would highly recommend and will do so with my friends who ask for a great painting recommendation. Thanks for your work. My renovation project looks so good :)",
     source: "trustpilot",
@@ -58,7 +58,7 @@ export const REVIEWS: Review[] = [
   },
   {
     id: "r6",
-    author: "Trustpilot-bruger",
+    author: "Verificeret kunde",
     rating: 5,
     text: "En hel lejlighed, vægge, lofter, døre og vinduer, malet smukt og effektivt. De kunne starte hurtigt og så var maleren meget venlig og sympatisk. 😊 Kan kun anbefale!",
     source: "trustpilot",
@@ -67,7 +67,7 @@ export const REVIEWS: Review[] = [
   },
   {
     id: "r7",
-    author: "Trustpilot-bruger",
+    author: "Verificeret kunde",
     rating: 5,
     text: "God kommunikation, imødekommende, venlige og fleksibel. Flot udført malerarbejde og til aftalt tid og pris. Vi kan varmt anbefale Malerfirmaet Christensen til alle.",
     source: "trustpilot",
@@ -76,7 +76,7 @@ export const REVIEWS: Review[] = [
   },
   {
     id: "r8",
-    author: "Trustpilot-bruger",
+    author: "Verificeret kunde",
     rating: 5,
     text: "Top-professionel fra først til sidst. Fantastisk godt arbejde. Holder aftalerne, og viser stolthed over egen indsats. Vil helt sikkert bruge dem igen.",
     source: "trustpilot",
@@ -94,7 +94,7 @@ export const REVIEWS: Review[] = [
   },
   {
     id: "r10",
-    author: "Trustpilot-bruger",
+    author: "Verificeret kunde",
     rating: 5,
     text: "Super professionel og hurtig service. Personalet er super imødekommende og venlige samt lyttende, med en evne til at forstå og opnå det ønskede resultat. Arbejdet er nøje og ned til mindste detalje og meget punktligt. Alt i alt en super god oplevelse. Firmaet kan varmt anbefales.",
     source: "trustpilot",
@@ -112,7 +112,7 @@ export const REVIEWS: Review[] = [
   },
   {
     id: "r12",
-    author: "Trustpilot-bruger",
+    author: "Verificeret kunde",
     rating: 5,
     text: "Yderst tilfreds med malerarbejdet! God kommunikation med malermester selv, god service samt imødekommenhed på ønsker, farver etc. og der er ikke en finger at sætte på det udførte arbejde. Fleksibilitet var vigtigt for os, da vi ikke skulle være tilstede da der blev malet, det var intet problem - så det blev fikset i helligdage! Det kan man kalde service 🤞🏽",
     source: "trustpilot",
@@ -121,7 +121,7 @@ export const REVIEWS: Review[] = [
   },
   {
     id: "r13",
-    author: "Trustpilot-bruger",
+    author: "Verificeret kunde",
     rating: 5,
     text: "Vi har fået malet vores sommerhus udvendigt - total farveskift - og det er bare super flot lavet. Der er ikke et skimt af den gamle farve og der er ikke spilt en dråbe, hvor der ikke skulle være maling - bare flot arbejde. Arbejdet blev udført til aftalt tid og vi er meget tilfredse. Jess har allerede været på besøg for at give tilbud på den næste opgave!!",
     source: "trustpilot",
@@ -139,7 +139,7 @@ export const REVIEWS: Review[] = [
   },
   {
     id: "r15",
-    author: "Trustpilot-bruger",
+    author: "Verificeret kunde",
     rating: 5,
     text: "Kan 100% anbefales. Malerfirmaet Christensen lavede alt malerarbejdet på vores nye gipsloft. De kom som aftalt og leverede et rigtig flot malerarbejde! Derudover kom de uden betaling, da vi opdagede at hullet til vores loftsemhætte var skåret for stort af gipsmontørerne. Næste gang jeg skal have lavet malerarbejde vil der være Malerfirmaet Christensen igen!",
     source: "trustpilot",
@@ -148,7 +148,7 @@ export const REVIEWS: Review[] = [
   },
   {
     id: "r16",
-    author: "Trustpilot-bruger",
+    author: "Verificeret kunde",
     rating: 5,
     text: "Projekt: Nedtagning af tapet, spartling, opsætning af filt og maling af hele huset. Efter at vi tog fat i Jess, kom han hurtigt ud og gav et rigtig fornuftigt tilbud med en god tidsramme også. Kommunikation med Jess er super god, man venter ikke mange minutter på et svar :) Vi fik besøg af Alex og Tobias, som har været hos os de sidste 3 ugers tid hver dag. To fantastiske gutter, der er vanvittig dygtige til deres arbejde. Der knokles igennem og de er super fleksible i deres tider. Det har været en fornøjelse at have så ihærdige, dygtige og super søde gutter gående - og SIKKE et resultat. Alt står knivskarpt og flot. Mine varmeste anbefalinger til Jess og hans firma.",
     source: "trustpilot",
@@ -157,7 +157,7 @@ export const REVIEWS: Review[] = [
   },
   {
     id: "r17",
-    author: "Trustpilot-bruger",
+    author: "Verificeret kunde",
     rating: 5,
     text: "Vi fik malet hele vores hus på 365 kvm indvendigt og er intet mindre end yderst tilfredse. Malerfirmaet Christensen leverede et sublimt stykke malerarbejde. De bruger kvalitetsmaling og går ikke på kompromis. Medarbejderne er meget dygtige og ekstremt kvalitetsbevidste. Vi havde brug for, at hele huset blev malet indvendigt indenfor 1 uge - Jess mødte op en søndag til gennemgang af arbejdsopgaven og mandag morgen gik 2 malere i gang. Arbejdet var færdigt fredag aften til aftalt tid. Jeg kan klart anbefale at bruge Malerfirmaet Christensen og I får vores TOP anbefaling her på Trustpilot - DET HAR I VIRKELIGT FORTJENT!",
     source: "trustpilot",
@@ -175,7 +175,7 @@ export const REVIEWS: Review[] = [
   },
   {
     id: "r19",
-    author: "Trustpilot-bruger",
+    author: "Verificeret kunde",
     rating: 5,
     text: "Vi har fået malet hele vores nye hus med Maler Christensen. Dette indebar både en glimmervæg og spartelmaling. Vi er ovenud tilfredse med både forløbet, servicen og resultatet. De får vores varmeste anbefaling herfra.",
     source: "trustpilot",
@@ -202,7 +202,7 @@ export const REVIEWS: Review[] = [
   },
   {
     id: "r22",
-    author: "Trustpilot-bruger",
+    author: "Verificeret kunde",
     rating: 5,
     text: "Jeg har med fornøjelse benyttet firmaet Maler Christensen til at få malet hele min lejlighed. Maler Christensen har udført et fantastisk flot stykke malerarbejde. Jeg er så tilfreds over at have benyttet et så professionelt, dygtigt, imødekommende og helt igennem fantastisk firma. Jeg kan klart anbefale firmaet til andre.",
     source: "trustpilot",
@@ -211,7 +211,7 @@ export const REVIEWS: Review[] = [
   },
   {
     id: "r23",
-    author: "Trustpilot-bruger",
+    author: "Verificeret kunde",
     rating: 5,
     text: "Altid sød og venlig dialog med ejer Jess. Kommer til aftalt tid og har faglig stolthed i særklasse. Vi er vilde med Stephans malerarbejde :)",
     source: "trustpilot",
