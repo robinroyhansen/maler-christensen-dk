@@ -511,6 +511,446 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
       "Utallige designmuligheder"
     ],
     relatedServices: ["metallisk-pu-gulv", "malerarbejde"]
+  },
+
+  "indvendig-maling": {
+    title: "Indvendig maling",
+    metaTitle: `Indvendig maling | Schou & Christensen — Professionelt resultat`,
+    metaDescription: `Indvendig maling af vægge, lofter og træværk. Grundig forberedelse og kvalitetsmaling. ★ 4.9 Trustpilot. Gratis tilbud — ring ${COMPANY.phone}`,
+    heroHeading: "Professionel indvendig maling",
+    heroSubheading: "Giv dit hjem en frisk start med professionel indvendig maling",
+    intro: `Indvendig maling forvandler dit hjem og skaber en helt ny atmosfære. Hos ${COMPANY.name} har vi over mange år opbygget ekspertise i indvendig maling af alle typer boliger — fra moderne lejligheder til ældre villaer med stukkatur og paneler. Vores erfarne malere leverer altid et professionelt resultat, der holder i årevis. Vi er medlemmer af Danske Malermestre og har en Trustpilot-score på 4,9 baseret på over 250 anmeldelser fra tilfredse kunder i Slagelse og omegn.`,
+    sections: [
+      {
+        title: "Vægmaling — fundamentet for et flot rum",
+        content: "Væggene er det første, øjet falder på, når man træder ind i et rum. Derfor er professionel vægmaling afgørende for det samlede indtryk af dit hjem. Hos Schou & Christensen bruger vi udelukkende kvalitetsvægmaling fra anerkendte producenter som Flügger, Dyrup og Jotun. Vi rådgiver om den rigtige glansgrad — mat, halvmat eller blank — afhængigt af rummets formål og lysforhold. Inden malingen starter, dækker vi omhyggeligt gulve og møbler af, så dit hjem forbliver rent under hele processen."
+      },
+      {
+        title: "Loftmaling kræver præcision",
+        content: "Lofter er ofte det mest oversete element ved indvendig maling, men et nymaletet loft løfter hele rummet markant. Vi anvender specialmaling til lofter, der minimerer risikoen for dryp og giver en ensartet, flot overflade. Vores malere har teknikken til at undgå synlige rullemærker og kanter — noget der kræver erfaring og de rigtige værktøjer. Ved større renoveringsprojekter kan vi tilbyde sprøjtemaling af lofter, som giver et endnu mere ensartet resultat."
+      },
+      {
+        title: "Maling af døre, karme og paneler",
+        content: "Træværk som døre, vindueskarme og paneler kræver særlig behandling. Vi starter med at slibe overfladen ned, fjerne gammel løs maling og grunde hvor nødvendigt. Derefter påfører vi kvalitetslak i den ønskede glansgrad. Resultatet er en holdbar og smuk finish, der modstår daglig slid og rengøring. Mange kunder vælger at kombinere hvide karme med farvede vægge — et klassisk look, der aldrig går af mode."
+      },
+      {
+        title: "Forberedelse er halvdelen af arbejdet",
+        content: "Et professionelt malerresultat starter længe før penslen rører væggen. Grundig forberedelse er nøglen til et holdbart resultat. Vores malere inspicerer alle overflader for revner, huller og skader. Vi udfører spartling af ujævnheder, grundbehandling af nye overflader og sikrer, at underlaget er rent og tørt. Denne omhyggelige forberedelse er det, der adskiller professionelt malerarbejde fra DIY — og det er derfor, vores arbejde holder i mange år."
+      },
+      {
+        title: "Indvendig maling pris — hvad koster det?",
+        content: "Prisen på indvendig maling afhænger af flere faktorer: rummets størrelse, overfladens tilstand, farvevalg og ønsket finish. Vi tilbyder altid et gratis og uforpligtende tilbud, hvor vi gennemgår projektet på stedet. Vores priser er konkurrencedygtige, og vi giver en fast pris uden skjulte omkostninger. Ring til Jess på 53 50 77 00 eller udfyld kontaktformularen, så vender vi tilbage med et tilbud inden for 24 timer."
+      },
+      {
+        title: "Hvorfor vælge professionel indvendig maling?",
+        content: "Mange overvejer at male selv for at spare penge, men professionel indvendig maling er ofte den bedste investering. Vores malere arbejder effektivt med professionelt udstyr og har øje for de små detaljer, der gør forskellen. Vi ved, hvordan man undgår striber, dryp og synlige kanter. Derudover rydder vi altid op efter os, så dit hjem er klar til brug umiddelbart efter malerarbejdet. Med Schou & Christensen får du et resultat, der holder — og en service, der gør processen nem og bekvem for dig."
+      }
+    ],
+    benefits: [
+      "Gratis og uforpligtende tilbud",
+      "Erfarne malere med øje for detaljer",
+      "Kvalitetsmaling fra Flügger, Dyrup og Jotun",
+      "Grundig forberedelse og spartling",
+      "Rydder altid op efter os",
+      "Konkurrencedygtige priser"
+    ],
+    relatedServices: ["maling-af-loft", "spartling", "maling-af-lejlighed", "maling-hus"]
+  },
+
+  "udvendig-maling": {
+    title: "Udvendig maling",
+    metaTitle: `Udvendig maling | Schou & Christensen — Hold dit hus flot`,
+    metaDescription: `Udvendig maling af hus med vejrbestandig kvalitetsmaling. Facade, gavle, vinduer og træværk. ★ 4.9 Trustpilot. Ring ${COMPANY.phone}`,
+    heroHeading: "Udvendig maling af hus",
+    heroSubheading: "Beskyt og forskøn dit hus med professionel udvendig maling",
+    intro: `Udvendig maling er husets første forsvar mod det danske vejr — regn, frost, sol og fugt. Hos ${COMPANY.name} har vi specialiseret os i udvendig maling af alle typer huse i Slagelse og på hele Sjælland. Vores erfarne malere ved præcis, hvilke produkter og teknikker der giver det bedste og mest holdbare resultat. Vi er stolte medlemmer af Danske Malermestre og har en Trustpilot-score på 4,9 fra over 250 tilfredse kunder.`,
+    sections: [
+      {
+        title: "Facademaling — giv dit hus nyt liv",
+        content: "Facaden er husets ansigt udadtil, og en flot vedligeholdt facade øger både husets værdi og din glæde ved at komme hjem. Vi maler alle typer facader — pudsede, murede, træbeklædte og betonflader. Inden malingen forbereder vi overfladen grundigt: vi renser facaden for alger, skidder og løs maling, udbedrer revner og skader, og grunder hvor nødvendigt. Vores kvalitetsfacademaling fra Flügger og Jotun er udviklet til det danske klima og giver op til 10-15 års holdbarhed."
+      },
+      {
+        title: "Træbeskyttelse og maling af træværk",
+        content: "Udendørs træværk er særligt udsat for vejrpåvirkning og kræver specialbehandling. Vi behandler alt træværk — vinduer, døre, stern, udhæng og træbeklædning — med professionelle træbeskyttelsesprodukter, der forhindrer råd, svamp og nedbrydning. Vores proces inkluderer afrensning, slibning, grundbehandling og topcoat med vejrbestandig maling. Resultatet er træværk, der ser fantastisk ud og holder i mange år."
+      },
+      {
+        title: "Vinduer og døre — detaljer der gør forskellen",
+        content: "Vinduer og døre er husets smykker og fortjener særlig opmærksomhed. Vi maler både udvendige og indvendige vinduesrammer i samme arbejdsgang, hvis ønsket. Vores malere har teknikken til at opnå skarpe kanter og en jævn finish, selv på komplekst profileret træværk. Vi bruger kvalitetslak, der er modstandsdygtig over for UV-stråler og temperatursvingninger — de to største fjender for udvendig maling."
+      },
+      {
+        title: "Vejrforhold og timing",
+        content: "Udvendig maling kræver de rigtige vejrforhold. Den optimale sæson for udvendig maling i Danmark er fra april til oktober, når temperaturen er over 10 grader, og der ikke er risiko for frost eller regn. Vi planlægger altid vores projekter med vejrudsigten i tankerne og sikrer, at malingen får tid til at tørre ordentligt mellem lag. Kontakt os tidligt på sæsonen for at sikre en plads i kalenderen — de bedste måneder booker hurtigt op."
+      },
+      {
+        title: "Stillads og sikkerhed",
+        content: "Ved udvendig maling af højere bygninger sørger vi for opstilling af professionelt stillads, der sikrer vores maleres sikkerhed og giver adgang til alle overflader. Stilladset er inkluderet i vores tilbud, så du kender den fulde pris på forhånd. Vi overholder alle sikkerhedsregler og sørger for, at arbejdspladsen er sikker for både vores medarbejdere og beboere."
+      },
+      {
+        title: "Udvendig maling pris — hvad skal du forvente?",
+        content: "Prisen på udvendig maling afhænger af husets størrelse, overfladernes tilstand, valg af farve og produkter samt behovet for stillads. Vi tilbyder altid et gratis besøg, hvor vi vurderer opgaven og giver et fast tilbud uden overraskelser. Som tommelfingerregel kan udvendig maling af et typisk parcelhus ligge fra 30.000-80.000 kr. afhængigt af omfanget. Ring til Jess på 53 50 77 00 for at høre mere om priser og muligheder."
+      }
+    ],
+    benefits: [
+      "Specialiseret i danske vejrforhold",
+      "Kvalitetsmaling med 10-15 års holdbarhed",
+      "Stillads og sikkerhedsudstyr inkluderet",
+      "Grundig forberedelse af alle overflader",
+      "Gratis besøg og fast tilbud",
+      "Over 250 tilfredse kunder på Trustpilot"
+    ],
+    relatedServices: ["maling-af-facade", "maling-af-vinduer", "traemaling", "maling-hus"]
+  },
+
+  "maling-af-loft": {
+    title: "Maling af loft",
+    metaTitle: `Maling af loft | Schou & Christensen — Perfekt loftmaling`,
+    metaDescription: `Maling af loft uden striber og rullemærker. Professionel loftmaling til alle rum. ★ 4.9 Trustpilot. Gratis tilbud — ring ${COMPANY.phone}`,
+    heroHeading: "Professionel maling af loft",
+    heroSubheading: "Få et perfekt malet loft uden striber og rullemærker",
+    intro: `Loftet er ofte det mest krævende element at male — men også det element, der gør den største forskel i et rum. Hos ${COMPANY.name} har vores malere specialiseret sig i loftmaling og ved præcis, hvordan man opnår et perfekt resultat uden synlige rullemærker, striber eller skygger. Vi arbejder i hele Slagelse og på Sjælland, og med over 250 femstjernede anmeldelser på Trustpilot kan du være tryg ved at vælge os til dit næste loftprojekt.`,
+    sections: [
+      {
+        title: "Hvorfor er loftmaling så udfordrende?",
+        content: "Lofter er notorisk svære at male. Lyset falder skråt ind fra vinduer og lamper, hvilket afslører selv de mindste ujævnheder og rullemærker. Arbejdsstillingen er akavet, og malingen tørrer anderledes end på lodrette flader. Det er derfor, mange DIY-projekter ender med synlige striber og skuffende resultater. Vores professionelle malere har teknikken, værktøjerne og erfaringen til at levere et fejlfrit loft hver gang."
+      },
+      {
+        title: "Vores teknik til perfekte lofter",
+        content: "Vi bruger en kombination af de rigtige produkter og teknik. Først sikrer vi, at loftet er forberedt korrekt — eventuelle revner spartles, og overfladen slibes let. Vi arbejder systematisk i baner og holder altid en 'våd kant' for at undgå synlige overgange. Vores malere bruger professionelle ruller designet til lofter og kvalitetsloftmaling med det optimale tørretid. Ved større projekter kan vi anvende sprøjtemaling, der giver et endnu mere ensartet resultat."
+      },
+      {
+        title: "Typiske loftproblemer vi løser",
+        content: "Gulnede lofter, vandskader, revner og nikotinpletter er problemer, vi løser hver dag. Gulning skyldes ofte alderdom eller cigaretrøg og kræver en dækkende grunding inden maling. Vandskader fra utætte rør eller tag behandles med specialprodukter, der forhindrer gennemblødning. Revner i gipslofter spartles og slibes, så de bliver usynlige. Uanset hvad dit loft har været udsat for, har vi en løsning."
+      },
+      {
+        title: "Farvevalg til lofter",
+        content: "De fleste vælger hvidt til loftet — og med god grund. Et hvidt loft reflekterer lyset og får rummet til at føles større og lysere. Men loftsfarven behøver ikke være kedelig. Vi rådgiver om alle muligheder: en let nuance af vægfarven giver et sammenhængende look, mens en mørkere farve kan skabe drama i høje rum. Vi medbringer gerne farveprøver, så du kan se mulighederne i dit eget hjem."
+      },
+      {
+        title: "Forberedelse og afdækning",
+        content: "Inden loftmalingen starter, dækker vi gulve og møbler omhyggeligt af med presenninger og plastik. Lysarmaturer afmonteres eller dækkes til. Vi taper omhyggeligt langs loftskanter og i overgangen til vægge for at sikre skarpe kanter. Denne grundige forberedelse er en del af vores service og sikrer, at dit hjem forbliver rent under hele processen."
+      },
+      {
+        title: "Pris på maling af loft",
+        content: "Prisen på loftmaling afhænger af rummets størrelse, loftets tilstand og om der skal spartles først. Vi tilbyder altid et gratis tilbudsbesøg, hvor vi vurderer opgaven og giver en fast pris. Som udgangspunkt regner vi fra ca. 60-100 kr. pr. m² for loftmaling inkl. forberedelse og materialer. Ring til Jess på 53 50 77 00 eller udfyld kontaktformularen for et konkret tilbud på dit projekt."
+      }
+    ],
+    benefits: [
+      "Specialiseret i loftmaling",
+      "Ingen synlige rullemærker eller striber",
+      "Løser gulning, vandskader og revner",
+      "Grundig afdækning af møbler og gulve",
+      "Gratis tilbudsbesøg",
+      "Fast pris uden overraskelser"
+    ],
+    relatedServices: ["indvendig-maling", "spartling", "sproejtmaling", "maling-af-lejlighed"]
+  },
+
+  "maling-af-facade": {
+    title: "Facademaling",
+    metaTitle: `Facademaling | Schou & Christensen — Giv dit hus nyt liv`,
+    metaDescription: `Facademaling og renovering af alle facadetyper. Puds, mursten, beton og træ. ★ 4.9 Trustpilot. Gratis tilbud — ring ${COMPANY.phone}`,
+    heroHeading: "Professionel facademaling",
+    heroSubheading: "Giv din facade nyt liv med holdbar kvalitetsmaling",
+    intro: `Facaden er det første, man ser, når man nærmer sig dit hjem — og en velholdt facade gør hele forskellen for husets udtryk og værdi. Hos ${COMPANY.name} har vi mange års erfaring med facademaling af alle typer huse i Slagelse og på hele Sjælland. Vores fagligt dygtige malere behandler din facade med de bedste produkter på markedet og sikrer et resultat, der holder i 10-15 år. Med over 250 femstjernede anmeldelser på Trustpilot og medlemskab af Danske Malermestre er vi et trygt valg.`,
+    sections: [
+      {
+        title: "Alle typer facader",
+        content: "Vi maler alle facadetyper — pudsede facader, murstensfacader, betonfacader og træbeklædte facader. Hver facadetype kræver sin egen forberedelse og produktvalg. Pudsede facader skal ofte renses for alger og repareres for revner inden maling. Mursten kan males eller imprægneres afhængigt af ønsket look. Træfacader kræver specialprodukter, der beskytter mod fugt og UV-stråler. Vores malere har erfaringen til at vælge den rigtige løsning til netop dit hus."
+      },
+      {
+        title: "Forberedelse er afgørende",
+        content: "Et langtidsholdbart resultat starter med grundig forberedelse. Vi renser facaden for alger, mos og skidt med professionelt udstyr. Revner og skader udbedres med egnet spartelmasse og mørtel. Løs eller skallende maling fjernes. Vi grunder overfladen, hvor nødvendigt, for at sikre optimal vedhæftning af den nye maling. Denne forberedelse tager tid, men er afgørende for, at malingen holder i mange år."
+      },
+      {
+        title: "Facadefarver og planlægning",
+        content: "Valg af facadefarve er en stor beslutning — farven bliver en del af dit kvarters udtryk i mange år. Vi hjælper med farverådgivning baseret på husets arkitektur, omkringliggende bygninger og dine personlige præferencer. Vær opmærksom på, at der i nogle områder gælder lokalplaner eller bevaringsværdige hensyn, der begrænser farvevalget. Vi rådgiver gerne om regler og muligheder i dit område."
+      },
+      {
+        title: "Vejrbestandige produkter",
+        content: "Vi bruger udelukkende facademaling fra anerkendte producenter som Flügger og Jotun, der er specifikt udviklet til det danske klima. Vores facademaling er diffusionsåben (åndbar), så fugt i murværket kan slippe ud, samtidig med at regn holdes ude. Den er UV-bestandig for at forhindre falmning og har tilsætningsstoffer, der hæmmer vækst af alger og mos. Resultatet er en facade, der ser flot ud år efter år."
+      },
+      {
+        title: "Stillads og sikkerhed",
+        content: "Facademaling kræver ofte adgang til højden via stillads eller lift. Vi sørger for professionelt stillads, der giver sikker adgang til alle dele af facaden. Stilladsomkostninger er inkluderet i vores faste tilbud, så du kender den fulde pris på forhånd. Vores medarbejdere er uddannet i sikkerhed på stillads, og vi overholder alle gældende arbejdsmiljøregler."
+      },
+      {
+        title: "Facademaling pris",
+        content: "Prisen på facademaling varierer afhængigt af husets størrelse, facadens tilstand, adgangsforhold og farvevalg. Et typisk parcelhus kan ligge fra 40.000-100.000 kr. for komplet facademaling inkl. stillads og forberedelse. Vi tilbyder altid et gratis besøg, hvor vi vurderer opgaven og giver et detaljeret, fast tilbud. Ring til Jess på 53 50 77 00 for at aftale et uforpligtende tilbudsbesøg."
+      }
+    ],
+    benefits: [
+      "Erfaring med alle facadetyper",
+      "Vejrbestandig maling med 10-15 års holdbarhed",
+      "Stillads inkluderet i prisen",
+      "Grundig forberedelse og reparation",
+      "Farverådgivning og hjælp med lokalplaner",
+      "Fast tilbud uden skjulte omkostninger"
+    ],
+    relatedServices: ["udvendig-maling", "maling-hus", "traemaling", "maling-af-vinduer"]
+  },
+
+  "maling-af-vinduer": {
+    title: "Maling af vinduer",
+    metaTitle: `Maling af vinduer | Schou & Christensen — Forlæng levetiden`,
+    metaDescription: `Professionel maling af vinduer ude og inde. Forlæng vinduernes levetid med grundig forbehandling. ★ 4.9 Trustpilot. Ring ${COMPANY.phone}`,
+    heroHeading: "Professionel maling af vinduer",
+    heroSubheading: "Forlæng dine vinduers levetid med professionel vinduesmaling",
+    intro: `Vinduer er blandt de mest udsatte dele af dit hus — de skal modstå regn, sol, frost og kondens døgnet rundt. Regelmæssig maling af vinduer er den bedste investering, du kan gøre for at forlænge deres levetid og undgå dyre udskiftninger. Hos ${COMPANY.name} i Slagelse har vi specialiseret os i vinduesmaling med korrekt forbehandling og kvalitetsprodukter. Vores kunder på Sjælland giver os 4,9 ud af 5 stjerner på Trustpilot — et bevis på, at vi leverer kvalitet.`,
+    sections: [
+      {
+        title: "Hvorfor er vinduesmaling så vigtig?",
+        content: "Maling beskytter vinduets træværk mod fugt, råd og UV-stråler. Uden denne beskyttelse trænger vand ind i træet, som begynder at rådne indefra. Når råd først har sat ind, er udskiftning ofte eneste løsning — en udgift, der hurtigt løber op i mange tusinde kroner per vindue. Regelmæssig maling hvert 5-8 år er langt billigere og holder dine vinduer funktionelle i årtier."
+      },
+      {
+        title: "Vores vinduesmalingsproces",
+        content: "Vi starter med en grundig inspektion af hvert vindue. Løs og skallende maling fjernes med skraber og slibepapir. Eventuelt råd fjernes ned til sundt træ og repareres med epoxy eller træfyldstof. Alle overflader slibes og støves af. Vi grunder bart træ og overgange med kvalitetsgrundemaling. Til sidst påfører vi to lag topcoat med kvalitetslak eller træbeskyttelse, der giver optimal holdbarhed."
+      },
+      {
+        title: "Indvendige og udvendige vinduer",
+        content: "Vi maler både indvendige og udvendige vinduesrammer — og ofte giver det mening at gøre begge i samme omgang. Udvendigt bruger vi produkter med høj UV-bestandighed og vejrbeskyttelse. Indvendigt vælger vi maling, der er slidstærk og let at rengøre. Vi kan male vinduer i forskellige farver inde og ude, hvis ønsket — f.eks. hvide rammer indvendigt og en farve, der matcher facaden, udvendigt."
+      },
+      {
+        title: "Træ versus metal- og plastikvinduer",
+        content: "Vores speciale er trævinduesmaling, som kræver mest vedligeholdelse. Men vi maler også aluminiums- og metalvinduer med specialmaling designet til disse materialer. Plastikvinduer kan generelt ikke males, men trærammer omkring plast-ruder kan vedligeholdes. Vi rådgiver altid om den bedste løsning til netop dine vinduer ved tilbudsbesøget."
+      },
+      {
+        title: "Typiske problemer ved vinduer",
+        content: "Vi ser ofte de samme problemer: afskalning af maling på sydsiden (UV-skader), råd i bundstykker (vand-opsamling), kondensskader på indvendige rammer og mørnede hjørnesamlinger. Alle disse problemer kan vi udbedre som del af malerarbejdet, så længe skaden ikke er for fremskreden. Ved alvorlig råd kan vi anbefale snedkerreparation eller udskiftning af enkelte vinduespartier."
+      },
+      {
+        title: "Pris på vinduesmaling",
+        content: "Prisen på maling af vinduer afhænger af antallet af vinduer, deres størrelse, tilstand og om der skal arbejdes på flere etager. Som tommelfingerregel koster et standard vindue fra 400-1.000 kr. at male afhængigt af omfanget af forberedelse. Vi tilbyder altid et gratis tilbudsbesøg, hvor vi vurderer hvert vindue og giver en samlet fast pris. Ring til Jess på 53 50 77 00 for at aftale et besøg."
+      }
+    ],
+    benefits: [
+      "Forlænger vinduernes levetid markant",
+      "Grundig forbehandling og reparation",
+      "Kvalitetsprodukter med UV-beskyttelse",
+      "Maling af både ind- og udsiden",
+      "Erfarne specialister i vinduesmaling",
+      "Gratis tilbudsbesøg"
+    ],
+    relatedServices: ["udvendig-maling", "traemaling", "maling-af-facade", "maling-hus"]
+  },
+
+  "maler-sjaelland": {
+    title: "Maler Sjælland",
+    metaTitle: `Maler Sjælland | Schou & Christensen — Vi dækker hele øen`,
+    metaDescription: `Professionelt malerfirma på Sjælland. Fra Slagelse dækker vi hele øen — København til Kalundborg. ★ 4.9 Trustpilot. Ring ${COMPANY.phone}`,
+    heroHeading: "Din maler på hele Sjælland",
+    heroSubheading: "Fra vores base i Slagelse dækker vi alle områder på Sjælland",
+    intro: `Leder du efter et pålideligt malerfirma på Sjælland? ${COMPANY.name} er baseret i Slagelse og servicerer kunder i hele regionen — fra København og Nordsjælland til Næstved og Kalundborg. Med 8 erfarne medarbejdere, over 250 femstjernede Trustpilot-anmeldelser og medlemskab af Danske Malermestre er vi et trygt valg uanset hvor på Sjælland, du bor. Ring til Jess på 53 50 77 00 og få et gratis tilbud i dag.`,
+    sections: [
+      {
+        title: "Vi dækker hele Sjælland",
+        content: "Fra vores hovedkontor på Ydunsvej 9 i Slagelse kører vores malerhold ud til kunder i hele Sjælland hver dag. Vi dækker alle større byer: København, Roskilde, Næstved, Køge, Holbæk, Kalundborg, Ringsted, Sorø, Vordingborg og alle mindre byer derimellem. Uanset om du bor i en storbylejlighed på Frederiksberg eller et sommerhus ved Nordsjællands kyst, kommer vi til dig med samme professionelle service."
+      },
+      {
+        title: "Hvorfor vælge os som maler på Sjælland?",
+        content: "Der findes mange malerfirmaer på Sjælland, men vi skiller os ud på flere måder. For det første er vi medlemmer af Danske Malermestre, som garanterer fagligt korrekt arbejde. For det andet har vi en Trustpilot-score på 4,9 baseret på over 250 anmeldelser — et bevis på, at vores kunder er tilfredse. For det tredje har vi 8 fastansatte malere, hvilket betyder, at vi kan håndtere både små og store projekter med kort varsel. Og endelig er vores ejer Jess personligt involveret i alle projekter og sikrer, at kvaliteten er i top."
+      },
+      {
+        title: "Alle typer malerarbejde",
+        content: "Vi tilbyder det fulde spektrum af malerydelser på hele Sjælland: indvendig maling af boliger og erhverv, udvendig maling af huse og facader, vinduesmaling, træmaling, spartling, tapetsering, sprøjtemaling og specialløsninger som microcement og PU-gulve. Vi arbejder for både private husstande, boligforeninger, ejendomsadministratorer og erhvervskunder. Uanset opgavens størrelse leverer vi samme høje kvalitet."
+      },
+      {
+        title: "Konkurrencedygtige priser på Sjælland",
+        content: "Vi forstår, at prisen er vigtig. Derfor tilbyder vi konkurrencedygtige priser på alle vores ydelser — uden at gå på kompromis med kvaliteten. Vi køber materialer i store mængder og har effektive arbejdsprocesser, der holder omkostningerne nede. Vores tilbud er altid faste priser uden skjulte omkostninger, så du ved præcis, hvad malerarbejdet kommer til at koste."
+      },
+      {
+        title: "Lokal ekspertise, regional rækkevidde",
+        content: "Selvom vi dækker hele Sjælland, er vi stolte af vores lokale rødder i Slagelse. Vi kender områdets byggestil — fra klassiske bindingsværkshuse til moderne parcelhuse — og ved, hvilke udfordringer det sjællandske klima giver. Vores malere bor selv i regionen og har en personlig interesse i at levere arbejde, de kan være stolte af. Mange af vores kunder er gentagne kunder eller kommer via anbefalinger — den bedste kvalitetsmåling der findes."
+      },
+      {
+        title: "Kontakt os for et gratis tilbud",
+        content: "Uanset hvor på Sjælland du befinder dig, kommer vi gerne forbi og giver et gratis, uforpligtende tilbud. Ring til Jess på 53 50 77 00 eller udfyld kontaktformularen herunder. Vi svarer typisk inden for 24 timer og kan ofte komme forbi samme uge. Lad os vise dig, hvorfor over 250 kunder har givet os 5 stjerner på Trustpilot."
+      }
+    ],
+    benefits: [
+      "Dækker hele Sjælland fra Slagelse",
+      "8 erfarne fastansatte malere",
+      "4,9 på Trustpilot med 250+ anmeldelser",
+      "Medlem af Danske Malermestre",
+      "Alle typer malerarbejde",
+      "Konkurrencedygtige faste priser"
+    ],
+    relatedServices: ["malerarbejde", "indvendig-maling", "udvendig-maling", "erhvervsmaling"]
+  },
+
+  "spartling": {
+    title: "Spartling",
+    metaTitle: `Spartling | Schou & Christensen — Perfekte vægge fra bund`,
+    metaDescription: `Spartling af vægge for et perfekt malerresultat. Plet-spartling og fuld spartling. ★ 4.9 Trustpilot. Gratis tilbud — ring ${COMPANY.phone}`,
+    heroHeading: "Professionel spartling",
+    heroSubheading: "Skab det perfekte underlag for maling med professionel spartling",
+    intro: `Spartling er fundamentet for et flot malerresultat. Selv den bedste maling kan ikke skjule ujævne vægge, huller og revner — men professionel spartling kan. Hos ${COMPANY.name} tilbyder vi alle typer spartling, fra små reparationer til fuld vægspartling af hele rum. Vores erfarne malere i Slagelse og på Sjælland sikrer et glat og ensartet underlag, der får din maling til at se professionel ud. Med 4,9 på Trustpilot og over 250 anmeldelser er vi et trygt valg.`,
+    sections: [
+      {
+        title: "Hvad er spartling?",
+        content: "Spartling er processen med at påføre spartelmasse på vægge og lofter for at skabe en glat, ensartet overflade. Spartelmassen udfylder huller, revner og ujævnheder og slibes efterfølgende til en perfekt finish. Spartling er et håndværk, der kræver øvelse og tålmodighed — men resultatet er vægge, der er klar til at blive malet eller tapetseret med et flot slutresultat."
+      },
+      {
+        title: "Plet-spartling vs. fuld spartling",
+        content: "Plet-spartling (også kaldet spot-spartling) bruges til at reparere specifikke områder — huller fra søm og skruer, mindre revner eller lokale skader. Fuld spartling (eller fladespartling) dækker hele vægfladen med et tyndt lag spartelmasse og skaber en helt ensartet overflade. Fuld spartling anbefales ved renovering af ældre vægge med mange ujævnheder eller når du ønsker et perfekt resultat til f.eks. mat maling, der afslører selv små fejl."
+      },
+      {
+        title: "Spartling vs. sprøjtespartling",
+        content: "Traditionel spartling påføres i hånden med spartler og slibes manuelt. Sprøjtespartling er en hurtigere metode, hvor spartelmasse påføres med specialudstyr. Sprøjtespartling er ideel til store flader og giver et meget ensartet resultat, men kræver mere afdækning. Vi tilbyder begge metoder og rådgiver om, hvad der passer bedst til dit projekt. Se vores side om sprøjtespartling for mere information."
+      },
+      {
+        title: "Fibervæv og filt + spartling",
+        content: "Ved vægge med mange revner eller strukturelle problemer kan vi opsætte fibervæv (også kaldet glasvæv eller malervæv) eller spartlingsfilt inden spartling. Disse materialer skaber et stabilt underlag, der forhindrer revner i at komme tilbage. Derefter spartles og slibes overfladen til en glat finish. Denne løsning er populær ved renovering af ældre ejendomme med bevægelse i vægge og lofter."
+      },
+      {
+        title: "Hvorfor spartling før maling er vigtigt",
+        content: "Mange undervurderer betydningen af ordentlig spartling. Maling kan ikke skjule ujævnheder — den fremhæver dem faktisk, især i strejflys. En væg, der ser acceptabel ud inden maling, kan se skuffende ud efter maling, hvis underlaget ikke er forberedt korrekt. Professionel spartling er investeringen værd: du får et resultat, der ser professionelt ud og holder i årevis uden at revner dukker op igen."
+      },
+      {
+        title: "Pris på spartling",
+        content: "Prisen på spartling afhænger af omfanget: plet-spartling af huller og skader er billigere end fuld spartling af alle vægge. Væggenes tilstand spiller også ind — vægge med mange revner og ujævnheder kræver mere arbejde. Vi tilbyder altid et gratis tilbudsbesøg, hvor vi vurderer opgaven og giver en fast pris. Ring til Jess på 53 50 77 00 for at høre mere."
+      }
+    ],
+    benefits: [
+      "Skaber perfekt underlag for maling",
+      "Plet-spartling og fuld spartling",
+      "Erfaring med fibervæv og filt",
+      "Grundig slibning for glat finish",
+      "Forhindrer revner i at komme tilbage",
+      "Gratis tilbudsbesøg"
+    ],
+    relatedServices: ["sprojtespartling", "indvendig-maling", "maling-af-loft", "maling-af-lejlighed"]
+  },
+
+  "erhvervsmaling": {
+    title: "Erhvervsmaling",
+    metaTitle: `Erhvervsmaling | Schou & Christensen — Professionel erhvervsmaler`,
+    metaDescription: `Maling af erhvervslokaler med minimal forstyrrelse. Kontorer, butikker, lager og industri. ★ 4.9 Trustpilot. Ring ${COMPANY.phone}`,
+    heroHeading: "Professionel erhvervsmaling",
+    heroSubheading: "Maling af erhvervslokaler med minimal forstyrrelse af din drift",
+    intro: `Erhvervslokaler har særlige krav til malerarbejde — det skal være effektivt, professionelt og forstyrre driften mindst muligt. Hos ${COMPANY.name} har vi mange års erfaring med erhvervsmaling af kontorer, butikker, restauranter, lagerhaller og produktionsfaciliteter i Slagelse og på hele Sjælland. Vores hold på 8 erfarne malere kan håndtere projekter i alle størrelser, og vi tilbyder fleksible arbejdstider inkl. aften og weekend. Ring til Jess på 53 50 77 00 for et gratis tilbud.`,
+    sections: [
+      {
+        title: "Kontormaling uden driftsforstyrrelser",
+        content: "Et nymalet kontor øger medarbejdernes trivsel og giver et professionelt indtryk på kunder og samarbejdspartnere. Vi forstår, at kontorer er arbejdspladser, og planlægger malerarbejdet, så det forstyrrer mindst muligt. Vi kan arbejde om aftenen, i weekender eller i ferieperioder, så jeres medarbejdere kan arbejde uforstyrret. Ved større projekter maler vi en afdeling ad gangen, så aktiviteterne kan fortsætte andetsteds."
+      },
+      {
+        title: "Butikker og showrooms",
+        content: "I detailhandlen er førsteindtrykket afgørende. En flot malet butik inviterer kunder indenfor og præsenterer dine produkter bedst muligt. Vi har erfaring med maling af butikker, showrooms og udstillingslokaler, hvor æstetik og finish er i højsædet. Vi arbejder hurtigt og effektivt, så din butik kan genåbne hurtigst muligt — ofte kan vi udføre arbejdet i løbet af en enkelt weekend."
+      },
+      {
+        title: "Lagerhaller og produktion",
+        content: "Lager- og produktionsfaciliteter kræver holdbar maling, der kan modstå hårdt slid og industrielle forhold. Vi tilbyder specialbelægninger til gulve, vægge og lofter, der er modstandsdygtige over for kemikalier, slid og stød. Vores erhvervsmaling overholder alle sikkerhedsstandarder og kan udføres med minimal påvirkning af produktionen. Vi koordinerer med jeres driftsplanlægning for at finde det bedste tidspunkt."
+      },
+      {
+        title: "Restauranter og caféer",
+        content: "I hotel- og restaurationsbranchen er atmosfæren en del af oplevelsen. Vi har malet adskillige restauranter, caféer og hoteller på Sjælland og forstår betydningen af det rette farvevalg og finish. Vi arbejder hurtigt, så I kan åbne for gæster igen hurtigst muligt, og vi sørger selvfølgelig for, at der ikke er malerlugt, når gæsterne kommer."
+      },
+      {
+        title: "Sundhed og sikkerhed",
+        content: "Ved erhvervsmaling overholder vi alle gældende arbejdsmiljøregler. Vi bruger lavemitterende maling med minimalt indhold af opløsningsmidler, hvor det er muligt. Vores medarbejdere bærer det nødvendige sikkerhedsudstyr, og vi afdækker og beskytter inventar, maskiner og gulve omhyggeligt. Efter endt arbejde rydder vi op og efterlader lokalerne klar til brug."
+      },
+      {
+        title: "Tilbud på erhvervsmaling",
+        content: "Vi tilbyder gratis tilbudsbesøg, hvor vi gennemgår jeres behov og giver et fast tilbud uden skjulte omkostninger. Prisen afhænger af areal, overfladernes tilstand, ønsket finish og arbejdstidspunkter. Ring til Jess på 53 50 77 00 eller udfyld kontaktformularen. Vi har erfaring med alt fra små kontorer til store produktionshaller og finder en løsning, der passer til jeres budget og tidsplan."
+      }
+    ],
+    benefits: [
+      "Fleksible arbejdstider — aften og weekend",
+      "Minimal forstyrrelse af driften",
+      "8 erfarne malere til store projekter",
+      "Specialbelægninger til industri",
+      "Overholder alle sikkerhedsstandarder",
+      "Fast tilbud uden skjulte omkostninger"
+    ],
+    relatedServices: ["malerarbejde", "sproejtmaling", "pu-gulve", "indvendig-maling"]
+  },
+
+  "maling-af-radiator": {
+    title: "Maling af radiator",
+    metaTitle: `Maling af radiator | Schou & Christensen — Nyt liv til radiatoren`,
+    metaDescription: `Radiatormaling med varmebestandig maling. Spray- og penselteknik for perfekt finish. ★ 4.9 Trustpilot. Ring ${COMPANY.phone}`,
+    heroHeading: "Professionel maling af radiator",
+    heroSubheading: "Giv dine radiatorer nyt liv med varmebestandig maling",
+    intro: `Radiatorer er en ofte overset del af hjemmet, men en gammel, gulnet eller rusten radiator kan ødelægge indtryk af et ellers nymaletet rum. Hos ${COMPANY.name} tilbyder vi professionel radiatormaling med specialmaling, der tåler høje temperaturer. Vores erfarne malere i Slagelse og på Sjælland sikrer en flot og holdbar finish, der matcher dine vægge. Med 4,9 på Trustpilot og over 250 anmeldelser kan du stole på vores kvalitet.`,
+    sections: [
+      {
+        title: "Hvorfor male radiatoren?",
+        content: "Radiatorer gulner og falmer over tid, især hvide radiatorer. Rust kan begynde at vise sig, og gammel maling kan krakelere. En nymaletet radiator frisker op i hele rummet og giver et sammenhængende look med nymalede vægge. Derudover beskytter maling mod rust og forlænger radiatorens levetid. Det er en lille investering med stor visuel effekt."
+      },
+      {
+        title: "Varmebestandig maling er afgørende",
+        content: "Radiatorer bliver varme — op til 70-80 grader — og almindelig maling kan ikke klare det. Den vil gulne, krakelere og afgive lugt. Vi bruger specialmaling designet til radiatorer, der tåler temperaturer op til 120 grader og bevarer farven år efter år. Denne maling er lidt dyrere, men forskellen i holdbarhed er enorm. Vores radiatormaling er også lugtfri, når den er tørret."
+      },
+      {
+        title: "Vores teknik: spray vs. pensel",
+        content: "Vi tilbyder både spray- og penselmaling af radiatorer. Sprøjtemaling giver det mest ensartede resultat og når ind i alle kroge og rilleblade. Det er ideelt, når radiatoren er demonteret eller når hele rummet males. Penselmaling er velegnet til enkelte radiatorer eller touch-up arbejde. Begge metoder giver et professionelt resultat, når man bruger de rigtige produkter og teknikker."
+      },
+      {
+        title: "Forberedelse er nøglen",
+        content: "Før maling slettes og slibes radiatoren grundigt. Rust behandles med rustprimer. Gammel løs maling fjernes. Vi affedter overfladen for at sikre optimal vedhæftning. Derefter grunder vi med en egnet primer til metal. Denne forberedelse er tidskrævende, men afgørende for et holdbart resultat. Springer man forberedelsen over, vil den nye maling hurtigt skifte eller skalle af."
+      },
+      {
+        title: "Hvornår skal radiatoren males?",
+        content: "Den bedste tid at male radiatorer er om sommeren, når varmen er slukket. Radiatoren skal være kold under maling og i tørretiden — typisk 24-48 timer. Vi anbefaler derfor at planlægge radiatormaling i forbindelse med sommerferie eller i overgangssæsonen, hvor varmen er slukket. Skal radiatoren males om vinteren, lukker vi for den pågældende radiator i maletiden."
+      },
+      {
+        title: "Pris på radiatormaling",
+        content: "Prisen på maling af en radiator afhænger af radiatorens størrelse, type og tilstand. En standard panelradiator koster typisk 400-800 kr. at male, mens ældre ribberadiatorer med mange elementer er mere arbejdskrævende. Vi tilbyder gerne radiatormaling som del af et større maleroprojekt til fordelagtige priser. Ring til Jess på 53 50 77 00 for et konkret tilbud."
+      }
+    ],
+    benefits: [
+      "Varmebestandig specialmaling",
+      "Spray- og penselteknik",
+      "Grundig forberedelse og rustbehandling",
+      "Farvematch med dine vægge",
+      "Lugtfri efter tørring",
+      "Del af samlet maleropgave"
+    ],
+    relatedServices: ["indvendig-maling", "maling-af-lejlighed", "maling-hus", "malerarbejde"]
+  },
+
+  "nybyg-maling": {
+    title: "Nybyg maling",
+    metaTitle: `Nybyg maling | Schou & Christensen — Din maler til nybyggeri`,
+    metaDescription: `Maling af nybyggeri og nye huse. Komplet pakke til bygherrer og entreprenører. ★ 4.9 Trustpilot. Ring ${COMPANY.phone}`,
+    heroHeading: "Maling af nybyggeri",
+    heroSubheading: "Din professionelle partner til maling af nye huse og byggeprojekter",
+    intro: `Bygger du nyt hus eller er du entreprenør med et nybyggeri-projekt? ${COMPANY.name} er din erfarne partner til maling af nybyggeri i Slagelse og på hele Sjælland. Vi samarbejder med bygherrer, arkitekter og entreprenører om at levere professionel maling af nye boliger — fra første spartling til den sidste penselstrøg. Med 8 erfarne medarbejdere kan vi håndtere projekter i alle størrelser og overholde stramme tidsplaner.`,
+    sections: [
+      {
+        title: "Komplet malerløsning til nybyggeri",
+        content: "Når du bygger nyt, er der mange ting at koordinere. Vi gør malerdelen nem ved at tilbyde en komplet pakke: spartling af alle vægge og lofter, grundmaling, slutmaling af vægge og lofter, maling af døre, karme, fodlister og paneler. Vi tager os af alt malerarbejde, så du kun har én leverandør at forholde dig til. Det sparer tid, forenkler koordineringen og sikrer et ensartet kvalitetsniveau."
+      },
+      {
+        title: "Samarbejde med entreprenører og bygherrer",
+        content: "Vi har lang erfaring med at arbejde på aktive byggepladser og forstår byggeriets dynamik. Vi koordinerer med andre håndværkere, overholder tidsplaner og tilpasser os byggepladsens forhold. Vores tilbud er detaljerede og gennemsigtige, så der ikke er overraskelser undervejs. Vi kan indgå rammeaftaler med entreprenører, der bygger flere boliger, med fordelagtige priser og prioriteret kapacitet."
+      },
+      {
+        title: "Effektspartling og specialfinish",
+        content: "Til nybyggeri kan vi tilbyde effektspartling (også kaldet design-spartling eller textur-spartling), der giver vægge og lofter en helt speciel finish. Vi arbejder også med andre specialteknikker som microcement, metalliske effekter og strukturmalinger, der kan give dit nye hjem et unikt udtryk. Tal med os om dine ønsker — vi kan sandsynligvis hjælpe, uanset hvor kreativ visionen er."
+      },
+      {
+        title: "Timing og projektplanlægning",
+        content: "I nybyggeri er timing alt. Vi planlægger malerarbejdet i tæt koordinering med projektets overordnede tidsplan. Spartling og grundbehandling udføres, når gipsplader er opsat og fuger er færdige. Slutmaling sker, når støvende arbejde er afsluttet, men før gulve og inventar monteres. Vi sørger for, at vores arbejde ikke forsinker projektet — og vi kan ofte rykke hurtigt ind, når vi får grønt lys."
+      },
+      {
+        title: "Maling af hele huse til konkurrencedygtige priser",
+        content: "Ved maling af hele nye huse tilbyder vi fordelagtige m²-priser, der gør professionel maling overkommelig. Vores effektive arbejdsprocesser og erfarne malere betyder, at vi kan holde omkostningerne nede uden at gå på kompromis med kvaliteten. Ring til Jess på 53 50 77 00 for at høre om priser på nybyggeri-projekter — vi udarbejder gerne et uforpligtende tilbud baseret på tegninger eller et besøg på byggepladsen."
+      },
+      {
+        title: "Hvorfor vælge os til nybyggeri?",
+        content: "Med over 250 femstjernede anmeldelser på Trustpilot og medlemskab af Danske Malermestre er vi et trygt valg til dit nybyggeri-projekt. Vi leverer kvalitet til tiden og kommunikerer klart undervejs. Vores 8 fastansatte malere har erfaringen til at håndtere selv de største projekter, og ejer Jess er personligt involveret i alle opgaver. Kontakt os i dag og lad os blive en del af dit byggeprojekt."
+      }
+    ],
+    benefits: [
+      "Komplet malerløsning til nybyggeri",
+      "Erfaring med entreprenør-samarbejde",
+      "Effektspartling og specialfinish",
+      "Fleksibel timing efter byggeplan",
+      "Konkurrencedygtige m²-priser",
+      "8 erfarne fastansatte malere"
+    ],
+    relatedServices: ["indvendig-maling", "spartling", "sprojtespartling", "maling-hus"]
   }
 }
 
