@@ -27,12 +27,6 @@ const PARTNERS = [
     logo: "/images/partners/herlufmagle-skole.png",
   },
   {
-    name: "Tømrer Skovgaard",
-    type: "Håndværkspartner",
-    description: "Samarbejde om totalrenoveringsprojekter, hvor vi kombinerer tømrer- og malerarbejde.",
-    logo: "/images/partners/Toemrer-skovgaard.png",
-  },
-  {
     name: "Slagelse Kommune",
     type: "Offentlig institution",
     description: "Udførsel af malerarbejde på kommunale bygninger og institutioner.",

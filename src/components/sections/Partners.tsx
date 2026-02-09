@@ -11,10 +11,6 @@ const PARTNER_LOGOS = [
     src: "/images/partners/herlufmagle-skole.png",
   },
   {
-    name: "Tømrer Skovgaard",
-    src: "/images/partners/Toemrer-skovgaard.png",
-  },
-  {
     name: "Slagelse Kommune",
     src: "/images/partners/Slagelse-kommune.png",
   },
