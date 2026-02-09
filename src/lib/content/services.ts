@@ -26,7 +26,7 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
     sections: [
       {
         title: "Indvendigt malerarbejde",
-        content: "Vi udfører alt indvendigt malerarbejde, fra maling af vægge og lofter til træværk, døre og vinduer. Vores malere arbejder omhyggeligt og efterlader altid et flot og holdbart resultat. Vi bruger udelukkende kvalitetsmaling fra anerkendte mærker som Flügger, Dyrup og Jotun."
+        content: "Vi udfører alt indvendigt malerarbejde, fra maling af vægge og lofter til træværk, døre og vinduer. Vores malere arbejder omhyggeligt og efterlader altid et flot og holdbart resultat. Vi bruger udelukkende kvalitetsmaling fra anerkendte mærker som Flügger, Dyrup, Jotun og Beck & Jørgensen."
       },
       {
         title: "Udvendigt malerarbejde",
@@ -524,7 +524,7 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
     sections: [
       {
         title: "Vægmaling — fundamentet for et flot rum",
-        content: "Væggene er det første, øjet falder på, når man træder ind i et rum. Derfor er professionel vægmaling afgørende for det samlede indtryk af dit hjem. Hos Schou & Christensen bruger vi udelukkende kvalitetsvægmaling fra anerkendte producenter som Flügger, Dyrup og Jotun. Vi rådgiver om den rigtige glansgrad — mat, halvmat eller blank — afhængigt af rummets formål og lysforhold. Inden malingen starter, dækker vi omhyggeligt gulve og møbler af, så dit hjem forbliver rent under hele processen."
+        content: "Væggene er det første, øjet falder på, når man træder ind i et rum. Derfor er professionel vægmaling afgørende for det samlede indtryk af dit hjem. Hos Schou & Christensen bruger vi udelukkende kvalitetsvægmaling fra anerkendte producenter som Flügger, Dyrup, Jotun og Beck & Jørgensen. Vi rådgiver om den rigtige glansgrad — mat, halvmat eller blank — afhængigt af rummets formål og lysforhold. Inden malingen starter, dækker vi omhyggeligt gulve og møbler af, så dit hjem forbliver rent under hele processen."
       },
       {
         title: "Loftmaling kræver præcision",
@@ -550,7 +550,7 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
     benefits: [
       "Gratis og uforpligtende tilbud",
       "Erfarne malere med øje for detaljer",
-      "Kvalitetsmaling fra Flügger, Dyrup og Jotun",
+      "Kvalitetsmaling fra Flügger, Dyrup, Jotun og Beck & Jørgensen",
       "Grundig forberedelse og spartling",
       "Rydder altid op efter os",
       "Konkurrencedygtige priser"
@@ -568,7 +568,7 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
     sections: [
       {
         title: "Facademaling — giv dit hus nyt liv",
-        content: "Facaden er husets ansigt udadtil, og en flot vedligeholdt facade øger både husets værdi og din glæde ved at komme hjem. Vi maler alle typer facader — pudsede, murede, træbeklædte og betonflader. Inden malingen forbereder vi overfladen grundigt: vi renser facaden for alger, skidder og løs maling, udbedrer revner og skader, og grunder hvor nødvendigt. Vores kvalitetsfacademaling fra Flügger og Jotun er udviklet til det danske klima og giver op til 10-15 års holdbarhed."
+        content: "Facaden er husets ansigt udadtil, og en flot vedligeholdt facade øger både husets værdi og din glæde ved at komme hjem. Vi maler alle typer facader — pudsede, murede, træbeklædte og betonflader. Inden malingen forbereder vi overfladen grundigt: vi renser facaden for alger, skidder og løs maling, udbedrer revner og skader, og grunder hvor nødvendigt. Vores kvalitetsfacademaling fra Flügger, Jotun og Beck & Jørgensen er udviklet til det danske klima og giver op til 10-15 års holdbarhed."
       },
       {
         title: "Træbeskyttelse og maling af træværk",
@@ -668,7 +668,7 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
       },
       {
         title: "Vejrbestandige produkter",
-        content: "Vi bruger udelukkende facademaling fra anerkendte producenter som Flügger og Jotun, der er specifikt udviklet til det danske klima. Vores facademaling er diffusionsåben (åndbar), så fugt i murværket kan slippe ud, samtidig med at regn holdes ude. Den er UV-bestandig for at forhindre falmning og har tilsætningsstoffer, der hæmmer vækst af alger og mos. Resultatet er en facade, der ser flot ud år efter år."
+        content: "Vi bruger udelukkende facademaling fra anerkendte producenter som Flügger, Jotun og Beck & Jørgensen, der er specifikt udviklet til det danske klima. Vores facademaling er diffusionsåben (åndbar), så fugt i murværket kan slippe ud, samtidig med at regn holdes ude. Den er UV-bestandig for at forhindre falmning og har tilsætningsstoffer, der hæmmer vækst af alger og mos. Resultatet er en facade, der ser flot ud år efter år."
       },
       {
         title: "Stillads og sikkerhed",
