@@ -740,7 +740,7 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
     metaDescription: `Professionelt malerfirma der dækker hele Sjælland. Fra Slagelse til København. 250+ tilfredse kunder. Ring ${COMPANY.phone}`,
     heroHeading: "Din maler på hele Sjælland",
     heroSubheading: "Fra vores base i Slagelse dækker vi alle områder på Sjælland",
-    intro: `Leder du efter et pålideligt malerfirma på Sjælland? ${COMPANY.name} er baseret i Slagelse og servicerer kunder i hele regionen — fra København og Nordsjælland til Næstved og Kalundborg. Med 8 erfarne medarbejdere, over 250 femstjernede Trustpilot-anmeldelser og medlemskab af Danske Malermestre er vi et trygt valg uanset hvor på Sjælland, du bor. Ring til os på 53 50 77 00 og få et gratis tilbud i dag.`,
+    intro: `Leder du efter et pålideligt malerfirma på Sjælland? ${COMPANY.name} er baseret i Slagelse og servicerer kunder i hele regionen — fra København og Nordsjælland til Næstved og Kalundborg. Med et hold af erfarne medarbejdere, over 250 femstjernede Trustpilot-anmeldelser og medlemskab af Danske Malermestre er vi et trygt valg uanset hvor på Sjælland, du bor. Ring til os på 53 50 77 00 og få et gratis tilbud i dag.`,
     sections: [
       {
         title: "Vi dækker hele Sjælland",
@@ -748,7 +748,7 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
       },
       {
         title: "Hvorfor vælge os som maler på Sjælland?",
-        content: "Der findes mange malerfirmaer på Sjælland, men vi skiller os ud på flere måder. For det første er vi medlemmer af Danske Malermestre, som garanterer fagligt korrekt arbejde. For det andet har vi en Trustpilot-score på 4,9 baseret på over 250 anmeldelser — et bevis på, at vores kunder er tilfredse. For det tredje har vi 8 fastansatte malere, hvilket betyder, at vi kan håndtere både små og store projekter med kort varsel. Og endelig er vores ejere personligt involveret i alle projekter og sikrer, at kvaliteten er i top."
+        content: "Der findes mange malerfirmaer på Sjælland, men vi skiller os ud på flere måder. For det første er vi medlemmer af Danske Malermestre, som garanterer fagligt korrekt arbejde. For det andet har vi en Trustpilot-score på 4,9 baseret på over 250 anmeldelser — et bevis på, at vores kunder er tilfredse. For det tredje har vi et team af fastansatte malere, hvilket betyder, at vi kan håndtere både små og store projekter med kort varsel. Og endelig er vores ejere personligt involveret i alle projekter og sikrer, at kvaliteten er i top."
       },
       {
         title: "Alle typer malerarbejde",
@@ -769,7 +769,7 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
     ],
     benefits: [
       "Dækker hele Sjælland fra Slagelse",
-      "8 erfarne fastansatte malere",
+      "Erfarne fastansatte malere",
       "4,9 på Trustpilot med 250+ anmeldelser",
       "Medlem af Danske Malermestre",
       "Alle typer malerarbejde",
@@ -828,7 +828,7 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
     metaDescription: `Maling af erhvervslokaler med minimal forstyrrelse. Kontorer, butikker og lagre. Weekend- og aftenarbejde. Ring ${COMPANY.phone}`,
     heroHeading: "Professionel erhvervsmaling",
     heroSubheading: "Maling af erhvervslokaler med minimal forstyrrelse af din drift",
-    intro: `Erhvervslokaler har særlige krav til malerarbejde — det skal være effektivt, professionelt og forstyrre driften mindst muligt. Hos ${COMPANY.name} har vi mange års erfaring med erhvervsmaling af kontorer, butikker, restauranter, lagerhaller og produktionsfaciliteter i Slagelse og på hele Sjælland. Vores hold på 8 erfarne malere kan håndtere projekter i alle størrelser, og vi tilbyder fleksible arbejdstider inkl. aften og weekend. Ring til os på 53 50 77 00 for et gratis tilbud.`,
+    intro: `Erhvervslokaler har særlige krav til malerarbejde — det skal være effektivt, professionelt og forstyrre driften mindst muligt. Hos ${COMPANY.name} har vi mange års erfaring med erhvervsmaling af kontorer, butikker, restauranter, lagerhaller og produktionsfaciliteter i Slagelse og på hele Sjælland. Vores hold af erfarne malere kan håndtere projekter i alle størrelser, og vi tilbyder fleksible arbejdstider inkl. aften og weekend. Ring til os på 53 50 77 00 for et gratis tilbud.`,
     sections: [
       {
         title: "Kontormaling uden driftsforstyrrelser",
@@ -858,7 +858,7 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
     benefits: [
       "Fleksible arbejdstider — aften og weekend",
       "Minimal forstyrrelse af driften",
-      "8 erfarne malere til store projekter",
+      "Erfarne malere til store projekter",
       "Specialbelægninger til industri",
       "Overholder alle sikkerhedsstandarder",
       "Fast tilbud uden skjulte omkostninger"
@@ -916,7 +916,7 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
     metaDescription: `Maling af nybyggeri. Komplet pakke med vægge, lofter, træværk og specialfinish. Samarbejde med bygherrer. Ring ${COMPANY.phone}`,
     heroHeading: "Maling af nybyggeri",
     heroSubheading: "Din professionelle partner til maling af nye huse og byggeprojekter",
-    intro: `Bygger du nyt hus eller er du entreprenør med et nybyggeri-projekt? ${COMPANY.name} er din erfarne partner til maling af nybyggeri i Slagelse og på hele Sjælland. Vi samarbejder med bygherrer, arkitekter og entreprenører om at levere professionel maling af nye boliger — fra første spartling til den sidste penselstrøg. Med 8 erfarne medarbejdere kan vi håndtere projekter i alle størrelser og overholde stramme tidsplaner.`,
+    intro: `Bygger du nyt hus eller er du entreprenør med et nybyggeri-projekt? ${COMPANY.name} er din erfarne partner til maling af nybyggeri i Slagelse og på hele Sjælland. Vi samarbejder med bygherrer, arkitekter og entreprenører om at levere professionel maling af nye boliger — fra første spartling til den sidste penselstrøg. Med et hold af erfarne medarbejdere kan vi håndtere projekter i alle størrelser og overholde stramme tidsplaner.`,
     sections: [
       {
         title: "Komplet malerløsning til nybyggeri",
@@ -940,7 +940,7 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
       },
       {
         title: "Hvorfor vælge os til nybyggeri?",
-        content: "Med over 250 femstjernede anmeldelser på Trustpilot og medlemskab af Danske Malermestre er vi et trygt valg til dit nybyggeri-projekt. Vi leverer kvalitet til tiden og kommunikerer klart undervejs. Vores 8 fastansatte malere har erfaringen til at håndtere selv de største projekter, og ejerne er personligt involveret i alle opgaver. Kontakt os i dag og lad os blive en del af dit byggeprojekt."
+        content: "Med over 250 femstjernede anmeldelser på Trustpilot og medlemskab af Danske Malermestre er vi et trygt valg til dit nybyggeri-projekt. Vi leverer kvalitet til tiden og kommunikerer klart undervejs. Vores fastansatte malere har erfaringen til at håndtere selv de største projekter, og ejerne er personligt involveret i alle opgaver. Kontakt os i dag og lad os blive en del af dit byggeprojekt."
       }
     ],
     benefits: [
@@ -949,7 +949,7 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
       "Effektspartling og specialfinish",
       "Fleksibel timing efter byggeplan",
       "Konkurrencedygtige m²-priser",
-      "8 erfarne fastansatte malere"
+      "Erfarne fastansatte malere"
     ],
     relatedServices: ["indvendig-maling", "spartling", "sprojtespartling", "maling-hus"]
   },
