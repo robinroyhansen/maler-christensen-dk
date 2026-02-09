@@ -42,6 +42,14 @@ const PARTNER_LOGOS = [
     name: "Flügger",
     src: "/images/partners/flugger-logo.svg",
   },
+  {
+    name: "Silkecement",
+    src: "/images/partners/silkecement-logo.svg",
+  },
+  {
+    name: "Deko Design Systems",
+    src: "/images/partners/deko-logo.svg",
+  },
 ]
 
 interface PartnersProps {

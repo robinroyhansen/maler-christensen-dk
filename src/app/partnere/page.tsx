@@ -78,6 +78,20 @@ const PARTNERS = [
     logo: "/images/partners/flugger-logo.svg",
     url: "https://www.flugger.dk",
   },
+  {
+    name: "Silkecement",
+    type: "Materialeproducent",
+    description: "Specialist i microcement og dekorative overfladeløsninger til vægge, gulve og badeværelser.",
+    logo: "/images/partners/silkecement-logo.svg",
+    url: "https://silkecement.dk",
+  },
+  {
+    name: "Deko Design Systems",
+    type: "Gulvløsninger",
+    description: "Unikke dekorative metalliske polyurethan-gulve. Hver gulv er et kunstværk med levende farver og holdbare overflader.",
+    logo: "/images/partners/deko-logo.svg",
+    url: "https://dekodesignsystems.com/da/",
+  },
 ]
 
 export default function PartnerePage() {
