@@ -119,22 +119,14 @@ export function Hero({
   const prefersReducedMotion = useReducedMotion()
   const videoRef = useRef<HTMLVideoElement>(null)
   const [showVideoEl, setShowVideoEl] = useState(false)
+  const useVideo = isHome && showVideo && !prefersReducedMotion
   
-  // Only load video on desktop (>768px) after initial paint, and respect reduced motion
+  // Lazy-load video after initial paint so it doesn't block FCP/LCP
   useEffect(() => {
-    if (!isHome || !showVideo || prefersReducedMotion) return
-    const mq = window.matchMedia("(min-width: 768px)")
-    if (mq.matches) {
-      // Delay video load slightly so it doesn't compete with FCP/LCP
-      const timer = setTimeout(() => setShowVideoEl(true), 100)
-      return () => clearTimeout(timer)
-    }
-    const handler = (e: MediaQueryListEvent) => {
-      if (e.matches) setShowVideoEl(true)
-    }
-    mq.addEventListener("change", handler)
-    return () => mq.removeEventListener("change", handler)
-  }, [isHome, showVideo, prefersReducedMotion])
+    if (!useVideo) return
+    const timer = setTimeout(() => setShowVideoEl(true), 100)
+    return () => clearTimeout(timer)
+  }, [useVideo])
   
   // Calculate animation delays based on title word count
   const titleWords = title.split(" ").length
@@ -142,7 +134,7 @@ export function Hero({
   
   return (
     <section className={`relative ${isHome ? "min-h-[480px] sm:min-h-[550px] md:min-h-[600px] py-12 sm:py-16 md:py-24 lg:py-32" : "py-12 sm:py-16 md:py-24"} text-white overflow-hidden`}>
-      {/* Background: always render image as base, video overlays on desktop */}
+      {/* Background: image first for fast LCP, video overlays after load */}
       <div className="absolute inset-0">
         <Image
           src={backgroundImage}
