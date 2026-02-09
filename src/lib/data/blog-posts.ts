@@ -109,7 +109,7 @@ Hvis vægge skal spartles, gamle tapetlag fjernes, eller træværk skal reparere
 Standard er 2 lag maling, men mørkere farver eller særlige effekter kan kræve flere lag.
 
 ### 3. Malingskvalitet
-Vi bruger altid kvalitetsmalinger fra Flügger eller Dyrup. Billigere malinger holder ikke lige så længe og kan ende med at koste mere på lang sigt.
+Vi bruger altid kvalitetsmalinger fra Beck & Jørgensen. Billigere malinger holder ikke lige så længe og kan ende med at koste mere på lang sigt.
 
 ### 4. Adgangsforhold
 Svært tilgængelige områder, stilladser eller særligt høje lofter påvirker prisen.
@@ -198,7 +198,7 @@ At vælge den rigtige maling kan føles overvældende med alle de valgmuligheder
 
 ## Kvalitet betaler sig
 
-Vi anbefaler altid at vælge kvalitetsmalinger fra mærker som Flügger, Dyrup eller Jotun. De koster lidt mere, men:
+Vi anbefaler altid at vælge kvalitetsmalinger fra mærker som Beck & Jørgensen. De koster lidt mere, men:
 
 - Dækker bedre (færre lag = mindre arbejde)
 - Holder farven længere
