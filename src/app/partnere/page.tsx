@@ -55,42 +55,36 @@ const PARTNERS = [
     type: "Håndværkspartner",
     description: "Professionelt tømrer- og snedkerarbejde siden 1998. Samarbejde om tilbygninger, renoveringer og totalentrepriser.",
     logo: "/images/partners/hhharboe.png",
-    url: "https://www.hhharboe.dk",
   },
   {
     name: "Beck & Jørgensen",
     type: "Kvalitetsmaling",
     description: "Dansk malingsproducent med kvalitetsprodukter til professionelle. Leverandør af bygningsmaling og specialprodukter.",
     logo: "/images/partners/bj-logo.png",
-    url: "http://www.bj.dk",
   },
   {
     name: "Dyrup",
     type: "Kvalitetsmaling",
     description: "Et af Danmarks mest kendte malingsmærker med et bredt sortiment af indendørs og udendørs maling i høj kvalitet.",
     logo: "/images/partners/dyrup-logo.png",
-    url: "https://dyrup.dk",
   },
   {
     name: "Flügger",
     type: "Kvalitetsmaling",
     description: "Skandinavisk malingsleverandør med over 240 års erfaring. Professionelle produkter til alle overflader.",
     logo: "/images/partners/flugger-logo.svg",
-    url: "https://www.flugger.dk",
   },
   {
     name: "Silkecement",
     type: "Materialeproducent",
     description: "Specialist i microcement og dekorative overfladeløsninger til vægge, gulve og badeværelser.",
     logo: "/images/partners/silkecement-logo.svg",
-    url: "https://silkecement.dk",
   },
   {
     name: "Deko Design Systems",
     type: "Gulvløsninger",
     description: "Unikke dekorative metalliske polyurethan-gulve. Hver gulv er et kunstværk med levende farver og holdbare overflader.",
     logo: "/images/partners/deko-logo.svg",
-    url: "https://dekodesignsystems.com/da/",
   },
 ]
 
@@ -133,11 +127,8 @@ export default function PartnerePage() {
                   <p className="text-gray-600">{partner.description}</p>
                 </>
               )
-              const cardClass = "bg-white rounded-xl p-8 shadow-sm border border-gray-100 hover:shadow-lg transition-shadow block"
-              return "url" in partner && partner.url ? (
-                <a key={index} href={partner.url} target="_blank" rel="noopener noreferrer" className={cardClass}>{content}</a>
-              ) : (
-                <div key={index} className={cardClass}>{content}</div>
+              return (
+                <div key={index} className="bg-white rounded-xl p-8 shadow-sm border border-gray-100 hover:shadow-lg transition-shadow">{content}</div>
               )
             })}
           </div>
