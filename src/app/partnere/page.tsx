@@ -56,6 +56,13 @@ const PARTNERS = [
     description: "Vi er stolte medlemmer af Danske Malermestre, som sikrer fagligt korrekt arbejde.",
     logo: "/images/partners/danskemalermestre-hvid.png",
   },
+  {
+    name: "Tømrermester Henrik Hjorth Harboe",
+    type: "Håndværkspartner",
+    description: "Professionelt tømrer- og snedkerarbejde siden 1998. Samarbejde om tilbygninger, renoveringer og totalentrepriser.",
+    logo: "/images/partners/hhharboe.png",
+    url: "https://www.hhharboe.dk",
+  },
 ]
 
 export default function PartnerePage() {
@@ -80,10 +87,14 @@ export default function PartnerePage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {PARTNERS.map((partner, index) => (
-              <div
+            {PARTNERS.map((partner, index) => {
+              const Wrapper = partner.url ? "a" : "div"
+              const wrapperProps = partner.url ? { href: partner.url, target: "_blank", rel: "noopener noreferrer" } : {}
+              return (
+              <Wrapper
                 key={index}
-                className="bg-white rounded-xl p-8 shadow-sm border border-gray-100 hover:shadow-lg transition-shadow"
+                {...wrapperProps}
+                className="bg-white rounded-xl p-8 shadow-sm border border-gray-100 hover:shadow-lg transition-shadow block"
               >
                 <div className={`relative h-16 w-full mb-6 ${partner.name === "Danske Malermestre" ? "bg-gray-900 rounded-lg p-3" : ""}`}>
                   <Image
@@ -97,8 +108,9 @@ export default function PartnerePage() {
                 <span className="text-sm text-[#6b9834] font-medium">{partner.type}</span>
                 <h3 className="font-bold text-xl text-gray-900 mt-1 mb-3">{partner.name}</h3>
                 <p className="text-gray-600">{partner.description}</p>
-              </div>
-            ))}
+              </Wrapper>
+              )
+            })}
           </div>
 
           {/* Partnership Benefits */}

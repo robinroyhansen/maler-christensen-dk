@@ -30,6 +30,10 @@ const PARTNER_LOGOS = [
     name: "Lux Tag",
     src: "/images/partners/lux-tag.png",
   },
+  {
+    name: "Tømrermester Henrik Hjorth Harboe",
+    src: "/images/partners/hhharboe.png",
+  },
 ]
 
 interface PartnersProps {
