@@ -88,27 +88,27 @@ export default function PartnerePage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {PARTNERS.map((partner, index) => {
-              const Wrapper = partner.url ? "a" : "div"
-              const wrapperProps = partner.url ? { href: partner.url, target: "_blank", rel: "noopener noreferrer" } : {}
-              return (
-              <Wrapper
-                key={index}
-                {...wrapperProps}
-                className="bg-white rounded-xl p-8 shadow-sm border border-gray-100 hover:shadow-lg transition-shadow block"
-              >
-                <div className={`relative h-16 w-full mb-6 ${partner.name === "Danske Malermestre" ? "bg-gray-900 rounded-lg p-3" : ""}`}>
-                  <Image
-                    src={partner.logo}
-                    alt={`${partner.name} logo - samarbejdspartner med Schou & Christensen`}
-                    fill
-                    className="object-contain"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  />
-                </div>
-                <span className="text-sm text-[#6b9834] font-medium">{partner.type}</span>
-                <h3 className="font-bold text-xl text-gray-900 mt-1 mb-3">{partner.name}</h3>
-                <p className="text-gray-600">{partner.description}</p>
-              </Wrapper>
+              const content = (
+                <>
+                  <div className={`relative h-16 w-full mb-6 ${partner.name === "Danske Malermestre" ? "bg-gray-900 rounded-lg p-3" : ""}`}>
+                    <Image
+                      src={partner.logo}
+                      alt={`${partner.name} logo - samarbejdspartner med Schou & Christensen`}
+                      fill
+                      className="object-contain"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                  </div>
+                  <span className="text-sm text-[#6b9834] font-medium">{partner.type}</span>
+                  <h3 className="font-bold text-xl text-gray-900 mt-1 mb-3">{partner.name}</h3>
+                  <p className="text-gray-600">{partner.description}</p>
+                </>
+              )
+              const cardClass = "bg-white rounded-xl p-8 shadow-sm border border-gray-100 hover:shadow-lg transition-shadow block"
+              return "url" in partner && partner.url ? (
+                <a key={index} href={partner.url} target="_blank" rel="noopener noreferrer" className={cardClass}>{content}</a>
+              ) : (
+                <div key={index} className={cardClass}>{content}</div>
               )
             })}
           </div>
