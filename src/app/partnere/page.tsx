@@ -57,6 +57,13 @@ const PARTNERS = [
     logo: "/images/partners/hhharboe.png",
     url: "https://www.hhharboe.dk",
   },
+  {
+    name: "Beck & Jørgensen",
+    type: "Kvalitetsmaling",
+    description: "Dansk malingsproducent med kvalitetsprodukter til professionelle. Leverandør af bygningsmaling og specialprodukter.",
+    logo: "/images/partners/bj-logo.png",
+    url: "http://www.bj.dk",
+  },
 ]
 
 export default function PartnerePage() {
