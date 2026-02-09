@@ -22,7 +22,7 @@ export const SERVICE_FAQS: Record<string, FAQ[]> = {
     },
     {
       question: "Bruger I miljøvenlige malinger?",
-      answer: "Ja, vi arbejder med kvalitetsmalinger fra anerkendte producenter som Flügger, Dyrup og Beck & Jørgensen. Vi kan tilbyde vandbaserede og lavemitterende malinger, der er skånsomme for både miljø og indeklima."
+      answer: "Ja, vi arbejder med kvalitetsmalinger fra anerkendte producenter som Beck & Jørgensen. Vi kan tilbyde vandbaserede og lavemitterende malinger, der er skånsomme for både miljø og indeklima."
     },
   ],
   "maling-af-carport": [
