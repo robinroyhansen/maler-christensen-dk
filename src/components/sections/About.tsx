@@ -126,23 +126,21 @@ export function About({
                 </>
               )}
 
-              <StaggerContainer className="space-y-3 sm:space-y-4 mb-6 sm:mb-8" staggerDelay={0.1}>
+              <ul className="space-y-3 sm:space-y-4 mb-6 sm:mb-8 list-none p-0 m-0">
                 {[
                   "Gratis og uforpligtende tilbud",
                   "Erfarne og professionelle malere",
                   "Konkurrencedygtige priser",
                   "Medlem af Danske Malermestre",
                 ].map((item, index) => (
-                  <StaggerItem key={index}>
-                    <li className="flex items-center gap-3 list-none">
-                      <div className="w-7 h-7 sm:w-8 sm:h-8 bg-[#6b9834]/10 rounded-full flex items-center justify-center flex-shrink-0">
-                        <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-[#6b9834]" />
-                      </div>
-                      <span className="text-gray-700 font-medium text-sm sm:text-base">{item}</span>
-                    </li>
-                  </StaggerItem>
+                  <li key={index} className="flex items-center gap-3">
+                    <div className="w-7 h-7 sm:w-8 sm:h-8 bg-[#6b9834]/10 rounded-full flex items-center justify-center flex-shrink-0">
+                      <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-[#6b9834]" />
+                    </div>
+                    <span className="text-gray-700 font-medium text-sm sm:text-base">{item}</span>
+                  </li>
                 ))}
-              </StaggerContainer>
+              </ul>
 
               {!showFull && (
                 <Link href="/om-os/">

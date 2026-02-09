@@ -238,7 +238,7 @@ export function Footer() {
       {/* Bottom Bar */}
       <div className="border-t border-gray-800 py-4 sm:py-6">
         <Container>
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-4 text-xs sm:text-sm text-gray-500">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-4 text-xs sm:text-sm text-gray-400">
             <p>© {new Date().getFullYear()} Malerfirmaet Schou &amp; Christensen ApS. Alle rettigheder forbeholdes.</p>
             <p>CVR: {COMPANY.cvr}</p>
           </div>

@@ -100,7 +100,7 @@ function GalleryItem({ image, index }: GalleryItemProps) {
           fill
           className="object-cover rounded-lg sm:rounded-xl"
           sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 25vw"
-          loading={index < 2 ? "eager" : "lazy"}
+          loading="lazy"
         />
         {/* Hover overlay */}
         <div className="absolute inset-0 bg-[#6b9834]/0 group-hover:bg-[#6b9834]/20 transition-colors duration-300 rounded-lg sm:rounded-xl" />

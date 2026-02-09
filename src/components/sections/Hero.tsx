@@ -7,6 +7,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Star, Phone, CheckCircle } from "lucide-react"
 import { motion, useReducedMotion } from "framer-motion"
+import { useState, useEffect, useRef } from "react"
 
 interface HeroProps {
   title?: string
@@ -19,7 +20,7 @@ interface HeroProps {
 }
 
 const HERO_IMAGE = "/images/hero/hero.jpg"
-const HERO_VIDEO = "https://qdphnqduwgnnwvmpksrr.supabase.co/storage/v1/object/public/site-assets/hero-video.mp4"
+const HERO_VIDEO = "https://qdphnqduwgnnwvmpksrr.supabase.co/storage/v1/object/public/site-assets/hero-video-optimized.mp4"
 
 // Paint brush SVG decoration
 function PaintBrushDecor() {
@@ -116,7 +117,24 @@ export function Hero({
 }: HeroProps) {
   const isHome = variant === "home"
   const prefersReducedMotion = useReducedMotion()
-  const useVideo = isHome && showVideo && !prefersReducedMotion
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const [showVideoEl, setShowVideoEl] = useState(false)
+  
+  // Only load video on desktop (>768px) after initial paint, and respect reduced motion
+  useEffect(() => {
+    if (!isHome || !showVideo || prefersReducedMotion) return
+    const mq = window.matchMedia("(min-width: 768px)")
+    if (mq.matches) {
+      // Delay video load slightly so it doesn't compete with FCP/LCP
+      const timer = setTimeout(() => setShowVideoEl(true), 100)
+      return () => clearTimeout(timer)
+    }
+    const handler = (e: MediaQueryListEvent) => {
+      if (e.matches) setShowVideoEl(true)
+    }
+    mq.addEventListener("change", handler)
+    return () => mq.removeEventListener("change", handler)
+  }, [isHome, showVideo, prefersReducedMotion])
   
   // Calculate animation delays based on title word count
   const titleWords = title.split(" ").length
@@ -124,33 +142,32 @@ export function Hero({
   
   return (
     <section className={`relative ${isHome ? "min-h-[480px] sm:min-h-[550px] md:min-h-[600px] py-12 sm:py-16 md:py-24 lg:py-32" : "py-12 sm:py-16 md:py-24"} text-white overflow-hidden`}>
-      {/* Background Video or Image */}
+      {/* Background: always render image as base, video overlays on desktop */}
       <div className="absolute inset-0">
-        {useVideo ? (
+        <Image
+          src={backgroundImage}
+          alt="Professionelt malerarbejde udført af Schou & Christensen i Slagelse"
+          fill
+          className="object-cover"
+          priority
+          fetchPriority="high"
+          sizes="100vw"
+        />
+        {showVideoEl && (
           <video
+            ref={videoRef}
             autoPlay
             muted
             loop
             playsInline
-            preload="metadata"
-            poster={backgroundImage}
+            preload="none"
             className="absolute inset-0 w-full h-full object-cover"
           >
             <source src={HERO_VIDEO} type="video/mp4" />
           </video>
-        ) : (
-          <Image
-            src={backgroundImage}
-            alt="Professionelt malerarbejde udført af Schou & Christensen i Slagelse"
-            fill
-            className="object-cover"
-            priority
-            fetchPriority="high"
-            sizes="100vw"
-          />
         )}
-        {/* Dark overlay — matches WordPress: black at 60% opacity */}
-        <div className={`absolute inset-0 ${useVideo ? "bg-black/60" : "bg-gradient-to-r from-gray-900/95 via-gray-900/85 to-gray-900/70"}`} />
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-gray-900/95 via-gray-900/85 to-gray-900/70" />
         {/* Subtle pattern overlay */}
         <div className="absolute inset-0 hero-pattern" />
       </div>
