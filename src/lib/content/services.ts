@@ -159,17 +159,18 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
       },
       {
         title: "Alt-i-en løsning",
-        content: "Ud over maling tilbyder vi også reparation af mindre skader, spartling af huller og rengøring efter malerarbejdet. Vi sørger for, at lejligheden er klar til overdragelse."
+        content: "Vi tilbyder en komplet fraflytningsløsning, så du kun behøver én håndværker. Ud over professionel maling klarer vi også rengøring af hele lejligheden samt gulvslibning, så gulvene fremstår som nye. Dertil kommer reparation af mindre skader og spartling af huller. Vi sørger for, at lejligheden er 100% klar til overdragelse — du skal ikke bekymre dig om noget."
       }
     ],
     benefits: [
       "Hurtig levering - ofte 1-2 dage",
       "Sikrer dit depositum tilbage",
       "Kender alle standarder og krav",
+      "Komplet løsning inkl. rengøring og gulvslibning",
       "Inkluderer småreperationer",
       "Grundig oprydning efter os"
     ],
-    relatedServices: ["maling-af-lejlighed", "sprojtespartling", "malerarbejde"]
+    relatedServices: ["maling-af-lejlighed", "rengoering", "gulvslibning", "sprojtespartling"]
   },
 
   "maling-hus": {
@@ -951,6 +952,70 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
       "8 erfarne fastansatte malere"
     ],
     relatedServices: ["indvendig-maling", "spartling", "sprojtespartling", "maling-hus"]
+  },
+
+  "rengoering": {
+    title: "Rengøring",
+    metaTitle: `Rengøring ved fraflytning & renovering — Professionelt & grundigt`,
+    metaDescription: `Professionel rengøring ved fraflytning, renovering og nybyg. Grundig slutrengøring der lever op til alle krav. Ring ${COMPANY.phone} for tilbud.`,
+    heroHeading: "Professionel rengøring",
+    heroSubheading: "Grundig rengøring ved fraflytning, renovering og nybyggeri",
+    intro: `Hos ${COMPANY.name} tilbyder vi professionel rengøring som en naturlig del af vores totalløsning. Uanset om du fraflytter en lejlighed, har fået renoveret dit hjem eller afslutter et nybyggeri, sørger vi for en grundig og omhyggelig rengøring, så alt står klar til overdragelse eller indflytning.`,
+    sections: [
+      {
+        title: "Fraflytningsrengøring",
+        content: "Ved fraflytning er grundig rengøring ofte et krav for at få dit depositum tilbage. Vi kender standarderne og sørger for, at lejligheden rengøres til perfektion — fra vindueskarme og skabe til badeværelse og køkken. Kombineret med vores malerservice får du en komplet fraflytningsløsning med kun én kontaktperson."
+      },
+      {
+        title: "Rengøring efter renovering",
+        content: "Renovering efterlader støv, snavs og malingrester overalt. Vores professionelle rengøring efter renovering fjerner alt byggestøv grundigt — også de steder, man nemt overser. Vi sikrer, at dit nyistandsatte hjem er skinnet rent og klar til at nyde fra dag ét."
+      },
+      {
+        title: "Komplet totalløsning",
+        content: "Når vi allerede er i gang med malerarbejde, spartling eller gulvslibning, giver det perfekt mening at vi også står for den afsluttende rengøring. Det sparer dig for at koordinere med endnu en leverandør, og vi sikrer en smidig overgang fra håndværkerarbejde til et rent og færdigt resultat."
+      }
+    ],
+    benefits: [
+      "Grundig fraflytningsrengøring efter alle krav",
+      "Professionel rengøring efter renovering",
+      "Én kontaktperson for maling, gulve og rengøring",
+      "Spar tid og koordinering",
+      "Erfaring med boligforeningers standarder",
+      "Hurtig og effektiv service"
+    ],
+    relatedServices: ["maling-flyttelejlighed", "gulvslibning", "maling-af-lejlighed", "malerarbejde"]
+  },
+
+  "gulvslibning": {
+    title: "Gulvslibning",
+    metaTitle: `Gulvslibning — Professionel slibning & lakering af trægulve`,
+    metaDescription: `Professionel gulvslibning og lakering af trægulve. Giv dine gulve nyt liv. Indgår i vores totalløsning ved fraflytning og renovering. Ring ${COMPANY.phone}`,
+    heroHeading: "Professionel gulvslibning",
+    heroSubheading: "Giv dine trægulve nyt liv med professionel slibning og behandling",
+    intro: `${COMPANY.name} tilbyder professionel gulvslibning som en del af vores totalløsning. Slidte, ridsede eller misfarvede trægulve kan forvandles fuldstændigt med korrekt slibning og efterbehandling. Vi sørger for, at dine gulve fremstår som nye — uanset om det er ved fraflytning, renovering eller bare en opfriskning.`,
+    sections: [
+      {
+        title: "Gulvslibning ved fraflytning",
+        content: "Mange boligforeninger og udlejere kræver, at trægulve slibes ved fraflytning. Vi har stor erfaring med at leve op til disse krav og sikrer, at gulvene er i perfekt stand til overdragelse. Kombineret med vores maler- og rengøringsservice får du en komplet fraflytningspakke, der sikrer dit depositum."
+      },
+      {
+        title: "Slibning og lakering",
+        content: "Vi sliber gulvene i flere trin for at opnå en helt glat og ensartet overflade. Derefter påføres lak, olie eller anden behandling efter dine ønsker. Vi rådgiver gerne om den bedste behandling til netop dine gulve — hvad enten du foretrækker en mat, silkemat eller blank finish."
+      },
+      {
+        title: "Del af vores totalløsning",
+        content: "Gulvslibning passer perfekt ind i vores totalløsning ved renovering og fraflytning. Når vi allerede står for maling og rengøring, kan vi koordinere gulvslibningen, så arbejdet udføres i den rigtige rækkefølge — først maling, så gulvslibning, og til sidst rengøring. Det giver det bedste resultat og sparer dig tid."
+      }
+    ],
+    benefits: [
+      "Professionel slibning i flere trin",
+      "Lakering, oliering eller voksbehandling",
+      "Indgår i komplet fraflytningspakke",
+      "Erfaring med boligforeningers krav",
+      "Koordineret med maling og rengøring",
+      "Hurtig og støvfri slibning"
+    ],
+    relatedServices: ["maling-flyttelejlighed", "rengoering", "maling-af-lejlighed", "malerarbejde"]
   }
 }
 

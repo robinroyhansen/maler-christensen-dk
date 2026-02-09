@@ -51,6 +51,8 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
       { name: "Erhvervsmaling", slug: "erhvervsmaling" },
       { name: "Billig maler", slug: "billig-maler" },
       { name: "Maler på Sjælland", slug: "maler-sjaelland" },
+      { name: "Rengøring", slug: "rengoering" },
+      { name: "Gulvslibning", slug: "gulvslibning" },
     ],
   },
 ]

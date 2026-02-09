@@ -483,6 +483,40 @@ export const SERVICE_FAQS: Record<string, FAQ[]> = {
       answer: "Ja, vi rådgiver gerne om farvevalg. Vi kan komme med forslag baseret på rummets størrelse, lysindfald og indretningsstil for at skabe den perfekte stemning."
     },
   ],
+
+  "rengoering": [
+    {
+      question: "Hvad inkluderer jeres fraflytningsrengøring?",
+      answer: `Vores fraflytningsrengøring dækker alt fra grundig rengøring af køkken og badeværelse til vinduespolering, aftørring af skabe, paneler og vindueskarme. Vi sørger for, at lejligheden lever op til udlejers krav. Ring ${COMPANY.phone} for et tilbud.`
+    },
+    {
+      question: "Kan I kombinere rengøring med maling og gulvslibning?",
+      answer: "Ja, det er netop vores styrke! Vi tilbyder en komplet fraflytnings- og renoveringspakke, hvor vi står for maling, gulvslibning og afsluttende rengøring. Én kontaktperson, ét samlet tilbud."
+    },
+    {
+      question: "Hvor lang tid tager en fraflytningsrengøring?",
+      answer: "Det afhænger af lejlighedens størrelse og stand. En typisk 2-3 værelsers lejlighed tager normalt en halv til en hel dag. Vi giver altid en tidsramme i vores tilbud."
+    },
+  ],
+
+  "gulvslibning": [
+    {
+      question: "Hvad koster gulvslibning?",
+      answer: `Prisen afhænger af gulvets areal, tilstand og den ønskede finish (lak, olie eller voks). Vi giver altid et gratis og uforpligtende tilbud. Ring ${COMPANY.phone} for at høre mere.`
+    },
+    {
+      question: "Hvor lang tid tager gulvslibning?",
+      answer: "En typisk lejlighed kan slibes og lakeres på 1-2 dage. Lakken skal dog tørre, så regn med at gulvet er klar til brug efter 2-3 dage. Vi planlægger det, så det passer med eventuelt malerarbejde."
+    },
+    {
+      question: "Kan I slibe alle typer trægulve?",
+      answer: "Vi sliber de fleste typer massive trægulve og lamelparketgulve. Laminatgulve kan ikke slibes. Vi vurderer altid gulvets tilstand inden vi starter og rådgiver om den bedste løsning."
+    },
+    {
+      question: "Er gulvslibning inkluderet i fraflytningspakken?",
+      answer: "Ja, gulvslibning kan inkluderes i vores komplette fraflytningspakke sammen med maling og rengøring. Det giver den bedste pris og det mest effektive forløb."
+    },
+  ],
 }
 
 // Helper function to get FAQs for a service slug
