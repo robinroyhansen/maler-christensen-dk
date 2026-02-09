@@ -211,7 +211,7 @@ export default async function BlogPostPage({
                   <div>
                     <h3 className="font-bold text-gray-900 mb-1">Schou & Christensen</h3>
                     <p className="text-gray-600 text-sm">
-                      Lokalt malerfirma i Slagelse med over 15 års erfaring. Vi er stolte af 
+                      Lokalt malerfirma i Slagelse med over 25 års samlet erfaring. Vi er stolte af 
                       vores {COMPANY.trustpilotRating}/5 rating på Trustpilot og vores medlemskab 
                       af Danske Malermestre.
                     </p>

@@ -736,7 +736,7 @@ export const SERVICE_CONTENT: { [slug: string]: ServiceContent } = {
 
   "maler-sjaelland": {
     title: "Maler Sjælland",
-    metaTitle: `Maler Sjælland — Vi dækker hele øen | 15+ års erfaring`,
+    metaTitle: `Maler Sjælland — Vi dækker hele øen | 25+ års erfaring`,
     metaDescription: `Professionelt malerfirma der dækker hele Sjælland. Fra Slagelse til København. 250+ tilfredse kunder. Ring ${COMPANY.phone}`,
     heroHeading: "Din maler på hele Sjælland",
     heroSubheading: "Fra vores base i Slagelse dækker vi alle områder på Sjælland",
