@@ -34,6 +34,14 @@ const PARTNER_LOGOS = [
     name: "Beck & Jørgensen",
     src: "/images/partners/bj-logo.png",
   },
+  {
+    name: "Dyrup",
+    src: "/images/partners/dyrup-logo.png",
+  },
+  {
+    name: "Flügger",
+    src: "/images/partners/flugger-logo.svg",
+  },
 ]
 
 interface PartnersProps {

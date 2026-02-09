@@ -64,6 +64,20 @@ const PARTNERS = [
     logo: "/images/partners/bj-logo.png",
     url: "http://www.bj.dk",
   },
+  {
+    name: "Dyrup",
+    type: "Kvalitetsmaling",
+    description: "Et af Danmarks mest kendte malingsmærker med et bredt sortiment af indendørs og udendørs maling i høj kvalitet.",
+    logo: "/images/partners/dyrup-logo.png",
+    url: "https://dyrup.dk",
+  },
+  {
+    name: "Flügger",
+    type: "Kvalitetsmaling",
+    description: "Skandinavisk malingsleverandør med over 240 års erfaring. Professionelle produkter til alle overflader.",
+    logo: "/images/partners/flugger-logo.svg",
+    url: "https://www.flugger.dk",
+  },
 ]
 
 export default function PartnerePage() {
