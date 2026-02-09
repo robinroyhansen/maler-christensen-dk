@@ -8,6 +8,7 @@ import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/ui/Animat
 import { CountUp } from "@/components/ui/CountUp"
 import { COMPANY } from "@/lib/constants"
 import { getPageMeta } from "@/lib/data/page-meta"
+import { getPageContent } from "@/lib/data/page-content"
 import { CheckCircle, Award, Users, Clock, Star, Shield } from "lucide-react"
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -28,12 +29,34 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export default function OmOsPage() {
+// Default sections that can be overridden from admin
+const DEFAULT_SECTIONS = [
+  {
+    title: "Vores historie",
+    content: `${COMPANY.name} drives af Jess og Stefan, som sammen har over 25 års erfaring inden for malerarbejde. Med deres kombinerede ekspertise og passion for håndværk har de opbygget et solidt ry for kvalitetsbevidst arbejde og personlig service.\n\nJess og Stefan startede firmaet med en simpel ambition: at levere malerarbejde, de selv ville være stolte af i deres egne hjem. Den filosofi gennemsyrer stadig alt, hvad vi gør i dag — fra de små detaljer til de store projekter.\n\nI dag servicerer vi kunder i hele Sjælland med et team af erfarne malere. Vi håndterer alt fra små istandsættelser til store renoveringsprojekter, og vores ${COMPANY.trustpilotRating}/5 rating på Trustpilot med over 250 anmeldelser vidner om vores engagement i kundetilfredshed.`,
+  },
+  {
+    title: "Vores værdier",
+    content: "Vi tror på, at godt håndværk handler om mere end bare at male en væg. Det handler om at lytte til kunden, forstå deres ønsker og levere et resultat, der overgår deres forventninger. Vi rydder altid op efter os, overholder aftaler og står ved vores arbejde.",
+  },
+]
+
+export default async function OmOsPage() {
+  const pageContent = await getPageContent("om-os", {
+    page_type: "static",
+    hero_title: "Om Schou & Christensen",
+    hero_subtitle: "Lokal malerfirma med passion for kvalitet og håndværk",
+    intro: `${COMPANY.name} er et lokalt malerfirma med base i Slagelse. Vi har specialiseret os i at levere professionelt malerarbejde af højeste kvalitet til private og erhvervskunder i hele Sjælland. Med 25+ års samlet erfaring dækker vi alle opgaver — fra små istandsættelser til store renoveringsprojekter.`,
+    sections: DEFAULT_SECTIONS,
+  })
+
+  const sections = pageContent.sections.length > 0 ? pageContent.sections : DEFAULT_SECTIONS
+
   return (
     <>
       <Hero
-        title="Om Schou & Christensen"
-        subtitle="Lokal malerfirma med passion for kvalitet og håndværk"
+        title={pageContent.hero_title || "Om Schou & Christensen"}
+        subtitle={pageContent.hero_subtitle || "Lokal malerfirma med passion for kvalitet og håndværk"}
         variant="page"
         showTrustpilot={true}
       />
@@ -46,61 +69,42 @@ export default function OmOsPage() {
             <AnimateIn>
               <div className="prose prose-lg prose-gray max-w-none">
                 <p className="lead text-xl text-gray-600">
-                  {COMPANY.name} er et lokalt malerfirma med base i Slagelse. Vi har specialiseret 
-                  os i at levere professionelt malerarbejde af højeste kvalitet til private og 
-                  erhvervskunder i hele Sjælland. Med 25+ års samlet erfaring dækker vi alle opgaver 
-                  — fra små istandsættelser til store renoveringsprojekter.
-                </p>
-
-                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Vores historie</h2>
-                <p className="text-gray-600 leading-relaxed">
-                  {COMPANY.name} drives af Jess og Stefan, som sammen har over 25 års erfaring inden 
-                  for malerarbejde. Med deres kombinerede ekspertise og passion for håndværk har de 
-                  opbygget et solidt ry for kvalitetsbevidst arbejde og personlig service.
-                </p>
-                <p className="text-gray-600 leading-relaxed">
-                  Jess og Stefan startede firmaet med en simpel ambition: at levere malerarbejde, de 
-                  selv ville være stolte af i deres egne hjem. Den filosofi gennemsyrer stadig alt, 
-                  hvad vi gør i dag — fra de små detaljer til de store projekter.
-                </p>
-                <p className="text-gray-600 leading-relaxed">
-                  I dag servicerer vi kunder i hele Sjælland med et team af erfarne malere. 
-                  Vi håndterer alt fra små istandsættelser til store renoveringsprojekter, og vores 
-                  {COMPANY.trustpilotRating}/5 rating på Trustpilot med over 250 anmeldelser vidner om 
-                  vores engagement i kundetilfredshed.
+                  {pageContent.intro}
                 </p>
               </div>
             </AnimateIn>
 
-            {/* Historical Photo */}
-            <AnimateIn delay={0.2} variant="scale">
-              <figure className="mt-8 mb-4">
-                <div className="relative w-full max-w-md mx-auto overflow-hidden rounded-lg shadow-lg">
-                  <Image
-                    src="/images/historie-1892.jpg"
-                    alt="Malere fra 1892 — den stærke danske håndværkstradition"
-                    width={2018}
-                    height={2835}
-                    className="w-full h-auto grayscale"
-                  />
-                </div>
-                <figcaption className="text-center text-sm text-gray-500 mt-3 italic">
-                  Malere anno 1892 — vi bygger videre på en stolt dansk håndværkstradition
-                </figcaption>
-              </figure>
-            </AnimateIn>
-
-            <AnimateIn delay={0.1}>
-              <div className="prose prose-lg prose-gray max-w-none">
-                <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Vores værdier</h2>
-                <p className="text-gray-600 leading-relaxed">
-                  Vi tror på, at godt håndværk handler om mere end bare at male en væg. Det handler 
-                  om at lytte til kunden, forstå deres ønsker og levere et resultat, der overgår 
-                  deres forventninger. Vi rydder altid op efter os, overholder aftaler og står ved 
-                  vores arbejde.
-                </p>
+            {/* Dynamic sections from DB */}
+            {sections.map((section, index) => (
+              <div key={index}>
+                {index === 1 && (
+                  <AnimateIn delay={0.2} variant="scale">
+                    <figure className="mt-8 mb-4">
+                      <div className="relative w-full max-w-md mx-auto overflow-hidden rounded-lg shadow-lg">
+                        <Image
+                          src="/images/historie-1892.jpg"
+                          alt="Malere fra 1892 — den stærke danske håndværkstradition"
+                          width={2018}
+                          height={2835}
+                          className="w-full h-auto grayscale"
+                        />
+                      </div>
+                      <figcaption className="text-center text-sm text-gray-500 mt-3 italic">
+                        Malere anno 1892 — vi bygger videre på en stolt dansk håndværkstradition
+                      </figcaption>
+                    </figure>
+                  </AnimateIn>
+                )}
+                <AnimateIn delay={0.1 * index}>
+                  <div className="prose prose-lg prose-gray max-w-none">
+                    <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">{section.title}</h2>
+                    {section.content.split('\n\n').map((paragraph, pIndex) => (
+                      <p key={pIndex} className="text-gray-600 leading-relaxed">{paragraph}</p>
+                    ))}
+                  </div>
+                </AnimateIn>
               </div>
-            </AnimateIn>
+            ))}
 
             {/* Stats Grid with CountUp */}
             <StaggerContainer className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12" staggerDelay={0.1}>

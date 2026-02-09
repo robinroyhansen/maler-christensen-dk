@@ -358,7 +358,7 @@ export default function PageEditor({ params }: { params: Promise<{ slug: string 
           </div>
 
           {/* Sections */}
-          {pageType === "service" && (
+          {(pageType === "service" || pageType === "static" || pageType === "city") && (
             <div className="bg-white rounded-xl shadow-sm p-6">
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-lg font-semibold text-gray-900">Indholdssektioner</h2>
